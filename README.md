@@ -1,7 +1,10 @@
-# arch_developer_setup
+# Arch Account Setup
 This repo contains scripts to help setup a new developer account for Arch Linux. It contains basic tools.
 
+Usage:
 
-setup_system.sh: general system setup
-
-setup_account.sh: set up developer account
+```
+# cp config.template.sh config.sh
+# vim config.sh
+# setup_system.sh
+```
