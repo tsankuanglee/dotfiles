@@ -11,7 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
   " solarized colorscheme
   Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
 
-
+  " nvim's neocomplete
   Plug 'https://github.com/Shougo/deoplete.nvim.git'
 
 " }
@@ -26,6 +26,8 @@ if has('syntax') && !exists('g:syntax_on')
 endif
 
 " General {
+  " disable mouse so we can use X terminal to copy and paste
+  set mouse-=a
   set backspace=indent,eol,start      " Allow backspace over everything in insert mode.
   set complete-=i
   set smarttab

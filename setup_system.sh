@@ -26,7 +26,8 @@ ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 
 # packages
 pacman -S --needed base-devel
-pacman -S vim neovim tmux rsync zip p7zip aria2 package-query pacman-mirrorlist reflector git dnsutils most vimpager fwknop
+pacman -S vim neovim tmux rsync zip p7zip aria2 package-query pacman-mirrorlist reflector git dnsutils most vimpager fwknop python python-pip
+pip install neovim
 ./setup_account.sh $user
 
 reflector --verbose --country 'United States' --threads 8 -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
@@ -102,4 +103,3 @@ ip6tables-save > /etc/ip6tables/ip6tables.rules
 #mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 #systemd start mysqld
 #mysql_secure_installation
-
