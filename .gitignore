@@ -1,4 +1,5 @@
 config.sh
 *.swp
-.config
-.config/*
+.config/nvim/.netrwhist
+.local
+.local/*
