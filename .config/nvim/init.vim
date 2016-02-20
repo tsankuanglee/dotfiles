@@ -34,7 +34,8 @@ endif
 
   "set noautoindent        " I indent my code myself.
   "set nocindent           " I indent my code myself.
-  set smartindent        " Or I let the smartindent take care of it.
+  "set smartindent        " Or I let the smartindent take care of it.
+  set cindent             " this fixes the bug of non-indented #
 
   set nrformats-=octal
 
