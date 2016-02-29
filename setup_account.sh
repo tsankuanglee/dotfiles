@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 user="$1"
-if [ $user -eq "root" ]
+if [ $user == "root" ]
 then
     userdir="/home/$user"
 else
