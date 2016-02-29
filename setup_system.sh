@@ -26,7 +26,7 @@ ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 
 # packages
 pacman -S --needed base-devel
-pacman -S vim neovim tmux rsync zip p7zip aria2 package-query pacman-mirrorlist reflector git dnsutils most vimpager fwknop python python-pip
+pacman -S vim neovim tmux rsync zip p7zip aria2 pacman-mirrorlist reflector git dnsutils most vimpager fwknop python python-pip
 pip install neovim
 ./setup_account.sh $user
 
@@ -39,6 +39,9 @@ passwd $user
 echo "$user  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 rsync -at .bashrc .bash_profile .vim* .nvim* .neovim* .ssh ~$user
 chown -R $user:$user ~$user
+
+# package-query
+# TODO
 
 # yaourt
 cp yaourt.sh /home/$user
