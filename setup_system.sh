@@ -26,7 +26,7 @@ ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 
 # packages
 pacman -S --needed base-devel
-pacman -S vim neovim tmux rsync zip p7zip aria2 pacman-mirrorlist reflector git dnsutils most vimpager fwknop python python-pip
+pacman -S openssh vim neovim tmux rsync zip p7zip aria2 pacman-mirrorlist reflector git dnsutils most vimpager fwknop python python-pip
 pip install neovim
 ./setup_account.sh $user
 
