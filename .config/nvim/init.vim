@@ -156,6 +156,7 @@ endif
   "Toggle menubar
   nnoremap <leader>m :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
+
   " Relative numbering
   function! NumberToggle()
     if(&relativenumber == 1)
@@ -168,6 +169,7 @@ endif
 
   " Toggle between normal and relative numbering.
   nnoremap <leader>r :call NumberToggle()<cr>
+  nnoremap <leader>n :set nonumber<cr>
 
   " Sets a status line. If in a Git repository, shows the current branch.
   " Also shows the current file name, line and column number.
