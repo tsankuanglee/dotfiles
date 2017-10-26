@@ -22,7 +22,15 @@ export LESS=' -R -X'
 alias vi='nvim'
 alias ls='ls --color=auto'
 eval $(dircolors -b)
-alias l='ls -al --color'
+alias l='ls -al --color --full-time'
+# change to directory of the given filepath
+cdd() {
+    cd `dirname "$1"`
+}
+# copy the current directory path
+pwdc() {
+    pwd -P | xclip -selection c -r
+}
 #alias grep='grep --color=auto' 
 alias grep='grep --color=always' 
 export EDITOR="vim"

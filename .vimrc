@@ -93,3 +93,17 @@ colorscheme solarized
 set omnifunc=syntaxcomplete#Complete
 
 "set autochdir
+
+if has('gui_running')
+  "set guioptions-=T  " no toolbar
+  "colorscheme elflord
+  "set lines=60 columns=108 linespace=0
+  if has('gui_win32')
+    set guifont=DejaVu_Sans_Mono:h10:cANSI
+  else
+    set guifont=DejaVu\ Sans\ Mono\ 10
+    "set guifont=Andale\ Mono\ 10
+  endif
+endif
+
+let g:pymode_rope = 0
