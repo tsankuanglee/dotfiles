@@ -12,6 +12,8 @@ PS1="\[\033[1;34m\]\u@\h \[\033[1;32m\]\W\[\033[1;34m\]\\$\[\033[0m\] "
 
 # unlimited history
 export HISTFILESIZE= HISTSIZE=
+export HISTCONTROL=ignoreboth:erasedups
+
 
 # colorify less
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
