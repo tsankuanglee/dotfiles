@@ -1,0 +1,37 @@
+{
+  "load_extensions": {
+    "nbextensions_configurator/config_menu/main": true,
+    "contrib_nbextensions_help_item/main": true,
+    "snippets_menu/main": true,
+    "table_beautifier/main": false,
+    "code_prettify/code_prettify": true,
+    "toggle_all_line_numbers/main": true,
+    "toc2/main": true,
+    "codefolding/main": true,
+    "runtools/main": true,
+    "keyboard_shortcut_editor/main": true
+  },
+  "code_prettify": {
+    "register_hotkey": false
+  },
+  "toggle_all_linenumbers_enable_hotkey": false,
+  "kse_show_rebinds": true,
+  "kse_rebinds": {
+    "command": [
+      {
+        "action_name": "auto:toggle-codefolding",
+        "from": "ctrl-x"
+      }
+    ],
+    "edit": [
+      {
+        "action_name": "auto:toggle-codefolding",
+        "from": "ctrl-x"
+      },
+      {
+        "action_name": "auto:toggle-codefolding",
+        "from": "ctrl-x"
+      }
+    ]
+  }
+}
