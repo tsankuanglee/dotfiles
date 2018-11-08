@@ -33,6 +33,10 @@ alias c='xclip -selection c -r'
 pwdc() {
     pwd -P | c
 }
+# copy the full path of the file to clipboard
+fdc() {
+    readlink -f "$1" | c
+}
 
 # colors
 eval $(dircolors -b)
