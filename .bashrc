@@ -14,7 +14,6 @@ PS1="\[\033[1;34m\]\u@\h \[\033[1;32m\]\W\[\033[1;34m\]\\$\[\033[0m\] "
 export HISTFILESIZE= HISTSIZE=
 export HISTCONTROL=ignoreboth:erasedups
 
-
 # colorify less
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS=' -R -X'
@@ -23,18 +22,24 @@ export LESS=' -R -X'
 # User specific aliases and functions
 alias vi='nvim'
 alias ls='ls --color=auto'
-eval $(dircolors -b)
-alias l='ls -al --color --full-time'
+
 # change to directory of the given filepath
 cdd() {
     cd `dirname "$1"`
 }
+# copy to clipboard
+alias c='xclip -selection c -r'
 # copy the current directory path
 pwdc() {
-    pwd -P | xclip -selection c -r
+    pwd -P | c
 }
+
+# colors
+eval $(dircolors -b)
+alias l='ls -al --color --full-time'
 #alias grep='grep --color=auto' 
 alias grep='grep --color=always' 
+
 export EDITOR="vim"
 
 GPG_TTY=`tty` 
