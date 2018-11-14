@@ -1,0 +1,7 @@
+rofi.lines: 15
+rofi.columns: 2
+rofi.combi-modi: window#run
+rofi.modi: combi#window#run#drun
+rofi.show: combi
+rofi.theme: /usr/share/rofi/themes//Monokai.rasi
+rofi.threads: 0
