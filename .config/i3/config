@@ -23,14 +23,22 @@ font pango:DejaVu Sans Mono 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# gaps
+#gaps inner 0
+#gaps outer 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
 
 # start a terminal
 # turned off; this is handled by xbindkey
 #bindsym $mod+t exec i3-sensible-terminal
 
+# border
+for_window [class="^.*"] border pixel 1
+bindsym $mod+b border toggle
+bindsym $mod+shift+b border normal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -138,11 +146,13 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # MENU system - general
 bindsym $mod+m mode "$mode_general"
-set $mode_general (s)ystem (r)esize/move (w)orkspace (i)3
+set $mode_general (s)ystem (r)esize/move (w)orkspace (g)ap (b)order (i)3
 mode "$mode_general" {
     bindsym s mode "$mode_system"
     bindsym r mode "$mode_resize_move"
     bindsym w mode "$mode_workspace"
+    bindsym g mode "$mode_gap"
+    bindsym b mode "$mode_border"
     bindsym i mode "$mode_i3"
 
     # exit system mode: "Enter" or "Escape"
@@ -163,7 +173,6 @@ mode "$mode_i3" {
 set $mode_system (l)ock, (L)ock after 30min, (e)xit, (s)uspend, (h)ibernate, (R)eboot, (S)hutdown
 set $locker_now /home/tklee/.xbindkeysrc.lib/lock_screen.py --now && sleep 1
 set $locker_delay /home/tklee/.xbindkeysrc.lib/lock_screen.py --add 30 && sleep 1
-
 mode "$mode_system" {
     bindsym l exec --no-startup-id $locker_now; mode "default"
     bindsym Shift+l exec --no-startup-id $locker_delay ; mode "default"
@@ -272,6 +281,81 @@ mode "$mode_resize_move" {
     bindsym Mod1+Shift+Control+Right move right 100 px
 
     # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# gap
+set $mode_gap resize gap: i/k/up/down: inner, j/l/left/right: outer, 0: inner to 0, p: outer to 0 resize arrows/ijkl for inner gap resizing;; +shift 10x; +ctrl 50x; +shift+ctrl 100x
+mode "$mode_gap" {
+
+    bindsym 0 gaps inner current set 0
+    bindsym p gaps outer current set 0
+
+    bindsym i gaps inner current plus 1
+    bindsym k gaps inner current minus 1
+    bindsym j gaps outer current minus 1
+    bindsym l gaps outer current plus 1
+
+    bindsym Up gaps inner current plus 1
+    bindsym Down gaps inner current minus 1
+    bindsym Left gaps outer current minus 1
+    bindsym Right gaps outer current plus 1
+
+    # shift for 10x
+    bindsym Shift+i gaps inner current plus 10
+    bindsym Shift+k gaps inner current minus 10
+    bindsym Shift+j gaps outer current minus 10
+    bindsym Shift+l gaps outer current plus 10
+
+    bindsym Shift+Up gaps inner current plus 10
+    bindsym Shift+Down gaps inner current minus 10
+    bindsym Shift+Left gaps outer current minus 10
+    bindsym Shift+Right gaps outer current plus 10
+
+    # ctrl for 50x
+    bindsym Control+i gaps inner current plus 50
+    bindsym Control+k gaps inner current minus 50
+    bindsym Control+j gaps outer current minus 50
+    bindsym Control+l gaps outer current plus 50
+
+    bindsym Control+Up gaps inner current plus 50
+    bindsym Control+Down gaps inner current minus 50
+    bindsym Control+Left gaps outer current minus 50
+    bindsym Control+Right gaps outer current plus 50
+
+    # shift+ctrl for 100x
+    bindsym Control+Shift+i gaps inner current plus 100
+    bindsym Control+Shift+k gaps inner current minus 100
+    bindsym Control+Shift+j gaps outer current minus 100
+    bindsym Control+Shift+l gaps outer current plus 100
+
+    bindsym Control+Shift+Up gaps inner current plus 100
+    bindsym Control+Shift+Down gaps inner current minus 100
+    bindsym Control+Shift+Left gaps outer current minus 100
+    bindsym Control+Shift+Right gaps outer current plus 100
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# border
+set $mode_border Border witdh 0-9
+mode "$mode_border" {
+
+    bindsym 0 border pixel 0
+    bindsym 1 border pixel 1
+    bindsym 2 border pixel 2
+    bindsym 3 border pixel 3
+    bindsym 4 border pixel 4
+    bindsym 5 border pixel 5
+    bindsym 6 border pixel 6
+    bindsym 7 border pixel 7
+    bindsym 8 border pixel 8
+    bindsym 9 border pixel 9
+
+    # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
