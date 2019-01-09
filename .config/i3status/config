@@ -11,11 +11,15 @@ general {
     interval = 1
 }
 
-#order += "ipv6"
 #order += "disk /"
+
+# replaced by nm-applet
+#order += "ipv6"
 #order += "wireless _first_"
 #order += "ethernet _first_"
+
 #order += "battery all"
+order += "cpu_temperature 0"
 order += "load"
 order += "volume master"
 order += "tztime local"
@@ -32,7 +36,12 @@ ethernet _first_ {
 }
 
 battery all {
-    format = "%status %percentage %remaining"
+	format = "B: %status %percentage %remaining %emptytime"
+    format_down = "No battery"
+	status_chr = "⚡"
+	status_unk = "?"
+	status_bat = "🔋"
+	status_full = "☻"
 }
 
 tztime local {
@@ -40,7 +49,7 @@ tztime local {
 }
 
 load {
-    format = "%1min %5min %15min"
+    format = "load: %1min %5min %15min"
 }
 
 disk "/" {
@@ -48,8 +57,9 @@ disk "/" {
 }
 
 volume master {
-  format = "♪ %volume"
-  device = "default"
-  mixer = "Master"
-  mixer_idx = 0
+	format = "♪: %volume"
+	format_muted = "♪: muted (%volume)"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
 }
