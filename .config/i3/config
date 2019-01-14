@@ -344,7 +344,7 @@ mode "$mode_gap" {
 }
 
 # border
-set $mode_border Border witdh 0-9
+set $mode_border 0-9: border witdh; b: toggle border; shift+b: normal border
 mode "$mode_border" {
 
     bindsym 0 border pixel 0
@@ -357,6 +357,9 @@ mode "$mode_border" {
     bindsym 7 border pixel 7
     bindsym 8 border pixel 8
     bindsym 9 border pixel 9
+
+    bindsym b border toggle
+    bindsym shift+b border normal
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
