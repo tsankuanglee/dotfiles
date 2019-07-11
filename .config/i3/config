@@ -94,6 +94,7 @@ bindsym $mod+Shift+Right move right
 # enter fullscreen mode for the focused container
 bindsym $mod+Return fullscreen
 
+### Layout control
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+Tab layout tabbed
 bindsym $mod+Shift+Tab layout stacking
@@ -101,10 +102,12 @@ bindsym $mod+t layout toggle split
 
 # split in horizontal orientation
 bindsym $mod+h split h
+bindsym $mod+Shift+h split v
 
 # split in vertical orientation
 bindsym $mod+v split v
-bindsym $mod+Shift+v split toggle
+bindsym $mod+Shift+v split h
+#bindsym $mod+Shift+v split toggle
 
 
 # toggle tiling / floating
@@ -125,9 +128,10 @@ bindsym $mod+Shift+p focus child
 bindsym $mod+u move scratchpad
 bindsym $mod+o scratchpad show
 
+
 # worksapces
 workspace_auto_back_and_forth yes
-
+# omit...
 # switch to workspace
 bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
@@ -487,7 +491,8 @@ bar {
     status_command i3status
 }
 
-
+# app specific config (also see $mode_apps)
+# omit...
 
 
 # Starts dunst for notifications:
