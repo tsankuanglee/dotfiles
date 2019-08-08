@@ -60,6 +60,7 @@ focus_follows_mouse yes
 #mouse_warping output|none
 mouse_warping none
 bindsym $mod+apostrophe exec --no-startup-id /home/tklee/.xbindkeysrc.lib/move_cursor_to_active_window.sh
+bindsym $mod+g exec --no-startup-id /home/tklee/.xbindkeysrc.lib/move_cursor_to_active_window.sh
 
 # change focus
 bindsym $mod+j focus left
@@ -223,9 +224,9 @@ mode "$mode_i3" {
 }
 
 # mouse
-set $mode_mouse (')cursor to active window
+set $mode_mouse cursor (g)oto active window
 mode "$mode_mouse" {
-    bindsym apostrophe exec --no-startup-id /home/tklee/.xbindkeysrc.lib/move_cursor_to_active_window.sh ; mode "default"
+    bindsym g exec --no-startup-id /home/tklee/.xbindkeysrc.lib/move_cursor_to_active_window.sh ; mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
