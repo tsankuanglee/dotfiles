@@ -1,0 +1,2 @@
+# delete to previous / (see https://superuser.com/questions/606212/bash-readline-deleting-till-the-previous-slash)
+"\C-b": unix-filename-rubout
