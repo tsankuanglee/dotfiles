@@ -41,10 +41,10 @@ fdc() {
 # colors
 eval $(dircolors -b)
 alias l='ls -al --color --full-time'
-#alias grep='grep --color=auto' 
-alias grep='grep --color=always' 
+#alias grep='grep --color=auto'
+alias grep='grep --color=always'
 
 export EDITOR="vim"
 
-GPG_TTY=`tty` 
-export GPG_TTY 
+GPG_TTY=`tty`
+export GPG_TTY
