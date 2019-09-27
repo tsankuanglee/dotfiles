@@ -26,6 +26,13 @@ export GPG_TTY=`tty`
 export LANG="en_US.utf8"
 export LC_ALL="en_US.utf8"
 export LC_CTYPE="en_US.utf8"
+# IME
+export IME="gcin"
+export GTK_IM_MODULE=${IME}
+export XMODIFIERS=@im=${IME}
+export QT_IM_MODULE=${IME}
+
+
 
 # colorify less
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
@@ -34,7 +41,6 @@ export LESS=' -R -X'
 
 # User specific aliases and functions
 alias vi='nvim'
-alias ls='ls --color=auto'
 
 # change to directory of the given filepath
 cdd() {
@@ -52,7 +58,23 @@ fdc() {
 }
 
 # colors
+## test
+function aa_256 () 
+{ 
+    local o= i= x=`tput op` cols=`tput cols` y= oo= yy=;
+    y=`printf %$(($cols-6))s`;
+    yy=${y// /=};
+    for i in {0..256};
+    do
+        o=00${i};
+        oo=`echo -en "setaf ${i}\nsetab ${i}\n"|tput -S`;
+        echo -e "${o:${#o}-3:3} ${oo}${yy}${x}";
+    done
+}
+
+
 eval $(dircolors -b)
+alias ls='ls --color=auto'
 alias l='ls -al --color --full-time'
 alias lx='exa -algGB@'
 #alias grep='grep --color=auto'
