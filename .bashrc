@@ -53,8 +53,11 @@ pwdc() {
     pwd -P | c
 }
 # copy the full path of the file to clipboard; default is current (.)
+rl() {
+    readlink -f "${1:-.}"
+}
 fdc() {
-    readlink -f "${1:-.}" | c
+    rl | c
 }
 
 # colors
