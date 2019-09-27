@@ -14,6 +14,19 @@ PS1="\[\033[1;34m\]\u@\h \[\033[1;32m\]\W\[\033[1;34m\]\\$\[\033[0m\] "
 export HISTFILESIZE= HISTSIZE=
 export HISTCONTROL=ignoreboth:erasedups
 
+# editor
+set -o emacs
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# tty
+export GPG_TTY=`tty`
+
+# LANG related
+export LANG="en_US.utf8"
+export LC_ALL="en_US.utf8"
+export LC_CTYPE="en_US.utf8"
+
 # colorify less
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS=' -R -X'
@@ -33,18 +46,18 @@ alias c='xclip -selection c -r'
 pwdc() {
     pwd -P | c
 }
-# copy the full path of the file to clipboard
+# copy the full path of the file to clipboard; default is current (.)
 fdc() {
-    readlink -f "$1" | c
+    readlink -f "${1:-.}" | c
 }
 
 # colors
 eval $(dircolors -b)
 alias l='ls -al --color --full-time'
+alias lx='exa -algGB@'
 #alias grep='grep --color=auto'
 alias grep='grep --color=always'
 
-export EDITOR="vim"
 
-GPG_TTY=`tty`
-export GPG_TTY
+
+PATH=$PATH:~/bin:~/.local/bin
