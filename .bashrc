@@ -26,13 +26,33 @@ export GPG_TTY=`tty`
 export LANG="en_US.utf8"
 export LC_ALL="en_US.utf8"
 export LC_CTYPE="en_US.utf8"
+
+# docker
+export HOST_UID=$(id -u)
+export HOST_GID=$(id -g)
+export HOST_USERNAME=$(whoami)
+export XSOCK=/tmp/.X11-unix
+export XAUTH=/tmp/.docker.xauth
+
 # IME
-export IME="gcin"
-export GTK_IM_MODULE=${IME}
-export XMODIFIERS=@im=${IME}
+#export IME="gcin"
+export IME="hime"
+export XIM=${IME}
+export QT4_IM_MODULE=${IME}
+export QT5_IM_MODULE=${IME}
 export QT_IM_MODULE=${IME}
+export XMODIFIERS=@im=${IME}
+export XIM_MODULE=${IME}
+export GTK_IM_MODULE=xim
 
-
+# colors
+export LS_COLORS="$(vivid generate solarized-dark)"
+lscd() {
+    export LS_COLORS="$(vivid generate solarized-dark)"
+}
+lscs() {
+    export LS_COLORS="$(vivid generate snazzy)"
+}
 
 # colorify less
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
@@ -44,7 +64,7 @@ alias vi='nvim'
 
 # change to directory of the given filepath
 cdd() {
-    cd `dirname "$1"`
+    cd `dirname $1`
 }
 # copy to clipboard
 alias c='xclip -selection c -r'
@@ -57,7 +77,13 @@ rl() {
     readlink -f "${1:-.}"
 }
 fdc() {
-    rl | c
+    rl ${*} | c
+}
+
+mcd() {
+    mkdir -p ${*};
+    # cd to the last directory
+    cd "${@: -1}"
 }
 
 # colors
@@ -85,4 +111,4 @@ alias grep='grep --color=always'
 
 
 
-PATH=$PATH:~/bin:~/.local/bin
+PATH=$PATH:~/.local/bin
