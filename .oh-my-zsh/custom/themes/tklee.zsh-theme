@@ -20,7 +20,7 @@ _prompt_info_chunk() {
 #%{\e[0;34m%}%B└%B[%{\e[1;35m%}$%{\e[0;34m%}%B]%{\e[0m%}%b '
 
 
-PROMPT=$'$(_prompt_info_chunk %n "┌[" "" "034")@$(_prompt_info_chunk %m "" "]" "036") $(_prompt_info_chunk %~ "[" "]") $(_prompt_info_chunk %! "[" "]") $(_prompt_info_chunk %? "(" ")")
+PROMPT=$'$(_prompt_info_chunk %n "┌[" "" "034")@$(_prompt_info_chunk %m "" "]" ${ZSH_HOSTNAME_COLOR:-"036"}) $(_prompt_info_chunk %~ "[" "]") $(_prompt_info_chunk %! "[" "]") $(_prompt_info_chunk %? "(" ")")
 $(_prompt_info_chunk "%(!.#.$)" "└[" "]" "013") '
 
 
