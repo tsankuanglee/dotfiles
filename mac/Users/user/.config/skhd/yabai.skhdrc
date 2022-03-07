@@ -1,0 +1,48 @@
+# yabai is tiling WM
+# cf: https://cbrgm.net/post/2021-05-5-setup-macos/
+
+alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+# change layout of desktop
+alt + cmd - e : yabai -m space --layout bsp
+alt + cmd - l : yabai -m space --layout float
+alt + cmd - s : yabai -m space --layout stack
+
+# change focus
+alt + cmd - h : yabai -m window --focus west
+alt + cmd - j : yabai -m window --focus south
+alt + cmd - k : yabai -m window --focus north
+alt + cmd - l : yabai -m window --focus east
+
+# shift window in current workspace
+alt + cmd + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+alt + cmd + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+alt + cmd + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+alt + cmd + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+
+# focus to the prev/next display
+alt + cmd - p : yabai -m display --focus prev
+alt + cmd - n : yabai -m display --focus next
+# cycle through stack windows (comma and dot)
+alt + cmd - 0x2B : yabai -m window --focus stack.next || yabai -m window --focus south
+alt + cmd - 0x2F : yabai -m window --focus stack.prev || yabai -m window --focus north
+
+# set insertion point in focused container
+alt + cmd + ctrl - h : yabai -m window --insert west
+alt + cmd + ctrl - j : yabai -m window --insert south
+alt + cmd + ctrl - k : yabai -m window --insert north
+alt + cmd + ctrl - l : yabai -m window --insert east
+
+# mirror tree y-axis
+alt + cmd + shift - y : yabai -m space --mirror y-axis
+# mirror tree x-axis
+alt + cmd + shift - x : yabai -m space --mirror x-axis
+# balance size of windows
+alt + cmd + shift - 0 : yabai -m space --balance
+
+
+# Full Screen
+# enter fullscreen mode for the focused container
+alt + cmd - return : yabai -m window --toggle zoom-fullscreen
+# toggle window native fullscreen
+alt + cmd + shift - return : yabai -m window --toggle native-fullscreen
