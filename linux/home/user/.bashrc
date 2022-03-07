@@ -5,6 +5,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# AMD ACO compiler https://wiki.archlinux.org/index.php/AMDGPU#ACO_compiler
+export RADV_PERFTEST=aco
+
 export TERM=xterm-256color
 
 # quote the color codes (see http://unix.stackexchange.com/questions/105958/terminal-prompt-not-wrapping-correctly )
@@ -59,6 +62,8 @@ export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS=' -R -X'
 #export LESS_TERMCAP_us=$(printf '\e[1;32m')
 
+alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
+
 # User specific aliases and functions
 alias vi='nvim'
 
@@ -105,6 +110,7 @@ function aa_256 ()
 eval $(dircolors -b)
 alias ls='ls --color=auto'
 alias l='ls -al --color --full-time'
+alias lr='ls --sort=time -r'
 alias lx='exa -algGB@'
 #alias grep='grep --color=auto'
 alias grep='grep --color=always'

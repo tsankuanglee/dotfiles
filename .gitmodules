@@ -1,0 +1,3 @@
+[submodule "linux/home/user/.oh-my-zsh/custom/plugins/zsh-vi-mode"]
+	path = linux/home/user/.oh-my-zsh/custom/plugins/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode.git
