@@ -1,10 +1,4 @@
-# Arch Account Setup
-This repo contains scripts to help setup a new developer account for Arch Linux. It contains basic tools.
+# Tsan-Kuang "TK" Lee's dotfiles
 
-Usage:
+A place for me to keep/share various configuration files
 
-```
-# cp config.template.sh config.sh
-# vim config.sh
-# setup_system.sh
-```
