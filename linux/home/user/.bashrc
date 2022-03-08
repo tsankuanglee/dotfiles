@@ -5,6 +5,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # AMD ACO compiler https://wiki.archlinux.org/index.php/AMDGPU#ACO_compiler
 export RADV_PERFTEST=aco
 
