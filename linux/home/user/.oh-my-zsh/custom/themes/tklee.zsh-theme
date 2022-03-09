@@ -18,6 +18,6 @@ _prompt_info_chunk() {
 PROMPT=$'$(_prompt_info_chunk %n "┌[" "" "034")@$(_prompt_info_chunk %m "" "]" ${ZSH_HOSTNAME_COLOR:-"036"}) $(_prompt_info_chunk %~ "[" "]") $(_prompt_info_chunk %! "[" "]") $(_prompt_info_chunk %? "(" ")")
 $(_prompt_info_chunk "%(!.#.$)" "└[" "]" "013") '
 
-# RIGHT PROMPT
-RPROMPT='[%D{%Y-%m-%d %H:%M:%S.%.}]'
+# RIGHT PROMPT (cursor up to move it to the previous line, print RPROMPT, and then move down again)
+RPROMPT=$'%{\e[A%}[%D{%Y-%m-%d %H:%M:%S.%.}]%{\e[B%}'
 
