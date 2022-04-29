@@ -3,3 +3,4 @@ config.sh
 .config/nvim/.netrwhist
 .local
 .local/*
+linux/home/user/.config/kitty/current-theme.conf
