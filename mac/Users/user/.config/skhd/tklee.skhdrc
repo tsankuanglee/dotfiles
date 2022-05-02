@@ -1,36 +1,44 @@
-# menu/modal-driven system
+# `open -na` creates multiple instances of the same app
+# `open -a` create just one instance (or add to the exisitng one)
 
-
-# show messages for mode change (for debugging)
+# modes
+#
 #:: default : terminal-notifier -group skhd -remove skhd -title "skhd mode" -message 'mode: default'
 #:: skhd : terminal-notifier -group skhd -remove skhd -title "skhd mode" -message 'mode: skhd'
+
+# a hack to make hierachical modes
 
 :: default
 :: skhd
 :: combo
 :: combo_docker
+:: combo_shell
 :: combo_vim
+:: combo_pycharm
 :: app
 :: app_browser
 :: app_terminal
 :: app_editor
 :: app_graphic
 
-# TODO: skhd doesn't seem to have an easy way to return to default (an API/message support would be nice), so an ugly hack here
-skhd, combo, combo_docker, combo_vim, app, app_browser, app_terminal, app_editor, app_graphic < escape ; default
-skhd, combo, combo_docker, combo_vim, app, app_browser, app_terminal, app_editor, app_graphic < hyper - escape; default
+skhd, combo, combo_docker, combo_shell, combo_vim, combo_pycharm, app, app_browser, app_terminal, app_editor, app_graphic < escape ; default
+skhd, combo, combo_docker, combo_shell, combo_vim, combo_pycharm, app, app_browser, app_terminal, app_editor, app_graphic < hyper - escape; default
 
-# skhd (reload, edit, quit)
+# skhd
 default < hyper - s ; skhd
 skhd < r : skhd -r; terminal-notifier -group skhd -remove skhd -message "config reloaded"; skhd --key escape
-skhd < e : open -na /Applications/MacVim.app --args ~/.config/skhd/* ; skhd --key escape
+skhd < e : open -a /Applications/MacVim.app --args ~/.config/skhd/* ; skhd --key escape
 skhd < q : terminal-notifier -group skhd -remove skhd -message "exited"; brew services stop skhd ; skhd --key escape
 
-# combo (macro keys)
+# combo (output key sequences)
 default < hyper - c ; combo
-combo < p : skhd --key "hyper - escape" ; skhd -t "ps axl | grep "
-combo < c : skhd --key "hyper - escape" ; skhd -t "cd ~/"
-combo < t : skhd --key "hyper - escape" ; skhd -t "tmux new-session -s "
+
+## combo_shell
+combo < s ; combo_shell
+combo_shell < c : skhd --key "hyper - escape" ; skhd -t "cd ~/"
+combo_shell < f : skhd --key "hyper - escape" ; skhd -t 'find . -iregex ".*.*"'; skhd --key "left"; skhd --key "left"; skhd --key "left"
+combo_shell < p : skhd --key "hyper - escape" ; skhd -t "ps axl | grep "
+combo_shell < t : skhd --key "hyper - escape" ; skhd -t "tmux new-session -s "
 ## combo_docker
 combo < d ; combo_docker
 combo_docker < p : skhd --key "hyper - escape" ; skhd -t "docker ps -a"; skhd --key "return"
@@ -41,6 +49,10 @@ combo_docker < shift - x : skhd --key "hyper - escape" ; skhd -t "docker-compose
 combo < v ; combo_vim
 combo_vim < 2 : skhd --key "hyper - escape" ; skhd -t "set tabstop=2 shiftwidth=2 softtabstop=2 expandtab"
 combo_vim < 4 : skhd --key "hyper - escape" ; skhd -t "set tabstop=4 shiftwidth=4 softtabstop=4 expandtab"
+## combo_pycharm
+combo < p ; combo_pycharm
+combo_pycharm < d : skhd --key "hyper - escape" ; skhd -t "import pydevd_pycharm"; skhd --key "return"; skhd -t "pydevd_pycharm.settrace('host.docker.internal', port=62123,"; skhd --key "return"; skhd -t "stdoutToServer=True, stderrToServer=True)"; skhd --key "return"
+combo_pycharm < r : skhd --key "hyper - escape" ; skhd -t "make test NUM_PROCESSES=1 TEST_TARGET=tests/path/test_file.py::test_function"
 
 
 # app
@@ -55,10 +67,12 @@ app_terminal < k : open -a /Applications/kitty.app; skhd --key escape
 app_terminal < shift - k : open -na /Applications/kitty.app; skhd --key escape
 app_terminal < i : open -a /Applications/iTerm.app; skhd --key escape
 app_terminal < shift - i : open -na /Applications/iTerm.app; skhd --key escape
+
 ## app_editor
 app < e ; app_editor
 app_editor < v : open -a /Applications/MacVim.app; skhd --key escape
 app_editor < shift - v : open -na /Applications/MacVim.app; skhd --key escape
+
 ## app_graphic
 app < g ; app_graphic
 app_graphic < g : open -a /Applications/GIMP-2.10.app; skhd --key escape
