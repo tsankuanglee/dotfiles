@@ -18,6 +18,14 @@ def handle_result(args: List[str], answer: str, target_window_id: int, boss: Bos
     # get the kitty window into which to paste answer
 
     w = boss.window_id_map.get(target_window_id)
-    if w is not None:
+
+    if not w:
+        return
+    if args[1] == 'date':
         date_str = datetime.datetime.now().strftime("%Y%m%d")
-        w.paste_text(date_str)
+    elif args[1] == 'time':
+        date_str = datetime.datetime.now().strftime("%H%M%S")
+    else:
+        date_str = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+
+    w.paste_text(date_str)
