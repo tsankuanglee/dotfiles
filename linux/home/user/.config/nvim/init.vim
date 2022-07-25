@@ -153,7 +153,11 @@ endif
   set go-=L " Removes left hand scroll bar
 
   "Toggle menubar
-  nnoremap <leader>m :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+  "nnoremap <leader>m :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+
+  " Buffer switching
+  nnoremap <silent> <c-tab> :bn<cr>
+  nnoremap <silent> <c-s-tab> :bp<cr>
 
 
   " Relative numbering
@@ -225,4 +229,4 @@ endif
   " }
 " }
 
-" vim:set ft=vim sw=2 ts=2:
+" vim:set ft=vim sw=2 ts=2 sts=2 et:
