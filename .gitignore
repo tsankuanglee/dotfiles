@@ -4,3 +4,4 @@ config.sh
 .local
 .local/*
 linux/home/user/.config/kitty/current-theme.conf
+linux/home/user/.config/nvim/plugged/
