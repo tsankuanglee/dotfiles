@@ -66,3 +66,4 @@ alias lx='exa -algGB@'
 #alias grep='grep --color=auto'
 alias grep='grep --color=always'
 
+eval "$(zoxide init zsh)"

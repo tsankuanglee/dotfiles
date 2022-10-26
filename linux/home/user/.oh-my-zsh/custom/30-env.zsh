@@ -33,6 +33,6 @@ export XIM_MODULE=${IME}
 export GTK_IM_MODULE=xim
 
 
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/.cargo/bin
 # remove duplicates
 typeset -aU path
