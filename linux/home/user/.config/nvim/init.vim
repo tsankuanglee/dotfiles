@@ -1,4 +1,4 @@
-" this file is modified from https://github.com/adibis/nvim
+"~/.local/state/nvim/swap//%home%tklee%dotfiles%linux%home%user%.config%nvim%init.vim.swp this file is modified from https://github.com/adibis/nvim
 call plug#begin('~/.config/nvim/plugged')
 " Plugins {
 
@@ -8,6 +8,19 @@ call plug#begin('~/.config/nvim/plugged')
   " ctrl-p is a fuzzy file finder.
   Plug 'kien/ctrlp.vim'
 
+  " NERDTree
+  Plug 'scrooloose/nerdtree'
+  " show the current file on NERDtree
+  Plug 'unkiwii/vim-nerdtree-sync'
+
+  " NvimTree (sometimes conflicts with netrw)
+  "Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons; requires Nerd Fonts
+  "Plug 'nvim-tree/nvim-tree.lua'
+
+  " buffer-tree-explorer
+  Plug 'el-iot/buffer-tree-explorer'
+
+  " airline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
 
@@ -16,9 +29,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " nvim's neocomplete
   Plug 'https://github.com/Shougo/deoplete.nvim.git'
-
-  " NERDTree
-  Plug 'scrooloose/nerdtree'
 
 " }
 call plug#end()
@@ -231,6 +241,7 @@ call plug#end()
 " }
 
 " Plugin Settings {
+
   " Airline {
     let g:airline#extensions#tabline#enabled = 2
     let g:airline#extensions#tabline#fnamemod = ':t'
@@ -242,9 +253,9 @@ call plug#end()
     let g:airline_left_alt_sep = '|'
     let g:airline_right_sep = ' '
     let g:airline_right_alt_sep = '|'
-    "let g:airline_theme= 'serene'
     let g:airline_theme= 'serene'
   " }
+
   " CtrlP {
     " Open file menu
     nnoremap <Leader>o :CtrlP<CR>
@@ -253,16 +264,28 @@ call plug#end()
     " Open most recently used files
     nnoremap <Leader>f :CtrlPMRUFiles<CR>
   " }
+
   " { deoplete
     let g:deoplete#enable_at_startup = 1
   " }
+
   " { NERDTree
     " Auto start NERD tree when opening a directory
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
     " Let quit work as expected if after entering :q the only window left open is NERD Tree itself
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
+    let g:nerdtree_sync_cursorline = 1
   " }
+
+  " { buffer-tree-explorer
+    let g:buffertree_close_on_enter = 1
+  " }
+
+  " { NVIM Tree
+    "lua require("nvimtree")
+  " }
+
+
 " }
 
 
@@ -273,12 +296,15 @@ call quickui#menu#reset()
 " TODO customize this
 " install a 'File' menu, use [text, command] to represent an item.
 call quickui#menu#install('&File', [
-            \ [ "&New File\tCtrl+n", 'new' ],
-            \ [ "&Open File\t(F3)", 'e .' ],
+            \ [ "&NERDTree", 'NERDTree' ],
+            \ [ "N&ERDTreeToggle", 'NERDTreeToggle %' ],
+            \ [ "Nvim&Tree", 'NvimTreeOpen' ],
+            \ [ "--", '' ],
+            \ [ "&Buffer Tree Exploror", 'Tree' ],
+            \ [ "--", '' ],
             \ [ "&Close", 'q' ],
             \ [ "--", '' ],
-            \ [ "&Save\tCtrl+s", 'w'],
-            \ [ "Save &As", 'saveas' ],
+            \ [ "&Save", 'w'],
             \ [ "Save All", 'wa!' ],
             \ [ "--", '' ],
             \ [ "E&xit\tAlt+x", 'q' ],
