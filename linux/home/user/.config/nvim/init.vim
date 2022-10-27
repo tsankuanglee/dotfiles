@@ -1,6 +1,5 @@
 " this file is modified from https://github.com/adibis/nvim
 call plug#begin('~/.config/nvim/plugged')
-
 " Plugins {
 
   " menu
@@ -18,16 +17,12 @@ call plug#begin('~/.config/nvim/plugged')
   " nvim's neocomplete
   Plug 'https://github.com/Shougo/deoplete.nvim.git'
 
-" }
+  " NERDTree
+  Plug 'scrooloose/nerdtree'
 
+" }
 call plug#end()
 
-if has('autocmd')
-  filetype plugin indent on
-endif
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable
-endif
 
 " General {
   " disable mouse so we can use X terminal to copy and paste
@@ -45,6 +40,13 @@ endif
 
   set ttimeout
   set ttimeoutlen=100
+
+  if has('autocmd')
+    filetype plugin indent on
+  endif
+  if has('syntax') && !exists('g:syntax_on')
+    syntax enable
+  endif
 " }
 
 " Search {
@@ -159,24 +161,6 @@ endif
   "Toggle menubar
   "nnoremap <leader>m :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
-  " Buffer switching
-  nnoremap <silent> <c-tab> :bn<cr>
-  nnoremap <silent> <c-s-tab> :bp<cr>
-
-
-  " Relative numbering
-  function! NumberToggle()
-    if(&relativenumber == 1)
-      set nornu
-      set number
-    else
-      set rnu
-    endif
-  endfunc
-
-  " Toggle between normal and relative numbering.
-  nnoremap <leader>r :call NumberToggle()<cr>
-  nnoremap <leader>n :set nonumber<cr>
 
   " Sets a status line. If in a Git repository, shows the current branch.
   " Also shows the current file name, line and column number.
@@ -193,9 +177,28 @@ endif
   endif
 " }
 
+" CustomFunctions {
+  " relative numbering help function
+  function! RelativeNumberToggle()
+    if(&relativenumber == 1)
+      set nornu
+      set number
+    else
+      set rnu
+    endif
+  endfunc
+
+" }
+
 " Keybindings {
+
+  " config (init.vim) edit and reload
+  nnoremap <silent> <leader>ce :e $MYVIMRC<CR>
+  nnoremap <silent> <leader>cr :source $MYVIMRC<CR>
+
   " Save file
   nnoremap <Leader>w :w<CR>
+
   "Copy and paste from system clipboard
   vmap <Leader>y "+y
   vmap <Leader>d "+d
@@ -203,6 +206,28 @@ endif
   nmap <Leader>P "+P
   vmap <Leader>p "+p
   vmap <Leader>P "+P
+
+  " Buffer switching
+  nnoremap <silent> <leader>bn :bn<cr>
+  nnoremap <silent> <leader>bp :bp<cr>
+  nnoremap <silent> <c-tab> :bn<cr>
+  nnoremap <silent> <c-s-tab> :bp<cr>
+
+  " Tab functions
+  nnoremap <silent> <leader>tn :tabnext<cr>
+  nnoremap <silent> <leader>tp :tabprevious<cr>
+  nnoremap <silent> <leader>tt :tabnew<cr>
+
+  " line numbers (relative, switch), line wrap
+  nnoremap <silent> <leader>lr :call RelativeNumberToggle()<cr>
+  nnoremap <silent> <leader>ln :set nonumber! number?<cr>
+  " linewrap
+  nnoremap <silent> <leader>lw :set wrap! wrap?<CR>
+
+  " colorscheme
+  nnoremap <silent> <leader>Cs :colorscheme solarized<CR>
+  nnoremap <silent> <leader>Cm :colorscheme molokai<CR>
+  nnoremap <silent> <leader>Cj :colorscheme jellybeans<CR>
 " }
 
 " Plugin Settings {
@@ -231,6 +256,13 @@ endif
   " { deoplete
     let g:deoplete#enable_at_startup = 1
   " }
+  " { NERDTree
+    " Auto start NERD tree when opening a directory
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
+    " Let quit work as expected if after entering :q the only window left open is NERD Tree itself
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+  " }
 " }
 
 
@@ -238,17 +270,18 @@ endif
 " clear all the menus
 call quickui#menu#reset()
 
+" TODO customize this
 " install a 'File' menu, use [text, command] to represent an item.
 call quickui#menu#install('&File', [
-            \ [ "&New File\tCtrl+n", 'echo 0' ],
-            \ [ "&Open File\t(F3)", 'echo 1' ],
-            \ [ "&Close", 'echo 2' ],
+            \ [ "&New File\tCtrl+n", 'new' ],
+            \ [ "&Open File\t(F3)", 'e .' ],
+            \ [ "&Close", 'q' ],
             \ [ "--", '' ],
-            \ [ "&Save\tCtrl+s", 'echo 3'],
-            \ [ "Save &As", 'echo 4' ],
-            \ [ "Save All", 'echo 5' ],
+            \ [ "&Save\tCtrl+s", 'w'],
+            \ [ "Save &As", 'saveas' ],
+            \ [ "Save All", 'wa!' ],
             \ [ "--", '' ],
-            \ [ "E&xit\tAlt+x", 'echo 6' ],
+            \ [ "E&xit\tAlt+x", 'q' ],
             \ ])
 
 " items containing tips, tips will display in the cmdline
@@ -256,6 +289,13 @@ call quickui#menu#install('&Edit', [
             \ [ '&Copy', 'echo 1', 'help 1' ],
             \ [ '&Paste', 'echo 2', 'help 2' ],
             \ [ '&Find', 'echo 3', 'help 3' ],
+            \ ])
+
+" items containing tips, tips will display in the cmdline
+call quickui#menu#install('&ColorScheme', [
+            \ [ '&Solarized', 'colorscheme solarized'],
+            \ [ '&Molokai', 'colorscheme molokai'],
+            \ [ '&Jellybeans', 'colorscheme jellybeans'],
             \ ])
 
 " script inside %{...} will be evaluated and expanded in the string
@@ -278,7 +318,7 @@ call quickui#menu#install('H&elp', [
 " enable to display tips in the cmdline
 let g:quickui_show_tip = 1
 
-" hit space twice to open menu
-noremap <space><space> :call quickui#menu#open()<cr>
+" hit space twice to open quickui menu
+noremap <silent> <space><space> :call quickui#menu#open()<cr>
 
 " vim:set ft=vim sw=2 ts=2 sts=2 et:
