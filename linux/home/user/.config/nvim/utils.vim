@@ -1,3 +1,6 @@
+" utils.vim
+" various custom functions
+"
 " relative numbering help function
 function! RelativeNumberToggle()
   if(&relativenumber == 1)

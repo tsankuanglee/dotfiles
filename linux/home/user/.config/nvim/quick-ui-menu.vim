@@ -43,7 +43,10 @@ function! QuickUiMenuSetup()
     \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
     \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
     \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
-    \ ['Set &UTF8', 'set fileencoding=utf8'],
+    \ ['Toggle Line&Wrap', 'set wrap! wrap?'],
+    \ ['Toggle Line&Number', 'set nonumber! number?'],
+    \ ['Toggle LineNumber &Relative', 'call RelativeNumberToggle()'],
+    \ ['Set &UTF-8', 'set fileencoding=utf8'],
     \ ['tab=&2', 'set sw=2 ts=2 sts=2 expandtab'],
     \ ['tab=&4', 'set sw=4 ts=4 sts=4 expandtab'],
   \ ])

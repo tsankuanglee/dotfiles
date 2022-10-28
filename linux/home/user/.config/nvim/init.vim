@@ -48,9 +48,6 @@ call plug#begin('~/.config/nvim/plugged')
 " }
 call plug#end()
 
-" get current script's directory for relative 'source' later
-let MYVIMRC_DIRECTORY = expand('%:p:h')
-
 " CustomFunctions {
   " source a script relative to caller script
   " https://stackoverflow.com/a/48828172/701284
@@ -60,6 +57,7 @@ let MYVIMRC_DIRECTORY = expand('%:p:h')
     exec 'source ' . fullPath
   endfunction
 
+  " various utils
   call SourceLocal("utils.vim")
 " }
 
