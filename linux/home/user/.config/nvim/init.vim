@@ -52,7 +52,7 @@ call plug#end()
   " source a script relative to caller script
   " https://stackoverflow.com/a/48828172/701284
   function! SourceLocal(relativePath)
-    let root = expand('%:p:h')
+    let root = expand('<sfile>:p:h')
     let fullPath = root . '/'. a:relativePath
     exec 'source ' . fullPath
   endfunction
