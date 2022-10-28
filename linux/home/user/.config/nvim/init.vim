@@ -45,6 +45,139 @@ call plug#begin('~/.config/nvim/plugged')
 " }
 call plug#end()
 
+" CustomFunctions {
+  " relative numbering help function
+  function! RelativeNumberToggle()
+    if(&relativenumber == 1)
+      set nornu
+      set number
+    else
+      set rnu
+    endif
+  endfunc
+
+  function! QuickUiMenuSetup()
+    " clear all the menus
+    call quickui#menu#reset()
+
+    " install a 'File' menu, use [text, command] to represent an item.
+    " optionally add help tips [text, command, tips]; tips show in CmdLine
+    call quickui#menu#install('&File', [
+      \ [ "&NERDTree", 'NERDTree' ],
+      \ [ "N&ERDTreeToggle", 'NERDTreeToggle %', 'show current file location' ],
+      \ [ "Nvim&Tree", 'NvimTreeOpen' ],
+      \ [ "--", '' ],
+      \ [ "&Buffer Tree Exploror", 'Tree' ],
+      \ [ "--", '' ],
+      \ [ "Ter&minal", 'terminal' ],
+      \ [ "--", '' ],
+      \ [ "&Save", 'w'],
+      \ [ "Force Save &All", 'wa!' ],
+      \ [ "--", '' ],
+      \ [ "Force &Quit all", 'q!' ],
+      \ [ "E&xit", 'q' ],
+    \ ])
+
+    call quickui#menu#install('&Edit', [
+      \ [ '&Copy to clipboard', '\"+y' ],
+      \ [ '&Paste below from clipboard', '"+p'],
+      \ [ '&Paste above from clipboard', '"+P'],
+    \ ])
+
+    call quickui#menu#install('&ColorScheme', [
+      \ [ '&Solarized', 'colorscheme solarized'],
+      \ [ '&Molokai', 'colorscheme molokai'],
+      \ [ '&Jellybeans', 'colorscheme jellybeans'],
+    \ ])
+
+    call quickui#menu#install('&Plugins', [
+      \ [ '&Toggle Indent lines', 'IndentBlanklineToggle'],
+    \ ])
+    "    \ [ '&Indent lines ()', ''],
+    "    \ [ '&Indent lines %{&g:indent_blankline_enabled? "On":"Off"}', 'set g:indent_blankline_enabled!'],
+
+    " script inside %{...} will be evaluated and expanded in the string
+    call quickui#menu#install("&Option", [
+      \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
+      \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
+      \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
+      \ ['Set &UTF8', 'set fileencoding=utf8'],
+      \ ['tab=&2', 'set sw=2 ts=2 sts=2 expandtab'],
+      \ ['tab=&4', 'set sw=4 ts=4 sts=4 expandtab'],
+    \ ])
+
+    " register HELP menu with weight 10000
+    call quickui#menu#install('&Help', [
+      \ ["&Cheatsheet", 'help index', ''],
+      \ ['T&ips', 'help tips', ''],
+      \ ['--',''],
+      \ ["&Tutorial", 'help tutor', ''],
+      \ ['&Quick Reference', 'help quickref', ''],
+      \ ['&Summary', 'help summary', ''],
+    \ ], 10000)
+
+    " enable to display tips in the cmdline
+    let g:quickui_show_tip = 1
+
+    " hit space twice to open quickui menu
+    "noremap <silent> <leader><space> :call quickui#menu#open()<cr>
+  endfunc
+" }
+
+" Plugin Settings {
+
+  " quickui menu {
+  call QuickUiMenuSetup()
+  " }
+
+  " Airline {
+    let g:airline#extensions#tabline#enabled = 2
+    let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '|'
+    let g:airline#extensions#tabline#right_sep = ' '
+    let g:airline#extensions#tabline#right_alt_sep = '|'
+    let g:airline_left_sep = ' '
+    let g:airline_left_alt_sep = '|'
+    let g:airline_right_sep = ' '
+    let g:airline_right_alt_sep = '|'
+    let g:airline_theme= 'serene'
+  " }
+
+  " CtrlP {
+    " Open file menu
+    nnoremap <Leader>o :CtrlP<CR>
+    " Open buffer menu
+    nnoremap <Leader>b :CtrlPBuffer<CR>
+    " Open most recently used files
+    nnoremap <Leader>f :CtrlPMRUFiles<CR>
+  " }
+
+  " { deoplete
+    let g:deoplete#enable_at_startup = 1
+  " }
+
+  " { NERDTree
+    " Auto start NERD tree when opening a directory
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
+    " Let quit work as expected if after entering :q the only window left open is NERD Tree itself
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    let g:nerdtree_sync_cursorline = 1
+  " }
+
+  " { buffer-tree-explorer
+    let g:buffertree_close_on_enter = 1
+  " }
+
+  " { NVIM Tree
+    "lua require("nvimtree")
+  " }
+
+  " { Indent Blankline
+    lua require("indentblankline")
+  " }
+
+" }
 
 " General {
   " disable mouse so we can use X terminal to copy and paste
@@ -199,18 +332,6 @@ call plug#end()
   endif
 " }
 
-" CustomFunctions {
-  " relative numbering help function
-  function! RelativeNumberToggle()
-    if(&relativenumber == 1)
-      set nornu
-      set number
-    else
-      set rnu
-    endif
-  endfunc
-
-" }
 
 " Keybindings {
 
@@ -250,126 +371,11 @@ call plug#end()
   nnoremap <silent> <leader>Cs :colorscheme solarized<CR>
   nnoremap <silent> <leader>Cm :colorscheme molokai<CR>
   nnoremap <silent> <leader>Cj :colorscheme jellybeans<CR>
-" }
 
-" Plugin Settings {
-
-  " Airline {
-    let g:airline#extensions#tabline#enabled = 2
-    let g:airline#extensions#tabline#fnamemod = ':t'
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '|'
-    let g:airline#extensions#tabline#right_sep = ' '
-    let g:airline#extensions#tabline#right_alt_sep = '|'
-    let g:airline_left_sep = ' '
-    let g:airline_left_alt_sep = '|'
-    let g:airline_right_sep = ' '
-    let g:airline_right_alt_sep = '|'
-    let g:airline_theme= 'serene'
-  " }
-
-  " CtrlP {
-    " Open file menu
-    nnoremap <Leader>o :CtrlP<CR>
-    " Open buffer menu
-    nnoremap <Leader>b :CtrlPBuffer<CR>
-    " Open most recently used files
-    nnoremap <Leader>f :CtrlPMRUFiles<CR>
-  " }
-
-  " { deoplete
-    let g:deoplete#enable_at_startup = 1
-  " }
-
-  " { NERDTree
-    " Auto start NERD tree when opening a directory
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
-    " Let quit work as expected if after entering :q the only window left open is NERD Tree itself
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    let g:nerdtree_sync_cursorline = 1
-  " }
-
-  " { buffer-tree-explorer
-    let g:buffertree_close_on_enter = 1
-  " }
-
-  " { NVIM Tree
-    "lua require("nvimtree")
-  " }
-
-  " { Indent Blankline
-    lua require("indentblankline")
-  " }
-
-
+  " quickui
+  noremap <silent> <leader><space> :call quickui#menu#open()<cr>
 " }
 
 
-" quickui menu
-" clear all the menus
-call quickui#menu#reset()
-
-" TODO customize this
-" install a 'File' menu, use [text, command] to represent an item.
-" optionally add help tips [text, command, tips]; tips show in CmdLine
-call quickui#menu#install('&File', [
-  \ [ "&NERDTree", 'NERDTree' ],
-  \ [ "N&ERDTreeToggle", 'NERDTreeToggle %', 'show current file location' ],
-  \ [ "Nvim&Tree", 'NvimTreeOpen' ],
-  \ [ "--", '' ],
-  \ [ "&Buffer Tree Exploror", 'Tree' ],
-  \ [ "--", '' ],
-  \ [ "Ter&minal", 'terminal' ],
-  \ [ "--", '' ],
-  \ [ "&Save", 'w'],
-  \ [ "Force Save &All", 'wa!' ],
-  \ [ "--", '' ],
-  \ [ "Force &Quit all", 'q!' ],
-  \ [ "E&xit", 'q' ],
-\ ])
-
-call quickui#menu#install('&Edit', [
-  \ [ '&Copy to clipboard', '\"+y' ],
-  \ [ '&Paste below from clipboard', '"+p'],
-  \ [ '&Paste above from clipboard', '"+P'],
-\ ])
-
-call quickui#menu#install('&ColorScheme', [
-  \ [ '&Solarized', 'colorscheme solarized'],
-  \ [ '&Molokai', 'colorscheme molokai'],
-  \ [ '&Jellybeans', 'colorscheme jellybeans'],
-\ ])
-
-call quickui#menu#install('&Plugins', [
-  \ [ '&Toggle Indent lines', 'IndentBlanklineToggle'],
-\ ])
-"    \ [ '&Indent lines ()', ''],
-"    \ [ '&Indent lines %{&g:indent_blankline_enabled? "On":"Off"}', 'set g:indent_blankline_enabled!'],
-
-" script inside %{...} will be evaluated and expanded in the string
-call quickui#menu#install("&Option", [
-  \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
-  \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
-  \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
-  \ ['Set &UTF8', 'set fileencoding=utf8'],
-  \ ['tab=&2', 'set sw=2 ts=2 sts=2 expandtab'],
-  \ ['tab=&4', 'set sw=4 ts=4 sts=4 expandtab'],
-\ ])
-
-" register HELP menu with weight 10000
-call quickui#menu#install('&Help', [
-  \ ["&Cheatsheet", 'help index', ''],
-  \ ['T&ips', 'help tips', ''],
-  \ ['--',''],
-  \ ["&Tutorial", 'help tutor', ''],
-  \ ['&Quick Reference', 'help quickref', ''],
-  \ ['&Summary', 'help summary', ''],
-\ ], 10000)
-
-" enable to display tips in the cmdline
-let g:quickui_show_tip = 1
-
-" hit space twice to open quickui menu
-noremap <silent> <leader><space> :call quickui#menu#open()<cr>
 
 " vim: set ft=vim sw=2 ts=2 sts=2 et:
