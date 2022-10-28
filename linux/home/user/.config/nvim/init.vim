@@ -1,4 +1,7 @@
-"~/.local/state/nvim/swap//%home%tklee%dotfiles%linux%home%user%.config%nvim%init.vim.swp this file is modified from https://github.com/adibis/nvim
+" ref:
+" https://github.com/adibis/nvim
+" https://gist.github.com/subfuzion/7d00a6c919eeffaf6d3dbf9a4eb11d64
+
 call plug#begin('~/.config/nvim/plugged')
 " Plugins {
 
@@ -45,89 +48,26 @@ call plug#begin('~/.config/nvim/plugged')
 " }
 call plug#end()
 
+" get current script's directory for relative 'source' later
+let MYVIMRC_DIRECTORY = expand('%:p:h')
+
 " CustomFunctions {
-  " relative numbering help function
-  function! RelativeNumberToggle()
-    if(&relativenumber == 1)
-      set nornu
-      set number
-    else
-      set rnu
-    endif
-  endfunc
+  " source a script relative to caller script
+  " https://stackoverflow.com/a/48828172/701284
+  function! SourceLocal(relativePath)
+    let root = expand('%:p:h')
+    let fullPath = root . '/'. a:relativePath
+    exec 'source ' . fullPath
+  endfunction
 
-  function! QuickUiMenuSetup()
-    " clear all the menus
-    call quickui#menu#reset()
-
-    " install a 'File' menu, use [text, command] to represent an item.
-    " optionally add help tips [text, command, tips]; tips show in CmdLine
-    call quickui#menu#install('&File', [
-      \ [ "&NERDTree", 'NERDTree' ],
-      \ [ "N&ERDTreeToggle", 'NERDTreeToggle %', 'show current file location' ],
-      \ [ "Nvim&Tree", 'NvimTreeOpen' ],
-      \ [ "--", '' ],
-      \ [ "&Buffer Tree Exploror", 'Tree' ],
-      \ [ "--", '' ],
-      \ [ "Ter&minal", 'terminal' ],
-      \ [ "--", '' ],
-      \ [ "&Save", 'w'],
-      \ [ "Force Save &All", 'wa!' ],
-      \ [ "--", '' ],
-      \ [ "Force &Quit all", 'q!' ],
-      \ [ "E&xit", 'q' ],
-    \ ])
-
-    call quickui#menu#install('&Edit', [
-      \ [ '&Copy to clipboard', '\"+y' ],
-      \ [ '&Paste below from clipboard', '"+p'],
-      \ [ '&Paste above from clipboard', '"+P'],
-    \ ])
-
-    call quickui#menu#install('&ColorScheme', [
-      \ [ '&Solarized', 'colorscheme solarized'],
-      \ [ '&Molokai', 'colorscheme molokai'],
-      \ [ '&Jellybeans', 'colorscheme jellybeans'],
-    \ ])
-
-    call quickui#menu#install('&Plugins', [
-      \ [ '&Toggle Indent lines', 'IndentBlanklineToggle'],
-    \ ])
-    "    \ [ '&Indent lines ()', ''],
-    "    \ [ '&Indent lines %{&g:indent_blankline_enabled? "On":"Off"}', 'set g:indent_blankline_enabled!'],
-
-    " script inside %{...} will be evaluated and expanded in the string
-    call quickui#menu#install("&Option", [
-      \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
-      \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
-      \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
-      \ ['Set &UTF8', 'set fileencoding=utf8'],
-      \ ['tab=&2', 'set sw=2 ts=2 sts=2 expandtab'],
-      \ ['tab=&4', 'set sw=4 ts=4 sts=4 expandtab'],
-    \ ])
-
-    " register HELP menu with weight 10000
-    call quickui#menu#install('&Help', [
-      \ ["&Cheatsheet", 'help index', ''],
-      \ ['T&ips', 'help tips', ''],
-      \ ['--',''],
-      \ ["&Tutorial", 'help tutor', ''],
-      \ ['&Quick Reference', 'help quickref', ''],
-      \ ['&Summary', 'help summary', ''],
-    \ ], 10000)
-
-    " enable to display tips in the cmdline
-    let g:quickui_show_tip = 1
-
-    " hit space twice to open quickui menu
-    "noremap <silent> <leader><space> :call quickui#menu#open()<cr>
-  endfunc
+  call SourceLocal("utils.vim")
 " }
 
 " Plugin Settings {
 
   " quickui menu {
-  call QuickUiMenuSetup()
+    call SourceLocal('quick-ui-menu.vim')
+    call QuickUiMenuSetup()
   " }
 
   " Airline {
@@ -375,7 +315,5 @@ call plug#end()
   " quickui
   noremap <silent> <leader><space> :call quickui#menu#open()<cr>
 " }
-
-
 
 " vim: set ft=vim sw=2 ts=2 sts=2 et:
