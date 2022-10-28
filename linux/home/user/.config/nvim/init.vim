@@ -27,8 +27,21 @@ call plug#begin('~/.config/nvim/plugged')
   " solarized colorscheme
   Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
 
+  " indent blankline
+  Plug 'lukas-reineke/indent-blankline.nvim'
+
+  " programming languages
   " nvim's neocomplete
   Plug 'https://github.com/Shougo/deoplete.nvim.git'
+  " python
+  Plug 'deoplete-plugins/deoplete-jedi'
+  " Rust
+  "Plug 'sebastianmarkow/deoplete-rust'
+  " TODO migrate to LSP
+  "Plug 'neovim/nvim-lspconfig'
+
+
+
 
 " }
 call plug#end()
@@ -210,12 +223,12 @@ call plug#end()
   nnoremap <Leader>w :w<CR>
 
   "Copy and paste from system clipboard
-  vmap <Leader>y "+y
-  vmap <Leader>d "+d
-  nmap <Leader>p "+p
-  nmap <Leader>P "+P
-  vmap <Leader>p "+p
-  vmap <Leader>P "+P
+  vmap <leader>y "+y
+  vmap <leader>d "+d
+  nmap <leader>p "+p
+  nmap <leader>P "+P
+  vmap <leader>p "+p
+  vmap <leader>P "+P
 
   " Buffer switching
   nnoremap <silent> <leader>bn :bn<cr>
@@ -295,51 +308,58 @@ call quickui#menu#reset()
 
 " TODO customize this
 " install a 'File' menu, use [text, command] to represent an item.
+" optionally add help tips [text, command, tips]; tips show in CmdLine
 call quickui#menu#install('&File', [
-            \ [ "&NERDTree", 'NERDTree' ],
-            \ [ "N&ERDTreeToggle", 'NERDTreeToggle %' ],
-            \ [ "Nvim&Tree", 'NvimTreeOpen' ],
-            \ [ "--", '' ],
-            \ [ "&Buffer Tree Exploror", 'Tree' ],
-            \ [ "--", '' ],
-            \ [ "&Close", 'q' ],
-            \ [ "--", '' ],
-            \ [ "&Save", 'w'],
-            \ [ "Save All", 'wa!' ],
-            \ [ "--", '' ],
-            \ [ "E&xit\tAlt+x", 'q' ],
-            \ ])
+    \ [ "&NERDTree", 'NERDTree' ],
+    \ [ "N&ERDTreeToggle", 'NERDTreeToggle %', 'show current file location' ],
+    \ [ "Nvim&Tree", 'NvimTreeOpen' ],
+    \ [ "--", '' ],
+    \ [ "&Buffer Tree Exploror", 'Tree' ],
+    \ [ "--", '' ],
+    \ [ "&Save", 'w'],
+    \ [ "Force Save &All", 'wa!' ],
+    \ [ "--", '' ],
+    \ [ "Force &Quit all", 'q!' ],
+    \ [ "E&xit", 'q' ],
+\ ])
 
-" items containing tips, tips will display in the cmdline
 call quickui#menu#install('&Edit', [
-            \ [ '&Copy', 'echo 1', 'help 1' ],
-            \ [ '&Paste', 'echo 2', 'help 2' ],
-            \ [ '&Find', 'echo 3', 'help 3' ],
-            \ ])
+    \ [ '&Copy to clipboard', '\"+y' ],
+    \ [ '&Paste below from clipboard', '"+p'],
+    \ [ '&Paste above from clipboard', '"+P'],
+\ ])
 
-" items containing tips, tips will display in the cmdline
 call quickui#menu#install('&ColorScheme', [
-            \ [ '&Solarized', 'colorscheme solarized'],
-            \ [ '&Molokai', 'colorscheme molokai'],
-            \ [ '&Jellybeans', 'colorscheme jellybeans'],
-            \ ])
+    \ [ '&Solarized', 'colorscheme solarized'],
+    \ [ '&Molokai', 'colorscheme molokai'],
+    \ [ '&Jellybeans', 'colorscheme jellybeans'],
+\ ])
+
+call quickui#menu#install('&Plugins', [
+    \ [ '&Toggle Indent lines', 'IndentBlanklineToggle'],
+\ ])
+"    \ [ '&Indent lines ()', ''],
+"    \ [ '&Indent lines %{&g:indent_blankline_enabled? "On":"Off"}', 'set g:indent_blankline_enabled!'],
 
 " script inside %{...} will be evaluated and expanded in the string
 call quickui#menu#install("&Option", [
-			\ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
-			\ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
-			\ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
-			\ ])
+    \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
+    \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
+    \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
+    \ ['Set &UTF8', 'set fileencoding=utf8'],
+    \ ['tab=&2', 'set sw=2 ts=2 sts=2 expandtab'],
+    \ ['tab=&4', 'set sw=4 ts=4 sts=4 expandtab'],
+\ ])
 
 " register HELP menu with weight 10000
-call quickui#menu#install('H&elp', [
-			\ ["&Cheatsheet", 'help index', ''],
-			\ ['T&ips', 'help tips', ''],
-			\ ['--',''],
-			\ ["&Tutorial", 'help tutor', ''],
-			\ ['&Quick Reference', 'help quickref', ''],
-			\ ['&Summary', 'help summary', ''],
-			\ ], 10000)
+call quickui#menu#install('&Help', [
+    \ ["&Cheatsheet", 'help index', ''],
+    \ ['T&ips', 'help tips', ''],
+    \ ['--',''],
+    \ ["&Tutorial", 'help tutor', ''],
+    \ ['&Quick Reference', 'help quickref', ''],
+    \ ['&Summary', 'help summary', ''],
+\ ], 10000)
 
 " enable to display tips in the cmdline
 let g:quickui_show_tip = 1
