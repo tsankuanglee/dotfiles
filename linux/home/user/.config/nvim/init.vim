@@ -4,7 +4,6 @@
 
 call plug#begin('~/.config/nvim/plugged')
 " Plugins {
-
   " menu
   Plug 'skywind3000/vim-quickui'
 
@@ -258,15 +257,15 @@ call plug#end()
   " Sets a status line. If in a Git repository, shows the current branch.
   " Also shows the current file name, line and column number.
   if has('statusline')
-      set laststatus=2
+    set laststatus=2
 
-      " Broken down into easily includeable segments
-      set statusline=%<%f\                     " Filename
-      set statusline+=%w%h%m%r                 " Options
-      "set statusline+=%{fugitive#statusline()} " Git Hotness
-      set statusline+=\ [%{&ff}/%Y]            " Filetype
-      set statusline+=\ [%{getcwd()}]          " Current dir
-      set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    " Broken down into easily includeable segments
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    "set statusline+=%{fugitive#statusline()} " Git Hotness
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
   endif
 " }
 
@@ -314,4 +313,4 @@ call plug#end()
   noremap <silent> <leader><space> :call quickui#menu#open()<cr>
 " }
 
-" vim: set ft=vim sw=2 ts=2 sts=2 et:
+" vim: set ft=vim sw=2 ts=2 sts=2 et :
