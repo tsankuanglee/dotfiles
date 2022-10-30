@@ -4,44 +4,42 @@
 
 call plug#begin('~/.config/nvim/plugged')
 " Plugins {
-  " menu
-  Plug 'skywind3000/vim-quickui'
 
-  " ctrl-p is a fuzzy file finder.
-  Plug 'kien/ctrlp.vim'
-
-  " NERDTree
-  Plug 'scrooloose/nerdtree'
-  " show the current file on NERDtree
-  Plug 'unkiwii/vim-nerdtree-sync'
-
-  " NvimTree (sometimes conflicts with netrw)
-  "Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons; requires Nerd Fonts
-  "Plug 'nvim-tree/nvim-tree.lua'
-
-  " buffer-tree-explorer
-  Plug 'el-iot/buffer-tree-explorer'
-
-  " Look
-  " airline
+  " # Look
+  " Airline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+
+  " Indent Blankline
+  Plug 'lukas-reineke/indent-blankline.nvim'
 
   " solarized colorscheme
   Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
-  " indent blankline
-  Plug 'lukas-reineke/indent-blankline.nvim'
+  " # UI
+  " quick-menu
+  Plug 'skywind3000/vim-quickui'
 
-  " programming languages
-  " nvim's neocomplete
+  " fzf (needs fzf installed)
+  Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+  " optional for icon support
+  Plug 'kyazdani42/nvim-web-devicons'
+
+  " ctrl-p is a fuzzy file finder.
+  "Plug 'kien/ctrlp.vim'
+
+
+
+  " # Programming Languages
+  " deoplete
   Plug 'Shougo/deoplete.nvim'
   " python
   "Plug 'deoplete-plugins/deoplete-jedi'
   " Rust
   "Plug 'sebastianmarkow/deoplete-rust'
   " TODO migrate to LSP
-  "Plug 'neovim/nvim-lspconfig'
+  Plug 'neovim/nvim-lspconfig'
+  "Plug 'lspcontainers/lspcontainers.nvim'
 
 
 " }
@@ -62,11 +60,7 @@ call plug#end()
 
 " Plugin Settings {
 
-  " quickui menu {
-    call SourceLocal('quick-ui-menu.vim')
-    call QuickUiMenuSetup()
-  " }
-
+  " # Look
   " Airline {
     let g:airline#extensions#tabline#enabled = 2
     let g:airline#extensions#tabline#fnamemod = ':t'
@@ -81,37 +75,27 @@ call plug#end()
     let g:airline_theme= 'serene'
   " }
 
-  " CtrlP {
-    " Open file menu
-    nnoremap <Leader>o :CtrlP<CR>
-    " Open buffer menu
-    nnoremap <Leader>b :CtrlPBuffer<CR>
-    " Open most recently used files
-    nnoremap <Leader>f :CtrlPMRUFiles<CR>
+  " { Indent Blankline
+    lua require("indentblankline")
   " }
+
+
+  " # UI
+  " quickui menu {
+    call SourceLocal('quick-ui-menu.vim')
+    call QuickUiMenuSetup()
+  " }
+
+
+  " # Programming Languages
 
   " { deoplete
     let g:deoplete#enable_at_startup = 1
   " }
 
-  " { NERDTree
-    " Auto start NERD tree when opening a directory
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
-    " Let quit work as expected if after entering :q the only window left open is NERD Tree itself
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    let g:nerdtree_sync_cursorline = 1
-  " }
 
-  " { buffer-tree-explorer
-    let g:buffertree_close_on_enter = 1
-  " }
-
-  " { NVIM Tree
-    "lua require("nvimtree")
-  " }
-
-  " { Indent Blankline
-    lua require("indentblankline")
+  " { LSP: Rust
+    "lua require("lsprust")
   " }
 
 " }
@@ -311,6 +295,18 @@ call plug#end()
 
   " quickui
   noremap <silent> <leader><space> :call quickui#menu#open()<cr>
+
+  " fzf {
+  nnoremap <silent> <leader>zf :FzfLua files<cr>
+  nnoremap <silent> <leader>zb :FzfLua buffers<cr>
+  nnoremap <silent> <leader>zo :FzfLua oldfiles<cr>
+  nnoremap <silent> <leader>zq :FzfLua quickfix<cr>
+  nnoremap <silent> <leader>zc :FzfLua loclist<cr>
+  nnoremap <silent> <leader>zl :FzfLua lines<cr>
+  nnoremap <silent> <leader>zn :FzfLua blines<cr>
+  nnoremap <silent> <leader>zt :FzfLua tabs<cr>
+  nnoremap <silent> <leader>za :FzfLua args<cr>
+  " }
 " }
 
 " vim: set ft=vim sw=2 ts=2 sts=2 et :
