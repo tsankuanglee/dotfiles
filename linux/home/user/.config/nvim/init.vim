@@ -25,10 +25,6 @@ call plug#begin('~/.config/nvim/plugged')
   " optional for icon support
   Plug 'kyazdani42/nvim-web-devicons'
 
-  " ctrl-p is a fuzzy file finder.
-  "Plug 'kien/ctrlp.vim'
-
-
 
   " # Programming Languages
   " deoplete
@@ -294,7 +290,7 @@ call plug#end()
   nnoremap <silent> <leader>Cj :colorscheme jellybeans<CR>
 
   " quickui
-  noremap <silent> <leader><space> :call quickui#menu#open()<cr>
+  noremap <silent> <leader><space> :call quickui#menu#open('system')<cr>
 
   " fzf {
   nnoremap <silent> <leader>zf :FzfLua files<cr>

@@ -1,29 +1,34 @@
 function! QuickUiMenuSetup()
+
   " clear all the menus
   call quickui#menu#reset()
+
+  " change current namespace to system
+  call quickui#menu#switch('system')
+  " The following will be populated into this namespace
 
   " install a 'File' menu, use [text, command] to represent an item.
   " optionally add help tips [text, command, tips]; tips show in CmdLine
   call quickui#menu#install('&File', [
-    \ [ "&NERDTree", 'NERDTree' ],
-    \ [ "N&ERDTreeToggle", 'NERDTreeToggle %', 'show current file location' ],
-    \ [ "Nvim&Tree", 'NvimTreeOpen' ],
+    \ [ "fzf &File\t<leader>zf", 'FzfLua files' ],
+    \ [ "fzf &Buffer\t<leader>zb", 'FzfLua buffers' ],
+    \ [ "fzf &Old files\t<leader>zo", 'FzfLua oldfiles' ],
+    \ [ "fzf &Quickfix\t<leader>zq", 'FzfLua quickfix' ],
+    \ [ "fzf lo&Cation list\t<leader>zc", 'FzfLua loclist' ],
+    \ [ "fzf l&Ines\t<leader>zl", 'FzfLua lines' ],
+    \ [ "fzf current buffer li&Nes\t<leader>zn", 'FzfLua blines' ],
+    \ [ "fzf &Tabs\t<leader>zt", 'FzfLua tabs' ],
+    \ [ "fzf &Args\t<leader>za", 'FzfLua args' ],
     \ [ "--", '' ],
-    \ [ "&Buffer Tree Exploror", 'Tree' ],
-    \ [ "--", '' ],
-    \ [ "Ter&minal", 'terminal' ],
-    \ [ "--", '' ],
-    \ [ "&Save", 'w'],
-    \ [ "Force Save &All", 'wa!' ],
-    \ [ "--", '' ],
-    \ [ "Force &Quit all", 'q!' ],
-    \ [ "E&xit", 'q' ],
+    \ [ "Ter&minal\t:terminal", 'terminal' ],
   \ ])
 
   call quickui#menu#install('&Edit', [
-    \ [ '&Copy to clipboard', '\"+y' ],
-    \ [ '&Paste below from clipboard', '"+p'],
-    \ [ '&Paste above from clipboard', '"+P'],
+    \ [ "&Copy to clipboard\t\"+y", '\"+y' ],
+    \ [ "&Paste below from clipboard\t\"+p", '"+p'],
+    \ [ "&Paste above from clipboard\t\"+P", '"+P'],
+    \ [ "--", '' ],
+    \ [ "&Replace . with space", ":'<,'>s/\\./ /g"],
   \ ])
 
   call quickui#menu#install('&ColorScheme', [
@@ -35,8 +40,6 @@ function! QuickUiMenuSetup()
   call quickui#menu#install('&Plugins', [
     \ [ '&Toggle Indent lines', 'IndentBlanklineToggle'],
   \ ])
-  "    \ [ '&Indent lines ()', ''],
-  "    \ [ '&Indent lines %{&g:indent_blankline_enabled? "On":"Off"}', 'set g:indent_blankline_enabled!'],
 
   " script inside %{...} will be evaluated and expanded in the string
   call quickui#menu#install("&Option", [
@@ -64,8 +67,12 @@ function! QuickUiMenuSetup()
   " enable to display tips in the cmdline
   let g:quickui_show_tip = 1
 
-  " hit space twice to open quickui menu
+  " styles
+  let g:quickui_color_scheme = 'gruvbox'
+  let g:quickui_border_style = 2
+
+
   "noremap <silent> <leader><space> :call quickui#menu#open()<cr>
 endfunc
 
-" vim: set ft=vim sw=2 ts=2 sts=2 et:
+" vim: set ft=vim sw=2 ts=2 sts=2 et :
