@@ -120,5 +120,8 @@ alias grep='grep --color=always'
 alias docker_address='docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)'
 
 
+# fzf
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
 
-PATH=$PATH:~/.local/bin
+PATH=$PATH:~/.local/bin:~/.cargo/bin
