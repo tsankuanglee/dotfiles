@@ -67,3 +67,7 @@ alias lx='exa -algGB@'
 alias grep='grep --color=always'
 
 eval "$(zoxide init zsh)"
+
+# fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
