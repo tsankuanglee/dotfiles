@@ -117,7 +117,7 @@ alias lr='ls --sort=time -r'
 alias lx='exa -algGB@'
 #alias grep='grep --color=auto'
 alias grep='grep --color=always'
-alias docker_address='docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)'
+alias docker_address="docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)"
 
 
 # fzf
