@@ -27,6 +27,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 
   " # Programming Languages
+  " 
+  Plug 'sheerun/vim-polyglot'
   " deoplete
   Plug 'Shougo/deoplete.nvim'
   " python
