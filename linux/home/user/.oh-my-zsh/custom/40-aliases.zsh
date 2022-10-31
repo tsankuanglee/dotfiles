@@ -72,4 +72,5 @@ eval "$(zoxide init zsh)"
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+alias fzfp='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 

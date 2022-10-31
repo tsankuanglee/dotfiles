@@ -124,5 +124,6 @@ alias docker_address="docker inspect -f '{{.Name}} - {{range .NetworkSettings.Ne
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+alias fzfp='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 PATH=$PATH:~/.local/bin:~/.cargo/bin
