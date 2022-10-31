@@ -71,3 +71,5 @@ eval "$(zoxide init zsh)"
 # fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+
