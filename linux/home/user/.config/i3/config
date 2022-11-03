@@ -32,8 +32,9 @@ floating_modifier $mod
 
 
 # start a terminal
-# turned off; this is handled by xbindkey
-#bindsym $mod+t exec i3-sensible-terminal
+# hotkeys are generally managed by other background utils (sxhkd); this is a
+# fallback
+bindsym $mod+semicolon exec i3-sensible-terminal
 
 # border
 for_window [class="^.*"] border pixel 1
@@ -217,7 +218,7 @@ mode "$mode_i3" {
     # reload the configuration file
     bindsym c reload
     # edit config
-    bindsym e exec --no-startup-id gnome-terminal -t i3_config -- nvim ~/.config/i3/config; mode "default"
+    bindsym e exec --no-startup-id nvim-qt ~/.config/i3/config; mode "default"
     # status bar toggle
     bindsym b bar mode toggle; mode "default"
     # exit system mode: "Enter" or "Escape"

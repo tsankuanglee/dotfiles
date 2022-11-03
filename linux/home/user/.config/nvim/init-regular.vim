@@ -285,18 +285,23 @@ call plug#end()
   nnoremap <silent> <leader>Cj :colorscheme jellybeans<CR>
 
   " quickui
-  noremap <silent> <leader><space> :call quickui#menu#open('system')<cr>
+    noremap <silent> <leader><space> :call quickui#menu#open('system')<cr>
 
   " fzf {
-  nnoremap <silent> <leader>zf :FzfLua files<cr>
-  nnoremap <silent> <leader>zb :FzfLua buffers<cr>
-  nnoremap <silent> <leader>zo :FzfLua oldfiles<cr>
-  nnoremap <silent> <leader>zq :FzfLua quickfix<cr>
-  nnoremap <silent> <leader>zc :FzfLua loclist<cr>
-  nnoremap <silent> <leader>zl :FzfLua lines<cr>
-  nnoremap <silent> <leader>zn :FzfLua blines<cr>
-  nnoremap <silent> <leader>zt :FzfLua tabs<cr>
-  nnoremap <silent> <leader>za :FzfLua args<cr>
+    nnoremap <silent> <leader>zf :FzfLua files<cr>
+    nnoremap <silent> <leader>zb :FzfLua buffers<cr>
+    nnoremap <silent> <leader>zo :FzfLua oldfiles<cr>
+    nnoremap <silent> <leader>zq :FzfLua quickfix<cr>
+    nnoremap <silent> <leader>zc :FzfLua loclist<cr>
+    nnoremap <silent> <leader>zl :FzfLua lines<cr>
+    nnoremap <silent> <leader>zn :FzfLua blines<cr>
+    nnoremap <silent> <leader>zt :FzfLua tabs<cr>
+    nnoremap <silent> <leader>za :FzfLua args<cr>
+  " }
+
+  " terminal {
+    " leave terminal mode
+    tnoremap <Esc> <C-\><C-n>
   " }
 " }
 
