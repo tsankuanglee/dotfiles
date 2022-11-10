@@ -14,20 +14,26 @@
 :: combo_docker
 :: combo_shell
 :: combo_vim
-:: combo_pycharm
+:: combo_python
 :: app
 :: app_browser
 :: app_terminal
 :: app_editor
 :: app_graphic
+:: general
+:: general_sound
+:: general_sound_input
+:: general_sound_output
 
-skhd, combo, combo_docker, combo_shell, combo_vim, combo_pycharm, app, app_browser, app_terminal, app_editor, app_graphic < escape ; default
-skhd, combo, combo_docker, combo_shell, combo_vim, combo_pycharm, app, app_browser, app_terminal, app_editor, app_graphic < hyper - escape; default
+# two hotkeys (ESC and hyper+ESC) to return to default mode from any mode
+skhd, combo, combo_docker, combo_shell, combo_vim, combo_python, app, app_browser, app_terminal, app_editor, app_graphic, general, general_sound, general_sound_input, general_sound_output < escape ; default
+skhd, combo, combo_docker, combo_shell, combo_vim, combo_python, app, app_browser, app_terminal, app_editor, app_graphic, general, general_sound, general_sound_input, general_sound_output < hyper - escape; default
 
 # skhd
 default < hyper - s ; skhd
 skhd < r : skhd -r; terminal-notifier -group skhd -remove skhd -message "config reloaded"; skhd --key escape
-skhd < e : open -a /Applications/MacVim.app --args ~/.config/skhd/* ; skhd --key escape
+skhd < shift - r : brew services restart skhd; terminal-notifier -group skhd -remove skhd -message "restarted"; skhd --key escape
+skhd < e : open -a /Applications/VimR.app --args ~/.config/skhd/* ; skhd --key escape
 skhd < q : terminal-notifier -group skhd -remove skhd -message "exited"; brew services stop skhd ; skhd --key escape
 
 # combo (output key sequences)
@@ -49,10 +55,25 @@ combo_docker < shift - x : skhd --key "hyper - escape" ; skhd -t "docker-compose
 combo < v ; combo_vim
 combo_vim < 2 : skhd --key "hyper - escape" ; skhd -t "set tabstop=2 shiftwidth=2 softtabstop=2 expandtab"
 combo_vim < 4 : skhd --key "hyper - escape" ; skhd -t "set tabstop=4 shiftwidth=4 softtabstop=4 expandtab"
-## combo_pycharm
-combo < p ; combo_pycharm
-combo_pycharm < d : skhd --key "hyper - escape" ; skhd -t "import pydevd_pycharm"; skhd --key "return"; skhd -t "pydevd_pycharm.settrace('host.docker.internal', port=62123,"; skhd --key "return"; skhd -t "stdoutToServer=True, stderrToServer=True)"; skhd --key "return"
-combo_pycharm < r : skhd --key "hyper - escape" ; skhd -t "make test NUM_PROCESSES=1 TEST_TARGET=tests/path/test_file.py::test_function"
+## combo_python
+combo < p ; combo_python
+### debug in pycharm
+combo_python < d :\
+    skhd --key "hyper - escape" ;\
+    skhd -t "import pydevd_python"; skhd --key "return";\
+    skhd -t "pydevd_python.settrace('host.docker.internal', port=62123,"; skhd --key "return";\
+    skhd -t "stdoutToServer=True, stderrToServer=True)"; skhd --key "return"
+### pytest
+combo_python < t : skhd --key "hyper - escape" ;\
+    skhd -t "make test NUM_PROCESSES=1 TEST_TARGET=tests/path/test_file.py::test_function"
+### plt
+combo_python < p :\
+    skhd --key "hyper - escape" ;\
+    skhd -t "import matplotlib.pyplot as plt"; skhd --key "return";\
+    skhd -t "import seaborn as sns"; skhd --key "return";\
+    skhd -t "#fig, ax = plt.subplots(figsize=(30,20))"; skhd --key "return";\
+    skhd -t "#plt.rc('axes', labelsize=20)"; skhd --key "return";\
+    skhd -t "sns.histplot(ax=ax, data=data)"
 
 
 # app
@@ -70,9 +91,25 @@ app_terminal < shift - i : open -na /Applications/iTerm.app; skhd --key escape
 
 ## app_editor
 app < e ; app_editor
-app_editor < v : open -a /Applications/MacVim.app; skhd --key escape
-app_editor < shift - v : open -na /Applications/MacVim.app; skhd --key escape
+app_editor < v : open -a /Applications/VimR.app; skhd --key escape
+app_editor < shift - v : open -na /Applications/VimR.app; skhd --key escape
 
 ## app_graphic
 app < g ; app_graphic
 app_graphic < g : open -a /Applications/GIMP-2.10.app; skhd --key escape
+
+
+# general
+default < hyper - g ; general
+
+## general_sound
+general < s ; general_sound
+
+### general_sound_input
+general_sound < i ; general_sound_input
+general_sound_input < d : /usr/local/bin/SwitchAudioSource -t input -s "MacBook Pro Microphone"; skhd --key escape
+general_sound_input < h : /usr/local/bin/SwitchAudioSource -t input -s "Sennheiser USB Headset"; skhd --key escape
+### general_sound_output
+general_sound < o ; general_sound_output
+general_sound_output < d : /usr/local/bin/SwitchAudioSource -t output -s "MacBook Pro Speakers"; skhd --key escape
+general_sound_output < h : /usr/local/bin/SwitchAudioSource -t output -s "Sennheiser USB Headset"; skhd --key escape
