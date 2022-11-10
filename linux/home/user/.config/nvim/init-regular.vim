@@ -2,38 +2,42 @@
 " https://github.com/adibis/nvim
 " https://gist.github.com/subfuzion/7d00a6c919eeffaf6d3dbf9a4eb11d64
 
+" Plugins selection {{{
 call plug#begin('~/.config/nvim/plugged')
-" Plugins {
 
-  " # Look
+  " Look {{{
   " Airline
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  "Plug 'vim-airline/vim-airline'
+  "Plug 'vim-airline/vim-airline-themes'
 
   " Indent Blankline
-  Plug 'lukas-reineke/indent-blankline.nvim'
+  "Plug 'lukas-reineke/indent-blankline.nvim'
 
   " solarized colorscheme
-  Plug 'frankier/neovim-colors-solarized-truecolor-only'
+  "Plug 'frankier/neovim-colors-solarized-truecolor-only'
+  " Look }}}
 
-  " # UI
-  " quick-menu
-  Plug 'skywind3000/vim-quickui'
+  " UI {{{
+  "" quick-menu
+  "Plug 'skywind3000/vim-quickui'
 
-  " fzf (needs fzf installed)
-  Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
-  " (fzf) optional for icon support
-  Plug 'kyazdani42/nvim-web-devicons'
+  "" fzf (needs fzf installed)
+  "Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+  "" (fzf) optional for icon support
+  "Plug 'kyazdani42/nvim-web-devicons'
 
-  " general
-  " treat Indent as object to select/operate
-  Plug 'michaeljsmith/vim-indent-object'
-  " complete/id unicode/digraphs
-  Plug 'chrisbra/unicode.vim'
+  " UI }}}
 
-  " # Programming Languages
+  " General {{{
+  "" treat Indent as object to select/operate
+  "Plug 'michaeljsmith/vim-indent-object'
+  "" complete/id unicode/digraphs
+  "Plug 'chrisbra/unicode.vim'
+  " General }}}
+
+  " Programming {{{
   " syntax highlighting
-  Plug 'sheerun/vim-polyglot'
+  "Plug 'sheerun/vim-polyglot'
   " deoplete
   Plug 'Shougo/deoplete.nvim'
   " python
@@ -43,47 +47,20 @@ call plug#begin('~/.config/nvim/plugged')
   " TODO migrate to LSP
   Plug 'neovim/nvim-lspconfig'
   "Plug 'lspcontainers/lspcontainers.nvim'
+  " Programming }}}
 
-" }
 call plug#end()
+" }}}
 
-" CustomFunctions {
+    lua require('plugins')
+
+" Custom Functions {{{
 
   " various utils
   call SourceConfig("utils.vim")
-" }
+" }}}
 
-" Plugin Settings {
-
-  " # Look
-  " Airline {
-    let g:airline#extensions#tabline#enabled = 2
-    let g:airline#extensions#tabline#fnamemod = ':t'
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '|'
-    let g:airline#extensions#tabline#right_sep = ' '
-    let g:airline#extensions#tabline#right_alt_sep = '|'
-  let g:airline#extensions#csv#enabled = 0
-    let g:airline_left_sep = ' '
-    let g:airline_left_alt_sep = '|'
-    let g:airline_right_sep = ' '
-    let g:airline_right_alt_sep = '|'
-
-    "let g:airline_theme= 'serene'
-    let g:airline_theme= 'solarized_flood'
-  " }
-
-  " { Indent Blankline
-    lua require("indentblankline")
-  " }
-
-
-  " # UI
-  " quickui menu {
-    call SourceConfig('quick-ui-menu.vim')
-    call QuickUiMenuSetup()
-  " }
-
+" Plugin Settings {{{
 
   " # Programming Languages
 
@@ -96,9 +73,9 @@ call plug#end()
     "lua require("lsprust")
   " }
 
-" }
+" }}}
 
-" General {
+" General {{{
   " disable mouse so we can use X terminal to copy and paste
   set mouse-=a
   set backspace=indent,eol,start      " Allow backspace over everything in insert mode.
@@ -121,9 +98,9 @@ call plug#end()
   if has('syntax') && !exists('g:syntax_on')
     syntax enable
   endif
-" }
+" }}}
 
-" Search {
+" Search {{{
   set hlsearch            " Highlight search results.
   "set ignorecase          " Make searching case insensitive
   "set smartcase           " ... unless the query has capital letters.
@@ -135,9 +112,9 @@ call plug#end()
   if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
   endif
-" }
+" }}}
 
-" Formatting {
+" Formatting {{{
   set showcmd             " Show (partial) command in status line.
   set showmatch           " Show matching brackets.
   set showmode            " Show current mode.
@@ -182,9 +159,9 @@ call plug#end()
   highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
   match ExtraWhitespace /\s\+$\|\t/
 
-" }
+" }}}
 
-" Configuration {
+" Configuration {{{
   if has('path_extra')
     setglobal tags-=./tags tags^=./tags;
   endif
@@ -218,15 +195,27 @@ call plug#end()
     set t_Co=16
   endif
 
-  " colorscheme
+  "" colorscheme
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  set background=dark " or light
-  colorscheme solarized
+  set termguicolors " true color support
+
+  "colorscheme solarized
+  "set background=dark " or light
+
+"  colorscheme jellybeans
+"  let g:jellybeans_use_term_italics = 1
+"  let g:jellybeans_overrides = {
+"\    'Search': { 'guifg': '000000', 'guibg': 'FFE792',
+"\              'ctermfg': '', 'ctermbg': '',
+"\              'attr': '' },
+"\}
+
 
   " Diff options
   set diffopt+=iwhite " ignore whitespaces
+" }}}
 
-" GUI Options {
+" GUI Options {{{
   set guioptions-=m " Removes top menubar
   set guioptions-=T " Removes top toolbar
   set guioptions-=r " Removes right hand scroll bar
@@ -248,10 +237,9 @@ call plug#end()
   "  set statusline+=\ [%{getcwd()}]          " Current dir
   "  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
   "endif
-" }
+" }}}
 
-
-" Keybindings {
+" Keybindings {{{
 
   " config (init.vim) edit and reload
   nnoremap <silent> <leader>ce :e $MYVIMRC<CR>
@@ -260,40 +248,43 @@ call plug#end()
   " Save file
   nnoremap <Leader>w :w<CR>
 
-  "Copy and paste from system clipboard
-  vmap <leader>y "+y
-  vmap <leader>d "+d
-  nmap <leader>p "+p
-  nmap <leader>P "+P
-  vmap <leader>p "+p
-  vmap <leader>P "+P
+  " Copy and paste from system clipboard
+    vmap <leader>y "+y
+    vmap <leader>d "+d
+    nmap <leader>p "+p
+    nmap <leader>P "+P
+    vmap <leader>p "+p
+    vmap <leader>P "+P
 
   " Buffer switching
-  nnoremap <silent> <leader>bb :new<cr>
-  nnoremap <silent> <leader>bv :vnew<cr>
-  nnoremap <silent> <leader>bd :bd<cr>
-  nnoremap <silent> <leader>bD :bd!<cr>
-  nnoremap <silent> <leader>bn :bn<cr>
-  nnoremap <silent> <leader>bp :bp<cr>
-  nnoremap <silent> <c-tab> :bn<cr>
-  nnoremap <silent> <c-s-tab> :bp<cr>
+    nnoremap <silent> <leader>bb :new<cr>
+    nnoremap <silent> <leader>bv :vnew<cr>
+    nnoremap <silent> <leader>bd :bd<cr>
+    nnoremap <silent> <leader>bD :bd!<cr>
+    nnoremap <silent> <leader>bn :bn<cr>
+    nnoremap <silent> <leader>bp :bp<cr>
+    nnoremap <silent> <c-tab> :bn<cr>
+    nnoremap <silent> <c-s-tab> :bp<cr>
 
   " Tab functions
-  nnoremap <silent> <leader>tt :tabnew<cr>
-  nnoremap <silent> <leader>tc :tabclose<cr>
-  nnoremap <silent> <leader>tn :tabnext<cr>
-  nnoremap <silent> <leader>tp :tabprevious<cr>
+    nnoremap <silent> <leader>tt :tabnew<cr>
+    nnoremap <silent> <leader>tc :tabclose<cr>
+    nnoremap <silent> <leader>to :tabonly<cr>
+    nnoremap <silent> <leader>tn :tabnext<cr>
+    nnoremap <silent> <leader>tp :tabprevious<cr>
+    nnoremap <silent> <leader>t1 :tabfirst<cr>
+    nnoremap <silent> <leader>t9 :tablast<cr>
 
   " line numbers (relative, switch), line wrap
-  nnoremap <silent> <leader>lr :call RelativeNumberToggle()<cr>
-  nnoremap <silent> <leader>ln :set nonumber! number?<cr>
+    nnoremap <silent> <leader>lr :call RelativeNumberToggle()<cr>
+    nnoremap <silent> <leader>ln :set nonumber! number?<cr>
   " linewrap
-  nnoremap <silent> <leader>lw :set wrap! wrap?<CR>
+    nnoremap <silent> <leader>lw :set wrap! wrap?<CR>
 
   " colorscheme
-  nnoremap <silent> <leader>Cs :colorscheme solarized<CR>
-  nnoremap <silent> <leader>Cm :colorscheme molokai<CR>
-  nnoremap <silent> <leader>Cj :colorscheme jellybeans<CR>
+    nnoremap <silent> <leader>Cs :colorscheme solarized<CR>
+    nnoremap <silent> <leader>Cm :colorscheme molokai<CR>
+    nnoremap <silent> <leader>Cj :colorscheme jellybeans<CR>
 
   " quickui
     noremap <silent> <leader><space> :call quickui#menu#open('system')<cr>
@@ -314,6 +305,6 @@ call plug#end()
     " leave terminal mode
     tnoremap <Esc> <C-\><C-n>
   " }
-" }
+" }}}
 
-" vim: set ft=vim sw=2 ts=2 sts=2 et :
+" vim: set ft=vim foldmethod=marker sw=2 ts=2 sts=2 et :

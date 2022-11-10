@@ -54,6 +54,18 @@ function! QuickUiMenuSetup()
     \ ['tab=&4', 'set sw=4 ts=4 sts=4 expandtab'],
   \ ])
 
+  call quickui#menu#install("Fo&Lding", [
+    \ ['foldmethod=&Manual', 'setlocal foldmethod=manual'],
+    \ ['foldmethod=&Indent', 'setlocal foldmethod=indent'],
+    \ ['foldmethod=&Syntax', 'setlocal foldmethod=syntax'],
+    \ ['foldmethod=marke&R', 'setlocal foldmethod=marker'],
+    \ ['foldmethod=&Expr', 'setlocal foldmethod=expr'],
+    \ ['foldmethod=&Diff', 'setlocal foldmethod=diff'],
+    \ [ "--", '' ],
+    \ ['foldcolumn=&0', 'setlocal foldcolumn=0'],
+    \ ['foldcolumn=&5', 'setlocal foldcolumn=5'],
+  \ ])
+
   " register HELP menu with weight 10000
   call quickui#menu#install('&Help', [
     \ ["&Cheatsheet", 'help index', ''],

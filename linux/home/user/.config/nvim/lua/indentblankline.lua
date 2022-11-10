@@ -19,4 +19,4 @@ require("indent_blankline").setup {
   enabled = false,
 }
 
--- vim: set sw=2 ts=2 sts=2 et :
+-- vim: set ft=lua sw=2 ts=2 sts=2 et :
