@@ -22,12 +22,17 @@ call plug#begin('~/.config/nvim/plugged')
 
   " fzf (needs fzf installed)
   Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
-  " optional for icon support
+  " (fzf) optional for icon support
   Plug 'kyazdani42/nvim-web-devicons'
 
+  " general
+  " treat Indent as object to select/operate
+  Plug 'michaeljsmith/vim-indent-object'
+  " complete/id unicode/digraphs
+  Plug 'chrisbra/unicode.vim'
 
   " # Programming Languages
-  " 
+  " syntax highlighting
   Plug 'sheerun/vim-polyglot'
   " deoplete
   Plug 'Shougo/deoplete.nvim'
@@ -38,7 +43,6 @@ call plug#begin('~/.config/nvim/plugged')
   " TODO migrate to LSP
   Plug 'neovim/nvim-lspconfig'
   "Plug 'lspcontainers/lspcontainers.nvim'
-
 
 " }
 call plug#end()
@@ -59,11 +63,14 @@ call plug#end()
     let g:airline#extensions#tabline#left_alt_sep = '|'
     let g:airline#extensions#tabline#right_sep = ' '
     let g:airline#extensions#tabline#right_alt_sep = '|'
+  let g:airline#extensions#csv#enabled = 0
     let g:airline_left_sep = ' '
     let g:airline_left_alt_sep = '|'
     let g:airline_right_sep = ' '
     let g:airline_right_alt_sep = '|'
-    let g:airline_theme= 'serene'
+
+    "let g:airline_theme= 'serene'
+    let g:airline_theme= 'solarized_flood'
   " }
 
   " { Indent Blankline
@@ -211,37 +218,36 @@ call plug#end()
     set t_Co=16
   endif
 
-  " solarized
+  " colorscheme
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set background=dark " or light
   colorscheme solarized
 
   " Diff options
-  set diffopt+=iwhite
+  set diffopt+=iwhite " ignore whitespaces
 
 " GUI Options {
   set guioptions-=m " Removes top menubar
   set guioptions-=T " Removes top toolbar
   set guioptions-=r " Removes right hand scroll bar
-  set go-=L " Removes left hand scroll bar
+  set guioptions-=L " Removes left hand scroll bar
 
   "Toggle menubar
   "nnoremap <leader>m :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
-
   " Sets a status line. If in a Git repository, shows the current branch.
   " Also shows the current file name, line and column number.
-  if has('statusline')
-    set laststatus=2
+  "if has('statusline')
+  "  set laststatus=2
 
-    " Broken down into easily includeable segments
-    set statusline=%<%f\                     " Filename
-    set statusline+=%w%h%m%r                 " Options
-    "set statusline+=%{fugitive#statusline()} " Git Hotness
-    set statusline+=\ [%{&ff}/%Y]            " Filetype
-    set statusline+=\ [%{getcwd()}]          " Current dir
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-  endif
+  "  " Broken down into easily includeable segments
+  "  set statusline=%<%f\                     " Filename
+  "  set statusline+=%w%h%m%r                 " Options
+  "  "set statusline+=%{fugitive#statusline()} " Git Hotness
+  "  set statusline+=\ [%{&ff}/%Y]            " Filetype
+  "  set statusline+=\ [%{getcwd()}]          " Current dir
+  "  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+  "endif
 " }
 
 
@@ -263,15 +269,20 @@ call plug#end()
   vmap <leader>P "+P
 
   " Buffer switching
+  nnoremap <silent> <leader>bb :new<cr>
+  nnoremap <silent> <leader>bv :vnew<cr>
+  nnoremap <silent> <leader>bd :bd<cr>
+  nnoremap <silent> <leader>bD :bd!<cr>
   nnoremap <silent> <leader>bn :bn<cr>
   nnoremap <silent> <leader>bp :bp<cr>
   nnoremap <silent> <c-tab> :bn<cr>
   nnoremap <silent> <c-s-tab> :bp<cr>
 
   " Tab functions
+  nnoremap <silent> <leader>tt :tabnew<cr>
+  nnoremap <silent> <leader>tc :tabclose<cr>
   nnoremap <silent> <leader>tn :tabnext<cr>
   nnoremap <silent> <leader>tp :tabprevious<cr>
-  nnoremap <silent> <leader>tt :tabnew<cr>
 
   " line numbers (relative, switch), line wrap
   nnoremap <silent> <leader>lr :call RelativeNumberToggle()<cr>
