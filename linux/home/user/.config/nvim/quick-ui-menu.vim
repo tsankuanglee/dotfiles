@@ -1,11 +1,23 @@
 function! QuickUiMenuSetup()
+  " general {{{
+  " enable to display tips in the cmdline
+  let g:quickui_show_tip = 1
+
+  " styles
+  let g:quickui_color_scheme = 'gruvbox'
+  let g:quickui_border_style = 2
 
   " clear all the menus
   call quickui#menu#reset()
+  " general }}}
 
+  " namespace: system {{{
   " change current namespace to system
   call quickui#menu#switch('system')
   " The following will be populated into this namespace
+
+  " reset namespace system
+  call quickui#menu#reset()
 
   " install a 'File' menu, use [text, command] to represent an item.
   " optionally add help tips [text, command, tips]; tips show in CmdLine
@@ -66,25 +78,49 @@ function! QuickUiMenuSetup()
     \ ['foldcolumn=&5', 'setlocal foldcolumn=5'],
   \ ])
 
+  call quickui#menu#install("File&Type", [
+    \ ['file&Type=', 'set ft='],
+    \ ['filetype=&Csv', 'set ft=csv'],
+    \ ['filetype=&Text', 'set ft=text'],
+  \ ])
+
   " register HELP menu with weight 10000
   call quickui#menu#install('&Help', [
     \ ["&Cheatsheet", 'help index', ''],
     \ ['T&ips', 'help tips', ''],
+    \ ['Key &Notation', 'help key-notation', ''],
     \ ['--',''],
     \ ["&Tutorial", 'help tutor', ''],
     \ ['&Quick Reference', 'help quickref', ''],
     \ ['&Summary', 'help summary', ''],
   \ ], 10000)
 
-  " enable to display tips in the cmdline
-  let g:quickui_show_tip = 1
+  " namespace: system }}}
 
-  " styles
-  let g:quickui_color_scheme = 'gruvbox'
-  let g:quickui_border_style = 2
+  " namespace: development {{{
+
+  " change current namespace
+  call quickui#menu#switch('development')
+  " reset this namespace
+  call quickui#menu#reset()
+  " The following will be populated into this namespace
+
+  call quickui#menu#install('&File', [
+    \ [ "fzf &File\t<leader>zf", 'FzfLua files' ],
+    \ [ "fzf &Buffer\t<leader>zb", 'FzfLua buffers' ],
+    \ [ "fzf &Old files\t<leader>zo", 'FzfLua oldfiles' ],
+    \ [ "fzf &Quickfix\t<leader>zq", 'FzfLua quickfix' ],
+    \ [ "fzf lo&Cation list\t<leader>zc", 'FzfLua loclist' ],
+    \ [ "fzf l&Ines\t<leader>zl", 'FzfLua lines' ],
+    \ [ "fzf current buffer li&Nes\t<leader>zn", 'FzfLua blines' ],
+    \ [ "fzf &Tabs\t<leader>zt", 'FzfLua tabs' ],
+    \ [ "fzf &Args\t<leader>za", 'FzfLua args' ],
+    \ [ "--", '' ],
+    \ [ "Ter&minal\t:terminal", 'terminal' ],
+  \ ])
 
 
-  "noremap <silent> <leader><space> :call quickui#menu#open()<cr>
+  " namespace: development }}}
 endfunc
 
-" vim: set ft=vim sw=2 ts=2 sts=2 et :
+" vim: set ft=vim foldmethod=marker sw=2 ts=2 sts=2 et :

@@ -2,7 +2,7 @@
 -- see https://github.com/wbthomason/packer.nvim#quickstart
 
 -- Only required if you have packer configured as `opt`
---vim.cmd [[packadd packer.nvim]]
+vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -87,19 +87,28 @@ return require('packer').startup(function(use)
 
   -- UI }}}
 
-
-  -- General {{{
+  -- Editting {{{
     -- treat Indent as object to select/operate
     use 'michaeljsmith/vim-indent-object'
     -- complete/id unicode/digraphs
     use 'chrisbra/unicode.vim'
+    -- surround " ' ` ( tags [ { etc.
+    -- this one has the full features the neovim counterparts don't
+    use {
+      'tpope/vim-surround',
+      requires = {
+        -- repeat Plugin commands
+        'tpope/vim-repeat'
+      }
+    }
   -- General }}}
 
   -- Programming Languages {{{
-    -- syntax highlighting
+    -- syntax highlighting{{{
     use 'sheerun/vim-polyglot'
+    -- }}}
 
-    -- fold-cycle
+    -- fold-cycle{{{
     use {
       'jghauser/fold-cycle.nvim',
       config = function()
@@ -115,18 +124,18 @@ return require('packer').startup(function(use)
           {remap = true, silent = true, desc = 'Fold-cycle: close all folds'})
 
       end
-    }
+    }-- }}}
 
-    -- matchup with %
+    -- matchup with %{{{
     use {
       'andymass/vim-matchup',
       setup = function()
         -- may set any options here
         vim.g.matchup_matchparen_offscreen = { method = "popup" }
       end
-    }
+    }-- }}}
 
-    -- syntax parser
+    -- syntax parser{{{
     -- use TSInstall to add languages
     use {
       'nvim-treesitter/nvim-treesitter',
@@ -134,18 +143,58 @@ return require('packer').startup(function(use)
         local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
         ts_update()
       end,
-    }
+      config = function()
+        require'nvim-treesitter.configs'.setup {
+          matchup = {
+            enable = true,              -- mandatory, false will disable the whole extension
+            --disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+            -- [options]
+          },
+        }
+      end
+    } -- }}}
+
+    -- snippets{{{
+    use {
+      'hrsh7th/vim-vsnip',
+      requires = {
+        {'hrsh7th/vim-vsnip-integ'},
+        {'rafamadriz/friendly-snippets', branch = 'main' }
+      },
+      config = function()
+        vim.cmd( [[
+          " Expand
+          imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+          smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+          " Expand or jump
+          imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+          smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+          " Jump forward or backward
+          imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+          smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+          imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+          smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+          " Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+          " See https://github.com/hrsh7th/vim-vsnip/pull/50
+          nmap        s   <Plug>(vsnip-select-text)
+          xmap        s   <Plug>(vsnip-select-text)
+          nmap        S   <Plug>(vsnip-cut-text)
+          xmap        S   <Plug>(vsnip-cut-text)
+
+          " If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
+          "let g:vsnip_filetypes = {}
+          "let g:vsnip_filetypes.javascriptreact = ['javascript']
+          "let g:vsnip_filetypes.typescriptreact = ['typescript']
+
+        ]] )
+      end,
+
+    }-- }}}
 
   -- Programming Languages }}}
-
-
-  require'nvim-treesitter.configs'.setup {
-      matchup = {
-          enable = true,              -- mandatory, false will disable the whole extension
-          --disable = { "c", "ruby" },  -- optional, list of language that will be disabled
-          -- [options]
-      },
-  }
 
 end)
 

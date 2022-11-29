@@ -40,6 +40,12 @@ call plug#begin('~/.config/nvim/plugged')
   "Plug 'sheerun/vim-polyglot'
   " deoplete
   Plug 'Shougo/deoplete.nvim'
+
+  "" snippets
+  "Plug 'hrsh7th/vim-vsnip'
+  "Plug 'hrsh7th/vim-vsnip-integ'
+  "Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
+
   " python
   "Plug 'deoplete-plugins/deoplete-jedi'
   " Rust
@@ -67,7 +73,6 @@ call plug#end()
   " { deoplete
     let g:deoplete#enable_at_startup = 1
   " }
-
 
   " { LSP: Rust
     "lua require("lsprust")
@@ -241,12 +246,17 @@ call plug#end()
 
 " Keybindings {{{
 
-  " config (init.vim) edit and reload
-  nnoremap <silent> <leader>ce :e $MYVIMRC<CR>
-  nnoremap <silent> <leader>cr :source $MYVIMRC<CR>
+  " nvim config (init.vim) edit and reload
+    nnoremap <silent> <leader>ce :e $MYVIMRC<CR>
+    nnoremap <silent> <leader>cr :source $MYVIMRC<CR>
+
+  " quickui
+    noremap <silent> <leader><space> :call quickui#menu#open('system')<cr>
+    noremap <silent> <leader>m1 :call quickui#menu#open('system')<cr>
+    noremap <silent> <leader>m2 :call quickui#menu#open('development')<cr>
 
   " Save file
-  nnoremap <Leader>w :w<CR>
+    nnoremap <Leader>w :w<CR>
 
   " Copy and paste from system clipboard
     vmap <leader>y "+y
@@ -286,9 +296,6 @@ call plug#end()
     nnoremap <silent> <leader>Cm :colorscheme molokai<CR>
     nnoremap <silent> <leader>Cj :colorscheme jellybeans<CR>
 
-  " quickui
-    noremap <silent> <leader><space> :call quickui#menu#open('system')<cr>
-
   " fzf {
     nnoremap <silent> <leader>zf :FzfLua files<cr>
     nnoremap <silent> <leader>zb :FzfLua buffers<cr>
@@ -301,9 +308,15 @@ call plug#end()
     nnoremap <silent> <leader>za :FzfLua args<cr>
   " }
 
+  " filetype {
+    nnoremap <silent> <leader>ft0 :set filetype=<cr>
+    nnoremap <silent> <leader>ftc :set filetype=csv<cr>
+  " }
+
   " terminal {
-    " leave terminal mode
-    tnoremap <Esc> <C-\><C-n>
+    " use ESC to leave terminal mode (side effect: cannot use ESC in terminal,
+    " e.g. shell editing)
+    "tnoremap <Esc> <C-\><C-n>
   " }
 " }}}
 

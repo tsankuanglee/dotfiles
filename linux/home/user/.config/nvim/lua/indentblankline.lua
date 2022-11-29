@@ -16,7 +16,7 @@ require("indent_blankline").setup {
     "IndentBlanklineIndent5",
     "IndentBlanklineIndent6",
   },
-  enabled = false,
+  enabled = true,
 }
 
 -- vim: set ft=lua sw=2 ts=2 sts=2 et :
