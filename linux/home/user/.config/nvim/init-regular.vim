@@ -218,6 +218,11 @@ call plug#end()
 
   " Diff options
   set diffopt+=iwhite " ignore whitespaces
+
+  " spell
+  set spelllang=en,cjk " add cjk so they are excluded from spell checking
+  set spellsuggest=best,9
+
 " }}}
 
 " GUI Options {{{
