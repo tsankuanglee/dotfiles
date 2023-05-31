@@ -6,14 +6,30 @@
 hs.window.animationDuration = 0
 
 local windowSizeCache = {}
+local modals = {}
+
+function dump(o)
+  if type(o) == 'table' then
+    local s = '{ '
+    for k,v in pairs(o) do
+      if type(k) ~= 'number' then k = '"'..k..'"' end
+      s = s .. '['..k..'] = ' .. dump(v) .. ','
+    end
+    return s .. '} '
+  else
+    return tostring(o)
+  end
+end
+
 
 function notify(message)
-  hs.notify.new({
-    title='Hammerspoon',
-    informativeText=message,
-    -- hide the action button, show only "Close"
-    hasActionButton=false
-  }):send()
+  hs.notify.show(message, "", "")
+  --hs.notify.new({
+  --  title='Hammerspoon',
+  --  informativeText=message,
+  --  -- hide the action button, show only "Close"
+  --  hasActionButton=false
+  --}):send()
 end
 
 function reloadConfig(files)
@@ -29,6 +45,9 @@ function reloadConfig(files)
   end
 end
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+
+
+
 
 function bindKey(key, fn)
   hs.hotkey.bind({"cmd", "alt", "shift", "ctrl"}, key, fn)
@@ -186,14 +205,52 @@ function send_window_to_next_monitor()
   if (#hs.screen.allScreens() > 1) then
     local win = hs.window.focusedWindow()
     local nextScreen = win:screen():next()
+    print(nextScreen:id())
     win:moveToScreen(nextScreen)
-    --notify("Next Monitor", 5)
+    --notify("Next Monitor")
   end
 end
+
+-- Send Window to Specified Monitor
+function send_window_to_target_monitor(hint)
+  -- print(hint)
+  if (#hs.screen.allScreens() > 1) then
+    local win = hs.window.focusedWindow()
+    targetScreen = hs.screen.find(hint)
+    --print(targetScreen)
+    win:moveToScreen(targetScreen)
+  end
+end
+
+
 
 bindKey("return", toggle_window_maximized)
 bindKey("n", send_window_to_next_monitor)
 bindKey("p", send_window_to_prev_monitor)
+
+
+
+-- move directly to the target screen
+-- screen ID can be found in consoel with send_window_to_next_monitor
+-- Built-in Retina Display
+bindKey("0", function()
+  send_window_to_target_monitor(69734662)
+end)
+bindKey("7", function()
+  send_window_to_target_monitor(724041799)
+bindKey("8", function()
+  -- center large screen
+  --send_window_to_target_monitor("LG Ultra HD")
+  send_window_to_target_monitor(458678269)
+end)
+bindKey("9", function()
+  send_window_to_target_monitor(724070472)
+end)
+end)
+--2022-03-28 19:53:13: hs.screen: DELL P2419HC (1) (0x6000005fbe38)
+--2022-03-28 19:53:14: hs.screen: DELL P2419HC (2) (0x600000aaed78)
+--2022-03-28 19:53:15: hs.screen: Built-in Retina Display (0x600000a9fe38)
+
 
 
 --
@@ -201,12 +258,12 @@ bindKey("p", send_window_to_prev_monitor)
 --
 
 grid = {
-  {key="u", units={
+  {key="u", presets={
     positions.upper50,
     positions.left50,
     positions.lower50,
     positions.right50}},
-  {key="i", units={
+  {key="i", presets={
     positions.third_nw,
     positions.third_n,
     positions.third_ne,
@@ -217,44 +274,78 @@ grid = {
     positions.third_s,
     positions.third_se,
   }},
-  {key="o", units={
+  {key="o", presets={
     positions.upper50Right50,
     positions.upper50Left50,
     positions.lower50Left50,
     positions.lower50Right50
   }},
 
-  {key="j", units={positions.left50, positions.left66, positions.left34}},
-  {key="k", units={positions.centered, positions.centered_full_height, positions.maximized}},
-  {key="l", units={positions.right50, positions.right66, positions.right34}},
+  {key="j", presets={positions.left50, positions.left66, positions.left34}},
+  {key="k", presets={positions.centered, positions.centered_full_height, positions.maximized}},
+  {key="l", presets={positions.right50, positions.right66, positions.right34}},
 
 }
+
+function moveWindowToNextPositionInPreset(presets)
+  local screen = hs.screen.mainScreen()
+  local window = hs.window.focusedWindow()
+  local windowGeo = window:frame()
+
+  local index = 0
+  -- check whether the current window location/geo is already defined
+  -- if yes, keep the index value
+  hs.fnutils.find(presets, function(p)
+    index = index + 1
+
+    local geo = hs.geometry.new(p):fromUnitRect(screen:frame()):floor()
+    return windowGeo:equals(geo)
+  end)
+  -- did not find any matching geo, reset index to 0 (later we'll use the first defined geo)
+  if index == #presets then index = 0 end
+
+  newPosition = presets[index+1]
+  window:moveToUnit(newPosition)
+end
+
+
+-- batch binding
 hs.fnutils.each(grid, function(entry)
   bindKey(entry.key, function()
-    local units = entry.units
-    local screen = hs.screen.mainScreen()
-    local window = hs.window.focusedWindow()
-    local windowGeo = window:frame()
-
-    local index = 0
-    hs.fnutils.find(units, function(unit)
-      index = index + 1
-
-      local geo = hs.geometry.new(unit):fromUnitRect(screen:frame()):floor()
-      return windowGeo:equals(geo)
-    end)
-    if index == #units then index = 0 end
-
-    currentLayout = null
-    window:moveToUnit(units[index + 1])
+    moveWindowToNextPositionInPreset(entry.presets)
   end)
 end)
+
+--
+-- modal definitions
+--
+-- check out https://www.hammerspoon.org/Spoons/ModalMgr.html
+-- https://evantravers.com/articles/2020/06/08/hammerspoon-a-better-better-hyper-key/
+--
+--function modal_key_bindings(leading_key, modal_name, binding_and_functions, parent_modals)
+--  --modals['h'] = hs.hotkey.modal.new('cmd-shift-alt-ctrl', 'h')
+--  m = hs.hotkey.modal.new('cmd-shift-alt-ctrl', leading_key)
+--  if (string.len(modal_name) > 0)
+--    function m:entered()
+--      hs.alert.show(modal_name)
+--    end
+--  end
+--  --function m:exited()  hs.alert'Mode: none'  end
+--  m:bind('', 'escape', function() m:exit() end)
+--  m:bind('', 'return', function() m:exit() end)
+--  m:bind('',
+--    'J', '',function()
+--    print'let the record show that J was pressed'
+--  end)
+--end
+--
+--modal_key_bindings()
 
 --
 -- toggle brightness
 --
 
-bindKey("0", function()
+bindKey("b", function()
   local default = 70
   local brightness  = hs.brightness.get()
   --print(tostring(brightness))
@@ -266,7 +357,5 @@ bindKey("0", function()
     hs.brightness.set(100)
   end
 end)
-  
-  
 
 -- vim: sw=2 ts=2 sts=2 et :
