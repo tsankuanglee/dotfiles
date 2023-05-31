@@ -3,6 +3,8 @@
 # the file is relative to the path of the config-file it was loaded from.
 
 .load "tklee.skhdrc"
+.load "local.skhdrc"
+
 #.load "yabai.skhdrc"
 
 # prevents skhd from monitoring events for listed processes.

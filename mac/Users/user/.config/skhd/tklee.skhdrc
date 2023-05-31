@@ -36,6 +36,23 @@ skhd < shift - r : brew services restart skhd; terminal-notifier -group skhd -re
 skhd < e : open -a /Applications/VimR.app --args ~/.config/skhd/* ; skhd --key escape
 skhd < q : terminal-notifier -group skhd -remove skhd -message "exited"; brew services stop skhd ; skhd --key escape
 
+# screenshot of specified monitor (use ~/.local/bin/identify_monitors.py to determine the display IDs)
+# numpad - = : main screen (main; internal)
+0x4E : ~/.local/bin/screenshot_monitor.sh 1 main
+0x51 : ~/.local/bin/screenshot_monitor.sh 1 main
+
+# numpad 7: ext screen (left)
+0x59 : ~/.local/bin/screenshot_monitor.sh 2 left
+
+# numpad / 8 : ext screen (middle)
+0x4B : ~/.local/bin/screenshot_monitor.sh 4 middle
+0x5B : ~/.local/bin/screenshot_monitor.sh 4 middle
+
+# numpad * : ext screen (right)
+0x43 : ~/.local/bin/screenshot_monitor.sh 3 right
+0x5C : ~/.local/bin/screenshot_monitor.sh 3 right
+
+
 # combo (output key sequences)
 default < hyper - c ; combo
 
@@ -60,8 +77,8 @@ combo < p ; combo_python
 ### debug in pycharm
 combo_python < d :\
     skhd --key "hyper - escape" ;\
-    skhd -t "import pydevd_python"; skhd --key "return";\
-    skhd -t "pydevd_python.settrace('host.docker.internal', port=62123,"; skhd --key "return";\
+    skhd -t "import pydevd_pycharm"; skhd --key "return";\
+    skhd -t "pydevd_pycharm.settrace('host.docker.internal', port=62123,"; skhd --key "return";\
     skhd -t "stdoutToServer=True, stderrToServer=True)"; skhd --key "return"
 ### pytest
 combo_python < t : skhd --key "hyper - escape" ;\
@@ -74,7 +91,7 @@ combo_python < p :\
     skhd -t "#fig, ax = plt.subplots(figsize=(30,20))"; skhd --key "return";\
     skhd -t "#plt.rc('axes', labelsize=20)"; skhd --key "return";\
     skhd -t "sns.histplot(ax=ax, data=data)"
-
+### specific repo related (REDACTED to local.skhdrc)
 
 # app
 default < hyper - a ; app
@@ -86,6 +103,7 @@ app_browser < f : open -a /Applications/Firefox.app; skhd --key escape
 app < t ; app_terminal
 app_terminal < k : open -a /Applications/kitty.app; skhd --key escape
 app_terminal < shift - k : open -na /Applications/kitty.app; skhd --key escape
+app_terminal < 0x69 : open -na /Applications/kitty.app; skhd --key escape
 app_terminal < i : open -a /Applications/iTerm.app; skhd --key escape
 app_terminal < shift - i : open -na /Applications/iTerm.app; skhd --key escape
 
