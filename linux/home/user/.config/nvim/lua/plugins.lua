@@ -84,30 +84,9 @@ return require('packer').startup(function(use)
       requires = { 'kyazdani42/nvim-web-devicons' }
     }
 
-
   -- UI }}}
 
-  -- Editting {{{
-    -- treat Indent as object to select/operate
-    use 'michaeljsmith/vim-indent-object'
-    -- complete/id unicode/digraphs
-    use 'chrisbra/unicode.vim'
-    -- surround " ' ` ( tags [ { etc.
-    -- this one has the full features the neovim counterparts don't
-    use {
-      'tpope/vim-surround',
-      requires = {
-        -- repeat Plugin commands
-        'tpope/vim-repeat'
-      }
-    }
-  -- General }}}
-
-  -- Programming Languages {{{
-    -- syntax highlighting{{{
-    use 'sheerun/vim-polyglot'
-    -- }}}
-
+  -- Movement {{{
     -- fold-cycle{{{
     use {
       'jghauser/fold-cycle.nvim',
@@ -134,6 +113,73 @@ return require('packer').startup(function(use)
         vim.g.matchup_matchparen_offscreen = { method = "popup" }
       end
     }-- }}}
+
+    -- repeat motions {{{
+    use {
+      'Houl/repmo-vim',
+      config = function()
+        vim.cmd( [[
+          "" map a motion and its reverse motion:
+          "noremap <expr> h repmo#SelfKey('h', 'l')|sunmap h
+          "noremap <expr> l repmo#SelfKey('l', 'h')|sunmap l
+
+          "" if you like `:noremap j gj', you can keep that:
+          "map <expr> j repmo#Key('gj', 'gk')|sunmap j
+          "map <expr> k repmo#Key('gk', 'gj')|sunmap k
+
+          " word
+          noremap <expr> w repmo#SelfKey('w', 'b')|sunmap w
+          noremap <expr> b repmo#SelfKey('b', 'w')|sunmap b
+          noremap <expr> e repmo#SelfKey('e', 'ge')|sunmap e
+          " WORD
+          noremap <expr> W repmo#SelfKey('W', 'B')|sunmap W
+          noremap <expr> B repmo#SelfKey('B', 'W')|sunmap B
+          noremap <expr> E repmo#SelfKey('E', 'gE')|sunmap E
+
+
+          " repeat the last [count]motion or the last zap-key:
+          map <expr> ; repmo#LastKey(';')|sunmap ;
+          map <expr> , repmo#LastRevKey(',')|sunmap ,
+
+          " add these mappings when repeating with `;' or `,':
+          noremap <expr> f repmo#ZapKey('f')|sunmap f
+          noremap <expr> F repmo#ZapKey('F')|sunmap F
+          noremap <expr> t repmo#ZapKey('t')|sunmap t
+          noremap <expr> T repmo#ZapKey('T')|sunmap T
+
+          noremap <expr> <C-E> repmo#SelfKey('<C-E>', '<C-Y>')
+          noremap <expr> <C-Y> repmo#SelfKey('<C-Y>', '<C-E>')
+        ]] )
+      end,
+    }
+    -- }}}
+  -- Movement }}}
+
+  -- Editing {{{
+    -- treat Indent as object to select/operate
+    use 'michaeljsmith/vim-indent-object'
+    -- complete/id unicode/digraphs
+    use 'chrisbra/unicode.vim'
+    -- surround " ' ` ( tags [ { etc.
+    -- this one has the full features the neovim counterparts don't
+    use {
+      'tpope/vim-surround',
+      requires = {
+        -- repeat Plugin commands
+        'tpope/vim-repeat'
+      }
+    }
+  -- Editing }}}
+
+  -- utilities {{{
+    use 'jamessan/vim-gnupg'
+  -- utilities }}}
+
+  -- Programming Languages {{{
+    -- syntax highlighting{{{
+    use 'sheerun/vim-polyglot'
+    -- }}}
+
 
     -- syntax parser{{{
     -- use TSInstall to add languages
