@@ -33,6 +33,8 @@ call plug#begin('~/.config/nvim/plugged')
   "Plug 'michaeljsmith/vim-indent-object'
   "" complete/id unicode/digraphs
   "Plug 'chrisbra/unicode.vim'
+  "" analyze startup time
+  ""Plug 'dstein64/vim-startuptime'
   " General }}}
 
   " Programming {{{
