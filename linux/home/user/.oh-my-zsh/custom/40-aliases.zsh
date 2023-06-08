@@ -22,7 +22,12 @@ cdd() {
     cd "$(dirname $1)"
 }
 # copy to clipboard
-alias c='xclip -selection c -r'
+if [[ ${XDG_SESSION_TYPE} =~ wayland ]]; then
+    alias c='wl-copy -n'
+else
+    alias c='xclip -selection c -r'
+fi
+
 # copy the current directory path
 pwdc() {
     pwd -P | c
@@ -65,6 +70,7 @@ alias lr='ls --sort=time -r'
 alias lx='exa -algGB@'
 #alias grep='grep --color=auto'
 alias grep='grep --color=always'
+alias docker_address="docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)"
 
 eval "$(zoxide init zsh)"
 
