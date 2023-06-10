@@ -55,15 +55,18 @@ function! QuickUiMenuSetup()
 
   " script inside %{...} will be evaluated and expanded in the string
   call quickui#menu#install("&Option", [
-    \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
-    \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
-    \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
-    \ ['Toggle Line&Wrap', 'set wrap! wrap?'],
-    \ ['Toggle Line&Number', 'set nonumber! number?'],
-    \ ['Toggle LineNumber &Relative', 'call RelativeNumberToggle()'],
+    \ ['Toggle Diff&WhiteSpace (=%{(&diffopt=~"iwhiteall")?"ignore":"count"})', 'call DiffIngoreAllWhiteSpaceToggle()'],
+    \ [ "--", '' ],
+    \ ['Toggle Line&Wrap (=%{&wrap?"wrap":"no"})', 'set wrap! wrap?'],
+    \ ['Toggle Line&Number (=%{&number?"on":"off"})', 'set nonumber! number?'],
+    \ ['Toggle LineNumber &Relative (=%{&rnu?"rel":"abs"})', 'call RelativeNumberToggle()'],
+    \ [ "--", '' ],
     \ ['Set &UTF-8', 'set fileencoding=utf8'],
     \ ['tab=&2', 'set sw=2 ts=2 sts=2 expandtab'],
     \ ['tab=&4', 'set sw=4 ts=4 sts=4 expandtab'],
+    \ [ "--", '' ],
+    \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
+    \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
   \ ])
 
   call quickui#menu#install("Fo&Lding", [
