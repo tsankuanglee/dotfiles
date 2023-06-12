@@ -99,6 +99,15 @@ call plug#end()
   set ttimeout
   set ttimeoutlen=100
 
+  " for each opened buffer, switch working directory to that buffer's folder
+  autocmd BufEnter * silent! lcd %:p:h
+
+  " providers
+  " turn off unnecessary providers
+  let g:loaded_ruby_provider = 0
+  let g:loaded_perl_provider = 0
+
+
   if has('autocmd')
     filetype plugin indent on
   endif
