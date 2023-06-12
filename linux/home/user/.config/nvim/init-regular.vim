@@ -127,6 +127,7 @@ call plug#end()
   set showmode            " Show current mode.
   set ruler               " Show the line and column numbers of the cursor.
   set number              " Show the line numbers on the left side.
+  set cursorline          " Highlight the current line number
   set formatoptions+=o    " Continue comment marker in new lines.
   set textwidth=0         " Hard-wrap long lines as you type them.
   set expandtab           " Insert spaces when TAB is pressed.
