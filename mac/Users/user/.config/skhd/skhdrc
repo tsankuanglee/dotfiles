@@ -5,8 +5,6 @@
 .load "tklee.skhdrc"
 .load "local.skhdrc"
 
-#.load "yabai.skhdrc"
-
 # prevents skhd from monitoring events for listed processes.
 #.blacklist [
 #    "terminal"

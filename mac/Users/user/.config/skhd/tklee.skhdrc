@@ -33,23 +33,21 @@ skhd, combo, combo_docker, combo_shell, combo_vim, combo_python, app, app_browse
 default < hyper - s ; skhd
 skhd < r : skhd -r; terminal-notifier -group skhd -remove skhd -message "config reloaded"; skhd --key escape
 skhd < shift - r : brew services restart skhd; terminal-notifier -group skhd -remove skhd -message "restarted"; skhd --key escape
-skhd < e : open -a /Applications/VimR.app --args ~/.config/skhd/* ; skhd --key escape
+skhd < e : open -a /Applications/VimR.app --args ~/.config/skhd/tklee.skhdrc ; skhd --key escape
 skhd < q : terminal-notifier -group skhd -remove skhd -message "exited"; brew services stop skhd ; skhd --key escape
 
 # screenshot of specified monitor (use ~/.local/bin/identify_monitors.py to determine the display IDs)
-# numpad - = : main screen (main; internal)
-0x4E : ~/.local/bin/screenshot_monitor.sh 1 main
-0x51 : ~/.local/bin/screenshot_monitor.sh 1 main
+
+# numpad 5 : main screen (main; internal)
+0x57 : ~/.local/bin/screenshot_monitor.sh 1 main
 
 # numpad 7: ext screen (left)
 0x59 : ~/.local/bin/screenshot_monitor.sh 2 left
 
-# numpad / 8 : ext screen (middle)
-0x4B : ~/.local/bin/screenshot_monitor.sh 4 middle
+# numpad 8 : ext screen (middle)
 0x5B : ~/.local/bin/screenshot_monitor.sh 4 middle
 
-# numpad * : ext screen (right)
-0x43 : ~/.local/bin/screenshot_monitor.sh 3 right
+# numpad 9 : ext screen (right)
 0x5C : ~/.local/bin/screenshot_monitor.sh 3 right
 
 
@@ -120,14 +118,30 @@ app_graphic < g : open -a /Applications/GIMP-2.10.app; skhd --key escape
 # general
 default < hyper - g ; general
 
-## general_sound
+## general_sound (requires: https://github.com/deweller/switchaudio-osx/ )
+
 general < s ; general_sound
 
 ### general_sound_input
+
 general_sound < i ; general_sound_input
-general_sound_input < d : /usr/local/bin/SwitchAudioSource -t input -s "MacBook Pro Microphone"; skhd --key escape
-general_sound_input < h : /usr/local/bin/SwitchAudioSource -t input -s "Sennheiser USB Headset"; skhd --key escape
+general_sound_input < n : /usr/local/bin/SwitchAudioSource -t input -n; skhd --key escape # next
+general_sound_input < i : /usr/local/bin/SwitchAudioSource -t input -s "MacBook Pro Microphone"; skhd --key escape
+general_sound_input < e : /usr/local/bin/SwitchAudioSource -t input -s "External Microphone"; skhd --key escape
+general_sound_input < u : /usr/local/bin/SwitchAudioSource -t input -s "Sennheiser USB Headset"; skhd --key escape # usb
+0x5A : /usr/local/bin/SwitchAudioSource -t input -m toggle
+general_sound_input < m : /usr/local/bin/SwitchAudioSource -t input -m toggle; skhd --key escape # mute toggle
+#general_sound_input < l : ~/.local/bin/audio_control.sh mic_vol_up; skhd --key escape # louder
+#general_sound_input < q : ~/.local/bin/audio_control.sh mic_vol_down; skhd --key escape # quieter
+general_sound_input < q : /usr/bin/osascript -e "set volume input volume ((input volume of (get volume settings)) - 5)" >/dev/null; skhd --key escape # quieter
+general_sound_input < l : /usr/bin/osascript -e "set volume input volume ((input volume of (get volume settings)) + 5)" >/dev/null; skhd --key escape # louder
+
 ### general_sound_output
 general_sound < o ; general_sound_output
-general_sound_output < d : /usr/local/bin/SwitchAudioSource -t output -s "MacBook Pro Speakers"; skhd --key escape
-general_sound_output < h : /usr/local/bin/SwitchAudioSource -t output -s "Sennheiser USB Headset"; skhd --key escape
+general_sound_output < n : /usr/local/bin/SwitchAudioSource -t output -n; skhd --key escape # next
+general_sound_output < i : /usr/local/bin/SwitchAudioSource -t output -s "MacBook Pro Speakers"; skhd --key escape
+general_sound_output < e : /usr/local/bin/SwitchAudioSource -t output -s "External Headphones"; skhd --key escape
+general_sound_output < u : /usr/local/bin/SwitchAudioSource -t output -s "Sennheiser USB Headset"; skhd --key escape # usb
+general_sound_output < m : /usr/local/bin/SwitchAudioSource -t output -m toggle; skhd --key escape # mute toggle
+general_sound_output < q : /usr/bin/osascript -e "set volume output volume ((output volume of (get volume settings)) - 5)" >/dev/null; skhd --key escape # quieter
+general_sound_output < l : /usr/bin/osascript -e "set volume output volume ((output volume of (get volume settings)) + 5)" >/dev/null; skhd --key escape # louder
