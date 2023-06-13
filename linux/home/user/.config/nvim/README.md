@@ -19,7 +19,7 @@ Rarely used keys are candidates to be re-assigned.
 `+`
 `ctrl-a`
 `ctrl-x`
-_
+`_`
 
 ## rarely used
 

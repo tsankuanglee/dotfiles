@@ -29,7 +29,7 @@ au TextYankPost * silent! lua vim.highlight.on_yank {on_visual=false}
 call SourceConfig("init-regular.vim")
 
 if has("mac")
-  SourceConfig("init-mac.vim")
+  call SourceConfig("init-mac.vim")
 endif
 
 " vim: set ft=vim foldmethod=marker sw=2 ts=2 sts=2 et :
