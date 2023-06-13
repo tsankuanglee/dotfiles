@@ -1,0 +1,3 @@
+# these are system/machine-dependent. Only turn them on when applicable (by removing their original template *.off extension)
+50-MacOS.conf
+99-local.conf

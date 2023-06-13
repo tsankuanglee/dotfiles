@@ -197,6 +197,7 @@ return require('packer').startup(function(use)
             --disable = { "c", "ruby" },  -- optional, list of language that will be disabled
             -- [options]
           },
+          ensure_installed = {"c", "lua", "vim", "vimdoc", "query"},
         }
       end
     } -- }}}
