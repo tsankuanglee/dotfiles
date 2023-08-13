@@ -22,7 +22,8 @@ cdd() {
     cd "$(dirname $1)"
 }
 # copy to clipboard
-if [[ ${XDG_SESSION_TYPE} =~ wayland ]]; then
+SESSION_TYPE=$(loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type | sed 's/Type=//g')
+if [[ ${SESSION_TYPE} =~ wayland ]]; then
     alias c='wl-copy -n'
 else
     alias c='xclip -selection c -r'
