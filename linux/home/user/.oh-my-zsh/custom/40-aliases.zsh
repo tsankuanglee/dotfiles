@@ -38,7 +38,7 @@ _rl() {
     readlink -f "${1:-.}"
 }
 fdc() {
-    _rl ${*} | c
+    _rl ${*} | sed -E 's/^(.*)$/\"\1\"/g' | c
 }
 
 # make a directory and cd to it
@@ -67,7 +67,8 @@ function aa_256 ()
 eval $(dircolors -b)
 alias ls='ls --color=auto'
 alias l='ls -al --color --full-time'
-alias lr='ls --sort=time -r'
+alias lt='ls -al --sort=time'
+alias lr='lt -r'
 alias lx='exa -algGB@'
 #alias grep='grep --color=auto'
 alias grep='grep --color=always'
