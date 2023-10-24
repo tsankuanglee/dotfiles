@@ -61,7 +61,8 @@ return {
       \ ])
 
       call quickui#menu#install('&Plugins', [
-      \ [ '&Toggle Indent lines', 'IndentBlanklineToggle'],
+    \ [ 'Toggle &Indent lines', 'IndentBlanklineToggle'],
+    \ [ '&MarkdownPreviewToggle', 'MarkdownPreviewToggle'],
       \ ])
 
       " script inside %{...} will be evaluated and expanded in the string

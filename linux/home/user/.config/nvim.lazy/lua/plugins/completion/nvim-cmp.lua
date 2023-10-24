@@ -53,10 +53,6 @@ return {
                     -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
                 end,
             },
-            window = {
-                -- completion = cmp.config.window.bordered(),
-                -- documentation = cmp.config.window.bordered(),
-            },
             mapping = cmp.mapping.preset.insert({
                 -- when arrow keys are too inconvenient
                 ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -71,7 +67,7 @@ return {
                     i = cmp.mapping.abort(),
                     c = cmp.mapping.close(),
                 },
-                ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 -- super Tab
                 ["<Tab>"] = cmp.mapping(
                     function(fallback)
@@ -134,6 +130,8 @@ return {
                 select = false,
             },
             window = {
+                -- completion = cmp.config.window.bordered(),
+                -- documentation = cmp.config.window.bordered(),
                 documentation = {
                     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
                 },

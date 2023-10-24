@@ -3,6 +3,7 @@ return {
   dependencies = {
      "HiPhish/rainbow-delimiters.nvim",
   },
+  lazy = true,
   main = "ibl",
   config = function()
 
