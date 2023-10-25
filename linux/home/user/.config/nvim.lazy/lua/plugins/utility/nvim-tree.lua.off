@@ -19,7 +19,7 @@ return {
         width = 35,
         side = "left",
         relativenumber = false,
-                float = {
+        float = {
           enable = true,
           quit_on_focus_loss = true,
           open_win_config = {
@@ -68,15 +68,12 @@ return {
     })
 
     -- set keymaps
-    local keymap = vim.keymap -- for conciseness
-
-    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-    keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
-    keymap.set("n", "<leader>eZ", "<cmd>NvimTreeResize +20<CR>", { desc = "Resize file explorer" })
-    keymap.set("n", "<leader>ez", "<cmd>NvimTreeResize 35<CR>", { desc = "Resize file explorer" })
+    local km = require("utils").km -- keymap shortcut function
+    km("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", "Toggle file explorer")
+    km("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", "Toggle file explorer on current file")
+    km("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", "Collapse file explorer")
+    km("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", "Refresh file explorer")
+    km("n", "<leader>eZ", "<cmd>NvimTreeResize +20<CR>", "Resize file explorer")
+    km("n", "<leader>ez", "<cmd>NvimTreeResize 35<CR>", "Resize file explorer")
   end,
 }
-
--- vim: ft=lua foldmethod=marker sw=2 ts=2 sts=2 et :

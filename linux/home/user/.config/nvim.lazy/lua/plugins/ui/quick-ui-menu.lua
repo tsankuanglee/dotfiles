@@ -1,5 +1,7 @@
 return {
   "skywind3000/vim-quickui",
+  lazy = false,
+  priority = 1001, -- need to load before colortheme
   config = function()
     vim.cmd([[
       function! QuickUiMenuSetup()
@@ -147,4 +149,3 @@ return {
     km("n", "<LEADER>M2", "<CMD>call quickui#menu#open('development')<CR>", "open development menu")
   end,
 }
--- vim: ft=lua foldmethod=marker sw=2 ts=2 sts=2 et

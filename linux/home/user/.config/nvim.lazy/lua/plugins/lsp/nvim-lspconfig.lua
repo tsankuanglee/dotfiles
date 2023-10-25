@@ -11,21 +11,22 @@ return {
 
     local lspconfig = require("lspconfig")
     lspconfig.lua_ls.setup({
-      commands = {
+      --[[ commands = {
         -- Format = {
         --   function()
         --     require("stylua-nvim").format_file()
         --   end,
         -- },
-      },
+      }, ]]
       settings = {
         Lua = {
           format = {
-            enable = true,
+            enable = false,
             -- NOTE: the value should be String!
             defaultConfig = {
               indent_style = "space",
               indent_size = 2,
+              column_width = 160,
             },
           },
           workspace = {

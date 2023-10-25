@@ -3,9 +3,7 @@
 
 local M = {}
 
-function M.is_win()
-  return vim.loop.os_uname().sysname:find("Windows") ~= nil
-end
+function M.is_win() return vim.loop.os_uname().sysname:find("Windows") ~= nil end
 
 -- Wrapper around vim.keymap.set that will
 -- not create a keymap if a lazy key handler exists.
@@ -41,18 +39,14 @@ function M.km(mode, lhs, rhs, desc)
   })
 end
 
-
 -- Search for a value in a sequence.
 function M.index(seq, elem)
   for i, v in ipairs(seq) do
-    if v == elem then
-      return i
-    end
+    if v == elem then return i end
   end
 
   return nil
 end
-
 
 function M.toggle_option_var_element(opt_var, element_value)
   local v = opt_var:get()
@@ -90,6 +84,5 @@ function! DiffIngoreAllWhiteSpaceToggle()
   endif
 endfunction
 ]])
-
 
 return M

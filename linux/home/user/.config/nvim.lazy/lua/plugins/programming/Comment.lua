@@ -43,7 +43,8 @@ These mappings are enabled by default. (config: mappings.extra)
 return {
   "numToStr/Comment.nvim",
   event = "VeryLazy",
-  config = function()
-    require("Comment").setup()
-  end,
+  -- config = function(_, opts)
+  --     require("Comment").setup(opts)
+  -- end,
+  config = function() require("Comment").setup() end,
 }
