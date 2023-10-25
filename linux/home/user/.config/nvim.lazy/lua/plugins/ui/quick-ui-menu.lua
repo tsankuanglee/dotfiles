@@ -1,7 +1,7 @@
 return {
   "skywind3000/vim-quickui",
   lazy = false,
-  priority = 1001, -- load before colortheme
+  priority = 1001, -- need to load before colortheme
   config = function()
     vim.cmd([[
       function! QuickUiMenuSetup()
