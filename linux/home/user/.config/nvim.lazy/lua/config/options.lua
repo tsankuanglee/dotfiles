@@ -12,10 +12,11 @@ opt.ttimeout = true
 opt.ttimeoutlen = 100
 
 -- providers
+vim.g.loaded_perl_provider = 1
 -- turn off unnecessary providers
 vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
+
 -- }}} General
 
 -- indent {{{
@@ -23,12 +24,6 @@ vim.g.loaded_node_provider = 0
 -- opt.smartindent = true
 opt.cindent = true -- fix the bug of non-indented #
 
--- if has('autocmd')
--- filetype plugin indent on
--- endif
--- if has('syntax') && !exists('g:syntax_on')
--- syntax enable
--- endif
 --- }}} indent
 
 -- Search {{{
@@ -62,22 +57,30 @@ opt.joinspaces = false -- Prevents inserting two spaces after punctuation on a j
 opt.splitbelow = true -- Horizontal split below current.
 opt.splitright = true -- Vertical split to right of current.
 
-opt.display:append({ "lastline" })
 opt.startofline = false -- Do not jump to first character with page commands.
 
 -- Tell Vim which characters to show for expanded TABs,
 -- trailing whitespace, and end-of-lines. VERY useful!
 opt.listchars = {
   tab = "> ",
-  trail = "-",
-  extends = ">",
-  precedes = "<",
-  nbsp = "+",
+  trail = "␣", -- "∙-",
+  extends = "▶", -- ">",
+  precedes = "◀", -- "<",
+  nbsp = "󱁐", -- "+",
+  -- eol = "¶",
 }
+-- opt.showbreak = "↪ " -- show line wrap
 opt.list = true -- Show problematic characters.
+opt.fillchars:append({
+  lastline = ""
+})
+opt.display:append({ "lastline" })
 
 -- Also highlight all tabs and trailing whitespace characters.
+-- TODO this seems to be overwritten by some plugins
 vim.cmd([[
+  highlight NonText ctermfg=16 guifg=#4a4a59
+  highlight SpecialKey ctermfg=16 guifg=#4a4a59
   highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
   match ExtraWhitespace /\s\+$\|\t/
 ]])

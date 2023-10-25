@@ -26,7 +26,7 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
     end
     curWidth = curWidth + chunkWidth
   end
-  table.insert(newVirtText, { suffix, "MoreMsg" })  -- "MoreMsg" is hiGroup
+  table.insert(newVirtText, { suffix, "MoreMsg" }) -- "MoreMsg" is hiGroup
   return newVirtText
 end
 
@@ -46,7 +46,13 @@ return {
     vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
     vim.o.foldlevelstart = 99
     vim.o.foldenable = true
-    vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+    vim.opt.fillchars:append({
+      eob = " ",
+      fold = " ",
+      foldopen = "",
+      foldsep = " ",
+      foldclose = "",
+    })
 
     local ufo = require("ufo")
     -- There are two options: we can use LSP or treesitter as the provider
