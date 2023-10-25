@@ -1,5 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
+  lazy = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local lualine = require("lualine")
@@ -69,4 +70,3 @@ return {
     })
   end,
 }
--- vim: ft=lua foldmethod=marker sw=2 ts=2 sts=2 et

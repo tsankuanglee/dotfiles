@@ -1,5 +1,6 @@
 return {
   "HiPhish/rainbow-delimiters.nvim",
+  lazy = false,
   config = function()
     local rainbow_delimiters = require 'rainbow-delimiters'
     require 'rainbow-delimiters.setup'.setup {
@@ -25,4 +26,3 @@ return {
 
 
 }
--- vim: ft=lua foldmethod=marker sw=2 ts=2 sts=2 et

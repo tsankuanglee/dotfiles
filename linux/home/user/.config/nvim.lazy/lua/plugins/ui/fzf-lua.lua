@@ -24,6 +24,11 @@ return {
     km("n", "<LEADER>zm", "<CMD>FzfLua commands<CR>")
     km("n", "<LEADER>zz", "<CMD>FzfLua builtin<CR>")
 
+    km("n", "<LEADER>zgr", "<CMD>FzfLua grep<CR>")
+    km("n", "<LEADER>zgl", "<CMD>FzfLua live_grep<CR>")
+
+    km("n", "<LEADER>zr", "<CMD>FzfLua resume<CR>")
+
     -- LSP (also see nvim-lspconfig.lua)
     km("n", "<LEADER>lzr", "<CMD>FzfLua lsp_references<CR>")
     km("n", "<LEADER>lzd", "<CMD>FzfLua lsp_definitions<CR>")
@@ -45,5 +50,3 @@ return {
     km("n", "<LEADER>lzgw", "<CMD>FzfLua lsp_workspace_diagnostics<CR>")
   end,
 }
-
--- vim: set ft=lua foldmethod=marker sw=2 ts=2 sts=2 et :

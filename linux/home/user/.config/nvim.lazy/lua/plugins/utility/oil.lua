@@ -142,9 +142,10 @@ return {
                 },
             },
         })
-        vim.keymap.set("n", "<leader>ee", "<CMD>Oil .<CR>", { desc = "Oil explorer: open current folder" })
-        vim.keymap.set("n", "<leader>er", "<CMD>vsplit | wincmd l | Oil .<CR>", { desc = "Oil explorer: open current folder on the right)" })
-        vim.keymap.set("n", "<leader>ew", "<CMD>vsplit | wincmd r | Oil .<CR>", { desc = "Oil explorer: open current folder on the left" })
-        vim.keymap.set("n", "<leader>ef", "<CMD>Oil --float .<CR>", { desc = "Oil explorer: open current folder float" })
+        local km = require("utils").km -- keymap shortcut function
+        km("n", "<leader>ee", "<CMD>Oil .<CR>", "Oil explorer: open current folder" )
+        km("n", "<leader>er", "<CMD>vsplit | wincmd l | Oil .<CR>", "Oil explorer: open current folder on the right)" )
+        km("n", "<leader>ew", "<CMD>vsplit | wincmd r | Oil .<CR>", "Oil explorer: open current folder on the left" )
+        km("n", "<leader>ef", "<CMD>Oil --float .<CR>", "Oil explorer: open current folder float" )
     end,
 }

@@ -1,5 +1,6 @@
--- keymap shortcut function
-km = require("utils").km
+-- colortheme
+-- remember to set lazy=false for at least one of them
+local km = require("utils").km -- keymap shortcut function
 
 km("n", "<LEADER>Ct", "<CMD>colorscheme tokyonight<CR>")
 km("n", "<LEADER>Cs", "<CMD>colorscheme solarized<CR>")
@@ -8,13 +9,15 @@ km("n", "<LEADER>Cc", "<CMD>colorscheme catppuccin<CR>")
 km("n", "<LEADER>Cj", "<CMD>colorscheme jellybeans<CR>")
 km("n", "<LEADER>Cm", "<CMD>colorscheme molokai<CR>")
 
+vim.opt.termguicolors = true -- true color support
+
 local M = {
   {
     "ishan9299/nvim-solarized-lua",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.o.background = "dark" -- or light
+      vim.o.background = "dark"     -- or light
       vim.g.solarized_italics = 1
       vim.g.solarized_termtrans = 1 -- transparent background
       vim.g.solarized_diffmode = "high"
@@ -25,7 +28,7 @@ local M = {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-    opts = {},
+    priority = 1000,
     config = function()
       require("tokyonight").setup({
         -- use the night style
@@ -46,6 +49,7 @@ local M = {
   {
     "ellisonleao/gruvbox.nvim",
     lazy = true,
+    priority = 1000,
     config = function()
       vim.cmd([[colorscheme gruvbox]])
     end,
@@ -53,6 +57,7 @@ local M = {
   {
     "catppuccin/nvim",
     lazy = true,
+    priority = 1000,
     name = "catppuccin",
     opts = {
       integrations = {
@@ -113,4 +118,3 @@ local M = {
 }
 
 return M
--- vim: ft=lua foldmethod=marker sw=2 ts=2 sts=2 et

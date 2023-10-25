@@ -1,7 +1,6 @@
 -- credit:
 -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 
-
 local function augroup(name)
   return vim.api.nvim_create_augroup("my_" .. name, { clear = true })
 end
@@ -15,7 +14,6 @@ end
 -- use this instead
 --  set autochdir           " Switch to current file's parent directory.
 
-
 -- highlight on yank{{{
 --vim.cmd([[
 --au TextYankPost * silent! lua vim.highlight.on_yank()
@@ -25,7 +23,7 @@ end
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
-    vim.highlight.on_yank({higroup="IncSearch", timeout=150})
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150 })
   end,
 })
 -- }}} highlight on yank
@@ -51,5 +49,3 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
-
--- vim: set ft=lua foldmethod=marker sw=2 ts=2 sts=2 et :

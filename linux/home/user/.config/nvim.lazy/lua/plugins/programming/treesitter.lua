@@ -24,8 +24,8 @@ return {
       sync_install = false,
       ignore_install = { "" }, -- List of parsers to ignore installing
       highlight = {
-        enable = true,         -- false will disable the whole extension
-        disable = { "" },      -- list of language that will be disabled
+        enable = true, -- false will disable the whole extension
+        disable = { "" }, -- list of language that will be disabled
         additional_vim_regex_highlighting = true,
       },
       indent = { enable = true, disable = { "yaml" } },
@@ -36,8 +36,12 @@ return {
         max_file_lines = nil, -- Do not enable for files with more than n lines, int
         -- colors = {}, -- table of hex strings
         -- termcolors = {} -- table of colour name strings
-      }
+      },
     })
-  end
+
+    -- folding: see nvim-ufo.lua ; faster
+    -- vim.opt.foldmethod = "expr"
+    -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    -- vim.opt.foldenable = false
+  end,
 }
--- vim: ft=lua foldmethod=marker sw=2 ts=2 sts=2 et

@@ -8,7 +8,7 @@ Plugin `which_key` can provide helpful group prompts. Define them in its config.
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = " "
 
-local km = require('utils').km -- keymap shortcut function
+local km = require("utils").km -- keymap shortcut function
 
 -- nvim config (init.vim or init.lua) edit and reload
 km("n", "<LEADER>ce", "<CMD>e $MYVIMRC<CR>", "edit nvim main config")
@@ -19,13 +19,13 @@ km("n", "<LEADER>w", "<CMD>:w<CR>")
 
 -- Copy/paste from/to OS clipboard (register +)
 km("v", "<LEADER>y", '"+y', "copy to clipboard (reg +)")
-km({"v","n"}, "<LEADER>p", '"+p', "Paste after from clipboard (reg +)")
-km({"v","n"}, "<LEADER>P", '"+P', "paste before from clipboard (reg +)")
+km({ "v", "n" }, "<LEADER>p", '"+p', "Paste after from clipboard (reg +)")
+km({ "v", "n" }, "<LEADER>P", '"+P', "paste before from clipboard (reg +)")
 
 -- <LEADER>s paste from system selection (register *)
 km("v", "<LEADER>sy", '"*y')
-km({"v","n"}, "<LEADER>sp", '"*p')
-km({"v","n"}, "<LEADER>sP", '"*P')
+km({ "v", "n" }, "<LEADER>sp", '"*p')
+km({ "v", "n" }, "<LEADER>sP", '"*P')
 
 -- <LEADER>b Buffer switching
 km("n", "<LEADER>bb", "<CMD>new<CR>")
@@ -56,10 +56,15 @@ km("n", "<LEADER>ft0", "<CMD>set filetype=<CR>")
 km("n", "<LEADER>ftc", "<CMD>set filetype=csv<CR>")
 
 -- <LEADER>L line num/wrap
-km('n', "<LEADER>Lr", function() vim.wo.relativenumber = not vim.wo.relativenumber end, "line number: relative toggle")
-km('n', "<LEADER>Ln", function() vim.wo.number = not vim.wo.number end, "line number: toggle")
-km('n', "<LEADER>Lw", function() vim.wo.wrap = not vim.wo.wrap end, "line wrap: toggle")
-
+km("n", "<LEADER>Lr", function()
+  vim.wo.relativenumber = not vim.wo.relativenumber
+end, "line number: relative toggle")
+km("n", "<LEADER>Ln", function()
+  vim.wo.number = not vim.wo.number
+end, "line number: toggle")
+km("n", "<LEADER>Lw", function()
+  vim.wo.wrap = not vim.wo.wrap
+end, "line wrap: toggle")
 
 -- inspiring example {{{
 
@@ -276,5 +281,3 @@ km('n', "<LEADER>Lw", function() vim.wo.wrap = not vim.wo.wrap end, "line wrap: 
 --map("x", "<A-a>", ":<C-U>normal! ggVG<CR>")
 
 -- }}}
-
--- vim: set ft=lua foldmethod=marker sw=2 ts=2 sts=2 et :

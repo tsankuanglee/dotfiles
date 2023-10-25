@@ -3,7 +3,7 @@ return {
   dependencies = {
      "HiPhish/rainbow-delimiters.nvim",
   },
-  lazy = true,
+  lazy = false,
   main = "ibl",
   config = function()
 
@@ -36,4 +36,4 @@ return {
 
   end,
 }
--- vim: ft=lua foldmethod=marker sw=2 ts=2 sts=2 et
+-- vim: ft=lua sw=2 ts=2 sts=2 et
