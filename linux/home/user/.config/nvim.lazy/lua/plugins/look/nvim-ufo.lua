@@ -82,18 +82,18 @@ return {
       ufo.setup(opts)
     end
 
-    local km = require("utils").km -- keymap shortcut function
-    -- km("n", "zR", ufo.openAllFolds, "open all folds")
-    -- km("n", "zM", ufo.closeAllFolds, "close all folds")
-    km("n", "zP", function()
-      local winid = ufo.peekFoldedLinesUnderCursor()
-      if not winid and provider == "LSP" then vim.lsp.buf.hover() end
-    end, "Preview folds")
-
     vim.cmd([[
         hi Folded        guibg=#101010
         hi CursorLine    guibg=#1A1A1A
         hi MoreMsg       guibg=#3A3A3A guifg=#C0C0C0
       ]])
+
+    local km = require("utils").km -- keymap shortcut function
+    km("n", "zR", ufo.openAllFolds, "ufo (fold): open all")
+    km("n", "zM", ufo.closeAllFolds, "ufo (fold) close all")
+    km("n", "zP", function()
+      local winid = ufo.peekFoldedLinesUnderCursor()
+      if not winid and provider == "LSP" then vim.lsp.buf.hover() end
+    end, "ufo (fold): preview")
   end,
 }

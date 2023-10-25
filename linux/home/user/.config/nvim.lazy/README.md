@@ -15,7 +15,7 @@ My NVIM config has deviated from vim, which I rarely use nowadays except for occ
 │  ├─ plugins * all files with `.lua` (that are defined in lazy.lua are loaded (but some have `lazy=true`).
 │  │  ├─ completion
 │  │  │  ├─ cmp-nvim-lsp.lua * add LSP to cmp
-│  │  │  ├─ LuaSnip.lua * snippetse
+│  │  │  ├─ LuaSnip.lua * snippets engine
 │  │  │  └─ nvim-cmp.lua * complete engine
 │  │  ├─ editor * movement, objects, editting
 │  │  │  ├─ fold-cycle.lua * toggle nested folds
