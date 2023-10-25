@@ -12,9 +12,7 @@ return {
       -- tons of common snippets
       "rafamadriz/friendly-snippets",
       lazy = true,
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
+      config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
     },
   },
 
@@ -27,9 +25,7 @@ return {
     km({ "i", "s" }, "<LEADER><C-J>", function() ls.jump(-1) end, "jump previous")
 
     vim.keymap.set({ "i", "s" }, "<C-E>", function()
-      if ls.choice_active() then
-        ls.change_choice(1)
-      end
+      if ls.choice_active() then ls.change_choice(1) end
     end, { silent = true })
   end,
 }

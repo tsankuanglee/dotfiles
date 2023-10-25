@@ -36,12 +36,10 @@ Examples
 `gbac` - Toggle comment around a class (w/ LSP/treesitter support)
 ]]
 return {
-    "numToStr/Comment.nvim",
-    event = "VeryLazy",
-    -- config = function(_, opts)
-    --     require("Comment").setup(opts)
-    -- end,
-    config = function()
-        require("Comment").setup()
-    end,
+  "numToStr/Comment.nvim",
+  event = "VeryLazy",
+  -- config = function(_, opts)
+  --     require("Comment").setup(opts)
+  -- end,
+  config = function() require("Comment").setup() end,
 }

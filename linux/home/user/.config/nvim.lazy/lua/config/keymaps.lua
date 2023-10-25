@@ -56,15 +56,9 @@ km("n", "<LEADER>ft0", "<CMD>set filetype=<CR>")
 km("n", "<LEADER>ftc", "<CMD>set filetype=csv<CR>")
 
 -- <LEADER>L line num/wrap
-km("n", "<LEADER>Lr", function()
-  vim.wo.relativenumber = not vim.wo.relativenumber
-end, "line number: relative toggle")
-km("n", "<LEADER>Ln", function()
-  vim.wo.number = not vim.wo.number
-end, "line number: toggle")
-km("n", "<LEADER>Lw", function()
-  vim.wo.wrap = not vim.wo.wrap
-end, "line wrap: toggle")
+km("n", "<LEADER>Lr", function() vim.wo.relativenumber = not vim.wo.relativenumber end, "line number: relative toggle")
+km("n", "<LEADER>Ln", function() vim.wo.number = not vim.wo.number end, "line number: toggle")
+km("n", "<LEADER>Lw", function() vim.wo.wrap = not vim.wo.wrap end, "line wrap: toggle")
 
 -- inspiring example {{{
 

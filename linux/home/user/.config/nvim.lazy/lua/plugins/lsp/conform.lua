@@ -25,9 +25,6 @@ return {
     })
 
     local km = require("utils").km -- keymap shortcut function
-
-    km({ "n", "v" }, "<LEADER>lf", function()
-      conform.format(format_op_option)
-    end, "format file or range")
+    km({ "n", "v" }, "<LEADER>lf", function() conform.format(format_op_option) end, "format file or range")
   end,
 }

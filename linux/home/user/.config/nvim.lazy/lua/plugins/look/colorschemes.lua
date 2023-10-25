@@ -17,7 +17,7 @@ local M = {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.o.background = "dark"     -- or light
+      vim.o.background = "dark" -- or light
       vim.g.solarized_italics = 1
       vim.g.solarized_termtrans = 1 -- transparent background
       vim.g.solarized_diffmode = "high"
@@ -50,9 +50,7 @@ local M = {
     "ellisonleao/gruvbox.nvim",
     lazy = true,
     priority = 1000,
-    config = function()
-      vim.cmd([[colorscheme gruvbox]])
-    end,
+    config = function() vim.cmd([[colorscheme gruvbox]]) end,
   },
   {
     "catppuccin/nvim",
@@ -90,9 +88,7 @@ local M = {
         which_key = true,
       },
     },
-    config = function()
-      vim.cmd([[colorscheme catppuccin]])
-    end,
+    config = function() vim.cmd([[colorscheme catppuccin]]) end,
   },
 
   {
@@ -111,9 +107,7 @@ local M = {
     "tomasr/molokai",
     lazy = true,
     priority = 1000,
-    config = function()
-      vim.cmd([[colorscheme molokai]])
-    end,
+    config = function() vim.cmd([[colorscheme molokai]]) end,
   },
 }
 
