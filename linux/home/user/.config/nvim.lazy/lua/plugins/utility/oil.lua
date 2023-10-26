@@ -137,6 +137,7 @@ return {
       },
     })
     local km = require("utils").km -- keymap shortcut function
+    km("n", "<leader><leader>", "<CMD>Oil .<CR>", "Oil explorer: open current folder")
     km("n", "<leader>ee", "<CMD>Oil .<CR>", "Oil explorer: open current folder")
     km("n", "<leader>er", "<CMD>vsplit | wincmd l | Oil .<CR>", "Oil explorer: open current folder on the right)")
     km("n", "<leader>ew", "<CMD>vsplit | wincmd r | Oil .<CR>", "Oil explorer: open current folder on the left")
