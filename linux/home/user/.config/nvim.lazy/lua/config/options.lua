@@ -1,5 +1,11 @@
 local opt = vim.opt
 
+-- remember the launching folder
+vim.g.my_starting_folder=vim.fn.getcwd()
+vim.g.lcd_to_starting_folder=function()
+  vim.cmd('lcd' .. vim.g.my_starting_folder)
+end
+
 -- General {{{
 opt.mouse:remove({ "a" }) -- disable mouse so we can use X terminal to copy and paste
 opt.backspace = { "indent", "eol", "start" } -- Allow backspace over everything in insert mode.
@@ -12,7 +18,7 @@ opt.ttimeout = true
 opt.ttimeoutlen = 100
 
 -- providers
-vim.g.loaded_perl_provider = 1
+-- vim.g.loaded_perl_provider = 0
 -- turn off unnecessary providers
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0

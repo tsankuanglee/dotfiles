@@ -60,6 +60,9 @@ km("n", "<LEADER>Lr", function() vim.wo.relativenumber = not vim.wo.relativenumb
 km("n", "<LEADER>Ln", function() vim.wo.number = not vim.wo.number end, "line number: toggle")
 km("n", "<LEADER>Lw", function() vim.wo.wrap = not vim.wo.wrap end, "line wrap: toggle")
 
+-- <LEADER>: custom commands
+km("n", "<LEADER>:l", vim.g.lcd_to_starting_folder, "lcd to launching folder")
+
 -- inspiring example {{{
 
 --- Reload the config (including certain plugins)
