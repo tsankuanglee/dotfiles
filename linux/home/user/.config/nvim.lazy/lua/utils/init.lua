@@ -31,11 +31,13 @@ function M.is_win() return vim.loop.os_uname().sysname:find("Windows") ~= nil en
 --end
 
 -- keymap shortcut function
-function M.km(mode, lhs, rhs, desc)
+function M.km(mode, lhs, rhs, desc, extra_opts)
+  if extra_opts == nil then extra_opts = {} end
   return vim.keymap.set(mode, lhs, rhs, {
     noremap = true,
     silent = true,
     desc = desc,
+    unpack(extra_opts),
   })
 end
 

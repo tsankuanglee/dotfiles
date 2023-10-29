@@ -63,6 +63,17 @@ km("n", "<LEADER>Lw", function() vim.wo.wrap = not vim.wo.wrap end, "line wrap: 
 -- <LEADER>: custom commands
 km("n", "<LEADER>:l", vim.g.lcd_to_starting_folder, "lcd to launching folder")
 
+-- misc
+
+km(
+  "n", "gX",
+  function()
+    vim.fn.jobstart("xdg-open \"" .. vim.fn.expand("%:p:h") .. "/" .. vim.fn.expand("<cfile>") .. "\"")
+  end,
+  "xdg-open file under cursor (non-blocking)"
+)
+
+
 -- inspiring example {{{
 
 --- Reload the config (including certain plugins)

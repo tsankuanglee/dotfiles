@@ -13,13 +13,12 @@ return {
     local km = require("utils").km -- keymap shortcut function
     km("n", "<tab>", function() return fc.open() end, "Fold-cycle: open folds")
     km("n", "<s-tab>", function() return fc.close() end, "Fold-cycle: close folds")
-    -- TODO refactor the utils km
-    --
-    vim.keymap.set(
+    km(
       "n",
       "zC",
       function() return fc.close_all() end,
-      { remap = true, silent = true, desc = "Fold-cycle: close all folds under cursor" }
+      "Fold-cycle: close all folds under cursor",
+      { remap = true }
     )
   end,
 }
