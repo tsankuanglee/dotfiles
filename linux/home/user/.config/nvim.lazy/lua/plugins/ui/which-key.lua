@@ -54,6 +54,7 @@ return {
       L = { name = "line num/wrap" },
       t = { name = "tab switching" },
       z = { name = "fzf" },
+      [":"] = { name = "commands" },
 
       -- prompt
       s = { name = "selection/primary paste (reg *)" },

@@ -10,6 +10,9 @@ return {
     noremap <expr> j repmo#SelfKey('j', 'k')|sunmap j
     noremap <expr> k repmo#SelfKey('k', 'j')|sunmap k
 
+    noremap <expr> <C-E> repmo#SelfKey('<C-E>', '<C-Y>')
+    noremap <expr> <C-Y> repmo#SelfKey('<C-Y>', '<C-E>')
+
     " word
     noremap <expr> w repmo#SelfKey('w', 'b')|sunmap w
     noremap <expr> b repmo#SelfKey('b', 'w')|sunmap b
@@ -19,19 +22,16 @@ return {
     noremap <expr> B repmo#SelfKey('B', 'W')|sunmap B
     noremap <expr> E repmo#SelfKey('E', 'gE')|sunmap E
 
-
-    " repeat the last [count]motion or the last zap-key:
-    map <expr> ; repmo#LastKey(';')|sunmap ;
-    map <expr> , repmo#LastRevKey(',')|sunmap ,
-
     " add these mappings when repeating with `;' or `,':
     noremap <expr> f repmo#ZapKey('f')|sunmap f
     noremap <expr> F repmo#ZapKey('F')|sunmap F
     noremap <expr> t repmo#ZapKey('t')|sunmap t
     noremap <expr> T repmo#ZapKey('T')|sunmap T
 
-    noremap <expr> <C-E> repmo#SelfKey('<C-E>', '<C-Y>')
-    noremap <expr> <C-Y> repmo#SelfKey('<C-Y>', '<C-E>')
+    " repeat the last [count]motion or the last zap-key:
+    map <expr> ; repmo#LastKey(';')|sunmap ;
+    map <expr> , repmo#LastRevKey(',')|sunmap ,
+
     ]])
   end,
 }
