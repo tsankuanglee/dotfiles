@@ -45,6 +45,9 @@ km("n", "<LEADER>tn", "<CMD>tabnext<CR>")
 km("n", "<LEADER>tp", "<CMD>tabprevious<CR>")
 km("n", "<LEADER>t1", "<CMD>tabfirst<CR>")
 km("n", "<LEADER>t9", "<CMD>tablast<CR>")
+km("n", "<C-2>", "<CMD>tabnext<CR>")
+km("n", "<C-1>", "<CMD>tabprevious<CR>")
+
 
 -- <LEADER>C colorscheme
 -- defined in colorschemes.lua
