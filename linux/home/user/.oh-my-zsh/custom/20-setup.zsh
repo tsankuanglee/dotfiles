@@ -30,8 +30,3 @@ unsetopt CORRECT_ALL
 bindkey "^U" backward-kill-line
 bindkey "^R" history-incremental-pattern-search-backward
 
-## vi full screen edit (ESC v)
-#autoload edit-command-line; zle -N edit-command-line
-#bindkey -M vicmd v edit-command-line
-#
-#

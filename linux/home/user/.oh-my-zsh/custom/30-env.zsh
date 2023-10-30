@@ -9,9 +9,9 @@ export VISUAL="nvim"
 export GPG_TTY=`tty`
 
 # LANG related
-export LANG="en_US.utf8"
-export LC_ALL="en_US.utf8"
-export LC_CTYPE="en_US.utf8"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 # IME
 #export IME="gcin"
@@ -37,6 +37,23 @@ export HOST_USERNAME=$(whoami)
 export XSOCK=/tmp/.X11-unix
 export XAUTH=/tmp/.docker.xauth
 
+# add .local/bin
+export PATH=$PATH:~/.local/bin
+
+
+case "$OSTYPE" in
+  darwin*)
+    # Make all GNU flavor commands available, may override same-name BSD flavor commands
+    # For x86 Mac
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+    # For M1 Mac
+    #export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+    #export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
+    ;;
+esac
+
+
 # Perl
 PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -45,7 +62,7 @@ PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
 
 # Rust
-export PATH=$PATH:~/.local/bin:~/.cargo/bin
+export PATH=$PATH:~/.cargo/bin
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
