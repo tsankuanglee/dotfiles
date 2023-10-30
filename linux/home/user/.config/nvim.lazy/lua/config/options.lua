@@ -53,7 +53,7 @@ opt.magic = true -- Use 'magic' patterns (extended regular expressions).
 
 -- tools {{{
 -- diff
-opt.diffopt:append("iwhite") -- ignore whitespaces
+--opt.diffopt:append("iwhite") -- ignore whitespaces
 
 -- spell
 opt.spelllang="en,cjk" -- add cjk so they are excluded from spell checking
