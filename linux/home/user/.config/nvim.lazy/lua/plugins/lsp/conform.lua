@@ -10,7 +10,8 @@ return {
     local format_op_option = {
       lsp_fallback = true,
       async = false,
-      timeout_ms = 500,
+      -- since formatting is intentional, allow ample time for it to finish
+      timeout_ms = 5000,
     }
 
     -- local slow_format_filetypes = {}
