@@ -44,20 +44,22 @@ return {
   config = function()
     local wk = require("which-key")
     wk.register({
-      -- we don't define the keys here, but it's helpful to give group names
+      -- we don't define the keys here, but it's helpful to give group names and prompts
       b = { name = "buffer switching" },
       C = { name = "colorscheme" },
       c = { name = "config" },
       e = { name = "Explorer" },
-      l = { name = "LSP" },
+      l = {
+        name = "LSP",
+        s = "symbols",
+        g = "diagnostics"
+      },
       M = { name = "menu" },
       L = { name = "line num/wrap" },
+      s = { name = "selection/primary paste (reg *)" },
       t = { name = "tab switching" },
       z = { name = "fzf" },
       [":"] = { name = "commands" },
-
-      -- prompt
-      s = { name = "selection/primary paste (reg *)" },
       f = {
         name = "file",
         t = "filetype",

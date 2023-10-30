@@ -24,8 +24,8 @@ return {
     km("n", "<LEADER>zm", "<CMD>FzfLua commands<CR>")
     km("n", "<LEADER>zz", "<CMD>FzfLua builtin<CR>")
 
-    km("n", "<LEADER>zgr", "<CMD>FzfLua grep<CR>")
-    km("n", "<LEADER>zgl", "<CMD>FzfLua live_grep<CR>")
+    km("n", "<LEADER>z/", "<CMD>FzfLua grep<CR>")
+    km("n", "<LEADER>zg", "<CMD>FzfLua live_grep<CR>")
 
     km("n", "<LEADER>zr", "<CMD>FzfLua resume<CR>")
 

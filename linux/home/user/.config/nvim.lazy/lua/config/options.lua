@@ -17,6 +17,19 @@ opt.nrformats:remove({ "octal" })
 opt.ttimeout = true
 opt.ttimeoutlen = 100
 
+opt.autoread = false -- do not autoload when file updates
+opt.autochdir = true
+
+opt.history = 1000
+opt.tabpagemax = 50
+opt.undolevels = 200
+
+-- Path/file expansion in command mode
+opt.wildmenu = true
+opt.wildmode = "list:longest"
+--opt.wildchar = vim.fn.char2nr("\t") -- <TAB> is already default
+
+
 -- providers
 -- vim.g.loaded_perl_provider = 0
 -- turn off unnecessary providers
@@ -38,7 +51,19 @@ opt.incsearch = true -- Incremental search.
 opt.magic = true -- Use 'magic' patterns (extended regular expressions).
 -- }}} Search
 
--- Formatting {{{
+-- tools {{{
+-- diff
+opt.diffopt:append("iwhite") -- ignore whitespaces
+
+-- spell
+opt.spelllang="en,cjk" -- add cjk so they are excluded from spell checking
+opt.spellsuggest="best,9"
+
+-- rg / grep
+opt.grepprg = "rg --line-number --vimgrep "
+-- TODO fd path
+
+-- Look {{{
 
 opt.showcmd = true -- Show (partial) command in status line.
 opt.showmatch = true -- Show matching brackets.
@@ -82,62 +107,33 @@ opt.fillchars:append({
 })
 opt.display:append({ "lastline" })
 
--- Also highlight all tabs and trailing whitespace characters.
--- TODO this seems to be overwritten by some plugins
+opt.termguicolors = true -- true color support
 vim.cmd([[
   highlight NonText ctermfg=16 guifg=#4a4a59
   highlight SpecialKey ctermfg=16 guifg=#4a4a59
   highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
   match ExtraWhitespace /\s\+$\|\t/
 ]])
--- }}} Formatting
+-- }}} Look
 
 -- Configuration {{{
-vim.cmd([[
+-- vim.cmd([[
+--
+--   if has('path_extra')
+--     setglobal tags-=./tags tags^=./tags;
+--   endif
+--
+--   " if !empty(&viminfo)
+--   "   set viminfo^=!        " Write a viminfo file with registers.
+--   " endif
+--   " set sessionoptions-=options
+--
+--   " " Allow color schemes to do bright colors without forcing bold.
+--   " if &t_Co == 8 && $TERM !~# '^linux'
+--   "   set t_Co=16
+--   " endif
+--
+-- ]])
+-- }}} Configuration
 
-  if has('path_extra')
-    setglobal tags-=./tags tags^=./tags;
-  endif
-
-  "set autoread            " If file updates, load automatically.
-  set autochdir           " Switch to current file's parent directory.
-
-  if &history < 1000
-    set history=1000      " Number of lines in command history.
-  endif
-  if &tabpagemax < 50
-    set tabpagemax=50     " Maximum tab pages.
-  endif
-
-  if &undolevels < 200
-    set undolevels=200    " Number of undo levels.
-  endif
-
-  " Path/file expansion in colon-mode.
-  set wildmenu
-  set wildmode=list:longest
-  set wildchar=<TAB>
-
-  if !empty(&viminfo)
-    set viminfo^=!        " Write a viminfo file with registers.
-  endif
-  set sessionoptions-=options
-
-  " Allow color schemes to do bright colors without forcing bold.
-  if &t_Co == 8 && $TERM !~# '^linux'
-    set t_Co=16
-  endif
-
-  "" colorscheme
-  set termguicolors " true color support
-
-  " Diff options
-  set diffopt+=iwhite " ignore whitespaces
-
-  " spell
-  set spelllang=en,cjk " add cjk so they are excluded from spell checking
-  set spellsuggest=best,9
-
-
-]])
--- }}}
+-- vim: foldmethod=marker
