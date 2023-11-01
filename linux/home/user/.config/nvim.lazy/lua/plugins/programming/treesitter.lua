@@ -37,6 +37,9 @@ return {
         -- colors = {}, -- table of hex strings
         -- termcolors = {} -- table of colour name strings
       },
+      matchup = {
+        enable = true,
+      },
     })
 
     -- folding: see nvim-ufo.lua ; faster

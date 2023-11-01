@@ -11,16 +11,16 @@ return {
 
     local km = require("utils").km -- keymap shortcut function
     km("n", "<LEADER>zf", "<CMD>FzfLua files<CR>")
-    km("n", "<LEADER>zb", "<CMD>FzfLua buffers<CR>")
     km("n", "<LEADER>zo", "<CMD>FzfLua oldfiles<CR>")
+    km("n", "<LEADER>zb", "<CMD>FzfLua buffers<CR>")
+    km("n", "<LEADER>zt", "<CMD>FzfLua tabs<CR>")
+    km("n", "<LEADER>zj", "<CMD>FzfLua jumps<CR>")
     km("n", "<LEADER>zq", "<CMD>FzfLua quickfix<CR>")
     km("n", "<LEADER>zQ", "<CMD>FzfLua quickfix_stack<CR>")
     km("n", "<LEADER>zc", "<CMD>FzfLua loclist<CR>")
     km("n", "<LEADER>zC", "<CMD>FzfLua loclist_stack<CR>")
-    km("n", "<LEADER>zj", "<CMD>FzfLua jumps<CR>")
     km("n", "<LEADER>zl", "<CMD>FzfLua lines<CR>")
     km("n", "<LEADER>zB", "<CMD>FzfLua blines<CR>")
-    km("n", "<LEADER>zt", "<CMD>FzfLua tabs<CR>")
     km("n", "<LEADER>za", "<CMD>FzfLua args<CR>")
     km("n", "<LEADER>zH", "<CMD>FzfLua command_history<CR>")
     km("n", "<LEADER>zm", "<CMD>FzfLua commands<CR>")
@@ -30,6 +30,8 @@ return {
     km("n", "<LEADER>zg", "<CMD>FzfLua live_grep<CR>")
 
     km("n", "<LEADER>zr", "<CMD>FzfLua resume<CR>")
+
+    km("n", "<LEADER>zK", "<CMD>FzfLua colorschemes<CR>")
 
     -- LSP (also see nvim-lspconfig.lua)
     km("n", "<LEADER>lzr", "<CMD>FzfLua lsp_references<CR>")

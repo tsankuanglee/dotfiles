@@ -2,6 +2,7 @@
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  lazy = true,
   priority = 400,
   config = function()
     require("nvim-treesitter.configs").setup({

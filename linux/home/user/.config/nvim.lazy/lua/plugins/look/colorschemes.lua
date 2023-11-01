@@ -10,6 +10,14 @@ km("n", "<LEADER>Cj", "<CMD>colorscheme jellybeans<CR>")
 km("n", "<LEADER>Cm", "<CMD>colorscheme molokai<CR>")
 
 vim.opt.termguicolors = true -- true color support
+local reset_white_space_coloring = function ()
+  vim.cmd([[
+  highlight NonText ctermfg=16 guifg=#4a4a59
+  highlight SpecialKey ctermfg=16 guifg=#4a4a59
+  highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+  match ExtraWhitespace /\s\+$\|\t/
+]])
+end
 
 local M = {
   {
@@ -23,6 +31,7 @@ local M = {
       vim.g.solarized_diffmode = "high"
 
       vim.cmd([[colorscheme solarized]])
+      reset_white_space_coloring()
     end,
   },
   {
@@ -43,14 +52,18 @@ local M = {
         --  colors.error = "#ff0000"
         --end
       })
-      --vim.cmd([[colorscheme tokyonight]])
+      vim.cmd([[colorscheme tokyonight]])
+      reset_white_space_coloring()
     end,
   },
   {
     "ellisonleao/gruvbox.nvim",
     lazy = true,
     priority = 1000,
-    config = function() vim.cmd([[colorscheme gruvbox]]) end,
+    config = function()
+      vim.cmd([[colorscheme gruvbox]]) 
+      reset_white_space_coloring()
+    end,
   },
   {
     "catppuccin/nvim",
@@ -88,7 +101,10 @@ local M = {
         which_key = true,
       },
     },
-    config = function() vim.cmd([[colorscheme catppuccin]]) end,
+    config = function()
+      vim.cmd([[colorscheme catppuccin]])
+      reset_white_space_coloring()
+    end,
   },
 
   {
@@ -101,13 +117,17 @@ local M = {
         Search = { guifg = "000000", guibg = "FFE792", ctermfg = "", ctermbg = "", attr = "" },
       }
       vim.cmd([[colorscheme jellybeans]])
+      reset_white_space_coloring()
     end,
   },
   {
     "tomasr/molokai",
     lazy = true,
     priority = 1000,
-    config = function() vim.cmd([[colorscheme molokai]]) end,
+    config = function()
+      vim.cmd([[colorscheme molokai]])
+      reset_white_space_coloring()
+    end,
   },
 }
 
