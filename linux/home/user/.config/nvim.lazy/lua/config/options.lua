@@ -24,11 +24,12 @@ opt.history = 1000
 opt.tabpagemax = 50
 opt.undolevels = 200
 
+opt.shortmess:append('I') -- no splash screen
+
 -- Path/file expansion in command mode
 opt.wildmenu = true
 opt.wildmode = "list:longest"
 --opt.wildchar = vim.fn.char2nr("\t") -- <TAB> is already default
-
 
 -- providers
 -- vim.g.loaded_perl_provider = 0
