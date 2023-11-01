@@ -38,17 +38,20 @@ skhd < q : terminal-notifier -group skhd -remove skhd -message "exited"; brew se
 
 # screenshot of specified monitor (use ~/.local/bin/identify_monitors.py to determine the display IDs)
 
+# numpad 0 : refresh screen identification file
+0x52 : ~/.local/bin/identify_monitors.sh
+
 # numpad 5 : main screen (main; internal)
 0x57 : ~/.local/bin/screenshot_monitor.sh 1 main
 
 # numpad 7: ext screen (left)
-0x59 : ~/.local/bin/screenshot_monitor.sh 2 left
+0x59 : ~/.local/bin/screenshot_monitor.sh left left
 
 # numpad 8 : ext screen (middle)
-0x5B : ~/.local/bin/screenshot_monitor.sh 4 middle
+0x5B : ~/.local/bin/screenshot_monitor.sh middle middle
 
 # numpad 9 : ext screen (right)
-0x5C : ~/.local/bin/screenshot_monitor.sh 3 right
+0x5C : ~/.local/bin/screenshot_monitor.sh right right
 
 
 # combo (output key sequences)
