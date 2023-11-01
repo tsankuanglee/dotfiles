@@ -73,9 +73,9 @@ Rarely used keys are candidates to be re-assigned.
 
 ## built-in keys that are never used
 
-`S`
-`s`
-`R`
+`S`: used by flash now
+`s`: used by flash now
+`R`: used by flash now
 
 `c-j`
 `c-q`
@@ -95,6 +95,6 @@ Rarely used keys are candidates to be re-assigned.
 
 ## unused by VIM
 
-`\\`
+`\\`: used as <LEADER>
 `c-K`
 

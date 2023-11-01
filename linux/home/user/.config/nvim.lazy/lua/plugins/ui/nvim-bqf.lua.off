@@ -8,6 +8,7 @@ return {
     local bqf = require("bqf")
 
     bqf.setup({
+      magic_window = false,
       auto_resize_height = true,
       filter = {
         fzf = {
