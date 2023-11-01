@@ -31,8 +31,8 @@ opt.wildmenu = true
 opt.wildmode = "list:longest"
 --opt.wildchar = vim.fn.char2nr("\t") -- <TAB> is already default
 
--- providers
--- vim.g.loaded_perl_provider = 0
+-- providers (remove line to enable)
+--vim.g.loaded_perl_provider = 0
 -- turn off unnecessary providers
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0

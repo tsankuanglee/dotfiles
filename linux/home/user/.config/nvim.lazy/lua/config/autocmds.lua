@@ -3,21 +3,6 @@
 
 local function augroup(name) return vim.api.nvim_create_augroup("my_" .. name, { clear = true }) end
 
--- for each opened buffer, switch working directory to that buffer's folder
--- autocmd BufEnter * silent! lcd %:p:h
---vim.api.nvim_create_autocmd({ "BufEnter" }, {
---  pattern = {"*"},
---  command = "silent! lcd %:p:h"
---})
--- use this instead
---  set autochdir           " Switch to current file's parent directory.
-
--- highlight on yank{{{
---vim.cmd([[
---au TextYankPost * silent! lua vim.highlight.on_yank()
---au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
---au TextYankPost * silent! lua vim.highlight.on_yank {on_visual=false}
---]])
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function() vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150 }) end,

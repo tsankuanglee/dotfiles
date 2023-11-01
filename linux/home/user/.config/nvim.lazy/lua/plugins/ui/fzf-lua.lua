@@ -5,7 +5,9 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     -- calling `setup` is optional for customization
-    -- require("fzf-lua").setup({})
+    local fzflua = require("fzf-lua")
+    -- use fzf-lua for vim.ui.select
+    fzflua.register_ui_select()
 
     local km = require("utils").km -- keymap shortcut function
     km("n", "<LEADER>zf", "<CMD>FzfLua files<CR>")
