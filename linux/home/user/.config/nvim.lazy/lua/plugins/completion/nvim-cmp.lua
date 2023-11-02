@@ -1,3 +1,4 @@
+-- A completion engine plugin for neovim written in Lua.
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
@@ -110,6 +111,7 @@ return {
       },
       sources = {
         { name = "nvim_lsp" },
+
         -- snippet engine; pick one
         -- { name = 'vsnip' }, -- For vsnip users.
         { name = "luasnip" }, -- For luasnip users.

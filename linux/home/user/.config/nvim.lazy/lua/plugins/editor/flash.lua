@@ -1,3 +1,6 @@
+--[[
+add target label for jumping
+--]]
 return {
   "folke/flash.nvim",
   event = "VeryLazy",

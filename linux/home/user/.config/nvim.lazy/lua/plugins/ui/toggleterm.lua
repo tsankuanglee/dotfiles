@@ -1,10 +1,10 @@
 --[[
 multi nvim-terminals management
-* Use <F3> to open/toggle
-* Use 2<F3> to open/toggle Terminal 2
-* Use 3<F3> to open/toggle Terminal 3
-* Use <s-F3> to leave Terminal mode
-* Use <s-F3> for ui to select terminal
+* Use <C-q> to open/toggle
+* Use 2<C-q> to open/toggle Terminal 2
+* Use 3<C-q> to open/toggle Terminal 3
+* Use <C-S-q> to leave Terminal mode
+* Use <C-S-q> for ui to select terminal
 ]]
 return {
   'akinsho/toggleterm.nvim',
@@ -13,7 +13,7 @@ return {
   config = function ()
     local toggleterm = require("toggleterm")
     toggleterm.setup({
-      open_mapping = [[<F3>]],
+      open_mapping = [[<c-q>]],
       -- size can be a number or function which is passed the current terminal
       size = function(term)
         if term.direction == "horizontal" then
@@ -36,11 +36,11 @@ return {
 
 
     local km = require("utils").km -- keymap shortcut function
-    km("n", "<s-F3>", "<CMD>TermSelect<CR>")
+    km("n", "<S-q>", "<CMD>TermSelect<CR>")
 
     function _G.set_terminal_keymaps()
       local opts = {buffer = 0}
-      vim.keymap.set('t', '<s-F3>', [[<C-\><C-n>]], opts)
+      vim.keymap.set('t', '<C-S-q>', [[<C-\><C-n>]], opts)
       -- vim.keymap.set('t', '<c-h>', [[<Cmd>wincmd h<CR>]], opts)
       -- vim.keymap.set('t', '<c-j>', [[<Cmd>wincmd j<CR>]], opts)
       -- vim.keymap.set('t', '<c-k>', [[<Cmd>wincmd k<CR>]], opts)

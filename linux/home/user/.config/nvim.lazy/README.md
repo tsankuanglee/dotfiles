@@ -1,8 +1,9 @@
 # NVIM (formerly VIM/NVIM)
-My NVIM config has deviated from vim, which I rarely use nowadays except for occassional work on a system without nvim.
+My NVIM config has deviated from vim, which I rarely use nowadays except for occassional work on a system without nvim. That said, key-wise, I try to keep the original keys as much as possible so I don't lose my portability.
 
-# File Structure
+# Directory structure and plugins
 
+(may not reflect the latest version)
 ```
 ├─ init.lua * main config file. It imports specified `./lua/*`
 ├─ lazy-lock.json
@@ -61,8 +62,11 @@ My NVIM config has deviated from vim, which I rarely use nowadays except for occ
 ```
 
 # TODO
+* git annotation
 * LSP: DAP
 * personal snippets
+* remote/container dev
+* nvim server/client setup
 
 # potential plugins
 

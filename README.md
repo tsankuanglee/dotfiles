@@ -1,17 +1,8 @@
 # Tsan-Kuang "TK" Lee's dotfiles
 
-A place for me to keep/share various configuration files
+A place for me to store/share/archive various configuration files
 
-## nvim
+# nvim
 
-manual steps:
-### VimPlug
-see 
-https://github.com/junegunn/vim-plug
-### Packer
+see [its README.md](./linux/home/user/.config/nvim.lazy/README.md)
 
-```
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# in nvim, PackerSync, PlugInstall
-```
