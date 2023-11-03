@@ -1,0 +1,9 @@
+{
+  "NotebookApp": {
+    "open_browser": false,
+    "token": "",
+    "nbserver_extensions": {
+      "jupyter_nbextensions_configurator": true
+    }
+  }
+}
