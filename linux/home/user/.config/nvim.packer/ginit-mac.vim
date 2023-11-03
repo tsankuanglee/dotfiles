@@ -1,4 +1,4 @@
-" macOS config used for neovim-qt, as far I tested to reproduce some basic behavior: https://github.com/equalsraf/neovim-qt
+" macOS config used for neovim-qt https://github.com/equalsraf/neovim-qt
 
 " Enable Mouse
 set mouse=a
@@ -6,7 +6,9 @@ set mouse=a
 " Set Editor Font
 if exists(':GuiFont')
   " Use GuiFont! to ignore font errors
+  " :GuiFont Fira Code:h12, or :set guifont=Hack:h12
   " GuiFont {font_name}:h{size}
+  GuiFont Hack Nerd Font Mono:h20
 endif
 
 " Disable GUI Tabline
