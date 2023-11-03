@@ -1,3 +1,4 @@
+-- Location and syntax aware text objects which *do what you mean*
 return {
   "RRethy/nvim-treesitter-textsubjects",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
@@ -10,7 +11,7 @@ return {
         keymaps = {
           ["."] = "textsubjects-smart",
           [";"] = "textsubjects-container-outer",
-          ["i;"] = "textsubjects-container-inner",
+          -- ["i;"] = "textsubjects-container-inner",
           ["i;"] = { "textsubjects-container-inner", desc = "Select inside containers (classes, functions, etc.)" },
         },
       },

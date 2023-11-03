@@ -10,6 +10,7 @@ return {
     require("stylua-nvim").setup({ config_file = "stylua.toml" })
 
     local lspconfig = require("lspconfig")
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     lspconfig.lua_ls.setup({
       --[[ commands = {
         -- Format = {
@@ -18,6 +19,7 @@ return {
         --   end,
         -- },
       }, ]]
+      capabilities = capabilities,
       settings = {
         Lua = {
           format = {

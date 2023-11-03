@@ -1,10 +1,8 @@
 -- Snippet Engine for Neovim written in Lua
 return {
   "L3MON4D3/LuaSnip",
-  -- follow latest release.
-  version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-  -- install jsregexp (optional!).
-  build = "make install_jsregexp",
+  version = "v2.*",                -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+  build = "make install_jsregexp", -- install jsregexp (optional!).
   lazy = true,
 
   dependencies = {
@@ -17,15 +15,23 @@ return {
     },
   },
 
-  --[[ config = function()
+  config = function()
     local ls = require("luasnip")
+    ls.config.set_config({
+      -- history = true,  -- deprecated; equivalent to the following 3
+      keep_roots = true,
+      link_roots = true,
+      link_children = true,
 
-    local km = require("utils").km -- keymap shortcut function
-    km({ "i" }, "<C-L><C-L>", function() ls.expand() end, "expand snip")
-    km({ "i", "s" }, "<C-L><C-J>", function() ls.jump(1) end, "jump next")
-    km({ "i", "s" }, "<C-L><C-K>", function() ls.jump(-1) end, "jump previous")
+      enable_autosnippets = true,
+    })
+
+    --[[ local km = require("utils").km -- keymap shortcut function
+    km({ "i" }, "<C-K>", function() ls.expand() end, "expand snip")
+    km({ "i", "s" }, "<C-L>", function() ls.jump(1) end, "jump next")
+    km({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, "jump previous")
     km({ "i", "s" }, "<C-E>", function()
       if ls.choice_active() then ls.change_choice(1) end
-    end, "luasnip: end choice")
-  end, ]]
+    end, "luasnip: end choice") ]]
+  end,
 }

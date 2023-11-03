@@ -6,8 +6,7 @@ return {
   config = function()
     -- calling `setup` is optional for customization
     local fzflua = require("fzf-lua")
-    -- use fzf-lua for vim.ui.select
-    fzflua.register_ui_select()
+    fzflua.register_ui_select() -- use fzf-lua for vim.ui.select
 
     local km = require("utils").km -- keymap shortcut function
     km("n", "<LEADER>zf", "<CMD>FzfLua files<CR>")

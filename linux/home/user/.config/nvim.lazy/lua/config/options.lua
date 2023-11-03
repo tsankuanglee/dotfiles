@@ -7,7 +7,9 @@ vim.g.lcd_to_starting_folder=function()
 end
 
 -- General {{{
-opt.mouse:remove({ "a" }) -- disable mouse so we can use X terminal to copy and paste
+--opt.mouse:remove({ "a" }) -- disable mouse so we can use X terminal to copy and paste
+opt.mouse = "a" -- experiment
+
 opt.backspace = { "indent", "eol", "start" } -- Allow backspace over everything in insert mode.
 opt.complete:remove({ "i" })
 opt.smarttab = true

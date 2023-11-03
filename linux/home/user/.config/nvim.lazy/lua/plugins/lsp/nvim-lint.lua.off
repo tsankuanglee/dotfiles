@@ -1,3 +1,4 @@
+-- turned off for now; too noisy
 return {
   "mfussenegger/nvim-lint",
   lazy = true,
