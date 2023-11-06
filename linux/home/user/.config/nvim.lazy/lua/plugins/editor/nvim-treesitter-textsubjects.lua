@@ -11,8 +11,8 @@ return {
         prev_selection = "<C-p>", -- (Optional) keymap to select the previous selection
         keymaps = {
           ["@"] = "textsubjects-smart",
-          ["-"] = "textsubjects-container-outer",
-          ["_"] = { "textsubjects-container-inner", desc = "Select inside containers (classes, functions, etc.)" },
+          ["_"] = "textsubjects-container-outer",
+          ["-"] = { "textsubjects-container-inner", desc = "Select inside containers (classes, functions, etc.)" },
         },
       },
     })

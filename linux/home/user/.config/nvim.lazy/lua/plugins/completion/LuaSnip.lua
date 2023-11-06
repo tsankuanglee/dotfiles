@@ -8,10 +8,10 @@ return {
   dependencies = {
     { "saadparwaiz1/cmp_luasnip", lazy = true }, -- luasnip completion source for nvim-cmp
     {
-      -- tons of common snippets
+      -- tons of common programming snippets
       "rafamadriz/friendly-snippets",
       lazy = true,
-      config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
+      config = function()require("luasnip.loaders.from_vscode").lazy_load() end,
     },
   },
 
@@ -25,7 +25,15 @@ return {
 
       enable_autosnippets = true,
     })
+    -- custom snippets
+    require("luasnip.loaders.from_lua").load({
+      paths = {
+        "./my_luasnippets",
+        "./my_luasnippets_local",
+      }
+    })
 
+    -- intergrated with nvim-cmp
     --[[ local km = require("utils").km -- keymap shortcut function
     km({ "i" }, "<C-K>", function() ls.expand() end, "expand snip")
     km({ "i", "s" }, "<C-L>", function() ls.jump(1) end, "jump next")

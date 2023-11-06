@@ -1,6 +1,8 @@
 # NVIM (formerly VIM/NVIM)
 My NVIM config has deviated from vim, which I rarely use nowadays except for occassional work on a system without nvim. That said, key-wise, I try to keep the original keys as much as possible so I don't lose my portability.
 
+The configs here will be transient until I figure out a smooth workflow, which could be never. :)
+
 # Directory structure and plugins
 
 (may not reflect the latest version)
@@ -63,42 +65,20 @@ My NVIM config has deviated from vim, which I rarely use nowadays except for occ
 
 # TODO
 * git annotation
+    * https://github.com/lewis6991/gitsigns.nvim
 * LSP: DAP
-* personal snippets
+    * https://www.youtube.com/watch?v=4BnVeOUeZxc
+    * https://www.youtube.com/watch?v=RziPWdTzSV8
+    * https://github.com/mfussenegger/nvim-dap
+    * https://github.com/rcarriga/nvim-dap-ui
+    * https://github.com/mfussenegger/nvim-dap-python
 * remote/container dev
+    * https://github.com/jamestthompson3/nvim-remote-containers
+    * https://github.com/chipsenkbeil/distant.nvim
 * nvim server/client setup
 
 # potential plugins
+* https://github.com/stevearc/dressing.nvim
+* nui
 
-
-# Personal usage analysis
-
-Rarely used keys are candidates to be re-assigned.
-
-## built-in keys that are never used
-
-`S`: used by flash now
-`s`: used by flash now
-`R`: used by flash now
-
-`c-j`
-`c-q`
-`c-m`
-`-`
-`+`
-`c-a`
-`c-x`
-`_`
-
-## rarely used
-
-`c`
-`C`
-`K`
-
-
-## unused by VIM
-
-`\\`: used as <LEADER>
-`c-K`
 

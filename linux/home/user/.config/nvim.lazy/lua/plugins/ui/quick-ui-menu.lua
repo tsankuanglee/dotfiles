@@ -28,19 +28,8 @@ return {
       " install a 'File' menu, use [text, command] to represent an item.
       " optionally add help tips [text, command, tips]; tips show in CmdLine
       call quickui#menu#install('&File', [
-      \ [ "fzf &File\t<leader>zf", 'FzfLua files' ],
-      \ [ "fzf &Buffer\t<leader>zb", 'FzfLua buffers' ],
-      \ [ "fzf &Old files\t<leader>zo", 'FzfLua oldfiles' ],
-      \ [ "fzf &Quickfix\t<leader>zq", 'FzfLua quickfix' ],
-      \ [ "fzf lo&Cation list\t<leader>zc", 'FzfLua loclist' ],
-      \ [ "fzf &jumps\t<leader>zj", 'FzfLua jumps' ],
-      \ [ "fzf l&Ines\t<leader>zl", 'FzfLua lines' ],
-      \ [ "fzf current &Buffer lines\t<leader>zn", 'FzfLua blines' ],
-      \ [ "fzf &Tabs\t<leader>zt", 'FzfLua tabs' ],
-      \ [ "fzf &Args\t<leader>za", 'FzfLua args' ],
-      \ [ "fzf command &History\t<leader>zH", 'FzfLua command_history' ],
-      \ [ "fzf co&mmand\t<leader>zH", 'FzfLua command' ],
-      \ [ "f&zf builtin\t<leader>zH", 'FzfLua builtin' ],
+      \ [ "Open all &Buffers split\t:sba", ':sba'],
+      \ [ "Open all &Buffers vsplit\t:vert sba", ':vert sba'],
       \ [ "--", '' ],
       \ [ "Ter&minal\t:terminal", 'terminal' ],
       \ ])
@@ -123,16 +112,6 @@ return {
       " The following will be populated into this namespace
 
       call quickui#menu#install('&File', [
-      \ [ "fzf &File\t<leader>zf", 'FzfLua files' ],
-      \ [ "fzf &Buffer\t<leader>zb", 'FzfLua buffers' ],
-      \ [ "fzf &Old files\t<leader>zo", 'FzfLua oldfiles' ],
-      \ [ "fzf &Quickfix\t<leader>zq", 'FzfLua quickfix' ],
-      \ [ "fzf lo&Cation list\t<leader>zc", 'FzfLua loclist' ],
-      \ [ "fzf l&Ines\t<leader>zl", 'FzfLua lines' ],
-      \ [ "fzf current buffer li&Nes\t<leader>zn", 'FzfLua blines' ],
-      \ [ "fzf &Tabs\t<leader>zt", 'FzfLua tabs' ],
-      \ [ "fzf &Args\t<leader>za", 'FzfLua args' ],
-      \ [ "--", '' ],
       \ [ "Ter&minal\t:terminal", 'terminal' ],
       \ ])
 

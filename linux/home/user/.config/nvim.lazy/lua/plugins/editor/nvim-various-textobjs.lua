@@ -7,9 +7,12 @@ return {
   opts = {
     useDefaultKeymaps = true,
     disabledKeymaps = {
-      "S", -- subword, clashing
-      --"r", duplication of `V}`
       "L", -- this clashes with movement L (to screen bottom)
+      "al", -- markdown link; clash with vim-match up loop
+      "il", -- markdown link; clash with vim-match up loop
+      "am", -- chainMember; clash with vim-match up loop
+      "im", -- chainMember; clash with vim-match up loop
+      "r", -- duplication of `V}`
     },
   },
 }

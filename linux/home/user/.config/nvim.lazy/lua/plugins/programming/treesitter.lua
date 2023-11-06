@@ -69,17 +69,18 @@ return {
       incremental_selection = { -- Incremental selection based on the named nodes from the grammar.
         enable = true,
         keymaps = {
-          init_selection = "gnn", -- set to `false` to disable one of the mappings
+          init_selection = "<F2>", -- set to `false` to disable one of the mappings
           -- the following ones are only effective when there's a selection
-          node_incremental = "grn",
-          node_decremental = "grm",
-          scope_incremental = "grc",
+          scope_incremental = "<F4>", -- for some reason SHIFT doesn't work
+          node_incremental = "<F3>",
+          node_decremental = "<S-F3>",
         },
       },
       indent = { -- Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
         enable = true,
         disable = { "yaml" },
       },
+      -- the document also includes folding, but it's defined via commands, see below
 
       -- external modules
       matchup = { -- vim.matchup integration
@@ -97,7 +98,7 @@ return {
 
     })
 
-    -- # folding: see nvim-ufo.lua, which is faster
+    -- # folding: use nvim-ufo.lua, which is faster
     -- vim.opt.foldmethod = "expr"
     -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
     -- vim.opt.foldenable = false

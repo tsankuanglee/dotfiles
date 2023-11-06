@@ -51,5 +51,9 @@ return {
 
     km("n", "<LEADER>lzgd", "<CMD>FzfLua lsp_document_diagnostics<CR>")
     km("n", "<LEADER>lzgw", "<CMD>FzfLua lsp_workspace_diagnostics<CR>")
+
+    -- improve native functions
+    km({"n", "v", "i", "c"}, "<F1>", "<CMD>FzfLua help_tags<CR>")
+
   end,
 }

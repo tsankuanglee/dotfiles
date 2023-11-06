@@ -121,5 +121,12 @@ return {
     local wk = require("which-key")
     wk.setup(setup)
     wk.register(mappings, opts)
+
+    local km = require("utils").km -- keymap shortcut function
+    km("n", "<s-F1>", "<CMD>WhichKey<CR>", "which-key top menu")
+    km("v", "<s-F1>", "<CMD>WhichKey '' v<CR>", "which-key top menu")
+    km("i", "<s-F1>", "<CMD>WhichKey '' i<CR>", "which-key top menu")
+    km("c", "<s-F1>", "<CMD>WhichKey '' c<CR>", "which-key top menu")
+
   end,
 }

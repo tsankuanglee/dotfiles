@@ -22,7 +22,7 @@ end
 local M = {
   {
     "ishan9299/nvim-solarized-lua",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       vim.o.background = "dark" -- or light
@@ -36,7 +36,7 @@ local M = {
   },
   {
     "folke/tokyonight.nvim",
-    lazy = true,
+    lazy = false,
     priority = 1000,
     config = function()
       require("tokyonight").setup({
