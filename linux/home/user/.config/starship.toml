@@ -1,7 +1,31 @@
+# prompt {{{
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Timeout for starship to scan files (in milliseconds).
+scan_timeout = 30
+# Timeout for commands executed by starship (in milliseconds).
+command_timeout = 500
+# Inserts a blank line between shell prompts
 add_newline = false
+
+continuation_prompt = '▶▶ '
+
 #right_format = """$cmd_duration $time"""
-format = """$username@$hostname:$directory$all$fill$cmd_duration$time
+format = """[$username@$hostname:$directory$fill$all $cmd_duration $time](fg:#ffffff bg:#151515)
 $character"""
+
+# }}} prompt
+
+[character]
+success_symbol = '[\$](bold green)'
+error_symbol = '[\$](bold red)'
+
+[fill]
+symbol = ' '
+style = 'bg:#151515'
+
+
 
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
@@ -18,7 +42,7 @@ format = '\[[$symbol($version)]($style)\]'
 [cmd_duration]
 min_time = 0
 show_milliseconds = true
-format = '\[[⏱ $duration]($style)\]'
+format = '[$duration]($style)'
 
 [cobol]
 format = '\[[$symbol($version)]($style)\]'
@@ -40,6 +64,11 @@ format = '\[[$symbol($version)]($style)\]'
 
 [directory]
 truncation_symbol = '…/'
+truncate_to_repo = true
+home_symbol = '~'
+# The number of parent folders that the current directory should be truncated to.
+truncation_length = 0
+style = 'bold cyan bg:#151515'
 
 [docker_context]
 format = '\[[$symbol$context]($style)\]'
@@ -59,8 +88,6 @@ format = '\[[$symbol($version)]($style)\]'
 [fennel]
 format = '\[[$symbol($version)]($style)\]'
 
-[fill]
-symbol = ' '
 
 [fossil_branch]
 format = '\[[$symbol$branch]($style)\]'
@@ -95,6 +122,7 @@ format = '\[[$symbol($version)]($style)\]'
 [hostname]
 ssh_only = false
 format = '[$hostname$ssh_symbol]($style)'
+style = "bold dimmed green bg:#151515"
 
 [hg_branch]
 format = '\[[$symbol$branch]($style)\]'
@@ -142,9 +170,12 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol$cloud(\($project\))]($style)\]'
 
 [os]
-format = '\[[$symbol]($style)\]'
+disabled = true
+format = '[$symbol]($style)'
+style = "bg:#151515"
 
 [package]
+disabled = true
 format = '\[[$symbol$version]($style)\]'
 
 [perl]
@@ -194,11 +225,16 @@ format = '\[[$symbol$workspace]($style)\]'
 
 [time]
 disabled = false
-format = '\[[$time]($style)\]'
+style = "dimmed bg:#151515"
+time_format = '%F %T.%f'
+format = '[$time]($style)'
 
 [username]
-format = '[$user]($style)'
+disabled = false
 show_always = true
+style_root = 'bold red bg:#151515'
+style_user = 'bold yellow bg:#151515'
+format = '[$user]($style)'
 
 [vagrant]
 format = '\[[$symbol($version)]($style)\]'
@@ -211,3 +247,5 @@ format = '\[[$symbol($version)]($style)\]'
 
 [solidity]
 format = '\[[$symbol($version)]($style)\]'
+
+# vim: set foldmethod=marker :
