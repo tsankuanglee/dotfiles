@@ -66,6 +66,7 @@ The configs here will be transient until I figure out a smooth workflow, which c
 # TODO
 * git annotation
     * https://github.com/lewis6991/gitsigns.nvim
+    * https://github.com/sindrets/diffview.nvim
 * LSP: DAP
     * https://www.youtube.com/watch?v=4BnVeOUeZxc
     * https://www.youtube.com/watch?v=RziPWdTzSV8
@@ -77,8 +78,15 @@ The configs here will be transient until I figure out a smooth workflow, which c
     * https://github.com/chipsenkbeil/distant.nvim
 * nvim server/client setup
 
-# potential plugins
+# plugins under review
 * https://github.com/stevearc/dressing.nvim
-* nui
+* https://github.com/MunifTanjim/nui.nvim
+* [conmenu: replacing quick-ui?](https://github.com/meznaric/conmenu)
+* [Hydra: Create custom submodes and menus. Easier resizing/scroll](https://github.com/anuvyklack/hydra.nvim)
+* [plenary: All the lua functions I don't want to write twice](https://github.com/nvim-lua/plenary.nvim)
+* https://github.com/windwp/nvim-autopairs
+* https://github.com/ahmedkhalf/project.nvim
+* https://github.com/SmiteshP/nvim-navic
+* https://github.com/b0o/schemastore.nvim
 
 
