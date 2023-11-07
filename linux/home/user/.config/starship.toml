@@ -226,7 +226,8 @@ format = '\[[$symbol$workspace]($style)\]'
 [time]
 disabled = false
 style = "dimmed bg:#151515"
-time_format = '%F %T.%f'
+#time_format = '%F %T.%f'
+time_format = '%F %T'
 format = '[$time]($style)'
 
 [username]
