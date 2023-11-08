@@ -5,3 +5,4 @@ config.sh
 .local/*
 linux/home/user/.config/kitty/current-theme.conf
 linux/home/user/.config/nvim/plugged/
+linux/home/user/.config/nvim.lazy/lazy-lock.json
