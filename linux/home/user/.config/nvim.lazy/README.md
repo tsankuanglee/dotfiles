@@ -88,5 +88,6 @@ The configs here will be transient until I figure out a smooth workflow, which c
 * https://github.com/ahmedkhalf/project.nvim
 * https://github.com/SmiteshP/nvim-navic
 * https://github.com/b0o/schemastore.nvim
+* https://github.com/liangxianzhe/nap.nvim
 
 

@@ -11,7 +11,8 @@ vim.g.maplocalleader = " "
 local km = require("utils").km -- keymap shortcut function
 
 -- nvim config (init.vim or init.lua) edit and reload
-km("n", "<LEADER>ce", "<CMD>e $MYVIMRC<CR>", "edit nvim main config")
+-- km("n", "<LEADER>ce", "<CMD>e $MYVIMRC<CR>", "edit nvim main config")
+km("n", "<LEADER>ce", "<CMD>e ~/.config/nvim<CR>", "edit nvim main config")
 km("n", "<LEADER>cr", "<CMD>source $MYVIMRC<CR>", "reload nvim main config")
 
 -- Save file
@@ -55,10 +56,10 @@ km("n", "<C-4>", "<CMD>tablast<CR>")
 -- defined in colorschemes.lua
 
 -- <LEADER>f file related
-km("n", "<LEADER>fp", "<CMD>let @+=expand('%:p')<CR>", "copy full filepath to clipboard")
+km("n", "<LEADER>Fp", "<CMD>let @+=expand('%:p')<CR>", "copy full filepath to clipboard")
 -- t: filetype
-km("n", "<LEADER>ft0", "<CMD>set filetype=<CR>")
-km("n", "<LEADER>ftc", "<CMD>set filetype=csv<CR>")
+km("n", "<LEADER>Ft0", "<CMD>set filetype=<CR>")
+km("n", "<LEADER>Ftc", "<CMD>set filetype=csv<CR>")
 
 -- <LEADER>L line num/wrap
 km("n", "<LEADER>Lr", function() vim.wo.relativenumber = not vim.wo.relativenumber end, "line number: relative toggle")

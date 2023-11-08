@@ -84,21 +84,22 @@ local mappings = {
   C = { name = "colorscheme" },
   c = { name = "config" },
   e = { name = "Explorer" },
+  f = { name = "Telescope" },
+  F = {
+    name = "file",
+    t = "filetype",
+  },
+  M = { name = "menu" },
   l = {
     name = "LSP",
     s = "symbols",
     g = "diagnostics",
   },
-  M = { name = "menu" },
   L = { name = "line num/wrap" },
   s = { name = "selection/primary paste (reg *)" },
   t = { name = "tab switching" },
   z = { name = "fzf" },
   [":"] = { name = "commands" },
-  f = {
-    name = "file",
-    t = "filetype",
-  },
 }
 
 return {
