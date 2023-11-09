@@ -11,7 +11,7 @@ local hint = [[
        ^^^^^^^                           _4_ ts=sw=8
   _s_ %{spell} spell                     _8_ ts=sw=8
   _d_ %{isidw} ignore diff white spaces  _t_ %{iset} expandtab
-  _p_ %{isp}^^ paste
+  _p_ %{isp}^^ paste                     _M_ %{ismod} modifiable
   ^
           ^^^^        _<Esc>_ _<CR>_
 ]]
@@ -40,6 +40,9 @@ local setup = function()
           end,
           isp = function ()
             if vim.o.paste then return '[✓]' else return '[ ]' end
+          end,
+          ismod = function ()
+            if vim.bo.modifiable then return '[✓]' else return '[ ]' end
           end,
           iset = function ()
             if vim.bo.expandtab then return '[✓]' else return '[ ]' end
@@ -129,10 +132,11 @@ local setup = function()
       { "x", function() vim.bo.filetype = "text" end, { exit = true, desc = "ft=text" }, },
       { "m", function() vim.bo.filetype = "terminal" end, { exit = true, desc = "ft=terminal" }, },
 
-      { "t", function() vim.bo.expandtab = not vim.bo.expandtab end, { exit = false, desc = "expandtab" }, },
       { "2", function() set_ts_sw(2) end, { exit = true, desc = "ts=sw=2" }, },
       { "4", function() set_ts_sw(4) end, { exit = true, desc = "ts=sw=4" }, },
       { "8", function() set_ts_sw(8) end, { exit = true, desc = "ts=sw=8" }, },
+      { "t", function() vim.bo.expandtab = not vim.bo.expandtab end, { exit = false, desc = "expandtab" }, },
+      { "M", function() vim.bo.modifiable = not vim.bo.modifiabl end, { exit = false, desc = "modifiable" }, },
       { "<Esc>", nil, { exit = true } },
       { "<CR>", nil, { exit = true } },
     },

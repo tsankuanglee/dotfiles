@@ -2,8 +2,10 @@ local hint = [[
   ^ ^ Actions
   ^
   _._ replace . with space
+  _t_ terminal
+  _d_ DataViewer (for csv/sqlite, q to quit)
 
-     _<Esc>_ _<CR>_
+      _<ESC>_  _<CR>_
 ]]
 
 local setup = function()
@@ -25,9 +27,11 @@ local setup = function()
     body = "<LEADER>a",
     heads = {
       { ".", cmd("'<,'>s/\\./ /g"), { exit = true, desc = "replace . with space" }, },
+      { "t", cmd("terminal"), { exit = true, desc = ":terminal" }, },
+      { "d", cmd("DataViewer"), { exit = true, desc = ":DataViewer" }, },
 
-      { "<Esc>", nil, { exit = true } },
-      { "<CR>", nil, { exit = true } },
+      { "<ESC>", nil, { exit = true, desc = "close" } },
+      { "<CR>", nil, { exit = true, desc = "close" } },
     },
   })
   -- code
