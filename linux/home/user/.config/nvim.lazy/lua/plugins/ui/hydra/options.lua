@@ -1,19 +1,19 @@
 local hint = [[
-  ^ ^                     Options
+          ^^^^          Options
+
+  _w_ %{wrap}^ wrap                      _u_ utf-8
+  _n_ %{nu}^^^ number                    _N_ ft=
+  _r_ %{rnu}^^ relative number           _c_ ft=csv
+  _l_ %{cul}^^ cursor line               _x_ ft=text
+       ^^^^^^^                           _m_ ft=terminal
+  _v_ %{ve}^^^ virtual edit
+  _i_ %{list}^ invisible characters      _2_ ts=sw=2
+       ^^^^^^^                           _4_ ts=sw=8
+  _s_ %{spell} spell                     _8_ ts=sw=8
+  _d_ %{isidw} ignore diff white spaces  _t_ %{iset} expandtab
+  _p_ %{isp}^^ paste
   ^
-  _w_ %{wrap} wrap                    ^   _u_ utf-8
-  _n_ %{nu} number                    ^^^ _N_ ft=
-  _r_ %{rnu} relative number          ^^  _c_ ft=csv
-  _l_ %{cul} cursor line              ^^  _x_ ft=text
-                                 ^^^^^^^  _m_ ft=terminal
-  _v_ %{ve} virtual edit
-  _i_ %{list} invisible characters     ^  _2_ ts=sw=2
-                                 ^^^^^^^  _4_ ts=sw=8
-  _s_ %{spell} spell                      _8_ ts=sw=8         
-  _d_ %{isidw} ignore diff white spaces   _t_ %{iset} expandtab
-  _p_ %{isp} paste
-  ^
-                     _<Esc>_ _<CR>_
+          ^^^^        _<Esc>_ _<CR>_
 ]]
 
 local function isidiffwhite()
