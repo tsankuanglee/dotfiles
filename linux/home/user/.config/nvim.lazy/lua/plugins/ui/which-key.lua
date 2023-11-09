@@ -90,6 +90,9 @@ local mappings = {
     t = "filetype",
   },
   M = { name = "menu" },
+  N = {
+    name = "NotebookNavigator",
+  },
   l = {
     name = "LSP",
     s = "symbols",
@@ -112,7 +115,7 @@ return {
   end,
   opts = {
     mode = "n", -- NORMAL mode
-    prefix = "<leader>",
+    prefix = "<LEADER>",
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -128,6 +131,7 @@ return {
     km("v", "<s-F1>", "<CMD>WhichKey '' v<CR>", "which-key top menu")
     km("i", "<s-F1>", "<CMD>WhichKey '' i<CR>", "which-key top menu")
     km("c", "<s-F1>", "<CMD>WhichKey '' c<CR>", "which-key top menu")
+
 
   end,
 }

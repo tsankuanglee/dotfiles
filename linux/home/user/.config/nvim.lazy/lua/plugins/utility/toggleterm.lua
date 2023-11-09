@@ -34,9 +34,8 @@ return {
       },
     })
 
-
     local km = require("utils").km -- keymap shortcut function
-    km("n", "<S-q>", "<CMD>TermSelect<CR>")
+    km("n", "<c-S-q>", "<CMD>TermSelect<CR>")
 
     function _G.set_terminal_keymaps()
       local opts = {buffer = 0}
