@@ -17,6 +17,13 @@ return {
     t{"}", ""},
   }),
 
+  s("nvim keymap", {
+    t{
+      'local km = require("utils").km -- keymap shortcut function',
+      '',
+    }
+  }),
+
   s("luasnip imports", {
     t{
       'local ls = require("luasnip")',

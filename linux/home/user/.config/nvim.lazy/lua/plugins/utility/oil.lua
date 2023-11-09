@@ -8,7 +8,7 @@ return {
     require("oil").setup({
       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
       -- Set to false if you still want to use netrw.
-      default_file_explorer = true,
+      default_file_explorer = false,
       -- Id is automatically added at the beginning, and name at the end
       -- See :help oil-columns
       columns = {
@@ -45,6 +45,9 @@ return {
       -- You can set the delay to false to disable cleanup entirely
       -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
       cleanup_delay_ms = 2000,
+
+      -- set to false to customize below
+      use_default_keymaps = true,
       -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
       -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
       -- Additionally, if it is a string that matches "actions.<name>",
@@ -68,8 +71,6 @@ return {
         ["gx"] = "actions.open_external",
         ["g."] = "actions.toggle_hidden",
       },
-      -- Set to false to disable all of the above keymaps
-      use_default_keymaps = true,
       view_options = {
         -- Show files and directories that start with "."
         show_hidden = true,
@@ -137,10 +138,11 @@ return {
       },
     })
     local km = require("utils").km -- keymap shortcut function
-    km("n", "<leader><leader>", "<CMD>Oil .<CR>", "Oil explorer: open current folder")
-    km("n", "<leader>ee", "<CMD>Oil .<CR>", "Oil explorer: open current folder")
+    -- km("n", "<leader><leader>", "<CMD>Oil .<CR>", "Oil explorer: open current folder in the same window")
+    km("n", "<leader>ee", "<CMD>Oil .<CR>", "Oil explorer: open current folder in the same window")
     km("n", "<leader>er", "<CMD>vsplit | wincmd l | Oil .<CR>", "Oil explorer: open current folder on the right)")
     km("n", "<leader>ew", "<CMD>vsplit | wincmd r | Oil .<CR>", "Oil explorer: open current folder on the left")
+    km("n", "<leader>es", "<CMD>split | wincmd j | Oil .<CR>", "Oil explorer: open current folder on the bottom")
     km("n", "<leader>ef", "<CMD>Oil --float .<CR>", "Oil explorer: open current folder float")
   end,
 }
