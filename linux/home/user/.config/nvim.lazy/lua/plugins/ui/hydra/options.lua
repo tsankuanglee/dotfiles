@@ -5,12 +5,12 @@ local hint = [[
   _n_ %{nu} number                    ^^^ _N_ ft=
   _r_ %{rnu} relative number          ^^  _c_ ft=csv
   _l_ %{cul} cursor line              ^^  _x_ ft=text
-                                                      
-  _v_ %{ve} virtual edit             ^^^  _2_ ts=sw=2
-  _i_ %{list} invisible characters    ^   _4_ ts=sw=4
-                                 ^^^^^^^  _8_ ts=sw=8
-  _s_ %{spell} spell                      _t_ %{iset} expandtab
-  _d_ %{isidw} ignore diff white spaces
+                                 ^^^^^^^  _m_ ft=terminal
+  _v_ %{ve} virtual edit
+  _i_ %{list} invisible characters     ^  _2_ ts=sw=2
+                                 ^^^^^^^  _4_ ts=sw=8
+  _s_ %{spell} spell                      _8_ ts=sw=8         
+  _d_ %{isidw} ignore diff white spaces   _t_ %{iset} expandtab
   _p_ %{isp} paste
   ^
                      _<Esc>_ _<CR>_
@@ -127,6 +127,7 @@ local setup = function()
       { "N", function() vim.bo.filetype = "" end, { exit = true, desc = "ft=" }, },
       { "c", function() vim.bo.filetype = "csv" end, { exit = true, desc = "ft=csv" }, },
       { "x", function() vim.bo.filetype = "text" end, { exit = true, desc = "ft=text" }, },
+      { "m", function() vim.bo.filetype = "terminal" end, { exit = true, desc = "ft=terminal" }, },
 
       { "t", function() vim.bo.expandtab = not vim.bo.expandtab end, { exit = false, desc = "expandtab" }, },
       { "2", function() set_ts_sw(2) end, { exit = true, desc = "ts=sw=2" }, },
