@@ -46,7 +46,6 @@ function M.index(seq, elem)
   for i, v in ipairs(seq) do
     if v == elem then return i end
   end
-
   return nil
 end
 
