@@ -138,11 +138,13 @@ return {
       },
     })
     local km = require("utils").km -- keymap shortcut function
-    -- km("n", "<leader><leader>", "<CMD>Oil .<CR>", "Oil explorer: open current folder in the same window")
+    km("n", "<leader><leader>", "<CMD>Oil .<CR>", "Oil explorer: open current folder in the same window")
     km("n", "<leader>ee", "<CMD>Oil .<CR>", "Oil explorer: open current folder in the same window")
     km("n", "<leader>er", "<CMD>vsplit | wincmd l | Oil .<CR>", "Oil explorer: open current folder on the right)")
     km("n", "<leader>ew", "<CMD>vsplit | wincmd r | Oil .<CR>", "Oil explorer: open current folder on the left")
-    km("n", "<leader>es", "<CMD>split | wincmd j | Oil .<CR>", "Oil explorer: open current folder on the bottom")
+    km("n", "<leader>e3", "<CMD>split | wincmd k | Oil .<CR>", "Oil explorer: open current folder on the top")
+    km("n", "<leader>ed", "<CMD>split | wincmd j | Oil .<CR>", "Oil explorer: open current folder on the bottom")
     km("n", "<leader>ef", "<CMD>Oil --float .<CR>", "Oil explorer: open current folder float")
+    km("n", "<leader>en", "<CMD>Explore .<CR>", "netrw Explore .")
   end,
 }
