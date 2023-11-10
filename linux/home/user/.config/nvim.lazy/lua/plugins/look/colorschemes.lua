@@ -10,14 +10,18 @@ km("n", "<LEADER>Cj", "<CMD>colorscheme jellybeans<CR>")
 km("n", "<LEADER>Cm", "<CMD>colorscheme molokai<CR>")
 
 vim.opt.termguicolors = true -- true color support
-local reset_white_space_coloring = function ()
+
+-- reset ExtraWhitespace coloring after each ColorScheme change
+local augroup = vim.api.nvim_create_augroup("ResetWhiteSpaceColoring", { clear = true })
+local set_extra_white_space_colors = function()
   vim.cmd([[
-  highlight NonText ctermfg=16 guifg=#4a4a59
-  highlight SpecialKey ctermfg=16 guifg=#4a4a59
-  highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-  match ExtraWhitespace /\s\+$\|\t/
-]])
+      highlight NonText ctermfg=16 guifg=#4a4a59
+      highlight SpecialKey ctermfg=16 guifg=#4a4a59
+      highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+      match ExtraWhitespace /\s\+$\|\t/
+      ]])
 end
+vim.api.nvim_create_autocmd("ColorScheme", { group = augroup, callback = set_extra_white_space_colors, })
 
 local M = {
   {
@@ -31,7 +35,6 @@ local M = {
       vim.g.solarized_diffmode = "high"
 
       vim.cmd([[colorscheme solarized]])
-      reset_white_space_coloring()
     end,
   },
   {
@@ -53,7 +56,6 @@ local M = {
         --end
       })
       vim.cmd([[colorscheme tokyonight]])
-      reset_white_space_coloring()
     end,
   },
   {
@@ -61,8 +63,7 @@ local M = {
     lazy = true,
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme gruvbox]]) 
-      reset_white_space_coloring()
+      vim.cmd([[colorscheme gruvbox]])
     end,
   },
   {
@@ -103,7 +104,6 @@ local M = {
     },
     config = function()
       vim.cmd([[colorscheme catppuccin]])
-      reset_white_space_coloring()
     end,
   },
 
@@ -117,7 +117,6 @@ local M = {
         Search = { guifg = "000000", guibg = "FFE792", ctermfg = "", ctermbg = "", attr = "" },
       }
       vim.cmd([[colorscheme jellybeans]])
-      reset_white_space_coloring()
     end,
   },
   {
@@ -126,7 +125,6 @@ local M = {
     priority = 1000,
     config = function()
       vim.cmd([[colorscheme molokai]])
-      reset_white_space_coloring()
     end,
   },
 }

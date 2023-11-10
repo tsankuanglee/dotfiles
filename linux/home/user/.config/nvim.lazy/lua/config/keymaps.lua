@@ -39,6 +39,7 @@ km("n", "<c-tab>", "<CMD>bn<CR>")
 km("n", "<c-s-tab>", "<CMD>bp<CR>")
 
 -- <LEADER>t tab functions
+km("n", "<LEADER>ts", "<CMD>tab split<CR>", "split current window into a new tab")
 km("n", "<LEADER>tt", "<CMD>tabnew<CR>")
 km("n", "<LEADER>tc", "<CMD>tabclose<CR>")
 km("n", "<LEADER>to", "<CMD>tabonly<CR>")

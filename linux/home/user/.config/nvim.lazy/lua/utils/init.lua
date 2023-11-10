@@ -49,6 +49,13 @@ function M.index(seq, elem)
   return nil
 end
 
+-- table length
+function M.tablelength(T)
+  local count = 0
+  for _ in pairs(T) do count = count + 1 end
+  return count
+end
+
 function M.toggle_option_var_element(opt_var, element_value)
   local v = opt_var:get()
   local i = self.index(v, element_value)

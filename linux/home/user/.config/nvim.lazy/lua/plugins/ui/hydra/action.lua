@@ -2,6 +2,7 @@ local hint = [[
   ^ ^ Actions
   ^
   _._ replace . with space
+  _$_ trim file's trailing \\s
   _t_ terminal
   _d_ DataViewer (for csv/sqlite, q to quit)
 
@@ -27,6 +28,7 @@ local setup = function()
     body = "<LEADER>a",
     heads = {
       { ".", cmd("'<,'>s/\\./ /g"), { exit = true, desc = "replace . with space" }, },
+      { "$", cmd("%s/\\s\\+$//g"), { exit = true, desc = "trim file's trailing \\s*" }, },
       { "t", cmd("terminal"), { exit = true, desc = ":terminal" }, },
       { "d", cmd("DataViewer"), { exit = true, desc = ":DataViewer" }, },
 
