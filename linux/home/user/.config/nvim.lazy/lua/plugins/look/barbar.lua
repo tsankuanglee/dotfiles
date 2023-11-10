@@ -2,7 +2,9 @@
 local reset_barbar_hi = function()
   -- " vim.api.nvim_set_hl(0, "BufferCurrent", { underline = true })
   vim.cmd([[
-    highlight BufferCurrent gui=underline
+    highlight BufferVisible guifg=#c0caf5 guibg=#16161e
+    highlight BufferCurrent guifg=#ffffff guibg=#000000 gui=bold
+    "highlight BufferCurrent guifg=#ffffff guibg=#000000 gui=bold,underline
   ]])
 end
 
@@ -20,7 +22,7 @@ return {
       -- if g.barbar_auto_setup, lazy.nvim automatically calls setup with options here
       -- Don't use this. Directly set it up below in bb.setup
     },
-    config = function(_, opts)
+    config = function(_, _)
       local bb = require("barbar")
 
       local augroup = vim.api.nvim_create_augroup("reset_barbar_hi", { clear = true })
