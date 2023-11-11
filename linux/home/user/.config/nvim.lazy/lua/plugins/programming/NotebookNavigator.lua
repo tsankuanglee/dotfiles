@@ -1,4 +1,5 @@
 -- send NotbookCell to code runner
+-- <LEADER>NH
 return {
   "GCBallesteros/NotebookNavigator.nvim",
   keys = {
@@ -23,30 +24,35 @@ return {
     local nn = require("notebook-navigator")
     nn.setup({
       activate_hydra_keys = "<LEADER>Nh",
-      show_hydra_hint = false,
+      show_hydra_hint = false, -- show a popup if true
 
-      -- hydra_keys = {
-      --   comment = "c",
-      --   run = "X",
-      --   run_and_move = "x",
-      --   move_up = "k",
-      --   move_down = "j",
-      --   add_cell_before = "a",
-      --   add_cell_after = "b",
-      -- },
+      -- change to match jupyter default
+      hydra_keys = {
+        comment = "C",
+        -- run = "X",
+        run = "<c-CR>",
+        -- run_and_move = "x",
+        run_and_move = "<s-CR>",
+        move_up = "k",
+        move_down = "j",
+        add_cell_before = "A",
+        add_cell_after = "B",
+      },
 
       repl_provider = "auto", -- iron | toggleterm | auto
       cell_markers = {
-        python = "# %%",
-        lua = "-- %%",
-        julia = "# %%",
+        bash = "# %%",
         fennel = ";; %%",
-        r = "# %%",
+        julia = "# %%",
+        lua = "-- %%",
         matlab = "% %%",
+        python = "# %%",
+        r = "# %%",
+        sh = "# %%",
       },
       -- Syntax based highlighting. If you don't want to install mini.hipattners or
       -- enjoy a more minimalistic look
-      syntax_highlight = false,
+      syntax_highlight = true,
       -- (Optional) for use with `mini.hipatterns` to highlight cell markers
       cell_highlight_group = "Folded",
     })
