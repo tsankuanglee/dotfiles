@@ -99,7 +99,7 @@ local mappings = {
     g = "diagnostics",
   },
   L = { name = "line num/wrap" },
-  s = { name = "selection/primary paste (reg *)" },
+  s = { name = "sessions; reg * (primary/select)" },
   t = { name = "tab switching" },
   z = { name = "fzf" },
   [":"] = { name = "commands" },
