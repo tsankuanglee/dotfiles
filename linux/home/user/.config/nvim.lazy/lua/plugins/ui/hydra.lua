@@ -1,12 +1,14 @@
 -- Create custom submodes and menus
 return {
-  "anuvyklack/hydra.nvim",
+  --"anuvyklack/hydra.nvim",
+  "tsankuanglee/hydra.nvim",
+  branch = "pass_along_body",
   -- event = "VeryLazy",
   config = function ()
     require("plugins.ui.hydra.sidescroll").setup()
     require("plugins.ui.hydra.options").setup()
     require("plugins.ui.hydra.action").setup()
+    require("plugins.ui.hydra.window").setup()
     -- require("buffer")
-    -- require("window")
   end,
 }

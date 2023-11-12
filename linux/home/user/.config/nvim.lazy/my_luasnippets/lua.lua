@@ -9,6 +9,8 @@ return {
     t"-- ", i(1, "summary of plugin"), t({"",""}),
     t{"return {", ""},
     t"  \"", i(2, "pluginAddress"), t{"\",",""},
+    t{"  lazy = true,",""},
+    t{"  event = {\"VeryLazy\"},",""},
     t{"  config = function()", ""},
     t"    local ", i(3, "pluginName"), t" = require(\"", i(4, "moduleName"), t{"\")", ""},
     t"    ", i(0),

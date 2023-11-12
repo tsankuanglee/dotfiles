@@ -23,6 +23,7 @@ local buffer_hydra = Hydra({
     --
     -- { 'od', function() vim.cmd('BufferOrderByDirectory') end, { desc = 'by directory' } },
     -- { 'ol', function() vim.cmd('BufferOrderByLanguage') end,  { desc = 'by language' } },
+    -- { "b", choose_buffer, { exit = true, desc = "choose buffer" } },
     { "<Esc>", nil, { exit = true } },
   },
 })

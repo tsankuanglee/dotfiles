@@ -3,15 +3,18 @@ local hint = [[
 
   _w_ %{wrap}^ wrap                      _u_ utf-8
   _n_ %{nu}^^^ number                    _N_ ft=
-  _r_ %{rnu}^^ relative number           _c_ ft=csv
+  _r_ %{rnu}^^ relative number           _C_ ft=csv
   _l_ %{cul}^^ cursor line               _x_ ft=text
-       ^^^^^^^                           _m_ ft=terminal
+  _c_ %{cuc}^^ cursor column             _m_ ft=terminal
   _v_ %{ve}^^^ virtual edit
   _i_ %{list}^ invisible characters      _2_ ts=sw=2
-       ^^^^^^^                           _4_ ts=sw=8
-  _s_ %{spell} spell                     _8_ ts=sw=8
-  _d_ %{isidw} ignore diff white spaces  _t_ %{iset} expandtab
-  _p_ %{isp}^^ paste                     _M_ %{ismod} modifiable
+       ^^^^^^^                           _3_ ts=sw=3
+  _s_ %{spell} spell                     _4_ ts=sw=8
+  _d_ %{isidw} ignore diff white spaces  _8_ ts=sw=8
+  _D_ %{isdif} diff                      _t_ %{iset} expandtab
+  _H_ %{ishls} hlsearch
+  _I_ %{isic}^ ignore case               _p_ %{isp}^^ paste
+  _M_ %{ismod} modifiable
   ^
           ^^^^        _<Esc>_ _<CR>_
 ]]
@@ -35,6 +38,9 @@ local setup = function()
       invoke_on_body = true,
       hint = {
         funcs = {
+          cuc = function ()
+            if vim.wo.cursorcolumn then return '[✓]' else return '[ ]' end
+          end,
           isidw = function ()
             if isidiffwhite() then return '[✓]' else return '[ ]' end
           end,
@@ -46,6 +52,15 @@ local setup = function()
           end,
           iset = function ()
             if vim.bo.expandtab then return '[✓]' else return '[ ]' end
+          end,
+          isic = function ()
+            if vim.o.ignorecase then return '[✓]' else return '[ ]' end
+          end,
+          isdif = function ()
+            if vim.wo.diff then return '[✓]' else return '[ ]' end
+          end,
+          ishls = function ()
+            if vim.o.hlsearch then return '[✓]' else return '[ ]' end
           end,
         },
         border = "rounded",
@@ -124,19 +139,24 @@ local setup = function()
         { desc = "wrap" },
       },
       { "l", function() vim.o.cursorline = not vim.o.cursorline end, { desc = "cursor line" }, },
+      { "c", function() vim.wo.cursorcolumn = not vim.wo.cursorcolumn end, { desc = "cursor column" }, },
       { "p", function() vim.o.paste = not vim.o.paste end, { desc = "paste" }, },
 
       { "u", function() vim.bo.fileencoding = "utf8" end, { exit = true, desc = "fileencoding=utf8" }, },
       { "N", function() vim.bo.filetype = "" end, { exit = true, desc = "ft=" }, },
-      { "c", function() vim.bo.filetype = "csv" end, { exit = true, desc = "ft=csv" }, },
+      { "C", function() vim.bo.filetype = "csv" end, { exit = true, desc = "ft=csv" }, },
       { "x", function() vim.bo.filetype = "text" end, { exit = true, desc = "ft=text" }, },
       { "m", function() vim.bo.filetype = "terminal" end, { exit = true, desc = "ft=terminal" }, },
 
       { "2", function() set_ts_sw(2) end, { exit = true, desc = "ts=sw=2" }, },
+      { "3", function() set_ts_sw(3) end, { exit = true, desc = "ts=sw=3" }, },
       { "4", function() set_ts_sw(4) end, { exit = true, desc = "ts=sw=4" }, },
       { "8", function() set_ts_sw(8) end, { exit = true, desc = "ts=sw=8" }, },
       { "t", function() vim.bo.expandtab = not vim.bo.expandtab end, { exit = false, desc = "expandtab" }, },
-      { "M", function() vim.bo.modifiable = not vim.bo.modifiabl end, { exit = false, desc = "modifiable" }, },
+      { "M", function() vim.bo.modifiable = not vim.bo.modifiable end, { exit = false, desc = "modifiable" }, },
+      { "I", function() vim.o.ignorecase = not vim.o.ignorecas end, { exit = false, desc = "ignorecase" }, },
+      { "D", function() vim.wo.diff = not vim.wo.diff end, { exit = false, desc = "diff" }, },
+      { "H", function() vim.o.hlsearch = not vim.o.hlsearch end, { exit = false, desc = "hlsearch" }, },
       { "<Esc>", nil, { exit = true } },
       { "<CR>", nil, { exit = true } },
     },
