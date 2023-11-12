@@ -1,5 +1,7 @@
 -- automatically highlighting other uses of the word under the cursor
 -- using either LSP, Tree-sitter, or regex matching
+-- You'll also get <a-n> and <a-p> as keymaps to move between references 
+-- and <a-i> as a textobject for the reference illuminated under the cursor.
 return {
   "RRethy/vim-illuminate",
   lazy = true,
