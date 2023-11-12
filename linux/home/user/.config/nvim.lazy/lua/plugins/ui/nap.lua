@@ -13,7 +13,11 @@ return {
     })
     -- To remove a default operator
     --nap.map("a", false)
-    -- overwrite
+
+    -- overwrite with external tools
     nap.map("c", nap.gitsigns())
+    nap.map('o', nap.aerial())
+    nap.map('r', nap.illuminate())
+
   end,
 }

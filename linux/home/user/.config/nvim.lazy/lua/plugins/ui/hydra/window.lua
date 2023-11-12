@@ -1,13 +1,13 @@
 local window_hint = [[
 Window management (*=factory setting)
 
- *focus: -h--j--k--l-
- *move far: -H--J--K--L-
+ *focus: hjkl
+ *move far: HJKL
   move one: _<LEFT>__<DOWN>__<UP>__<RIGHT>_
    continuously: _<S-LEFT>__<S-DOWN>__<S-UP>__<S-RIGHT>_
- *resize one: -<-----+-->-
+ *resize one: <-+>
    continuously: _<C-h>__<C-j>__<C-k>__<C-l>_
- *-s-plit, -v-split, -o-nly, -c-lose, -=-equalize - maximize
+ all other builtin CTRL-W commands still work 
 ]]
 
 local setup = function()
@@ -17,7 +17,7 @@ local setup = function()
     name = "Window Management",
     hint = window_hint,
     config = {
-      invoke_on_body = true,
+      invoke_on_body = false,
       hint = {
         border = "rounded",
         offset = -1,
@@ -87,7 +87,8 @@ local setup = function()
       { "<C-c>", pcmd("close", "E444"), { exit = true, desc = false } },
       { "<C-q>", pcmd("close", "E444"), { exit = true, desc = false } }, ]]
 
-      { "<Esc>", nil, { exit = true, desc = false } },
+      { "<SPACE>", nil, { exit = false, desc = "show menu"} },
+      { "<Esc>", nil, { exit = true, desc = "close menu"} },
     },
   })
 end
