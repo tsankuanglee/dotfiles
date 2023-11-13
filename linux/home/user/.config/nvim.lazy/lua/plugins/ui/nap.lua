@@ -1,7 +1,8 @@
 -- nap: next and previous; a cleaner version of vim unimpaired
 return {
   "liangxianzhe/nap.nvim",
-  lazy = false, -- read early so others can overwrite
+  lazy = true,
+  event = { "VeryLazy" },
   config = function()
     local nap = require("nap")
     -- The provided implementation falls back to ]c [c in diff mode.

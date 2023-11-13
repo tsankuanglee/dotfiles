@@ -17,10 +17,14 @@ return {
         },
       },
     })
+
+    telescope.load_extension("aerial")
+
     local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<LEADER>ff", builtin.find_files, {})
-    vim.keymap.set("n", "<LEADER>fg", builtin.live_grep, {})
-    vim.keymap.set("n", "<LEADER>fb", builtin.buffers, {})
-    vim.keymap.set("n", "<LEADER>fh", builtin.help_tags, {})
+    local km = require("utils").km -- keymap shortcut function
+    km("n", "<LEADER>ff", builtin.find_files, "[Telescope] find_files")
+    km("n", "<LEADER>fg", builtin.live_grep,"[Telescope] live_grep")
+    km("n", "<LEADER>fb", builtin.buffers,"[Telescope] buffers")
+    km("n", "<LEADER>fh", builtin.help_tags,"[Telescope] help_tags")
   end,
 }
