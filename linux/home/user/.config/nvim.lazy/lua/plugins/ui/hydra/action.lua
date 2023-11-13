@@ -31,12 +31,12 @@ local setup = function()
     mode = { "n", "x" },
     body = "<LEADER>a",
     heads = {
-      { ".", cmd("'<,'>s/\\./ /g"), { exit = true, desc = "replace . with space" }, },
-      { "$", cmd("%s/\\s\\+$//g"), { exit = true, desc = "trim file's trailing \\s*" }, },
-      { "t", cmd("terminal"), { exit = true, desc = ":terminal" }, },
-      { "a", cmd("AerialToggle!"), { exit = true, desc = ":AerialToggle!" }, },
-      { "A", cmd("AerialNavToggle"), { exit = true, desc = ":AerialNavToggle" }, },
-      { "d", cmd("DataViewer"), { exit = true, desc = ":DataViewer" }, },
+      { ".", cmd("'<,'>s/\\./ /g"), { exit = true, desc = "replace . with space" } },
+      { "$", cmd("%s/\\s\\+$//g"), { exit = true, desc = "trim file's trailing \\s*" } },
+      { "t", cmd("terminal"), { exit = true, desc = ":terminal" } },
+      { "a", cmd("AerialToggle!"), { exit = true, desc = ":AerialToggle!" } },
+      { "A", cmd("AerialNavToggle"), { exit = true, desc = ":AerialNavToggle" } },
+      { "d", cmd("DataViewer"), { exit = true, desc = ":DataViewer" } },
 
       { "<ESC>", nil, { exit = true, desc = "close" } },
       { "<CR>", nil, { exit = true, desc = "close" } },
@@ -48,4 +48,3 @@ end
 return {
   setup = setup,
 }
-
