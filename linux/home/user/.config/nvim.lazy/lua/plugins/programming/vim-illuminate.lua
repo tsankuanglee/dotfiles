@@ -28,7 +28,7 @@ return {
       -- under_cursor: whether or not to illuminate under the cursor
       under_cursor = true,
       -- min_count_to_highlight: minimum number of matches required to perform highlighting
-      min_count_to_highlight = 1,
+      min_count_to_highlight = 2,
     })
 
     -- change highlight and register autocmd for colorscheme change

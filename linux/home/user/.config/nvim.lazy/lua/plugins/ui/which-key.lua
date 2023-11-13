@@ -103,6 +103,10 @@ local mappings = {
   t = { name = "tab switching" },
   z = { name = "fzf" },
   [":"] = { name = "commands" },
+  [vim.g.maplocalleader] = {
+    name = "LOCALLEADER",
+    f = "flash commands",
+  },
 }
 
 return {
