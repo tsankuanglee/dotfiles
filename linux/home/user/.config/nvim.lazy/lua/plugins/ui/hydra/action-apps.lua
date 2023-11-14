@@ -1,3 +1,4 @@
+-- actions and apps
 local hint = [[
   ^ ^ Actions
   ^
@@ -9,6 +10,9 @@ local hint = [[
   _a_ AerialToggle!
   _A_ AerialNavToggle
   _d_ DataViewer (for csv/sqlite, q to quit)
+
+  _L_ Lazy
+  _M_ Mason
 
       _<ESC>_  _<CR>_
 ]]
@@ -37,6 +41,9 @@ local setup = function()
       { "a", cmd("AerialToggle!"), { exit = true, desc = ":AerialToggle!" } },
       { "A", cmd("AerialNavToggle"), { exit = true, desc = ":AerialNavToggle" } },
       { "d", cmd("DataViewer"), { exit = true, desc = ":DataViewer" } },
+
+      { "L", cmd("Lazy"), { exit = true, desc = ":Lazy" } },
+      { "M", cmd("Mason"), { exit = true, desc = ":Mason" } },
 
       { "<ESC>", nil, { exit = true, desc = "close" } },
       { "<CR>", nil, { exit = true, desc = "close" } },

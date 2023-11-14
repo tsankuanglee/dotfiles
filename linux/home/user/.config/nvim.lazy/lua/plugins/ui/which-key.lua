@@ -108,6 +108,7 @@ local leader_mappings = {
 
 local localleader_mappings = {
   name = "<LOCALLEADER>",
+  d = { name = "DAP" },
   j = { name = "TreeSJ" },
 }
 

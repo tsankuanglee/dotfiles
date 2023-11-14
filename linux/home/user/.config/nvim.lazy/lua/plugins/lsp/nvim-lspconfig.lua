@@ -56,7 +56,6 @@ return {
     km("n", "<LEADER>lh", vim.lsp.buf.hover, "hover/help")
 
     km("n", "<LEADER>lR", vim.lsp.buf.rename, "refactor/rename")
-    -- km("n", "<F2>", vim.lsp.buf.rename, "refactor/rename")
 
     km("n", "<LEADER>lc", vim.lsp.buf.code_action, "code_action")
 

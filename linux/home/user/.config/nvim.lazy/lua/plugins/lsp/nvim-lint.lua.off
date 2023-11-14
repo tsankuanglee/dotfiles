@@ -31,3 +31,5 @@ return {
     end, "lint for current file")
   end,
 }
+
+-- vim: ft=lua :

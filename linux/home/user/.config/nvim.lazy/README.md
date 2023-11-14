@@ -64,15 +64,18 @@ The configs here will be transient until I figure out a smooth workflow, which c
 ```
 
 # TODO
+* AI
+    * https://github.com/Robitx/gp.nvim
+    * https://github.com/terror/chatgpt.nvim
 * git annotation
     * https://github.com/sindrets/diffview.nvim
 * LSP: DAP
-    * https://www.youtube.com/watch?v=4BnVeOUeZxc
-    * https://www.youtube.com/watch?v=RziPWdTzSV8
-    * https://github.com/mfussenegger/nvim-dap
-    * https://github.com/rcarriga/nvim-dap-ui
-    * https://github.com/mfussenegger/nvim-dap-python
-* remote/container dev
+    * https://github.com/nvim-neotest/neotest
+* keys https://github.com/rockerBOO/awesome-neovim#keybinding
+    * https://github.com/mrjones2014/legendary.nvim
+    * https://github.com/FeiyouG/commander.nvim
+
+* remote/container dev https://github.com/rockerBOO/awesome-neovim#remote-development
     * https://github.com/jamestthompson3/nvim-remote-containers
     * https://github.com/chipsenkbeil/distant.nvim
 * nvim server/client setup
@@ -81,8 +84,9 @@ The configs here will be transient until I figure out a smooth workflow, which c
 * https://github.com/stevearc/dressing.nvim
 * https://github.com/MunifTanjim/nui.nvim
 * https://github.com/windwp/nvim-autopairs
-* https://github.com/ahmedkhalf/project.nvim
-* https://github.com/SmiteshP/nvim-navic
 * https://github.com/b0o/schemastore.nvim
+* [provide immediate navigation to important files](https://github.com/cbochs/grapple.nvim)
+* [A simple statusline/winbar component that uses LSP to show your current code context.](https://github.com/SmiteshP/nvim-navic)
+* [IDE-like breadcrumbs, out of the box](https://github.com/Bekaboo/dropbar.nvim)
 
 

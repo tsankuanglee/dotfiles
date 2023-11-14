@@ -69,9 +69,9 @@ return {
       incremental_selection = { -- Incremental selection based on the named nodes from the grammar.
         enable = true,
         keymaps = {
-          init_selection = "<F5>", -- set to `false` to disable one of the mappings
+          init_selection = "<F2>", -- set to `false` to disable one of the mappings
           -- the following ones are only effective when there's a selection
-          scope_incremental = "<F4>", -- for some reason SHIFT doesn't work
+          scope_incremental = "<F14>", -- = <s-F2> in terminal
           node_incremental = "<F3>",
           node_decremental = "<S-F3>",
         },
