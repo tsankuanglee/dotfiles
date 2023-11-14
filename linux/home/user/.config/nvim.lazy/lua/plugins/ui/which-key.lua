@@ -78,7 +78,8 @@ local setup = {
   },
 }
 
-local mappings = {
+local leader_mappings = {
+  name = "<LEADER>",
   -- we don't define the keys here, but it's helpful to give group names and prompts
   b = { name = "buffer switching" },
   C = { name = "colorscheme" },
@@ -103,10 +104,11 @@ local mappings = {
   t = { name = "tab switching" },
   z = { name = "fzf" },
   [":"] = { name = "commands" },
-  [vim.g.maplocalleader] = {
-    name = "LOCALLEADER",
-    f = "flash commands",
-  },
+}
+
+local localleader_mappings = {
+  name = "<LOCALLEADER>",
+  j = { name = "TreeSJ" },
 }
 
 return {
@@ -119,7 +121,8 @@ return {
   end,
   opts = {
     mode = "n", -- NORMAL mode
-    prefix = "<LEADER>",
+    -- to be overwritten later
+    --prefix = "<LEADER>",
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -128,14 +131,22 @@ return {
   config = function(_, opts)
     local wk = require("which-key")
     wk.setup(setup)
-    wk.register(mappings, opts)
+    local leader_opts = vim.tbl_deep_extend("force", opts, { prefix = "<LEADER>" })
+    wk.register(leader_mappings, leader_opts)
+    local localleader_opts = vim.tbl_deep_extend("force", opts, { prefix = "<LOCALLEADER>" })
+    wk.register(localleader_mappings, localleader_opts)
 
     local km = require("utils").km -- keymap shortcut function
+    -- gui can receive S-Function keys
     km("n", "<s-F1>", "<CMD>WhichKey<CR>", "which-key top menu")
     km("v", "<s-F1>", "<CMD>WhichKey '' v<CR>", "which-key top menu")
     km("i", "<s-F1>", "<CMD>WhichKey '' i<CR>", "which-key top menu")
     km("c", "<s-F1>", "<CMD>WhichKey '' c<CR>", "which-key top menu")
 
-
+    -- Terminal emulators interprets S-Function keys as F13, F14, etc.
+    km("n", "<F13>", "<CMD>WhichKey<CR>", "which-key top menu")
+    km("v", "<F13>", "<CMD>WhichKey '' v<CR>", "which-key top menu")
+    km("i", "<F13>", "<CMD>WhichKey '' i<CR>", "which-key top menu")
+    km("c", "<F13>", "<CMD>WhichKey '' c<CR>", "which-key top menu")
   end,
 }

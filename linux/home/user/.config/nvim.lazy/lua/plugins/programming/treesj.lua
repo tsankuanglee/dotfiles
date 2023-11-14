@@ -8,6 +8,8 @@ return {
       use_default_keymaps = false,
     })
     local km = require("utils").km -- keymap shortcut function
-      km('n', '<LOCALLEADER>j', require('treesj').toggle, "TreeSJ split-join toggle")
+      km('n', '<LOCALLEADER>jt', require('treesj').toggle, "TreeSJ toggle")
+      km('n', '<LOCALLEADER>jj', require('treesj').join, "TreeSJ join")
+      km('n', '<LOCALLEADER>js', require('treesj').split, "TreeSJ split")
   end,
 }
