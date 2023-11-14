@@ -33,5 +33,8 @@ return {
 
     -- change highlight and register autocmd for colorscheme change
     auto_highlight_change()()
+
+    local km = require("utils").km -- keymap shortcut function
+    km("n", "<LOCALLEADER>I", function () require('illuminate').toggle_visibility_buf() end, "[vim-illuminate] toggle visibility")
   end,
 }

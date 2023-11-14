@@ -110,6 +110,7 @@ local localleader_mappings = {
   name = "<LOCALLEADER>",
   d = { name = "DAP" },
   j = { name = "TreeSJ" },
+  m = { name = "MultiCursors" },
 }
 
 return {
