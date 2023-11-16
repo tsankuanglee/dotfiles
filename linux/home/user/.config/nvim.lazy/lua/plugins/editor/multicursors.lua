@@ -1,5 +1,5 @@
---
-
+-- multicursors
+-- "<LOCALLEADER>mc" to start the main cursor, then use arrow keys (not hjkl) to move around, and use <C-N> to mark more cursors
 return {
   "smoka7/multicursors.nvim",
   dependencies = {
@@ -31,20 +31,14 @@ return {
     local mc = require("multicursors")
     mc.setup({})
 
-    -- custom highlight
-    local auto_highlight_change = function()
-      -- reset highlighting after each ColorScheme change
-      local augroup = vim.api.nvim_create_augroup("multicursors", { clear = false })
-      local change_highlight = function()
+    require("utils").run_and_register_highlight_change(
+      "multicursors",
+      function()
         vim.cmd([[
           highlight MultiCursor     guifg=#000000 guibg=#aaaaaa
           highlight MultiCursorMain guifg=#000000 guibg=#ffffff
-        ]])
+          ]])
       end
-      vim.api.nvim_create_autocmd("ColorScheme", { group = augroup, callback = change_highlight })
-      return change_highlight
-    end
-    auto_highlight_change()()
-
+    )
   end,
 }

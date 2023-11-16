@@ -69,28 +69,11 @@ function M.toggle_option_var_element(opt_var, element_value)
   opt_var = v
 end
 
-vim.cmd([[
-" utils.vim
-" various custom functions
-"
-" relative numbering help function
-function! RelativeNumberToggle()
-  if(&relativenumber == 1)
-    set number
-    set nornu
-  else
-    set number
-    set rnu
-  endif
-endfunc
-
-function! DiffIngoreAllWhiteSpaceToggle()
-  if(&diffopt =~ 'iwhiteall')
-    set diffopt-=iwhiteall
-  else
-    set diffopt+=iwhiteall
-  endif
-endfunction
-]])
+function M.run_and_register_highlight_change(group_name, fn_change_highlight)
+  -- register highlight changes after each ColorScheme change
+  local augroup = vim.api.nvim_create_augroup(group_name, { clear = false })
+  vim.api.nvim_create_autocmd("ColorScheme", { group = augroup, callback = fn_change_highlight })
+  fn_change_highlight()
+end
 
 return M

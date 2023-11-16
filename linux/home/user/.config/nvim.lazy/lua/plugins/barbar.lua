@@ -1,4 +1,13 @@
 -- top bar line
+local reset_barbar_hi = function()
+  -- " vim.api.nvim_set_hl(0, "BufferCurrent", { underline = true })
+  vim.cmd([[
+    highlight BufferVisible guifg=#c0caf5 guibg=#16161e
+    highlight BufferCurrent guifg=#ffffff guibg=#000000 gui=bold
+    "highlight BufferCurrent guifg=#ffffff guibg=#000000 gui=bold,underline
+  ]])
+end
+
 return {
   {
     "romgrk/barbar.nvim",
@@ -81,6 +90,7 @@ return {
           visible = { modified = { buffer_number = false } },
         },
       })
+      reset_barbar_hi()
     end,
   },
 }

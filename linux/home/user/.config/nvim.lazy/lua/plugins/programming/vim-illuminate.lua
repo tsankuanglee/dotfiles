@@ -2,22 +2,6 @@
 -- using either LSP, Tree-sitter, or regex matching
 -- You'll also get <a-n> and <a-p> as keymaps to move between references
 -- and <a-i> as a textobject for the reference illuminated under the cursor.
-local auto_highlight_change = function()
-  -- reset highlighting after each ColorScheme change
-  local augroup = vim.api.nvim_create_augroup("illuminate", { clear = false })
-  local change_highlight = function()
-    vim.cmd([[
-      highlight IlluminatedWordWrite guibg=#204b17
-      highlight IlluminatedWordRead guibg=#204b17
-      highlight IlluminatedWordText guibg=#204b17
-      highlight illuminatedCurWord guibg=#204b17
-      highlight illuminatedWord guibg=#204b17
-      ]])
-  end
-  vim.api.nvim_create_autocmd("ColorScheme", { group = augroup, callback = change_highlight })
-  return change_highlight
-end
-
 return {
   "RRethy/vim-illuminate",
   lazy = true,
@@ -32,9 +16,25 @@ return {
     })
 
     -- change highlight and register autocmd for colorscheme change
-    auto_highlight_change()()
-
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LOCALLEADER>I", function () require('illuminate').toggle_visibility_buf() end, "[vim-illuminate] toggle visibility")
+    local utils = require("utils")
+    utils.run_and_register_highlight_change(
+      "illuminate",
+      function()
+        vim.cmd([[
+          highlight IlluminatedWordWrite guibg=#204b17
+          highlight IlluminatedWordRead guibg=#204b17
+          highlight IlluminatedWordText guibg=#204b17
+          highlight illuminatedCurWord guibg=#204b17
+          highlight illuminatedWord guibg=#204b17
+          ]])
+      end
+    )
+    local km = utils.km -- keymap shortcut function
+    km(
+      "n",
+      "<LOCALLEADER>I",
+      function() require("illuminate").toggle_visibility_buf() end,
+      "[vim-illuminate] toggle visibility"
+    )
   end,
 }
