@@ -1,13 +1,15 @@
 -- use <tab> to toggle folds, one level at a time
 return {
   "jghauser/fold-cycle.nvim",
+  lazy = true,
+  event = { "VeryLazy" },
   enabled = true,
   config = function()
     local fc = require("fold-cycle")
     fc.setup({
       open_if_max_closed = true, -- closing a fully closed fold will open it
       close_if_max_opened = true, -- opening a fully open fold will close it
-      softwrap_movement_fix = false, -- for Neovim < 0.9
+      softwrap_movement_fix = false, -- set to true for Neovim < 0.9
     })
 
     local km = require("utils").km -- keymap shortcut function
