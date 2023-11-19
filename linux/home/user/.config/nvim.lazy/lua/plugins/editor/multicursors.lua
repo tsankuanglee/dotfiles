@@ -1,5 +1,7 @@
 -- multicursors
--- "<LOCALLEADER>mc" to start the main cursor, then use arrow keys (not hjkl) to move around, and use <C-N> to mark more cursors
+-- See https://github.com/smoka7/multicursors.nvim/blob/main/lua/multicursors/config.lua for all keybinds.
+-- "<LOCALLEADER>mc" to start the main cursor, then use arrow keys (not hjkl by default) to move around, and use <C-N> to mark more cursors
+-- custom keybindings: hjkl in multicurcor normal mode is now just movement keys. <S-UP>/<S-DOWN> selects. <C-A> to add cursor.
 return {
   "smoka7/multicursors.nvim",
   dependencies = {
@@ -11,8 +13,9 @@ return {
   cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
   keys = {
     { mode = { "v", "n" }, "<LOCALLEADER>mc", "<cmd>MCunderCursor<cr>", desc = "[multicursors] start char on cursor" },
-    { mode = { "v", "n" }, "<LOCALLEADER>mw", "<cmd>MCstart<cr>", desc = "[multicursors] start, on cursor/selection" },
-    { mode = { "v", "n" }, "<LOCALLEADER>mv", "<cmd>MCvisual<cr>", desc = "[multicursors] start, on selection" },
+    { mode = { "v", "n" }, "<LOCALLEADER>mw", "<cmd>MCstart<cr>",       desc =
+    "[multicursors] start, on cursor/selection" },
+    { mode = { "v", "n" }, "<LOCALLEADER>mv", "<cmd>MCvisual<cr>",      desc = "[multicursors] start, on selection" },
     {
       mode = { "v", "n" },
       "<LOCALLEADER>mB",
@@ -29,7 +32,37 @@ return {
   },
   config = function()
     local mc = require("multicursors")
-    mc.setup({})
+    local N = require('multicursors.normal_mode')
+    mc.setup({
+      -- key mapping
+      normal_keys = {
+        -- <C-a> is possible with one hand
+        ['<C-a>'] = {
+          method = N.create_char,
+          opts = { desc = 'Add/create a Selection under cursor' },
+        },
+
+        -- replace jk with S-DOWN/UP
+        ['j'] = { method = false },
+        ['k'] = { method = false },
+        ['<S-DOWN>'] = { method = N.create_down, opts = { desc = 'Create down' } },
+        ['<S-UP>'] = { method = N.create_up, opts = { desc = 'Create up' } },
+      },
+
+      -- vertical hints
+      hint_config = {
+        border = 'rounded',
+        position = 'bottom-right',
+      },
+      generate_hints = {
+        normal = true,
+        insert = true,
+        extend = true,
+        config = {
+          column_count = 1,
+        },
+      },
+    })
 
     require("utils").run_and_register_highlight_change(
       "multicursors",
