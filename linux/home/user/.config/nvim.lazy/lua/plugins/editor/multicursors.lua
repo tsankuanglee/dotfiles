@@ -1,4 +1,5 @@
 -- multicursors
+-- See https://github.com/smoka7/multicursors.nvim/blob/main/lua/multicursors/config.lua for all keybinds.
 -- "<LOCALLEADER>mc" to start the main cursor, then use arrow keys (not hjkl by default) to move around, and use <C-N> to mark more cursors
 -- custom keybindings: hjkl in multicurcor normal mode is now just movement keys. <S-UP>/<S-DOWN> selects. <C-A> to add cursor.
 return {
