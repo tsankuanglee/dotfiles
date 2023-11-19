@@ -1,3 +1,4 @@
+-- better quickfix window that supports opening files in new split window
 return {
   'kevinhwang91/nvim-bqf',
   ft = 'qf',
