@@ -72,3 +72,6 @@ export NVM_DIR="$HOME/.nvm"
 # remove duplicates
 typeset -aU path
 
+# workaround QT icon too big bug
+export QT_SCALE_FACTOR=1.01
+
