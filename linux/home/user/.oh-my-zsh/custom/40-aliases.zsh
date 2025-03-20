@@ -66,6 +66,11 @@ _rl() {
 
     esac
 }
+# just view it
+fdv() {
+    _rl ${*} | sed -E 's/^(.*)$/\"\1\"/g'
+}
+# copy to clipboard
 fdc() {
     _rl ${*} | sed -E 's/^(.*)$/\"\1\"/g' | c
 }
@@ -121,9 +126,10 @@ alias ls='ls --color=auto --time-style=long-iso'
 alias l='ls -al --color'
 alias lt='ls -al --sort=time'
 alias lr='lt -r'
-alias lx='exa -algGB@'
+alias lx='eza -algGB@'
 alias lz='eza -l --icons=always --hyperlink --bytes --git --time-style=long-iso'
 alias lzr='lz --sort=time -r'
+alias lsc='ls -1 | fold -w 30 -s | column -c $(tput cols)'
 #alias grep='grep --color=auto'
 alias grep='grep --color=always'
 
