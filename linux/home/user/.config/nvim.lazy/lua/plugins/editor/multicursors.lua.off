@@ -29,49 +29,49 @@ return {
       desc = "[multicursors] prmopt pattern; match all in selection",
     },
     { mode = { "v", "n" }, "<LOCALLEADER>mx", "<cmd>MCclear<cr>", desc = "[multicursors] clear selection" },
-  },
-  config = function()
-    local mc = require("multicursors")
-    local N = require('multicursors.normal_mode')
-    mc.setup({
-      -- key mapping
-      normal_keys = {
-        -- <C-a> is possible with one hand
-        ['<C-a>'] = {
-          method = N.create_char,
-          opts = { desc = 'Add/create a Selection under cursor' },
-        },
+  }
+  --config = function()
+  --  local mc = require("multicursors")
+  --  local N = require('multicursors.normal_mode')
+  --  mc.setup({
+  --    -- key mapping
+  --    normal_keys = {
+  --      -- <C-a> is possible with one hand
+  --      ['<C-a>'] = {
+  --        method = N.create_char,
+  --        opts = { desc = 'Add/create a Selection under cursor' },
+  --      },
 
-        -- replace jk with S-DOWN/UP
-        ['j'] = { method = false },
-        ['k'] = { method = false },
-        ['<S-DOWN>'] = { method = N.create_down, opts = { desc = 'Create down' } },
-        ['<S-UP>'] = { method = N.create_up, opts = { desc = 'Create up' } },
-      },
+  --      -- replace jk with S-DOWN/UP
+  --      ['j'] = { method = false },
+  --      ['k'] = { method = false },
+  --      ['<S-DOWN>'] = { method = N.create_down, opts = { desc = 'Create down' } },
+  --      ['<S-UP>'] = { method = N.create_up, opts = { desc = 'Create up' } },
+  --    },
 
-      -- vertical hints
-      hint_config = {
-        border = 'rounded',
-        position = 'bottom-right',
-      },
-      generate_hints = {
-        normal = true,
-        insert = true,
-        extend = true,
-        config = {
-          column_count = 1,
-        },
-      },
-    })
+  --    -- vertical hints
+  --    hint_config = {
+  --      border = 'rounded',
+  --      position = 'bottom-right',
+  --    },
+  --    generate_hints = {
+  --      normal = true,
+  --      insert = true,
+  --      extend = true,
+  --      config = {
+  --        column_count = 1,
+  --      },
+  --    },
+  --  })
 
-    require("utils").run_and_register_highlight_change(
-      "multicursors",
-      function()
-        vim.cmd([[
-          highlight MultiCursor     guifg=#000000 guibg=#aaaaaa
-          highlight MultiCursorMain guifg=#000000 guibg=#ffffff
-          ]])
-      end
-    )
-  end,
+  --  require("utils").run_and_register_highlight_change(
+  --    "multicursors",
+  --    function()
+  --      vim.cmd([[
+  --        highlight MultiCursor     guifg=#000000 guibg=#aaaaaa
+  --        highlight MultiCursorMain guifg=#000000 guibg=#ffffff
+  --        ]])
+  --    end
+  --  )
+  --end,
 }
