@@ -5,14 +5,16 @@ return {
   "chrisgrieser/nvim-various-textobjs",
   lazy = false,
   opts = {
-    useDefaultKeymaps = true,
-    disabledKeymaps = {
-      "L", -- this clashes with movement L (to screen bottom)
-      "al", -- markdown link; clash with vim-match up loop
-      "il", -- markdown link; clash with vim-match up loop
-      "am", -- chainMember; clash with vim-match up loop
-      "im", -- chainMember; clash with vim-match up loop
-      "r", -- duplication of `V}`
+    keymaps = {
+      useDefaults = true,
+      disabledKeymaps = {
+        "L", -- this clashes with movement L (to screen bottom)
+        "al", -- markdown link; clash with vim-match up loop
+        "il", -- markdown link; clash with vim-match up loop
+        "am", -- chainMember; clash with vim-match up loop
+        "im", -- chainMember; clash with vim-match up loop
+        "r", -- duplication of `V}`
+      }
     },
   },
 }
