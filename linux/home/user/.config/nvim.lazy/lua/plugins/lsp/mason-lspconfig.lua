@@ -8,10 +8,11 @@ return {
     require("mason").setup({})
     require("mason-lspconfig").setup({
       ensure_installed = {
+        "jsonls",
         "lua_ls",
         "pyright",
         "rust_analyzer",
-        "tsserver",
+        "ts_ls",
       },
     })
   end,

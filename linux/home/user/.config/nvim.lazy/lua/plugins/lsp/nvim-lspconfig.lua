@@ -3,7 +3,7 @@ return {
   "neovim/nvim-lspconfig",
   config = function()
     -- this needs to load before lspconfig
-    require("neodev").setup({
+    require("lazydev").setup({
       library = { plugins = { "nvim-dap-ui" }, types = true },
     })
     require("stylua-nvim").setup({ config_file = "stylua.toml" })
@@ -12,7 +12,7 @@ return {
     local lspconfig = require("lspconfig")
     require("plugins.lsp.nvim-lspconfig.pyright").setup()
     require("plugins.lsp.nvim-lspconfig.lua_ls").setup()
-    lspconfig.tsserver.setup {}
+    lspconfig.ts_ls.setup {}
 
     -- keymaps
     local km = require("utils").km -- keymap shortcut function
