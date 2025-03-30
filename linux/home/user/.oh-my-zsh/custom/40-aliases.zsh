@@ -129,7 +129,10 @@ alias lr='lt -r'
 alias lx='eza -algGB@'
 alias lz='eza -l --icons=always --hyperlink --bytes --git --time-style=long-iso'
 alias lzr='lz --sort=time -r'
-alias lsc='ls -1 | fold -w 30 -s | column -c $(tput cols)'
+# columnized ls
+alias cmn='awk '"'"'{print "⯀ " $0}'"'"' | fold -w 30 -s | column -c $(tput cols)'
+alias lsc='ls -1 | cmn'
+
 #alias grep='grep --color=auto'
 alias grep='grep --color=always'
 
