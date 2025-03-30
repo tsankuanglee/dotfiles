@@ -3,8 +3,11 @@ return {
   "neovim/nvim-lspconfig",
   config = function()
     -- this needs to load before lspconfig
+    --require("lazydev").setup({
+    --  library = { plugins = { "nvim-dap-ui" }, types = true },
+    --})
     require("lazydev").setup({
-      library = { plugins = { "nvim-dap-ui" }, types = true },
+      library = { "nvim-dap-ui" },
     })
     require("stylua-nvim").setup({ config_file = "stylua.toml" })
 

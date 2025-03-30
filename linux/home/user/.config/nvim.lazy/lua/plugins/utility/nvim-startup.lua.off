@@ -1,5 +1,6 @@
 return {
-  "henriquehbr/nvim-startup.lua",
+  --"henriquehbr/nvim-startup.lua",
+  "https://git.sr.ht/~henriquehbr/nvim-startup.lua",
   lazy = false,
   config = function()
     -- require 'nvim-startup'.setup {
