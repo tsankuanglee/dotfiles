@@ -19,12 +19,17 @@ if vim.g.neovide then
   vim.keymap.set("n", "<C-->", function() change_scale_factor(1 / 1.2) end)
 end
 
-require("utils")
+-- vim.lsp.set_log_level("TRACE")
 
-require("config.options")
-require("config.keymaps")
+if vim.g.vscode then
+    -- VSCode extension
+else
+  require("utils")
 
-require("config.lazy")
+  require("config.options")
+  require("config.keymaps")
 
-require("config.autocmds")
+  require("config.lazy")
 
+  require("config.autocmds")
+end
