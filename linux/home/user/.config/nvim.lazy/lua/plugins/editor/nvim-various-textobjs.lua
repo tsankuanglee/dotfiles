@@ -7,7 +7,7 @@ return {
   opts = {
     keymaps = {
       useDefaults = true,
-      disabledKeymaps = {
+      disabledDefaults = {
         "L", -- this clashes with movement L (to screen bottom)
         "al", -- markdown link; clash with vim-match up loop
         "il", -- markdown link; clash with vim-match up loop
