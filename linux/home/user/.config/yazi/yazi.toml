@@ -14,7 +14,7 @@ show_hidden    = true
 show_symlink   = true
 scrolloff      = 5
 mouse_events   = [ "click", "scroll" ]
-title_format   = "Yazi:   {cwd}"
+title_format   = "Yazi: {cwd}"
 
 [preview]
 wrap            = "no"
@@ -30,7 +30,7 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-  { run = '$  {EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+  { run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
   { run = 'code %*',    orphan = true, desc = "code",           for = "windows" },
   { run = 'code -w %*', block = true,  desc = "code (block)",   for = "windows" },
 ]
@@ -59,6 +59,9 @@ play = [
 epub = [
   { run = 'foliate "$@"', block = true, desc = "Open with Foliate", for = "linux" },
 ]
+copyimage = [
+  { run = 'image_file_to_clipboard.sh "$@" png', block = false, desc = "copy image to clipboard", for = "unix" },
+]
 
 [open]
 rules = [
@@ -67,13 +70,13 @@ rules = [
   # Text
   { mime = "text/*", use = [ "edit", "reveal" ] },
   # Image
-  { mime = "image/*", use = [ "open", "reveal" ] },
+  { mime = "image/*", use = [ "open", "reveal", "copyimage" ] },
   # Media
-  { mime = "  {audio,video}/*", use = [ "play", "reveal" ] },
+  { mime = "{audio,video}/*", use = [ "play", "reveal" ] },
   # Archive
-  { mime = "application/  {zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
   # JSON
-  { mime = "application/  {json,ndjson}", use = [ "edit", "reveal" ] },
+  { mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
   { mime = "*/javascript", use = [ "edit", "reveal" ] },
   # epub
   { mime = "application/epub+zip", use = "epub" },
@@ -101,9 +104,9 @@ spotters = [
   { name = "*/", run = "folder" },
   # Code
   { mime = "text/*", run = "code" },
-  { mime = "application/  {mbox,javascript,wine-extension-ini}", run = "code" },
+  { mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
   # Image
-  { mime = "image/  {avif,hei?,jxl}", run = "magick" },
+  { mime = "image/{avif,hei?,jxl}", run = "magick" },
   { mime = "image/svg+xml", run = "svg" },
   { mime = "image/*", run = "image" },
   # Video
@@ -113,7 +116,7 @@ spotters = [
 ]
 preloaders = [
   # Image
-  { mime = "image/  {avif,hei?,jxl}", run = "magick" },
+  { mime = "image/{avif,hei?,jxl}", run = "magick" },
   { mime = "image/svg+xml", run = "svg" },
   { mime = "image/*", run = "image" },
   # Video
@@ -128,11 +131,11 @@ previewers = [
   { name = "*/", run = "folder" },
   # Code
   { mime = "text/*", run = "code" },
-  { mime = "application/  {mbox,javascript,wine-extension-ini}", run = "code" },
+  { mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
   # JSON
-  { mime = "application/  {json,ndjson}", run = "json" },
+  { mime = "application/{json,ndjson}", run = "json" },
   # Image
-  { mime = "image/  {avif,hei?,jxl}", run = "magick" },
+  { mime = "image/{avif,hei?,jxl}", run = "magick" },
   { mime = "image/svg+xml", run = "svg" },
   { mime = "image/*", run = "image" },
   # Video
@@ -140,13 +143,13 @@ previewers = [
   # PDF
   { mime = "application/pdf", run = "pdf" },
   # Archive
-  { mime = "application/  {zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
-  { mime = "application/  {debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
-  { name = "*.  {AppImage,appimage}", run = "archive" },
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
+  { mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
+  { name = "*.{AppImage,appimage}", run = "archive" },
   # Virtual Disk / Disk Image
-  { mime = "application/  {iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
-  { mime = "application/virtualbox-  {vhd,vhdx}", run = "archive" },
-  { name = "*.  {img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
+  { mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
+  { mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
+  { name = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
   # Font
   { mime = "font/*", run = "font" },
   { mime = "application/ms-opentype", run = "font" },
@@ -185,7 +188,7 @@ find_origin = "top-center"
 find_offset = [ 0, 2, 50, 3 ]
 
 # search
-search_title  = "Search via   {n}:"
+search_title  = "Search via {n}:"
 search_origin = "top-center"
 search_offset = [ 0, 2, 50, 3 ]
 
@@ -196,12 +199,12 @@ shell_offset = [ 0, 2, 50, 3 ]
 
 [confirm]
 # trash
-trash_title 	= "Trash   {n} selected file  {s}?"
+trash_title 	= "Trash {n} selected file{s}?"
 trash_origin	= "center"
 trash_offset	= [ 0, 0, 70, 20 ]
 
 # delete
-delete_title 	= "Permanently delete   {n} selected file  {s}?"
+delete_title 	= "Permanently delete {n} selected file{s}?"
 delete_origin	= "center"
 delete_offset	= [ 0, 0, 70, 20 ]
 
