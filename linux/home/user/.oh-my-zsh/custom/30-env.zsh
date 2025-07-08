@@ -40,16 +40,20 @@ export XAUTH=/tmp/.docker.xauth
 # add .local/bin
 export PATH=$PATH:~/.local/bin
 
-
+# Mac homebrew
 case "$OSTYPE" in
   darwin*)
-    # Make all GNU flavor commands available, may override same-name BSD flavor commands
-    # For x86 Mac
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
-    # For M1 Mac
-    #export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
-    #export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
+    # Detect architecture
+    ARCH=$(uname -m)
+    if [ "$ARCH" = "x86_64" ]; then
+      # For x86 Mac
+      export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+      export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+    elif [ "$ARCH" = "arm64" ]; then
+      # For Apple Silicon Mac (M1/M2/etc.)
+      export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+      export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
+    fi
     ;;
 esac
 
