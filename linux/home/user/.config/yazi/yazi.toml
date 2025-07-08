@@ -59,7 +59,7 @@ play = [
 epub = [
   { run = 'foliate "$@"', block = true, desc = "Open with Foliate", for = "linux" },
 ]
-copyimage = [
+image_to_clipboard = [
   { run = 'image_file_to_clipboard.sh "$@" png', block = false, desc = "copy image to clipboard", for = "unix" },
 ]
 
@@ -70,7 +70,7 @@ rules = [
   # Text
   { mime = "text/*", use = [ "edit", "reveal" ] },
   # Image
-  { mime = "image/*", use = [ "open", "reveal", "copyimage" ] },
+  { mime = "image/*", use = [ "open", "reveal", "image_to_clipboard" ] },
   # Media
   { mime = "{audio,video}/*", use = [ "play", "reveal" ] },
   # Archive
