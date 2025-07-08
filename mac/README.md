@@ -26,3 +26,20 @@ https://github.com/artginzburg/MiddleClick-Ventura
 
 
 ## flameshot
+
+
+# Change Home/End target from document to line
+Library/KeyBindings/DefaultKeyBinding.dict
+cf. https://apple.stackexchange.com/a/16137
+
+# install nvm
+# install node and npm
+(necessary for neovim's treesitter)
+
+# install home brew
+
+```
+brew install neovim font-hack-nerd-font \
+    vivid zoxide coreutils \
+    bat fzf
+```
