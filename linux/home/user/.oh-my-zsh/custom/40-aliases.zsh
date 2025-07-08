@@ -95,12 +95,26 @@ function color_test_256 ()
     done
 }
 
+# yazi
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
 # fzf {{{
 # ~/.fzf.zsh will source /usr/share/fzf/key-bindings.zsh and /usr/share/fzf/completion.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 #export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l --color=always ""'
-export FZF_DEFAULT_COMMAND='fd --type f --color=always'
+#export FZF_DEFAULT_COMMAND='fd --type f --color=always'
+export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
 export FZF_CTRL_T_COMMAND=${FZF_DEFAULT_COMMAND}
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"\w
+
+# _fzf_compgen is to configure **TAB
 _fzf_compgen_path() {
   # Use fd (https://github.com/sharkdp/fd) instead of the default find
   # command for listing path candidates.
