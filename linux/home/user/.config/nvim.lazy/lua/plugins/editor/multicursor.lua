@@ -8,11 +8,24 @@ return {
     mc.setup()
 
     local set = vim.keymap.set
-
     local km = require("utils").km -- keymap shortcut function
 
-    -- Disable and enable cursors.
-    km({"n", "x"}, "<LOCALLEADER>mm", mc.toggleCursor, "[multicursor] toggle")
+    -- local mc_mode = "off" -- values: off, set, edit
+    -- km({"n", "x"}, "<LOCALLEADER>mc",
+    --   function ()
+    --     if mc_mode == "off" then
+    --       mc_mode = "set"
+    --     elseif mc_mode == "set" then
+    --       mc_mode = "edit"
+    --       mc.enableCursors()
+    --     elseif mc_mode == "edit" then
+    --       mc_mode = "off"
+    --     end
+    --   end,
+    --   "[multicursor] toggle mode"
+    -- )
+
+    km({"n", "x"}, "<LOCALLEADER>mm", mc.toggleCursor, "[multicursor] toggle cursor")
 
     -- Add or skip cursor above/below the main cursor.
     km({"n", "x"}, "<s-up>", function()
@@ -43,7 +56,6 @@ return {
     end,
       "skip cursor and move down"
     )
-    --
     -- Add or skip adding a new cursor by matching word/selection
     km({"n", "x"}, "<localleader>mn", function()
       if mc.cursorsEnabled() then
@@ -72,24 +84,23 @@ return {
     set("n", "<c-leftdrag>", mc.handleMouseDrag)
     set("n", "<c-leftrelease>", mc.handleMouseRelease)
 
-
     -- Mappings defined in a keymap layer only apply when there are
     -- multiple cursors. This lets you have overlapping mappings.
     mc.addKeymapLayer(function(layerSet)
 
       -- Select a different cursor as the main one.
-      layerSet({"n", "x"}, "<s-pageup>", mc.prevCursor)
-      layerSet({"n", "x"}, "<s-pagedown>", mc.nextCursor)
+      layerSet({"n", "x"}, "<s-tab>", mc.prevCursor)
+      layerSet({"n", "x"}, "<tab>", mc.nextCursor)
 
       -- Delete the main cursor.
       layerSet({"n", "x"}, "<s-del>", mc.deleteCursor)
 
       -- Enable and clear cursors using escape.
       layerSet("n", "<esc>", function()
-        if not mc.cursorsEnabled() then
-          mc.enableCursors()
-        else
+        if mc.cursorsEnabled() then
           mc.clearCursors()
+        else
+          mc.enableCursors()
         end
       end)
     end)
