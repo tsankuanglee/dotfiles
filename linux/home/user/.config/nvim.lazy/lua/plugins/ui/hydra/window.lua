@@ -19,8 +19,8 @@ local setup = function()
     config = {
       invoke_on_body = false,
       hint = {
-        border = "rounded",
         offset = -1,
+        float_opts = {},
       },
       exit = true,
       -- nil: pass key and close; warn: warn and ignore; run: pass key and stay

@@ -27,8 +27,8 @@ local setup = function()
       color = "blue",
       invoke_on_body = true,
       hint = {
-        border = "rounded",
         position = "middle",
+        float_opts = {},
       },
       exit = true,
     },

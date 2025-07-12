@@ -1,6 +1,6 @@
 -- Create custom submodes and menus
 return {
-  "anuvyklack/hydra.nvim",
+  "nvimtools/hydra.nvim",
   --"tsankuanglee/hydra.nvim",
   --branch = "pass_along_body",
   -- event = "VeryLazy",

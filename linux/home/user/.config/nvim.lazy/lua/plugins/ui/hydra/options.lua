@@ -63,8 +63,8 @@ local setup = function()
             if vim.o.hlsearch then return '[✓]' else return '[ ]' end
           end,
         },
-        border = "rounded",
         position = "middle",
+        float_opts = {},
       },
     },
     mode = { "n", "x" },

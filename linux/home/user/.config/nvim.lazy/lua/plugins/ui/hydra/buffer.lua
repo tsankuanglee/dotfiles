@@ -33,4 +33,3 @@ local function choose_buffer()
 end
 
 vim.keymap.set("n", "gb", choose_buffer)
-
