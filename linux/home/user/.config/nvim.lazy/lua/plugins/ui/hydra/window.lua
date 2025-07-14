@@ -75,10 +75,10 @@ local setup = function()
       { "<S-RIGHT>", cmd("WinShift right"), { desc = "continuous move step right" } },
 
       -- window resize
-      { "<C-h>", "<C-w><" },
-      { "<C-j>", "<C-w>-" },
-      { "<C-k>", "<C-w>+" },
-      { "<C-l>", "<C-w>>" },
+      { "<C-h>", "<C-w><", { desc= "continuous resize narrower" } },
+      { "<C-j>", "<C-w>-", { desc= "continuous resize shorter" } },
+      { "<C-k>", "<C-w>+", { desc= "continuous resize higher" } },
+      { "<C-l>", "<C-w>>", { desc= "continuous resize wider" } },
 
       --[[ { "<C-s>", pcmd("split", "E36"), { exit = true, desc = false } },
       { "<C-v>", pcmd("vsplit", "E36"), { exit = true, desc = false } },
