@@ -36,6 +36,7 @@ local localleader_mappings = {
   { "<LOCALLEADER>d", group = "DAP", nowait = true, remap = false },
   { "<LOCALLEADER>j", group = "TreeSJ", nowait = true, remap = false },
   { "<LOCALLEADER>m", group = "MultiCursors", nowait = true, remap = false },
+  { "<LOCALLEADER>g", group = "grug-far", nowait = true, remap = false },
 }
 
 return {

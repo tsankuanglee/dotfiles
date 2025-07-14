@@ -16,6 +16,7 @@ return {
     require("plugins.lsp.nvim-lspconfig.pyright").setup()
     require("plugins.lsp.nvim-lspconfig.lua_ls").setup()
     lspconfig.ts_ls.setup {}
+    lspconfig.vale_ls.setup {}
 
     -- keymaps
     local km = require("utils").km -- keymap shortcut function
