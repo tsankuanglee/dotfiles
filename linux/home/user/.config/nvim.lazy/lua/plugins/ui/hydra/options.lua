@@ -9,7 +9,7 @@ local hint = [[
   _v_ %{ve}^^^ virtual edit
   _i_ %{list}^ invisible characters      _2_ ts=sw=2
        ^^^^^^^                           _3_ ts=sw=3
-  _s_ %{spell} spell                     _4_ ts=sw=8
+  _s_ %{spell} spell                     _4_ ts=sw=4
   _d_ %{isidw} ignore diff white spaces  _8_ ts=sw=8
   _D_ %{isdif} diff                      _t_ %{iset} expandtab
   _H_ %{ishls} hlsearch

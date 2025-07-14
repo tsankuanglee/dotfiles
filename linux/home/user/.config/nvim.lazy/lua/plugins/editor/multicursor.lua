@@ -29,54 +29,61 @@ return {
 
     -- Add or skip cursor above/below the main cursor.
     km({"n", "x"}, "<s-up>", function()
-      if mc.cursorsEnabled() then
-        mc.lineAddCursor(-1)
-      end
-    end,
-      "add cursor and move up"
+        if mc.cursorsEnabled() then
+          mc.lineAddCursor(-1)
+        end
+      end,
+      "[multicursor] add cursor and move up"
     )
     km({"n", "x"}, "<s-down>", function()
       if mc.cursorsEnabled() then
         mc.lineAddCursor(1)
       end
     end,
-      "add cursor and move down"
+      "[multicursor] add cursor and move down"
     )
     km({"n", "x"}, "<c-up>", function()
       if mc.cursorsEnabled() then
         mc.lineSkipCursor(-1)
       end
     end,
-      "skip cursor and move up"
+      "[multicursor] skip cursor and move up"
     )
     km({"n", "x"}, "<c-down>", function()
-      if mc.cursorsEnabled() then
-        mc.lineSkipCursor(1)
-      end
-    end,
-      "skip cursor and move down"
+        if mc.cursorsEnabled() then
+          mc.lineSkipCursor(1)
+        end
+      end,
+      "[multicursor] skip cursor and move down"
     )
     -- Add or skip adding a new cursor by matching word/selection
     km({"n", "x"}, "<localleader>mn", function()
-      if mc.cursorsEnabled() then
-        mc.matchAddCursor(1)
-      end
-    end)
+        if mc.cursorsEnabled() then
+          mc.matchAddCursor(1)
+        end
+      end,
+      "[multicursor] match add cursor"
+    )
     km({"n", "x"}, "<localleader>ms", function()
-      if mc.cursorsEnabled() then
-        mc.matchSkipCursor(1)
-      end
-    end)
+        if mc.cursorsEnabled() then
+          mc.matchSkipCursor(1)
+        end
+      end,
+      "[multicursor] match skipcursor"
+    )
     km({"n", "x"}, "<localleader>mN", function()
-      if mc.cursorsEnabled() then
-        mc.matchAddCursor(-1)
-      end
-    end)
+        if mc.cursorsEnabled() then
+          mc.matchAddCursor(-1)
+        end
+      end,
+      "[multicursor] match back add cursor"
+    )
     km({"n", "x"}, "<localleader>mS", function()
-      if mc.cursorsEnabled() then
-        mc.matchSkipCursor(-1)
-      end
-    end
+        if mc.cursorsEnabled() then
+          mc.matchSkipCursor(-1)
+        end
+      end,
+      "[multicursor] match back skip cursor"
     )
 
     -- Add and remove cursors with control + left click.
