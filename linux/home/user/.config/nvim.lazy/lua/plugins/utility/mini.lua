@@ -6,5 +6,8 @@ return {
   config = function()
     -- stick with oil, since folder-column-view is not intuitive in copying out filelist
     --require("plugins.utility.mini.mini-files").custom_setup()
+
+    require("plugins.utility.mini.mini-map").custom_setup()
   end,
+
 }
