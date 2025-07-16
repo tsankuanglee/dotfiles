@@ -2,7 +2,7 @@ if vim.g.neovide then
   -- see https://neovide.dev/configuration.html
   vim.o.guifont = "Hack Nerd Font Mono:h20"
 
-  vim.g.neovide_transparency = 0.88
+  vim.g.neovide_opacity = 0.88
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
 
