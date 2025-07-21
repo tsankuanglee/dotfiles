@@ -1,9 +1,6 @@
 [submodule "linux/home/user/.oh-my-zsh/custom/plugins/zsh-vi-mode"]
 	path = linux/home/user/.oh-my-zsh/custom/plugins/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode.git
-[submodule "linux/home/user/.config/kitty/kittens/kitty_search"]
-	path = linux/home/user/.config/kitty/kittens/kitty_search
-	url = https://github.com/trygveaa/kitty-kitten-search
 [submodule "linux/home/user/.config/kitty/kittens/extrakto-kitty"]
 	path = linux/home/user/.config/kitty/kittens/extrakto-kitty
 	url = https://github.com/dawsers/extrakto-kitty
