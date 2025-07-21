@@ -4,3 +4,6 @@
 [submodule "linux/home/user/.config/kitty/kittens/extrakto-kitty"]
 	path = linux/home/user/.config/kitty/kittens/extrakto-kitty
 	url = https://github.com/dawsers/extrakto-kitty
+[submodule "linux/home/user/.config/kitty/kittens/kitty_search"]
+	path = linux/home/user/.config/kitty/kittens/kitty_search
+	url = https://github.com/trygveaa/kitty-kitten-search
