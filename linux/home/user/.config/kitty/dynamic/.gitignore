@@ -1,1 +1,2 @@
-host-*.conf
+# host specific configs are not tracked
+host-*
