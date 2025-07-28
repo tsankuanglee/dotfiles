@@ -8,7 +8,7 @@ import os
 import platform
 import socket
 
-KITTY_CONFIG_DIR=f"~/.config/kitty/dynamic"
+KITTY_CONFIG_DIR=os.path.expanduser(f"~/.config/kitty/dynamic")
 
 # include OS-specific config
 # get OS
@@ -28,9 +28,9 @@ for filename in sorted(glob.glob(f"{KITTY_CONFIG_DIR}/os-{os_name}*.conf")):
 # include host-specific config
 hostname = os.environ.get('KITTY_CONF_HOSTNAME')
 if not hostname:
-    hostname = socket.gethostname()
-config_path = os.path.expanduser(f"{KITTY_CONFIG_DIR}/host-{hostname}.conf")
-if os.path.isfile(config_path):
-    with open(config_path, 'r') as f:
+    hostname = socket.gethostname().strip()
+
+for filename in sorted(glob.glob(f"{KITTY_CONFIG_DIR}/host-{hostname}*.conf")):
+    with open(filename, 'r') as f:
         print(f.read())
 
