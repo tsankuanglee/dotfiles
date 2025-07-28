@@ -27,6 +27,7 @@ local leader_mappings = {
   { "<LEADER>ls", desc = "symbols", nowait = true, remap = false },
   { "<LEADER>s", group = "sessions; reg * (primary/select)", nowait = true, remap = false },
   { "<LEADER>t", group = "tab switching", nowait = true, remap = false },
+  { "<LEADER>T", group = "TOME (shell playbook)", nowait = true, remap = false },
   { "<LEADER>z", group = "fzf", nowait = true, remap = false },
 }
 
