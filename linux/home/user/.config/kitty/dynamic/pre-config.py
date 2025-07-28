@@ -13,7 +13,7 @@ KITTY_CONFIG_DIR=f"~/.config/kitty/dynamic"
 # include OS-specific config
 # get OS
 os_name = os.environ.get('KITTY_OS')
-if not os_name;
+if not os_name:
     # 'Windows', 'Linux', 'Darwin' for macOS
     os_name = {
         "Windows": "linux",  # assuming wsl
