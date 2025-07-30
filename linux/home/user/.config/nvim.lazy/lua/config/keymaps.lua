@@ -80,6 +80,16 @@ km(
   "xdg-open file under cursor (non-blocking)"
 )
 
+-- overwriting default keys
+-- split window and edit file under cursor 
+-- mnemonic: <C-w>f to split horizontally; <C-w><C-f> to split vertically
+km(
+  -- default duplication of C-W f
+  "n", "<C-w><C-f>",
+  "<C-w>vgf",
+  "open file under cursor into vsplit window"
+)
+
 
 -- inspiring example {{{
 
