@@ -11,7 +11,8 @@ fi
 # AMD ACO compiler https://wiki.archlinux.org/index.php/AMDGPU#ACO_compiler
 export RADV_PERFTEST=aco
 
-export TERM=xterm-256color
+#export TERM=xterm-256color
+export TERM=xterm-kitty
 
 # quote the color codes (see http://unix.stackexchange.com/questions/105958/terminal-prompt-not-wrapping-correctly )
 PS1="\[\033[1;34m\]\u@\h \[\033[1;32m\]\W\[\033[1;34m\]\\$\[\033[0m\] "
