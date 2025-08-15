@@ -7,6 +7,8 @@ EnumerateSkipFirst=False
 EnumerateGroupForwardKeys=
 # Enumerate Input Method Group Backward
 EnumerateGroupBackwardKeys=
+# Time limit in milliseconds for triggering modifier key shortcuts
+ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
 0=Hangul
@@ -44,6 +46,8 @@ EnumerateGroupBackwardKeys=
 [Behavior]
 # Active By Default
 ActiveByDefault=False
+# Reset state on Focus In
+resetStateWhenFocusIn=No
 # Share Input State
 ShareInputState=All
 # Show preedit in application
@@ -78,9 +82,8 @@ AutoSavePeriod=30
 1=clipboard
 2=cloudpinyin
 3=fcitx4frontend
-4=kimpanel
-5=quickphrase
-6=spell
-7=unicode
-8=virtualkeyboard
+4=quickphrase
+5=spell
+6=unicode
+7=virtualkeyboard
 

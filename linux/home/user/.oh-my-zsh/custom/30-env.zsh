@@ -27,6 +27,7 @@ export QT_IM_MODULE=${IME}
 export XMODIFIERS=@im=${IME}
 export XIM_MODULE=${IME}
 export SDL_IM_MODULE=${IME}
+export INPUT_METHOD=${IME}
 export GLFW_IM_MODULE=ibus
 # If GTK2 application cannot activate fcitx5, set it to xim.
 # Do not set GTK_IM_MODULE to xim globally as it affects GTK3 programs as well.

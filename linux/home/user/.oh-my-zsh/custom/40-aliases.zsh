@@ -130,6 +130,31 @@ export FZF_DEFAULT_OPTS="--multi --ansi --bind 'alt-g:toggle-all' --bind 'alt-v:
 alias fzfp='fzf --ansi --preview "bat --style=numbers --color=always --line-range :500 {}"'
 # }}} fzf
 
+# fdw {{{
+# fdw a1 a2 a3 -> fd "a1.*a2.*a3"
+#
+fdw() {
+  # Check if there are any arguments. If not, just run `fd`
+  if [ $# -eq 0 ]; then
+    command fd
+    return
+  fi
+
+  # Initialize the regex with the first argument
+  local regex="$1"
+  shift
+
+  # Loop through the remaining arguments and append them with ".*"
+  for arg in "$@"; do
+    regex+=".*$arg"
+  done
+
+  # Pass the constructed regex to the `fd` command
+  #echo "Running command: fd \"$regex\""
+  command fd "$regex"
+}
+# }}} fdw
+
 # User specific aliases and functions
 alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
 alias vi='nvim'
