@@ -1,0 +1,26 @@
+[pyprland]
+plugins = [
+  "expose",
+  "scratchpads",
+  "magnify"
+]
+
+
+[pyprland.variables]
+term_classed = "kitty --class"
+
+[scratchpads.term]
+animation = "fromTop"
+command = "[term_classed] main-dropterm"
+class = "main-dropterm"
+size = "75% 60%"
+max_size = "1920px 100%"
+lazy = true
+
+[scratchpads.keepassxc]
+# animation = "fromTop"
+command = "keepassxc"
+# class = "main-dropterm"
+size = "75% 60%"
+max_size = "1920px 100%"
+lazy = true
