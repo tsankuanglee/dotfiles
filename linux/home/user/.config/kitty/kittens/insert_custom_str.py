@@ -1,5 +1,9 @@
 from typing import List
 import datetime
+import random
+import uuid
+
+
 from kitty.boss import Boss
 from kittens.tui.handler import result_handler
 
@@ -22,10 +26,16 @@ def handle_result(args: List[str], answer: str, target_window_id: int, boss: Bos
     if not w:
         return
     if args[1] == 'date':
-        date_str = datetime.datetime.now().strftime("%Y%m%d")
+        custom_str = datetime.datetime.now().strftime("%Y%m%d")
     elif args[1] == 'time':
-        date_str = datetime.datetime.now().strftime("%H%M%S")
+        custom_str = datetime.datetime.now().strftime("%H%M%S")
+    elif args[1] == 'datetime':
+        custom_str = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    elif args[1] == 'random_uuid':
+        custom_str = str(uuid.uuid4())
+    elif args[1] == 'random_float':
+        custom_str = str(random.random())
     else:
-        date_str = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        return
 
-    w.paste_text(date_str)
+    w.paste_text(custom_str)
