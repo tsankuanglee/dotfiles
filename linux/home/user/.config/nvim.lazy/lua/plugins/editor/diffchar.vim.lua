@@ -11,22 +11,22 @@ return {
   config = function()
     local km = require("utils").km -- keymap shortcut function
 
-    km("n", "<localleader>c,", "<Plug>JumpDiffCharPrevStart",
+    km("n", "<localleader>f,", "<Plug>JumpDiffCharPrevStart",
       "[diffchar] JumpDiffCharPrevStart"
     )
-    km("n", "<localleader>c.", "<Plug>JumpDiffCharNextStart",
+    km("n", "<localleader>f.", "<Plug>JumpDiffCharNextStart",
       "[diffchar] JumpDiffCharNextStart"
     )
-    km("n", "<localleader>c<lt>", "<Plug>JumpDiffCharPrevEnd",
+    km("n", "<localleader>f<lt>", "<Plug>JumpDiffCharPrevEnd",
       "[diffchar] JumpDiffCharPrevEnd"
     )
-    km("n", "<localleader>c>", "<Plug>JumpDiffCharNextEnd",
+    km("n", "<localleader>f>", "<Plug>JumpDiffCharNextEnd",
       "[diffchar] JumpDiffCharNextEnd"
     )
-    km("n", "<localleader>co", "<Plug>GetDiffCharPair",
+    km("n", "<localleader>fg", "<Plug>GetDiffCharPair",
       "[diffchar] GetDiffCharPair"
     )
-    km("n", "<localleader>cp", "<Plug>PutDiffCharPair",
+    km("n", "<localleader>fp", "<Plug>PutDiffCharPair",
       "[diffchar] PutDiffCharPair"
     )
 
