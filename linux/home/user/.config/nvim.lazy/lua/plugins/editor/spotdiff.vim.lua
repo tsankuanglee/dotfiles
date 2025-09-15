@@ -1,4 +1,4 @@
--- spotdiff.vim: 
+-- spotdiff.vim: range and area selectable diff
 -- Available commands 
 --   for line range selection: :[range]Diffthis, :Diffoff[!], :Diffupdate
 --   for visual selection: :VDiffthis, :VDiffoff, and :VDiffupdate
