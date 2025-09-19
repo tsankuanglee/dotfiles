@@ -42,6 +42,7 @@ local leader_mappings = {
   { "<LEADER>c", group = "config", nowait = true, remap = false },
   { "<LEADER>e", group = "Explorer", nowait = true, remap = false },
   { "<LEADER>f", group = "Telescope", nowait = true, remap = false },
+  { "<LEADER>g", group = "Gitsigns", nowait = true, remap = false },
   { "<LEADER>l", group = "LSP", nowait = true, remap = false },
   { "<LEADER>lg", desc = "diagnostics", nowait = true, remap = false },
   { "<LEADER>ls", desc = "symbols", nowait = true, remap = false },
