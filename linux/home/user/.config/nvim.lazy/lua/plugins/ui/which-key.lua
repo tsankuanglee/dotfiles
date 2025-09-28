@@ -32,6 +32,8 @@ local leader_mappings = {
   { "<LEADER>", group = "<LEADER>", nowait = true, remap = false },
   { "<LEADER>:", group = "commands", nowait = true, remap = false },
   { "<LEADER>b", group = "buffer switching", nowait = true, remap = false },
+  { "<LEADER>B", group = "Bookmarks", nowait = true, remap = false },
+  { "<LEADER>Bl", group = "Bookmarks lists actions", nowait = true, remap = false },
   { "<LEADER>C", group = "colorscheme", nowait = true, remap = false },
   { "<LEADER>c", group = "config", nowait = true, remap = false },
   { "<LEADER>e", group = "Explorer", nowait = true, remap = false },
