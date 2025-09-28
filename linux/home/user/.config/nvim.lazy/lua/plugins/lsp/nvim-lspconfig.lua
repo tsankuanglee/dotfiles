@@ -12,11 +12,15 @@ return {
     require("stylua-nvim").setup({ config_file = "stylua.toml" })
 
     -- config for each language
-    local lspconfig = require("lspconfig")
-    require("plugins.lsp.nvim-lspconfig.pyright").setup()
-    require("plugins.lsp.nvim-lspconfig.lua_ls").setup()
-    lspconfig.ts_ls.setup {}
-    lspconfig.vale_ls.setup {}
+    --
+    -- deprecated syntax
+    -- local lspconfig = require("lspconfig")
+    -- require("plugins.lsp.nvim-lspconfig.pyright").setup()
+    -- require("plugins.lsp.nvim-lspconfig.lua_ls").setup()
+    -- lspconfig.ts_ls.setup {}
+    -- lspconfig.vale_ls.setup {}
+
+    vim.lsp.enable({ "pyright", "lua_ls", "ts_ls", "vale_ls" })
 
     -- keymaps
     local km = require("utils").km -- keymap shortcut function
