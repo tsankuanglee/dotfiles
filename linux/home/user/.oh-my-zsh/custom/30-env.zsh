@@ -1,6 +1,8 @@
-#export TERM=xterm-256color
-export TERM=xterm-kitty
-
+# only set/override it if we are not within tmux
+if [[ -z "$TMUX" ]]; then
+  #export TERM=xterm-256color
+  export TERM='xterm-kitty'
+fi
 
 # editor
 set -o emacs

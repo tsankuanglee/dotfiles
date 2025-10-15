@@ -4,6 +4,10 @@ export KEYTIMEOUT=1
 bindkey -v
 
 ## more keys for easier editing
+# HOME/END keys
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
 bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line
 bindkey "^f" history-incremental-search-forward
@@ -44,7 +48,4 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[End]}"         ]] && bindkey -M vicmd "${key[End]}"    end-of-line
 [[ -n "${key[Insert]}"      ]] && bindkey -M vicmd "${key[Insert]}" overwrite-mode
 [[ -n "${key[Delete]}"      ]] && bindkey -M vicmd "${key[Delete]}" delete-char
-
-
-
 

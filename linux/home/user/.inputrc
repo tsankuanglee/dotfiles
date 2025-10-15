@@ -1,7 +1,10 @@
 # delete to previous / (see https://superuser.com/questions/606212/bash-readline-deleting-till-the-previous-slash)
 C-b:unix-filename-rubout
 
+# HOME/END (classic sequence)
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
+
+# CTRL-LEFT/RIGHT
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
