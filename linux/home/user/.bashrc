@@ -1,8 +1,11 @@
 # .bashrc
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+
+# only set/override it if we are not within tmux
+if [[ -z "$TMUX" ]]; then
+  #export TERM=xterm-256color
+  export TERM='xterm-kitty'
 fi
 
 # If not running interactively, don't do anything
