@@ -10,13 +10,13 @@ return {
         local km = require("utils").km -- keymap shortcut function
 
         -- Navigation
-        km("n", "]c", function()
+        km("n", "<LEADER>Gcn", function()
           if vim.wo.diff then return "]c" end
           vim.schedule(function() gs.next_hunk() end)
           return "<Ignore>"
         end, "Gitsigns jump to next change", { expr = true })
 
-        km("n", "[c", function()
+        km("n", "<LEADER>Gcp", function()
           if vim.wo.diff then return "[c" end
           vim.schedule(function() gs.prev_hunk() end)
           return "<Ignore>"
