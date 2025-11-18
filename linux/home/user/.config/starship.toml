@@ -122,7 +122,8 @@ format = '\[[$symbol($version)]($style)\]'
 [hostname]
 ssh_only = false
 format = '[$hostname$ssh_symbol]($style)'
-style = "bold dimmed green bg:#151515"
+#style = "bold dimmed fg:36 bg:#151515"
+style = "bold fg:36"
 
 [hg_branch]
 format = '\[[$symbol$branch]($style)\]'
@@ -234,7 +235,7 @@ format = '[$time]($style)'
 disabled = false
 show_always = true
 style_root = 'bold red bg:#151515'
-style_user = 'bold yellow bg:#151515'
+style_user = 'bold fg:34 bg:#151515'
 format = '[$user]($style)'
 
 [vagrant]
