@@ -1,0 +1,11 @@
+# Lazy-load NVM using zsh-nvm plugin
+zinit ice wait"0" lucid
+zinit light lukechilds/zsh-nvm
+
+# Optional: Set NVM_DIR explicitly (plugin usually handles this)
+# export NVM_DIR="$HOME/.nvm"
+
+# # Optional: Auto-load default Node version after NVM initializes
+# zinit ice wait"0" atload'nvm use default >/dev/null'
+# zinit light lukechilds/zsh-nvm
+

@@ -1,0 +1,14 @@
+# asdf
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
+
+# node.js
+#asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+#asdf install nodejs 16.13.0
+#asdf global nodejs 16.13.0
+
+# python
+#asdf plugin-add python https://github.com/danhper/asdf-python.git
+#asdf install python 3.9.7
+#asdf global python 3.9.7
+
