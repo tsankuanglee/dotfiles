@@ -40,6 +40,8 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
+# delete
+bindkey "^[[3~" delete-char
 # ctrl-delete
 zle-line-init() {
   # This command is usually 'delete-word' in Zsh, but we can ensure
