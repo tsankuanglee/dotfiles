@@ -23,7 +23,13 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 unsetopt CORRECT
 unsetopt CORRECT_ALL
 
+# Enable the ability to change directory just by typing the name
+setopt auto_cd
+# Enable flexible globbing (filename expansion)
+# setopt extended_glob # For `**/*` style matching
+setopt glob_subst    # For flexible substring replacement
 
+unsetopt extended_glob
 
 # keybinds
 # ctrl-U erases from cursor to line beginning (instead of the whole line)
@@ -41,3 +47,4 @@ zle-line-init() {
   zle -N delete-word-under-cursor delete-word
 }
 bindkey '^[[3;5~' delete-word
+

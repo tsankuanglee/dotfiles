@@ -127,7 +127,7 @@ alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
 alias vi='nvim'
 alias vimdiff='nvim -d'
 
-eval $(dircolors -b)
+eval "$(dircolors -b)"
 alias ls='ls --color=auto --time-style=long-iso'
 alias l='ls -al --color'
 alias lt='ls -al --sort=time'
