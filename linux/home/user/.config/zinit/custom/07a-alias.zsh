@@ -77,7 +77,7 @@ fdc() {
 
 # make a directory and cd to it
 mcd() {
-    mkdir -p ${*};
+    mkdir -p "$@"
     # cd to the last directory
     cd "${@: -1}"
 }
