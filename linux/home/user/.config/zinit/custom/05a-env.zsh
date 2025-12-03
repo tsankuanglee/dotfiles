@@ -1,5 +1,6 @@
+# kitty and tmux should set these
 #export TERM=xterm-256color
-export TERM=xterm-kitty
+#export TERM=xterm-kitty
 
 
 # editor
