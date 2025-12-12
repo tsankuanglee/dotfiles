@@ -28,10 +28,17 @@ setopt auto_cd
 # Enable flexible globbing (filename expansion)
 # setopt extended_glob # For `**/*` style matching
 setopt glob_subst    # For flexible substring replacement
-
 unsetopt extended_glob
 
-# keybinds
+# launch nvim to edit cmd line
+# enable Zsh Vi mode
+bindkey -v
+autoload -U edit-command-line
+zle -N edit-command-line
+# use ESC-v to launch it
+bindkey -M vicmd v edit-command-line
+
+# common keybinds
 # ctrl-U erases from cursor to line beginning (instead of the whole line)
 bindkey "^U" backward-kill-line
 bindkey "^R" history-incremental-pattern-search-backward

@@ -14,6 +14,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 
+# fzf
 zinit light Aloxaf/fzf-tab
 # bind it to shift-tab
 bindkey "^[[Z" fzf-tab-complete
