@@ -32,11 +32,14 @@ unsetopt extended_glob
 
 # launch nvim to edit cmd line
 # enable Zsh Vi mode
-bindkey -v
 autoload -U edit-command-line
 zle -N edit-command-line
-# use ESC-v to launch it
-bindkey -M vicmd v edit-command-line
+# use ESC-v to launch it (this seems to affect auto_complete)
+# bindkey -v
+# bindkey -M vicmd v edit-command-line
+# The above binding affects the autocomplete, so we use alternative keys
+bindkey '^Xe' edit-command-line
+bindkey '^X^E' edit-command-line
 
 # common keybinds
 # ctrl-U erases from cursor to line beginning (instead of the whole line)
