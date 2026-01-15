@@ -65,7 +65,7 @@ fdc() {
   done
 
   # Join with spaces and send to clipboard
-  echo "${(j: :)paths}" | c
+  echo -n "${(j: :)paths}" | c
 }
 
 # make a directory and cd to it
