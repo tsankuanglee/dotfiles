@@ -44,35 +44,28 @@ pwdc() {
 }
 # copy the full path of the file to clipboard; default is current (.)
 _rl() {
-  case "$OSTYPE" in
-    linux*)
-      readlink -f "${1:-.}"
-      ;;
-    darwin*)
-      OURPWD=$PWD
-      cd "$(dirname "$1")"
-      LINK=$(readlink "$(basename "$1")")
-      while [ "$LINK" ]; do
-        cd "$(dirname "$LINK")"
-        LINK=$(readlink "$(basename "$1")")
-      done
-      REALPATH="$PWD/$(basename "$1")"
-      cd "$OURPWD"
-      echo "$REALPATH"
-      ;;
-    *)
-      readlink -f "${1:-.}"
-      ;;
-
-    esac
+  # If no argument, use "." (current directory)
+  local target="${1:-.}"
+  # :a resolves the absolute path (works on macOS and Linux)
+  # :P resolves physical path (follows symlinks like readlink -f)
+  echo "${target:P}"
 }
-# just view it
-fdv() {
-    _rl ${*} | sed -E 's/^(.*)$/\"\1\"/g'
-}
-# copy to clipboard
+# convert to full path and copy to clipboard
 fdc() {
-    _rl ${*} | sed -E 's/^(.*)$/\"\1\"/g' | c
+  # If no args provided, default to current directory "."
+  local args=("${@:-.}")
+  local paths=()
+
+  for arg in "${args[@]}"; do
+    # 1. :P resolves the absolute physical path
+    # 2. replace any " inside the path with \"
+    # 3. We wrap the result in double quotes
+    local abs_path="${${arg:P}//\"/\\\"}"
+    paths+=("\"$abs_path\"")
+  done
+
+  # Join with spaces and send to clipboard
+  echo -n "${(j: :)paths}" | c
 }
 
 # make a directory and cd to it
