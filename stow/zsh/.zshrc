@@ -1,0 +1,1 @@
+.config/zinit/zshrc
