@@ -7,6 +7,7 @@ return {
   config = function ()
     require("plugins.ui.hydra.sidescroll").setup()
     require("plugins.ui.hydra.options").setup()
+    require("plugins.ui.hydra.options-ext").setup()
     require("plugins.ui.hydra.action-apps").setup()
     require("plugins.ui.hydra.window").setup()
     -- require("buffer")
