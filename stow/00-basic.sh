@@ -1,6 +1,9 @@
 #!/usr/bin/bash
 cd "$(dirname "$(realpath "$0")")";
 
+# basic
+stow -t ~ shell-common
+
 # shell
 stow -t ~ bash
 stow -t ~ zsh
