@@ -2,7 +2,9 @@
 
 A place for me to store/share/archive various configuration files
 
-# nvim
+# stow
 
-see [its README.md](./linux/home/user/.config/nvim.lazy/README.md)
+Use [GNU stow](https://www.gnu.org/software/stow/) to install each configuration files.
+
+There are also some [scripts](./linux/home/user/stow/*.sh) for batch installation.
 
