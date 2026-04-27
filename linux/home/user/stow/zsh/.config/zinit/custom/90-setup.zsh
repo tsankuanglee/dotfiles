@@ -29,6 +29,8 @@ setopt auto_cd
 # setopt extended_glob # For `**/*` style matching
 setopt glob_subst    # For flexible substring replacement
 unsetopt extended_glob
+# turn off nomatch error message
+unsetopt NOMATCH
 
 # launch nvim to edit cmd line
 # enable Zsh Vi mode
