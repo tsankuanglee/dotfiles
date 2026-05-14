@@ -1,8 +1,8 @@
 -- system dependencies: tree-sitter-cli
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  priority = 500, -- to load before many other plugins that depend on treesitter
+  { "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate"},
+  lazy = false,
+  priority = 1000, -- to load before many other plugins that depend on treesitter
   config = function()
     local configs = require("nvim-treesitter.configs")
     configs.setup({

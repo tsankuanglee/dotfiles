@@ -1,7 +1,7 @@
 -- auto join, split code block elements
 return {
   "Wansmer/treesj",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  -- dependencies = { "nvim-treesitter/nvim-treesitter" },
   config = function()
     local tsj = require("treesj")
     tsj.setup({

@@ -4,12 +4,24 @@ https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 ]]
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
+  branch = "main",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   event = { "BufReadPost", "BufNewFile" },
   lazy = true,
   priority = 400,
+  init = function()
+    -- Disable entire built-in ftplugin mappings to avoid conflicts.
+    -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+    vim.g.no_plugin_maps = true
+
+    -- Or, disable per filetype (add as you like)
+    -- vim.g.no_python_maps = true
+    -- vim.g.no_ruby_maps = true
+    -- vim.g.no_rust_maps = true
+    -- vim.g.no_go_maps = true
+  end,
   config = function()
-    require("nvim-treesitter.configs").setup({
+    require("nvim-treesitter-textobjects").setup({
       textobjects = {
         select = {
           enable = true,
@@ -135,10 +147,10 @@ return {
       },
     })
 
-    -- Repeat movement with ; and , (; and , clash with nvim-flash; use C-j and C-k instead
-    local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
-    -- ensure ; goes forward and , goes backward regardless of the last direction
-    vim.keymap.set({ "n", "x", "o" }, "<C-j>", ts_repeat_move.repeat_last_move_next)
-    vim.keymap.set({ "n", "x", "o" }, "<C-k>", ts_repeat_move.repeat_last_move_previous)
+    -- -- Repeat movement with ; and , (; and , clash with nvim-flash; use C-j and C-k instead
+    -- local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+    -- -- ensure ; goes forward and , goes backward regardless of the last direction
+    -- vim.keymap.set({ "n", "x", "o" }, "<C-j>", ts_repeat_move.repeat_last_move_next)
+    -- vim.keymap.set({ "n", "x", "o" }, "<C-k>", ts_repeat_move.repeat_last_move_previous)
   end,
 }
