@@ -2,9 +2,9 @@
 
 # Source global definitions
 
+export TERM=xterm-256color
 # only set/override it if we are not within tmux
 if [[ -z "$TMUX" ]]; then
-  #export TERM=xterm-256color
   export TERM='xterm-kitty'
 fi
 
@@ -14,9 +14,7 @@ fi
 # AMD ACO compiler https://wiki.archlinux.org/index.php/AMDGPU#ACO_compiler
 export RADV_PERFTEST=aco
 
-#export TERM=xterm-256color
-export TERM=xterm-kitty
-
+#PS1='[\u@\h \W]\$ '
 # quote the color codes (see http://unix.stackexchange.com/questions/105958/terminal-prompt-not-wrapping-correctly )
 PS1="\[\033[1;34m\]\u@\h \[\033[1;32m\]\W\[\033[1;34m\]\\$\[\033[0m\] "
 
@@ -45,8 +43,6 @@ export XSOCK=/tmp/.X11-unix
 export XAUTH=/tmp/.docker.xauth
 
 # IME
-#export IME="gcin"
-#export IME="hime"
 export IME="fcitx"
 
 export XIM=${IME}
