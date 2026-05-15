@@ -34,6 +34,9 @@ export GLFW_IM_MODULE=ibus
 # Do not set GTK_IM_MODULE to xim globally as it affects GTK3 programs as well.
 #export GTK_IM_MODULE=xim
 
+# Force Qt to use Wayland, but allow fallback to X11 if Wayland fails
+export QT_QPA_PLATFORM="wayland;xcb"
+
 # docker
 export HOST_UID=$(id -u)
 export HOST_GID=$(id -g)
