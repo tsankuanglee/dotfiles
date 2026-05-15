@@ -30,7 +30,7 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-	{ run = "${EDITOR:-vi} %s", desc = "$EDITOR",      for = "unix", block = true },
+	{ run = '${EDITOR:-vi} %s', desc = "$EDITOR",      for = "unix", block = true },
 	{ run = "code %s",          desc = "code",         for = "windows", orphan = true },
 	{ run = "code -w %s",       desc = "code (block)", for = "windows", block = true },
 ]
@@ -97,14 +97,14 @@ rules = [
 	{ mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
 	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
   # epub
-  { mime = "application/epub+zip", use = "epub" },
-  { mime = "application/zip", use = "epub", name_matches = "*.epub" },
+  { mime = "application/epub+zip", use = [ "epub" ] },
+  { mime = "application/zip", use = [ "epub" ], name = "*.epub" },
   # PDF
-  { mime = "application/pdf", use = "pdf", name_matches = "*.pdf" },
+  { mime = "application/pdf", use = [ "pdf" ], name = "*.pdf" },
 	# Empty file
 	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
 	# Virtual file system
-	{ mime = "vfs/{absent,stale}", use = "download" },
+	{ mime = "vfs/{absent,stale}", use = [ "download" ] },
 	# Fallback
 	{ url = "*", use = [ "open", "reveal" ] },
 ]
@@ -120,9 +120,9 @@ suppress_preload = false
 [plugin]
 fetchers = [
 	# Mimetype
-	{ id = "mime", url = "*/",         run = "mime.dir", prio = "high" },
-	{ id = "mime", url = "local://*",  run = "mime.local", prio = "high" },
-	{ id = "mime", url = "remote://*", run = "mime.remote", prio = "high" },
+	{ group = "mime", id = "mime", url = "*/",         run = "mime.dir", prio = "high" },
+	{ group = "mime", id = "mime", url = "local://*",  run = "mime.local", prio = "high" },
+	{ group = "mime", id = "mime", url = "remote://*", run = "mime.remote", prio = "high" },
 ]
 spotters = [
 	{ url = "*/", run = "folder" },
