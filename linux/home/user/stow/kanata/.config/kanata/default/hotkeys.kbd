@@ -1,0 +1,34 @@
+#|
+sequence leader as hotkeys
+|#
+
+;; seq-app-launcher calls the app directly
+;; seq-script-launcher wraps the command in zsh -c
+
+;; app
+(t! seq-app-launcher (a g) launch-gimp "gimp")
+(t! seq-script-launcher (a t) launch-kitty "kitty")
+
+;; clipboard
+(t! seq-script-launcher (c q) clipboard-remove-quotes "~/.local/bin/tool/de-quote.sh")
+
+;; editor
+(t! seq-script-launcher (e v) launch-kitty-nvim "kitty nvim")
+(t! seq-script-launcher (e n) launch-neovide "neovide")
+(t! seq-script-launcher (e q) launch-nvim-qt "nvim-qt")
+(t! seq-script-launcher (e f) launch-leafpad "leafpad")
+
+;; hyprland
+(t! seq-app-launcher (h t) hyprland-pyprland-toggle-term ("pypr" "toggle" "term"))
+(t! seq-app-launcher (h e) hyprland-pyprland-expose ("pypr" "expose"))
+
+
+;; sound TODO
+(t! seq-app-launcher (s g) show-qpwgraph qpwgraph)
+(t! seq-app-launcher (s S-g) hide-qpwgraph ("qpwgraph" "--minimized"))
+(t! seq-app-launcher (s v) launch-pavucontrol pavucontrol)
+
+(t! seq-app-launcher (s o m) mute-speaker-toggle ("pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"))
+(t! seq-app-launcher (s i m) mute-mic-toggle ("pactl" "set-source-mute" "@DEFAULT_SOURCE@" "toggle"))
+
+;; vim: ft=lisp

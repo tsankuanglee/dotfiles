@@ -1,0 +1,102 @@
+#|
+key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
+|#
+
+;; TODO complete it
+
+
+(deftemplate src-qmk ()
+  ;; function row
+  esc     f1   f2   f3   f4  f5   f6   f7   f8      f9   f10  f11  f12
+
+  ;; alphabet and symbols
+  grv  1    2    3    4    5    6    7    8    9      0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o      p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l      ;    '         enter
+  lsft z    x    c    v    b    n    m    ,    .      /    rsft
+
+  ;; modifier row
+  lctl lmet lalt        spc        ralt rmet rctl     menu
+
+  ;; system key row
+  prtsc slck pause
+
+  ;; navigation block
+  ins  home  pgup
+  del  end   pgdn
+
+  ;; arrows
+        up
+  left down rght
+
+  ;; numpad
+  nlck kp/  kp*  kp-
+  kp7  kp8  kp9  kp+
+  kp4  kp5  kp6
+  kp1  kp2  kp3  NumpadEnter
+  kp0       kp.
+
+  ;; ;; beyond 104 keys
+
+  ;; Additional Function Keys
+  f13 f14 f15 f16 f17 f18 f19 f20 f21 f22 f23 f24
+
+  ;; international keyboard
+  nonusbslash
+
+  ;; additional numpad
+  NumpadEqual clr kp,
+
+  ;; additional system key row
+  ;;ssrq
+  WakeUp
+
+  ;; media keys
+  VolumeMute VolumeUp VolumeDown
+  MediaTrackNext MediaTrackPrevious MediaPlayPause
+  ;;eject
+
+  ;; brightness and backlight
+  brup brdown blup bldn
+
+  ;; languages
+  kana hiragana henkan muhenkan
+  ;;Lang1 Lang2
+  IntlRo
+
+  ;; mouse
+  mouseleft mousemid mouseright
+  mousebackward mouseforward
+  mousewheelup
+  mousewheeldown
+  mousewheelleft
+  mousewheelright
+
+  ;; special function keys
+  ;; OsCode::KEY_DASHBOARD,
+  🎛
+  BrowserBack BrowserForward
+  homepage media mail email calc
+  player
+
+  ;; additional system functions
+  power sleep
+
+  ;; Mac keyboard
+  ;; fn
+  SpotLightSearch Dictation DoNotDisturb MissionControl LaunchPad
+
+
+)
+
+;; Only one defsrc is allowed.
+(defsrc
+  (t! src-qmk)
+)
+
+(deflayer base
+  (t! src-qmk)
+)
+
+
+;; vim:  ft=lisp

@@ -1,0 +1,55 @@
+#|
+
+chords
+
+4 ways to define chords:
+* macros with O- notation
+* zippy
+* defchords
+* defchordsv2
+
+|#
+
+(defzippy
+  ../default/zippy.txt
+  on-first-press-chord-deadline 500
+  idle-reactivate-time          500
+  smart-space-punctuation (? ! . , ; : )
+  output-character-mappings (
+    ;; This should work for US international.
+    ! S-1
+    ? S-/
+    % S-5
+    "(" S-9
+    ")" S-0
+    : S-;
+    < S-,
+    > S-.
+    r#"""# S-'
+    | S-\
+    _ S--
+    ® AG-r
+    ’ (no-erase `)
+    é (single-output ' e)
+  )
+)
+
+;; (defchrods switch-to-base 300
+;;   (t    ) t
+;;   (  y  ) y
+;;   (    0) 0
+;;   (    1) 1
+;;   (t y 0) layer-base
+;;   (t y 1) layer-minimal-42-keys
+;;
+;; )
+
+(defchordsv2
+  ;; (home end down) (layer-switch base) 200 first-release (base)
+  ;; (left right up) (layer-switch minimal-42-keys) 200 first-release (minimal-42-keys)
+  ;; (home end) sldr 200 first-release (l-42-base)
+  ;; (participating-keysN) actionN timeoutN release-behaviourN (disabled-layersN)
+)
+
+
+;; vim: ft=lisp ts=2 sts=2 sw=2 et :

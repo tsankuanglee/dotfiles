@@ -1,0 +1,98 @@
+#|
+key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
+|#
+
+(deftemplate src-42 ()
+  1   2    3    4    5       6    7    8    9    0
+  q   w    e    r    t       y    u    i    o    p
+  a   s    d    f    g       h    j    k    l    scln
+  z   x    c    v    b       n    m    ,    .   /
+                   spc       ret
+  )
+
+;; this layout only uses 4-rows of 10 keys, and space and return
+(defsrc
+  (t! src-42)
+  menu
+)
+
+(deflayer l-42-base
+  (t! src-42)
+  @ledr
+)
+
+(deflayer l-42-base-chords
+  (t! src-42)
+  @ledr
+)
+
+(deflayer l-42-2-mods
+  1   2    3    4    5       6    7    8    9    0
+  q   w    e    r    t       y    u    i    o    p
+  a   s    d    f    g       h    j    k    l    scln
+  z   x    c    v   @b      @n    m    ,    .   /
+                   spc      ret
+  @ledr
+)
+
+(deflayer l-42-more-mods
+  1    2    3    4    5    6    7    8    9    0
+   q   w    e    r    t    y    u    i    o    p
+  @a   s    d    f    g    h    j    k    l    @scln
+  @z   x   @c   @v   @b   @n    m    ,    .    @/
+                    spc   ret
+  @ledr
+)
+
+;; @b
+;; redundancy: spc, bspc
+;; two slots still available: y h
+(deflayer mod-sym
+  S-1    S-2   S-3   S-4   S-5       S-6   S-7    S-8    S-9   S-0
+  S-grv  S-[   S-]   bspc  tab       _     S-min  S-eql  S-\   S-'
+  grv    [     ]     spc   esc       ret   -      =      \     '
+  lsft   lctl  lmet  lalt   @b       @n    ralt   rmet   rctl  rsft
+                           spc       ret
+  @ledr
+)
+;; @n
+;; mods, f-keys, navigation keys
+;; redundancy: spc
+(deflayer mod-nav
+  f1     f2    f3    f4    f5       prnt  slck  brk   menu  bspc
+  f6     f7    f8    f9    f10      ins   home   ↑    end   pgup
+  f11    f12   f13   f14   f15      del    ←     ↓    →     pgdn
+  lsft   lctl  lmet  lalt  spc      @n    ralt  rmet  rctl  rsft
+                           spc      ret
+  @ledr
+)
+
+;; left modifiers
+(t! alphabet-as-modifiers a lctrl)
+(t! alphabet-as-modifiers z lshift)
+(t! alphabet-as-modifiers c lmet)
+(t! alphabet-as-modifiers v lalt)
+;; right modifiers
+(t! alphabet-as-modifiers scln rctrl)
+(t! alphabet-as-modifiers / rshift)
+(t! alphabet-as-modifiers , rmet)
+(t! alphabet-as-modifiers m ralt)
+
+
+;; layers
+(t! alphabet-as-layer-held-switch b mod-sym)
+(t! alphabet-as-layer-held-switch n mod-nav)
+
+
+
+;; sequence leader key
+(defalias ledr (tap-hold-release 200 200 sldr menu))
+
+;; layer switch
+(t! seq (Backslash Digit0) to-l-42-base (layer-switch l-42-base))
+(t! seq (Backslash Digit1) to-l-42-base-chords (layer-switch l-42-base-chords))
+(t! seq (Backslash Digit2) to-l-42-2-mods (layer-switch l-42-2-mods))
+(t! seq (Backslash Digit3) to-l-42-more-mods (layer-switch l-42-more-mods))
+
+
+;; vim: ft=lisp

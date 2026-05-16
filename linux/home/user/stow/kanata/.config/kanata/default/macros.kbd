@@ -1,0 +1,48 @@
+#|
+sequence leader as macros
+
+Macros are short series of keystrokes that expands into longer text.
+It's basically sequence (which is triggered by leader key) that starts with m, and outputs pre-defined keystrokes.
+
+However, in addition to series of keystrokes, it's also possible to use chords
+(defseq
+  ;; A key list within O-(...) signifies simultaneous presses (chord inputs)
+  dotcom (O-(. c m))
+  )
+|#
+
+(defseq
+  macro-awk (m a w k)
+  macro-cd (m c d)
+  macro-cd (m Slash)
+  macro-color-always (m c a)
+  macro-color-never (m c v)
+  macro-localhost (m l h)
+  macro-grep (m g)
+  macro-qpdf (m q p d f)
+  macro-wikipedia (m w k)
+  )
+(deffakekeys
+  ;; " | grep
+  macro-grep (macro Space S-Backslash Space g r e p)
+  ;; "| awk '{print $1}'"
+  macro-awk (macro Space S-Backslash a w k Space Quote S-[ p r i n t Space S-4 Digit1 S-] Quote left left)
+
+  macro-qpdf (cmd wtype "qpdf --empty --pages example-a.pdf 1-z example-b.pdf 3,7,2,9-11 -- example_output.pdf")
+
+  ;; "cd ~/"
+  macro-cd (macro c d Space S-grv Slash)
+  ;; " --color=never "
+  macro-color-never (macro Space - - c o l o r = n e v e r Space)
+  ;; " --color=always "
+  macro-color-always (macro Space - - c o l o r = a l w a y s Space)
+  ;; http://localhost:
+  macro-localhost (macro h t t p S-scln Slash Slash l o c a l h o s t S-scln)
+
+  ;; wikipedia
+  macro-wikipedia (macro w i k i p e d i a)
+
+  )
+
+
+;; vim: ft=lisp

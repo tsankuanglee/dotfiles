@@ -1,0 +1,60 @@
+#|
+usage:
+(include ./layouts/key-block-templates.kbd)
+
+(defsrc
+  grv  (t! number-main) -    =    bspc
+)
+
+|#
+
+(deftemplate keyblock-f1-f12 ()
+  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
+)
+(deftemplate keyblock-1-0 ()
+  1    2    3    4    5    6    7    8    9    0
+)
+(deftemplate keyblock-qwerty-5x3x2 ()
+  q    w    e    r    t      y    u    i    o    p
+  a    s    d    f    g      h    j    k    l    ;
+  z    x    c    v    b      n    m    ,    .    /
+)
+(deftemplate keyblock-input ()
+  spc ret tab bspc
+)
+(deftemplate keyblock-action ()
+  esc menu
+)
+(deftemplate keyblock-arrows ()
+        up
+  left down rght
+)
+(deftemplate keyblock-modifiers ()
+   lsft lctl lmet lalt  ralt rmet rctl rsft caps
+)
+(deftemplate keyblock-symbols ()
+  grv - = [ ] \ '
+)
+(deftemplate keyblock-navigation-block ()
+  ins  home  pgup
+  del  end   pgdn
+)
+(deftemplate keyblock-sys ()
+  prtsc slck pause
+)
+(deftemplate keyblock-numpad-standard ()
+  nlck kp/  kp*  kp-
+  kp7  kp8  kp9  kp+
+  kp4  kp5  kp6
+  kp1  kp2  kp3  NumpadEnter
+  kp0       kp.
+)
+;; beyond 104-keys
+(deftemplate keyblock-f13-f24 ()
+  f13 f14 f15 f16 f17 f18 f19 f20 f21 f22 f23 f24
+)
+
+
+
+
+;; vim:  ft=lisp

@@ -1,0 +1,47 @@
+;; This is a template file that needs to be interpolated by envsubst
+#|
+key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
+|#
+(defcfg
+  linux-dev "$LINUX_DEV"
+
+  linux-use-trackpoint-property yes
+  linux-output-device-name "kanata output device"
+
+  ;; Kanata on Linux needs to declare a "bus type" for its evdev output device.
+  ;; The options are USB and I8042. The default is I8042.
+  ;; Using USB can break disable-touchpad-while-typing on Wayland.
+  ;; But using I8042 appears to break some other scenarios. Thus it is configurable.
+  ;;
+  ;; Examples:
+  ;;
+  ;;   linux-output-device-bus-type USB
+  ;;   linux-output-device-bus-type I8042
+
+  danger-enable-cmd "$DANGER_ENABLE_CMD"
+
+  process-unmapped-keys yes
+
+  delegate-to-first-layer yes
+
+  ;; movemouse-inherit-accel-state yes
+
+  movemouse-smooth-diagonals yes
+
+  dynamic-macro-max-presses 1000
+
+  concurrent-tap-hold yes
+
+  rapid-event-delay 5
+
+
+  ;; This configuration will press and then immediately release the non-modifier key
+  ;; as soon as the override activates, meaning you are unlikely as a human to ever
+  ;; release modifiers first, which can result in unintended behaviour.
+  ;;
+  ;; The downside of this configuration is that the non-modifier key
+  ;; does not remain held which is important to consider for your use cases.
+  ;;override-release-on-activation yes
+)
+
+;; vim:  ft=lisp
