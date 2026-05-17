@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+cd "$(dirname "$(realpath "$0")")";
+
+# Strict error handling
+set -euo pipefail
+
+# Configuration
+HOST=$KANATA_BIND_ADDRESS
+PORT=$KANATA_BIND_PORT
+
+# Print usage if argument is missing or invalid
+usage() {
+    echo "Usage: $0 {pause|resume}"
+    exit 1
+}
+
+# Ensure exactly one argument is passed
+if [ $# -ne 1 ]; then
+    usage
+fi
+
+# Assign the action parameter
+ACTION=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+
+# Check if Kanata TCP server is active
+TCP_ENDPOINT=/dev/tcp/$HOST/$PORT
+if ! timeout 1 bash -c "true < ${TCP_ENDPOINT}" 2>/dev/null; then
+    echo "Error: Cannot connect to Kanata at $HOST:$PORT. Is it running with --port?" >&2
+    exit 2
+fi
+
+# Execute the layer change based on input
+case "$ACTION" in
+    pause)
+        echo '{"ChangeLayer": {"new": "passthrough"}}' > ${TCP_ENDPOINT}
+        #echo "Kanata paused (switched to passthrough layer)."
+        ;;
+    resume)
+        echo '{"ChangeLayer": {"new": "default"}}' > ${TCP_ENDPOINT}
+        #echo "Kanata resumed (switched to base default)."
+        ;;
+    *)
+        usage
+        ;;
+esac

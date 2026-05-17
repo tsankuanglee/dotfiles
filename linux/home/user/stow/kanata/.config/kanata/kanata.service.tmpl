@@ -1,0 +1,22 @@
+# ~/.config/systemd/user/kanata.service
+[Unit]
+Description=Kanata keyboard remapper
+Documentation=https://github.com/jtroo/kanata
+
+[Service]
+#Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
+Environment=DISPLAY=:0
+Environment=HOME=%h
+Type=simple
+
+# create a private pipe
+ExecStartPre=/usr/bin/bash -c 'if [ ! -p %h/.config/kanata/local/kanata.pipe ]; then mkfifo %h/.config/kanata/local/kanata.pipe && chmod 600 %h/.config/kanata/local/kanata.pipe; fi'
+
+# debug or quiet
+ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/local/kanata.kbd --port $KANATA_BIND_ADDRESS:$KANATA_BIND_PORT
+# ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/local/kanata.kbd --port $KANATA_BIND_ADDRESS:$KANATA_BIND_PORT --quiet
+
+Restart=no
+
+[Install]
+WantedBy=default.target

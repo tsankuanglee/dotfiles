@@ -16,9 +16,16 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
   menu
 )
 
-(deflayer l-42-base
+(deflayer default
   (t! src-42)
   @ledr
+)
+
+;; passthrough; serve as kanata pause; should be same as src
+;; _ notation works too
+(deflayer passthrough
+  (t! src-42)
+  menu
 )
 
 (deflayer l-42-base-chords
@@ -89,7 +96,7 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 (defalias ledr (tap-hold-release 200 200 sldr menu))
 
 ;; layer switch
-(t! seq (Backslash Digit0) to-l-42-base (layer-switch l-42-base))
+(t! seq (Backslash Digit0) to-default (layer-switch default))
 (t! seq (Backslash Digit1) to-l-42-base-chords (layer-switch l-42-base-chords))
 (t! seq (Backslash Digit2) to-l-42-2-mods (layer-switch l-42-2-mods))
 (t! seq (Backslash Digit3) to-l-42-more-mods (layer-switch l-42-more-mods))
