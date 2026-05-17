@@ -14,8 +14,8 @@ Type=simple
 ExecStartPre=/usr/bin/bash -c 'if [ ! -p %h/.config/kanata/local/kanata.pipe ]; then mkfifo %h/.config/kanata/local/kanata.pipe && chmod 600 %h/.config/kanata/local/kanata.pipe; fi'
 
 # debug or quiet
-ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/local/kanata.kbd --port $KANATA_BIND_ADDRESS:$KANATA_BIND_PORT
-# ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/local/kanata.kbd --port $KANATA_BIND_ADDRESS:$KANATA_BIND_PORT --quiet
+# ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/local/kanata.kbd --port $KANATA_BIND_ADDRESS:$KANATA_BIND_PORT
+ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/local/kanata.kbd --port $KANATA_BIND_ADDRESS:$KANATA_BIND_PORT --quiet
 
 Restart=no
 
