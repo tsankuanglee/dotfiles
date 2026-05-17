@@ -49,17 +49,22 @@ hl.define_submap("window", function()
     hl.bind("catchall", hl.dsp.submap("reset"))
 end)
 
-hl.define_submap("system", function()
+hl.define_submap("system", "reset", function()
+    -- quit hyrpland
     hl.bind("Q", hl.dsp.exit())
 
-    hl.bind("H", hl.dsp.exec_cmd("/usr/bin/systemctl hibernate"))
-    hl.bind("S", hl.dsp.exec_cmd("/usr/bin/systemctl sleep"))
-    hl.bind("D", hl.dsp.exec_cmd("/usr/bin/systemctl suspend"))
-    hl.bind("R", hl.dsp.exec_cmd("/usr/bin/systemctl reboot"))
-    hl.bind("F", hl.dsp.exec_cmd("/usr/bin/systemctl poweroff"))
+    -- kanata pause/resume
+    hl.bind(        "K", hl.dsp.exec_cmd("~/.config/kanata/local/kanata-toggle.sh resume"), { locked = false, repeating = false})
+    hl.bind("SHIFT + K", hl.dsp.exec_cmd("~/.config/kanata/local/kanata-toggle.sh pause"), { locked = false, repeating = false})
+
+    -- system power management
+    hl.bind("SHIFT + P", hl.dsp.exec_cmd("/usr/bin/systemctl sleep"))
+    hl.bind("SHIFT + D", hl.dsp.exec_cmd("/usr/bin/systemctl suspend"))
+    hl.bind("SHIFT + H", hl.dsp.exec_cmd("/usr/bin/systemctl hibernate"))
+    hl.bind("SHIFT + R", hl.dsp.exec_cmd("/usr/bin/systemctl reboot"))
+    hl.bind("SHIFT + F", hl.dsp.exec_cmd("/usr/bin/systemctl poweroff"))
 
     hl.bind("escape", hl.dsp.submap("reset"))
-    hl.bind("catchall", hl.dsp.submap("reset"))
 end)
 
 return submaps
