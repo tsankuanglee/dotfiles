@@ -123,7 +123,7 @@ format = '\[[$symbol($version)]($style)\]'
 ssh_only = false
 format = '[$hostname$ssh_symbol]($style)'
 #style = "bold dimmed fg:36 bg:#151515"
-style = "bold fg:36"
+style = "bold fg:$HOSTNAME_COLOR"
 
 [hg_branch]
 format = '\[[$symbol$branch]($style)\]'
@@ -250,4 +250,4 @@ format = '\[[$symbol($version)]($style)\]'
 [solidity]
 format = '\[[$symbol($version)]($style)\]'
 
-# vim: set foldmethod=marker :
+# vim: set ft=toml foldmethod=marker :
