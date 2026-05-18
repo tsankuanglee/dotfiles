@@ -1,13 +1,11 @@
 #!/usr/bin/bash
 cd "$(dirname "$(realpath "$0")")";
 
-# Wayland (Sway)
+# wayland
 stow -t ~ sway
+stow -t ~ hypr
 
-# Wayland (Hyprland)
-#stow -t ~ hypr
-
-# X-11
+# x11
 #stow -t ~ i3
 
 # common
