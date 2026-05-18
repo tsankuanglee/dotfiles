@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Console (TTY)
+Comment=Log directly into a command line interface
+Exec=zsh --login
+Type=Application
