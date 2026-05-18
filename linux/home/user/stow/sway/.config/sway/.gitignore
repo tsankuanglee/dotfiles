@@ -1,0 +1,6 @@
+# Ignore the local machine configuration
+config
+
+# Ignore everything in local/ except the .gitkeep file
+local/*
+!local/.gitkeep

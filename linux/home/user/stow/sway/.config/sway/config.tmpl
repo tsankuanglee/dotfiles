@@ -1,0 +1,50 @@
+# sway config
+# see /etc/sway/config for new defaults
+
+# inputs
+include components/020-inputs.conf
+include local/020-inputs.conf
+
+# outputs
+include components/040-outputs.conf
+include local/040-outputs.conf
+
+# UI
+include components/060-look_and_feel.conf
+include components/100-sway_keybindings.conf
+include components/200-sway_menus.conf
+include components/210-sway_submenu_container.conf
+include components/215-sway_submenu_resize_move.conf
+include components/220-sway_submenu_workspace.conf
+include components/225-sway_submenu_gaps.conf
+include components/230-sway_submenu_opacity.conf
+include components/235-sway_submenu_border.conf
+include components/240-sway_submenu_mouse.conf
+include components/245-sway_submenu_sway.conf
+include components/250-sway_submenu_system.conf
+include local/255-sway_submenu_hardware.conf
+include local/260-sway_submenu_tools.conf
+include local/265-sway_submenu_apps.conf
+include local/200-sway_menus.conf
+include components/290-sway_menus_general.conf
+include local/290-sway_menus_general.conf
+include components/300-status_bar.conf
+include components/400-window_rules.conf
+include local/400-window_rules.conf
+
+# workspaces
+include local/500-workspaces.conf
+
+# swayidle
+include components/600-swayidle.conf
+
+# autostart
+include components/800-autostart.conf
+include local/800-autostart.conf
+
+# final
+include components/900-final.conf
+include local/900-final.conf
+
+# global
+include /etc/sway/config.d/*
