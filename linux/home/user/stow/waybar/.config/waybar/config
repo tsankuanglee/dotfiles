@@ -3,7 +3,6 @@
   "layer": "top", // Waybar at top layer
   "position": "bottom", // Waybar position (top|bottom|left|right)
   "ipc": true,
-
   //	Choose the order of the modules
   "modules-left": [
     "sway/workspaces",
@@ -14,9 +13,7 @@
     //"sway/scratchpad"
     //"sway/window"
   ],
-
   "modules-center": [],
-
   "modules-right": [
     "custom/wl-gammarelay-temperature",
     "custom/wl-gammarelay-brightness",
@@ -36,7 +33,6 @@
     //"clock#2",
     "tray"
   ],
-
   // Modules configuration
   "sway/workspaces": {
     "disable-scroll": true,
@@ -79,17 +75,21 @@
   "sway/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": false,
-    "format-icons": ["", ""],
+    "format-icons": [
+      "",
+      ""
+    ],
     "tooltip": true,
     "tooltip-format": "{app}: {title}"
   },
-
   "backlight": {
     "device": "acpi_video1",
     "format": "{icon} {percent}%",
-    "format-icons": ["🔅", "🔆"]
+    "format-icons": [
+      "🔅",
+      "🔆"
+    ]
   },
-
   "battery": {
     "states": {
       "good": 95,
@@ -103,13 +103,18 @@
     "format-plugged": "<span color='#e88939'>{icon}</span>{capacity}%{time}",
     "format-good": "<span color='#e88939'>{icon}</span>{capacity}%<span color='#e99949'>{time}</span>@{power}W",
     "format-discharging": "<span color='#e88939'>{icon}</span>{capacity}%<span color='#e99949'>{time}</span>@{power}W",
-    "format-icons": ["", "", "", "", ""],
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
     "on-click-right": "sudo /root/.local/bin/system/battery_conservation_mode.sh 1",
     "on-click-middle": "sudo /root/.local/bin/system/battery_conservation_mode.sh 0",
     "max-length": 18,
     "min-length": 9
   },
-
   "clock#1": {
     "interval": 1,
     //"format": "<span color='#cde9f0'>{:%Y-%m-%d %a %H:%M:%S}</span>",
@@ -126,14 +131,12 @@
     //"tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
     // "format-alt": "{:%Y-%m-%d}"
   },
-
   "clock#3": {
     "interval": 18000,
     "format": "{:%F} 📅",
     "tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
     // "format-alt": "{:%Y-%m-%d}"
   },
-
   "cpu": {
     "interval": 5,
     "format": "<span color='#eb8a60'>{usage}%({load})</span>", // Icon: microchip
@@ -142,7 +145,6 @@
       "critical": 90
     }
   },
-
   "idle_inhibitor": {
     "format": "<span color='#589df6'>{icon}</span>",
     "format-icons": {
@@ -153,12 +155,10 @@
     //"on-click-right": "swaylock -eFfki -c 000000"
     "on-click-right": "swaylock -f -c 000000"
   },
-
   "memory": {
     "format": "{used:0.1f}G",
     "tooltip": false
   },
-
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": "<span color='#589df6'></span> <span color='gray'>{signalStrength}%</span>",
@@ -169,16 +169,13 @@
     "interval": 60,
     "tooltip-format": "{ifname} {essid}  {ipaddr}/{cidr}"
   },
-
   "pulseaudio": {
     "format": "{icon}{volume}% {format_source}",
     "format-muted": "🔇{format_source}",
     "format-bluetooth": "{icon}{volume}% {format_source}",
     "format-bluetooth-muted": "🔇{format_source}",
-
     "format-source": "{volume}%",
     "format-source-muted": "",
-
     "format-icons": {
       "headphones": "",
       "handsfree": "",
@@ -186,7 +183,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["🔈", "🔉", "🔊"]
+      "default": [
+        "🔈",
+        "🔉",
+        "🔊"
+      ]
     },
     "on-click": "pactl -- set-sink-mute 0 toggle",
     "on-click-right": "pavucontrol"
@@ -200,14 +201,17 @@
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C {icon}",
     "format": "<span color='#e88939'>{icon}</span> {temperatureC}°C",
-    "format-icons": ["", "", ""],
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
     "tooltip": false
   },
   "tray": {
     "icon-size": 18,
     "spacing": 5
   },
-
   "custom/weather": {
     "format": "<span color='#22dfda'>{}</span>",
     "interval": 18000,
@@ -216,13 +220,11 @@
     "exec-if": "ping openweathermap.org -c1",
     "tooltip": "false"
   },
-
   "custom/wkblayout": {
     "format": "<span color='#11eec2'>🖋</span> {}",
     "exec": "swaymsg -mrt subscribe '[\"input\"]' | jq -r --unbuffered \"select(.change == \\\"xkb_layout\\\") | .input | select(.type == \\\"keyboard\\\") | .xkb_active_layout_name | .[0:2]\"",
     "tooltip": "false"
   },
-
   // see https://github.com/MaxVerevkin/wl-gammarelay-rs
   "custom/wl-gammarelay-temperature": {
     "format": "{}",
@@ -247,5 +249,4 @@
     "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d -0.02"
   }
 }
-
 // vim: ft=javascript
