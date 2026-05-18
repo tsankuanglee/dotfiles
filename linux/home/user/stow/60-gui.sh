@@ -3,6 +3,9 @@ cd "$(dirname "$(realpath "$0")")";
 
 stow --no-folding -t ~ gui-common
 
-stow -t ~ rofi
+# terminal
 stow -t ~ kitty
-stow -t ~ nvim-qt
+
+# IME
+stow -t ~ fcitx5
+
