@@ -1,0 +1,251 @@
+{
+  //"id": "bar_0",
+  "layer": "top", // Waybar at top layer
+  "position": "bottom", // Waybar position (top|bottom|left|right)
+  "ipc": true,
+
+  //	Choose the order of the modules
+  "modules-left": [
+    "sway/workspaces",
+    "hyprland/workspaces",
+    "sway/mode",
+    "hyprland/submap"
+    //"hyprland/window"
+    //"sway/scratchpad"
+    //"sway/window"
+  ],
+
+  "modules-center": [],
+
+  "modules-right": [
+    "custom/wl-gammarelay-temperature",
+    "custom/wl-gammarelay-brightness",
+    "custom/wl-gammarelay-gamma",
+    "cpu",
+    "memory",
+    //"custom/weather",
+    //"network",
+    //"temperature",
+    //"backlight",
+    "pulseaudio",
+    //"custom/wkblayout",
+    //"keyboard-state",
+    //"battery",
+    "idle_inhibitor",
+    "clock#1",
+    //"clock#2",
+    "tray"
+  ],
+
+  // Modules configuration
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{name}",
+    "format-icons": {
+      "urgent": "<span color='#e85c5c'></span>",
+      "focused": "<span color='#8af0f0'></span>",
+      "default": "<span color='#b8b8b8'></span>"
+    }
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{name}",
+    "format-icons": {
+      "urgent": "<span color='#e85c5c'></span>",
+      "focused": "<span color='#8af0f0'></span>",
+      "default": "<span color='#b8b8b8'></span>"
+    }
+  },
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "hyprland/submap": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "hyprland/window": {
+    "separate-outputs": true
+  },
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
+  },
+
+  "backlight": {
+    "device": "acpi_video1",
+    "format": "{icon} {percent}%",
+    "format-icons": ["🔅", "🔆"]
+  },
+
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 20,
+      "critical": 10
+    },
+    "format-alt": "{power}W",
+    "format-time": "{H}h{M}",
+    "format": "<span color='#e88939'>{icon}</span>{capacity}%<span color='#e99949'>{time}</span>@{power}W",
+    "format-charging": "<span color='#e88939'>{icon}C</span>{capacity}%{time}",
+    "format-plugged": "<span color='#e88939'>{icon}</span>{capacity}%{time}",
+    "format-good": "<span color='#e88939'>{icon}</span>{capacity}%<span color='#e99949'>{time}</span>@{power}W",
+    "format-discharging": "<span color='#e88939'>{icon}</span>{capacity}%<span color='#e99949'>{time}</span>@{power}W",
+    "format-icons": ["", "", "", "", ""],
+    "on-click-right": "sudo /root/.local/bin/system/battery_conservation_mode.sh 1",
+    "on-click-middle": "sudo /root/.local/bin/system/battery_conservation_mode.sh 0",
+    "max-length": 18,
+    "min-length": 9
+  },
+
+  "clock#1": {
+    "interval": 1,
+    //"format": "<span color='#cde9f0'>{:%Y-%m-%d %a %H:%M:%S}</span>",
+    "format": "<span color='#cde9f0'>{:%F %a %T}</span>",
+    //"tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
+    // "format-alt": "{:%Y-%m-%d}"
+    "on-click-right": "date '+%F %H:%M:%S' | wl-copy -n"
+  },
+  "clock#2": {
+    "interval": 60,
+    "timezone": "UTC",
+    //"format": "<span color='#cde9f0'>{:%Y-%m-%d %a %H:%M:%S}</span>",
+    "format": "<span color='#cde9f0'>| UTC {:%H}</span>"
+    //"tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
+    // "format-alt": "{:%Y-%m-%d}"
+  },
+
+  "clock#3": {
+    "interval": 18000,
+    "format": "{:%F} 📅",
+    "tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
+    // "format-alt": "{:%Y-%m-%d}"
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "<span color='#eb8a60'>{usage}%({load})</span>", // Icon: microchip
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  "idle_inhibitor": {
+    "format": "<span color='#589df6'>{icon}</span>",
+    "format-icons": {
+      //"activated": "",
+      "activated": "",
+      "deactivated": ""
+    },
+    //"on-click-right": "swaylock -eFfki -c 000000"
+    "on-click-right": "swaylock -f -c 000000"
+  },
+
+  "memory": {
+    "format": "{used:0.1f}G",
+    "tooltip": false
+  },
+
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "<span color='#589df6'></span> <span color='gray'>{signalStrength}%</span>",
+    "format-ethernet": "",
+    "format-linked": "(no addr) ",
+    "format-disconnected": " ",
+    "format-alt": "<span color='gray'>{essid}</span> <span color='green'>⬇</span>{bandwidthDownBits} <span color='green'>⬆</span>{bandwidthUpBits}",
+    "interval": 60,
+    "tooltip-format": "{ifname} {essid}  {ipaddr}/{cidr}"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}{volume}% {format_source}",
+    "format-muted": "🔇{format_source}",
+    "format-bluetooth": "{icon}{volume}% {format_source}",
+    "format-bluetooth-muted": "🔇{format_source}",
+
+    "format-source": "{volume}%",
+    "format-source-muted": "",
+
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["🔈", "🔉", "🔊"]
+    },
+    "on-click": "pactl -- set-sink-mute 0 toggle",
+    "on-click-right": "pavucontrol"
+    //"scroll-step": 1, // %, can be a float
+    //"on-scroll-down": "pactl set-sink-volume   @DEFAULT_SINK@  +1%",
+    //"on-scroll-up": "pactl set-sink-volume   @DEFAULT_SINK@  -10%"
+  },
+  "temperature": {
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C {icon}",
+    "format": "<span color='#e88939'>{icon}</span> {temperatureC}°C",
+    "format-icons": ["", "", ""],
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 5
+  },
+
+  "custom/weather": {
+    "format": "<span color='#22dfda'>{}</span>",
+    "interval": 18000,
+    "exec": "sb-forecast",
+    //ansiweather -l shiraz,IR -u metric -s true -f 1 -a false | cut -d' ' -f2,8-
+    "exec-if": "ping openweathermap.org -c1",
+    "tooltip": "false"
+  },
+
+  "custom/wkblayout": {
+    "format": "<span color='#11eec2'>🖋</span> {}",
+    "exec": "swaymsg -mrt subscribe '[\"input\"]' | jq -r --unbuffered \"select(.change == \\\"xkb_layout\\\") | .input | select(.type == \\\"keyboard\\\") | .xkb_active_layout_name | .[0:2]\"",
+    "tooltip": "false"
+  },
+
+  // see https://github.com/MaxVerevkin/wl-gammarelay-rs
+  "custom/wl-gammarelay-temperature": {
+    "format": "{}",
+    "exec": "wl-gammarelay-rs watch {t}",
+    "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100",
+    "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100",
+    "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500",
+    "on-click-right": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500"
+  },
+  "custom/wl-gammarelay-brightness": {
+    "format": "<span color='#eb8a60'>{}%</span>",
+    "exec": "wl-gammarelay-rs watch {bp}",
+    "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.05",
+    "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.05",
+    "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 0.6",
+    "on-click-right": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 1.0"
+  },
+  "custom/wl-gammarelay-gamma": {
+    "format": "γ{}%",
+    "exec": "wl-gammarelay-rs watch {g}",
+    "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d +0.02",
+    "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d -0.02"
+  }
+}
+
+// vim: ft=javascript
