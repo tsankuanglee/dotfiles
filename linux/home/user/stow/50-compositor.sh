@@ -2,7 +2,7 @@
 cd "$(dirname "$(realpath "$0")")";
 
 # Wayland (Sway)
-#stow -t ~ sway
+stow -t ~ sway
 
 # Wayland (Hyprland)
 #stow -t ~ hypr
