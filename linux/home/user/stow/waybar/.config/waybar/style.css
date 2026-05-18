@@ -65,7 +65,8 @@
 }
 
 #mode {
-	background: #af005f;
+	background: #234887;
+	font-size: .7em;
 }
 
 #clock, #custom-jalalidate, #custom-weather, #custom-disk_home, #custom-disk_root,#custom-wkblayout, #temperature, #cpu, #memory, #network, #backlight, #pulseaudio, #battery, #tray, #idle_inhibitor {
