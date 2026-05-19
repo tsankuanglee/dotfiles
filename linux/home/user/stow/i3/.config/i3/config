@@ -60,8 +60,8 @@ focus_on_window_activation urgent
 focus_follows_mouse yes
 #mouse_warping output|none
 mouse_warping none
-bindsym $mod+apostrophe exec --no-startup-id /home/tklee/.local/bin/session_control/move_cursor_to_active_window.sh
-bindsym $mod+g exec --no-startup-id /home/tklee/.local/bin/session_control/move_cursor_to_active_window.sh
+bindsym $mod+apostrophe exec --no-startup-id "bash -c '~/.local/bin/session_control/move_cursor_to_active_window.sh'"
+bindsym $mod+g exec --no-startup-id "bash -c '~/.local/bin/session_control/move_cursor_to_active_window.sh'"
 
 # change focus
 bindsym $mod+j focus left
@@ -251,9 +251,9 @@ mode "$mode_apps" {
 set $mode_system (l)ock, (L)ock reset, (e)xit, (s)uspend, (h)ibernate, f)ix resume problem, (R)eboot, (S)hutdown
 mode "$mode_system" {
     # add sleep so i3's key release (after executing) won't cancel the screenlock
-    set $locker_now sleep .3 && /home/tklee/.local/bin/screen_control/lock_screen_timer_control.py --now
+    set $locker_now "bash -c 'sleep .3 && ~/.local/bin/screen_control/lock_screen_timer_control.py --now'"
     set $locker_reset sleep .3 && /usr/bin/xset dpms 300 300 300
-    set $fix_resume_problem /home/tklee/.local/bin/system/resume-fix.sh
+    set $fix_resume_problem "bash -c '~/.local/bin/system/resume-fix.sh'"
 
     bindsym l exec --no-startup-id $locker_now; mode "default"
     bindsym Shift+l exec --no-startup-id $locker_reset ; mode "default"
