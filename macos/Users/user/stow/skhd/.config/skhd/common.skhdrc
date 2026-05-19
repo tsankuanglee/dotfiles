@@ -34,7 +34,7 @@ skhd, combo, combo_docker, combo_shell, combo_python, app, app_browser, app_term
 default < hyper - s ; skhd
 skhd < r : skhd -r; terminal-notifier -group skhd -remove skhd -message "config reloaded"; skhd --key escape
 skhd < shift - r : skhd --restart-service; terminal-notifier -group skhd -remove skhd -message "restarted"; skhd --key escape
-skhd < e : open -na /Applications/Neovide.app --args ~/.config/skhd/tklee.skhdrc ; skhd --key escape
+skhd < e : open -na /Applications/Neovide.app --args ~/.config/skhd/common.skhdrc ; skhd --key escape
 skhd < q : terminal-notifier -group skhd -remove skhd -message "exited"; skhd --stop-service ; skhd --key escape
 
 # screenshot of specified monitor (use ~/.local/bin/identify_monitors.py to determine the display IDs)
