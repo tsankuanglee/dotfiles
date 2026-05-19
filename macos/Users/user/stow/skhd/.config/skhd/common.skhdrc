@@ -135,8 +135,6 @@ general_sound_input < e : /usr/local/bin/SwitchAudioSource -t input -s "External
 general_sound_input < u : /usr/local/bin/SwitchAudioSource -t input -s "Sennheiser USB Headset"; skhd --key escape # usb
 0x5A : /usr/local/bin/SwitchAudioSource -t input -m toggle
 general_sound_input < m : /usr/local/bin/SwitchAudioSource -t input -m toggle; skhd --key escape # mute toggle
-#general_sound_input < l : ~/.local/bin/audio_control.sh mic_vol_up; skhd --key escape # louder
-#general_sound_input < q : ~/.local/bin/audio_control.sh mic_vol_down; skhd --key escape # quieter
 general_sound_input < q : /usr/bin/osascript -e "set volume input volume ((input volume of (get volume settings)) - 5)" >/dev/null; skhd --key escape # quieter
 general_sound_input < l : /usr/bin/osascript -e "set volume input volume ((input volume of (get volume settings)) + 5)" >/dev/null; skhd --key escape # louder
 
