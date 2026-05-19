@@ -43,7 +43,11 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
   (t! src-104)
 )
 
-(deflayer base
+(deflayer default
+  (t! src-104)
+)
+
+(deflayer passthrough
   (t! src-104)
 )
 

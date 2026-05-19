@@ -18,7 +18,7 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
   (t! src-legion5)
 )
 
-(deflayer base
+(deflayer default
   esc   f1   f2   f3   f4   f5   f6  f7 f8  f9  f10  f11 f12  ins  @ssrq del    home end  pgup pgdn
   grv   1    2    3    4    5    6    7    8    9    0    -    =      bspc      nlck kp/  kp*  kp-
   tab   q    w    e    r    t    y    u    i    o    p    [    ]       \        kp7  kp8  kp9  kp+
@@ -28,10 +28,14 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
                                                                  left down rght
 )
 
+(deflayer passthrough
+  (t! src-legion5)
+)
+
 (defalias
   ext (layer-toggle extended) ;; Bind num to a button that switches to a layer
   ext2 (layer-toggle extended2) ;;
-  base (layer-switch base) ;; Set qwerty as the base layer
+  default (layer-switch default) ;; Set qwerty as the default layer
   ;;kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
   ;;esctl (tap-next esc lctl)
   esctl (tap-hold-press 200 200 esc lctl)

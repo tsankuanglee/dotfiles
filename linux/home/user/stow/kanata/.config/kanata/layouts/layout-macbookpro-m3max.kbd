@@ -1,0 +1,67 @@
+#|
+key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rsttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
+
+* fn is not detectable
+|#
+
+
+(deftemplate src-macbookpro-m3max ()
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  fn   lctl lalt lmet           spc            rmet ralt          up
+                                                            left down right
+)
+
+;; Only one defsrc is allowed.
+(defsrc
+  (t! src-macbookpro-m3max)
+)
+
+(deflayer default
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+@esctl a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  fn   lctl lalt lmet           spc            @ext @ext2         up
+                                                            left down right
+)
+
+;; passthrough; serve as kanata pause; should be same as src
+;; _ notation works too
+(deflayer passthrough
+  (t! src-macbookpro-m3max)
+)
+
+(defalias
+  ext (layer-toggle extended) ;; Bind num to a button that switches to a layer
+  ext2 (layer-toggle extended2) ;;
+  default (layer-switch default) ;; Set qwerty as the default layer
+  ;;kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
+  ;;esctl (tap-next esc lctl)
+  esctl (tap-hold-press 200 200 esc lctl)
+)
+
+(deflayer extended
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    ins  home  up  end  pgup [    ]    \
+@esctl j    s    d    f    g    del  left down rght pgdn '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  fn   lctl lalt lmet           spc            @ext @ext2         up
+                                                            left down right
+)
+
+(deflayer extended2
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  fn   lctl lalt lmet           spc            @ext @ext2        @menu
+                                                            left down right
+)
+;; vim:  ft=lisp

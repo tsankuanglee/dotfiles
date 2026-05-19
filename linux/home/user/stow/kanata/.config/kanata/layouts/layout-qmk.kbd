@@ -94,9 +94,12 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
   (t! src-qmk)
 )
 
-(deflayer base
+(deflayer default
   (t! src-qmk)
 )
 
+(deflayer passthrough
+  (t! src-qmk)
+)
 
 ;; vim:  ft=lisp
