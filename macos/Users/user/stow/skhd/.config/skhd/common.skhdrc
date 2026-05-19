@@ -33,9 +33,9 @@ skhd, combo, combo_docker, combo_shell, combo_python, app, app_browser, app_term
 # skhd
 default < hyper - s ; skhd
 skhd < r : skhd -r; terminal-notifier -group skhd -remove skhd -message "config reloaded"; skhd --key escape
-skhd < shift - r : brew services restart skhd; terminal-notifier -group skhd -remove skhd -message "restarted"; skhd --key escape
-skhd < e : open -a /Applications/Neovide.app --args ~/.config/skhd/tklee.skhdrc ; skhd --key escape
-skhd < q : terminal-notifier -group skhd -remove skhd -message "exited"; brew services stop skhd ; skhd --key escape
+skhd < shift - r : skhd --restart-service; terminal-notifier -group skhd -remove skhd -message "restarted"; skhd --key escape
+skhd < e : open -na /Applications/Neovide.app --args ~/.config/skhd/tklee.skhdrc ; skhd --key escape
+skhd < q : terminal-notifier -group skhd -remove skhd -message "exited"; skhd --stop-service ; skhd --key escape
 
 # screenshot of specified monitor (use ~/.local/bin/identify_monitors.py to determine the display IDs)
 
@@ -107,12 +107,16 @@ app_terminal < shift - i : open -na /Applications/iTerm.app; skhd --key escape
 
 ## app_editor
 app < e ; app_editor
-app_editor < v : open -a /Applications/Neovide.app; skhd --key escape
-app_editor < shift - v : open -na /Applications/Neovide.app; skhd --key escape
+### neovide
+# app_editor < n : open -a /Applications/Neovide.app; skhd --key escape
+# app_editor < shift - n : open -na /Applications/Neovide.app; skhd --key escape
+app_editor < n : /opt/homebrew/bin/neovide; skhd --key escape
+### nvim
+app_editor < v : /Applications/kitty.app/Contents/MacOS/kitty -e /opt/homebrew/opt/nvim/bin/nvim ; skhd --key escape
 
 ## app_graphic
 app < g ; app_graphic
-app_graphic < g : open -a /Applications/GIMP-2.10.app; skhd --key escape
+app_graphic < g : open -a /Applications/GIMP.app; skhd --key escape
 
 
 # general

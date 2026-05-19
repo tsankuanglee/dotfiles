@@ -211,47 +211,98 @@ function send_window_to_next_monitor()
   end
 end
 
--- Send Window to Specified Monitor
-function send_window_to_target_monitor(hint)
-  -- print(hint)
-  if (#hs.screen.allScreens() > 1) then
-    local win = hs.window.focusedWindow()
-    targetScreen = hs.screen.find(hint)
-    --print(targetScreen)
-    win:moveToScreen(targetScreen)
+--
+-- Screen position -> screen index mapping
+--
+-- identify_monitors.sh generates /tmp/screen_ids.json with shape:
+--   {"main": 1, "left": 2, "middle": 3, "right": 4}
+-- Screen indexes are not stable across reboots, so we re-resolve them
+-- via the helper script and cache the contents in memory.
+--
+
+local SCREEN_IDS_FILE = "/tmp/screen_ids.json"
+local IDENTIFY_MONITORS_SCRIPT = os.getenv("HOME") .. ".local/bin/identify_monitors.sh"
+
+screen_ids = {}
+
+function run_identify_monitors_script()
+  local cmd = string.format("%q", IDENTIFY_MONITORS_SCRIPT)
+  local handle = io.popen(cmd .. " 2>&1")
+  if handle then
+    handle:read("*a")
+    handle:close()
   end
 end
 
+function load_screen_ids()
+  local f = io.open(SCREEN_IDS_FILE, "r")
+  if not f then
+    run_identify_monitors_script()
+    f = io.open(SCREEN_IDS_FILE, "r")
+    if not f then
+      hs.alert.show("Failed to generate " .. SCREEN_IDS_FILE)
+      screen_ids = {}
+      return
+    end
+  end
+  local contents = f:read("*a")
+  f:close()
+  local ok, decoded = pcall(hs.json.decode, contents)
+  if ok and type(decoded) == "table" then
+    screen_ids = decoded
+  else
+    hs.alert.show("Failed to parse " .. SCREEN_IDS_FILE)
+    screen_ids = {}
+  end
+end
 
+function refresh_screen_ids()
+  run_identify_monitors_script()
+  load_screen_ids()
+  print("Screen IDs refreshed: " .. dump(screen_ids))
+end
+
+refresh_screen_ids()
+
+-- Send Window to Specified Monitor
+-- `position` is one of "main", "left", "middle", "right"
+function send_window_to_target_monitor(position)
+  if (#hs.screen.allScreens() > 1) then
+    local screen_id = screen_ids[position]
+    if not screen_id then
+      hs.alert.show("Unknown screen position: " .. tostring(position))
+      return
+    end
+    local win = hs.window.focusedWindow()
+    local targetScreen = hs.screen.find(screen_id)
+    if not targetScreen then
+      hs.alert.show("Screen not found for position: " .. position .. " (id=" .. tostring(screen_id) .. ")")
+      return
+    end
+    win:moveToScreen(targetScreen)
+  end
+end
 
 bindKey("return", toggle_window_maximized)
 bindKey("n", send_window_to_next_monitor)
 bindKey("p", send_window_to_prev_monitor)
 
-
-
--- move directly to the target screen
--- screen ID can be found in consoel with send_window_to_next_monitor
--- Built-in Retina Display
+-- move directly to the target screen by named position
 bindKey("0", function()
-  send_window_to_target_monitor(1)
+  send_window_to_target_monitor("main")
 end)
 bindKey("7", function()
-  send_window_to_target_monitor(4)
+  send_window_to_target_monitor("left")
+end)
 bindKey("8", function()
-  -- center large screen
-  --send_window_to_target_monitor("LG Ultra HD")
-  send_window_to_target_monitor(2)
+  send_window_to_target_monitor("middle")
 end)
 bindKey("9", function()
-  send_window_to_target_monitor(5)
+  send_window_to_target_monitor("right")
 end)
-end)
---2022-03-28 19:53:13: hs.screen: DELL P2419HC (1) (0x6000005fbe38)
---2022-03-28 19:53:14: hs.screen: DELL P2419HC (2) (0x600000aaed78)
---2022-03-28 19:53:15: hs.screen: Built-in Retina Display (0x600000a9fe38)
 
-
+-- re-run identify_monitors.sh and reload the cached screen ids
+bindKey("6", refresh_screen_ids)
 
 --
 -- Grid
