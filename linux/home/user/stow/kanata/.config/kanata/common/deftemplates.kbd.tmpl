@@ -33,7 +33,7 @@
 
 (deftemplate
   seq-script-launcher (keys vk-name shell-script-command)
-  (defvirtualkeys $vk-name (cmd zsh -c $shell-script-command))
+  (defvirtualkeys $vk-name (cmd $RUN_EXTERNAL_COMMAND_AS zsh -c $shell-script-command))
   (defseq $vk-name $keys)
   )
 

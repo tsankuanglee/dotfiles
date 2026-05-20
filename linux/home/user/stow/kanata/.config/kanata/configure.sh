@@ -23,5 +23,7 @@ chmod a+x ./local/kanata-toggle.sh
 
 mkdir -p ./local
 envsubst '$LINUX_DEV,$DANGER_ENABLE_CMD' < ./common/defcfg.kbd.tmpl > ./local/defcfg.kbd
+envsubst '$RUN_EXTERNAL_COMMAND_AS' < ./common/deftemplates.kbd.tmpl > ./local/deftemplates.kbd
 envsubst '$LAYOUTS_FILENAME,$INCLUDE_SEQUENCES,$INCLUDE_MACROS,$INCLUDE_CHORDS' < ./kanata.kbd.tmpl > ./local/kanata.kbd
+envsubst '$USER' < system_files/Library/LaunchDaemons/com.kanata.daemon.plist > ./local/com.kanata.daemon.plist
 

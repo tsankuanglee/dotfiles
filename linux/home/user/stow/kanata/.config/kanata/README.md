@@ -3,11 +3,11 @@
 ## configuration files
 
 * Copy `.env.tmpl` to `.env` and edit it.
-* Run `./configure.sh`, which will produce `./local/*kbd` files.
+* Run `./configure.sh`, which will produce `./local/*kbd` files and other system files.
 * `.env` and `./local/*` are gitignored
 
 
-## user systemd service
+## Liuux: user systemd service
 create the following file
 ```
 # ~/.config/systemd/user/kanata.service
@@ -28,11 +28,17 @@ Restart=no
 [Install]
 WantedBy=default.target
 ```
-
-# Usage
-
+To start:
 ```
-# start/stop/restart/status
+# start/stop/restart/status/enable/disable
 systemctl --user start kanata
 # wait a few seconds for kanata to load before typing, to avoid stucked keys
 ```
+
+## MacOS: setup plist file
+
+After running `./configure.sh`, it'll produce `./local/com.kanata.daemon.plist`. As root, copy it to `/Library/LaunchDaemons/com.kanata.daemon.plist`
+```
+sudo launchctl load -w com.kanta.daemon.plist
+```
+
