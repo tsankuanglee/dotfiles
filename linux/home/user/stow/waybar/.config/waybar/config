@@ -25,11 +25,13 @@
       "custom/temperature",
       //"custom/weather",
       //"network",
-      //"backlight",
-      "pulseaudio",
+      "backlight",
+      "backlight/slider",
+      "wireplumber",
+      //"pulseaudio",
       //"custom/wkblayout",
       //"keyboard-state",
-      //"battery",
+      "battery",
       "idle_inhibitor",
       "clock#1",
       //"clock#2",
@@ -67,12 +69,8 @@
         "unlocked": ""
       }
     },
-    "sway/mode": {
-      //"format": "<span style=\"italic\">{}</span>"
-    },
-    "hyprland/submap": {
-      "format": "<span style=\"italic\">{}</span>"
-    },
+    "sway/mode": {},
+    "hyprland/submap": {},
     "hyprland/window": {
       "separate-outputs": true
     },
@@ -97,6 +95,18 @@
         "🔅",
         "🔆"
       ]
+    },
+    "backlight/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": "horizontal"
+    },
+    "wireplumber": {
+      "format": "{icon} {volume}%",
+      "format-muted": "󰝟",
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+      "on-click-right": "pavucontrol",
+      "format-icons": ["", "", ""]
     },
     "battery": {
       "states": {
