@@ -45,7 +45,7 @@ myEnv = {
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
-hl.on("hyprland.start", function () 
+hl.on("hyprland.start", function ()
   -- Environment Initialization
   hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
   hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -368,10 +368,11 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
--- submap
+-- submap / waybar
 require("hyprland-submaps")
 -- trigger modal shortcuts
 hl.bind(myEnv.mainMod .. " + M", hl.dsp.submap("main"))
+-- toggle visibility of waybar
 hl.bind(myEnv.mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pkill -USR1 waybar"))
 
 --------------------------------
