@@ -1,11 +1,11 @@
 -- Initialize an empty table to export if needed later
 local submaps = {}
 
-local MENU_MAIN = "MAIN: [L]ayout, [W]indow, [S]ystem, [Esc]ape"
-local MENU_LAYOUT = "LAYOUT: [M]aster, [D]windle, [S]croll, [O] Monocle, [Esc]ape"
-local MENU_WINDOW = "WINDOW: [R]esize, [Esc]ape"
-local MENU_RESIZE = "RESIZE: [Arrows] 10px, [Shift] 50px, [Ctrl] 1px, [Esc]ape"
-local MENU_SYSTEM = "SYSTEM: [Q]uit, [K]anata, [Shift+P|D|H|R|F] Power, [Esc]ape"
+local MENU_MAIN = "󰍜 MAIN: [l]ayout, [w]indow, [s]ystem"
+local MENU_LAYOUT = "󰙀 LAYOUT: [m]aster, [d]windle, [s]croll, m[o]nocle"
+local MENU_WINDOW = " WINDOW: [r]esize"
+local MENU_RESIZE = " RESIZE: [Arrows] 10px, [Shift] 50px, [Ctrl] 1px"
+local MENU_SYSTEM = " SYSTEM: [q]uit, Kanata [k]:resume [K]:pause, Power: slee[P], suspen[D], [H]ibernate, [R]eboot, power-of[F]"
 
 -- trigger modal shortcuts
 hl.bind(myEnv.mainMod .. " + M", hl.dsp.submap(MENU_MAIN))
