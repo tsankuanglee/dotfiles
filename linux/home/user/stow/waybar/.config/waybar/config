@@ -21,23 +21,16 @@
       "custom/wl-gammarelay-gamma",
       "cpu",
       "memory",
-      // "disk",
       "custom/temperature",
-      //"custom/weather",
-      //"network",
       "backlight",
       "backlight/slider",
       "wireplumber",
-      //"pulseaudio",
-      //"custom/wkblayout",
-      //"keyboard-state",
+      "pulseaudio",
       "battery",
       "idle_inhibitor",
       "clock#1",
-      //"clock#2",
       "custom/notification",
       "tray"
-      // "custom/power"
     ],
     // Modules configuration
     "sway/workspaces": {
@@ -58,15 +51,6 @@
         "urgent": "<span color='#e85c5c'></span>",
         "focused": "<span color='#8af0f0'></span>",
         "default": "<span color='#b8b8b8'></span>"
-      }
-    },
-    "keyboard-state": {
-      "numlock": true,
-      "capslock": true,
-      "format": "{name} {icon}",
-      "format-icons": {
-        "locked": "",
-        "unlocked": ""
       }
     },
     "sway/mode": {},
@@ -106,7 +90,11 @@
       "format-muted": "󰝟",
       "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
       "on-click-right": "pavucontrol",
-      "format-icons": ["", "", ""]
+      "format-icons": [
+        "",
+        "",
+        ""
+      ]
     },
     "battery": {
       "states": {
@@ -152,20 +140,6 @@
       },
       "on-click-right": "date '+%F %H:%M:%S' | wl-copy -n"
     },
-    "clock#2": {
-      "interval": 60,
-      "timezone": "UTC",
-      //"format": "<span color='#cde9f0'>{:%Y-%m-%d %a %H:%M:%S}</span>",
-      "format": "<span color='#cde9f0'>| UTC {:%H}</span>"
-      //"tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
-      // "format-alt": "{:%Y-%m-%d}"
-    },
-    "clock#3": {
-      "interval": 18000,
-      "format": "{:%F} 📅",
-      "tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
-      // "format-alt": "{:%Y-%m-%d}"
-    },
     "cpu": {
       "interval": 5,
       "format": "<span color='#eb8a60'>{usage}%({load})</span>", // Icon: microchip
@@ -177,7 +151,6 @@
     "idle_inhibitor": {
       "format": "<span color='#589df6'>{icon}</span>",
       "format-icons": {
-        //"activated": "",
         "activated": "",
         "deactivated": ""
       },
@@ -187,16 +160,6 @@
     "memory": {
       "format": "{used:0.1f}G",
       "tooltip": false
-    },
-    "network": {
-      // "interface": "wlp2*", // (Optional) To force the use of this interface
-      "format-wifi": "<span color='#589df6'></span> <span color='gray'>{signalStrength}%</span>",
-      "format-ethernet": "",
-      "format-linked": "(no addr) ",
-      "format-disconnected": " ",
-      "format-alt": "<span color='gray'>{essid}</span> <span color='green'>⬇</span>{bandwidthDownBits} <span color='green'>⬆</span>{bandwidthUpBits}",
-      "interval": 60,
-      "tooltip-format": "{ifname} {essid}  {ipaddr}/{cidr}"
     },
     "pulseaudio": {
       "format": "{icon} {volume}% {format_source}",
@@ -235,19 +198,6 @@
     "tray": {
       "icon-size": 18,
       "spacing": 5
-    },
-    "custom/weather": {
-      "format": "<span color='#22dfda'>{}</span>",
-      "interval": 18000,
-      "exec": "sb-forecast",
-      //ansiweather -l shiraz,IR -u metric -s true -f 1 -a false | cut -d' ' -f2,8-
-      "exec-if": "ping openweathermap.org -c1",
-      "tooltip": "false"
-    },
-    "custom/wkblayout": {
-      "format": "<span color='#11eec2'>🖋</span> {}",
-      "exec": "swaymsg -mrt subscribe '[\"input\"]' | jq -r --unbuffered \"select(.change == \\\"xkb_layout\\\") | .input | select(.type == \\\"keyboard\\\") | .xkb_active_layout_name | .[0:2]\"",
-      "tooltip": "false"
     },
     // see https://github.com/MaxVerevkin/wl-gammarelay-rs
     "custom/wl-gammarelay-temperature": {
@@ -291,11 +241,6 @@
       },
       "max-length": 30
     },
-    "disk": {
-      "interval": 30,
-      "format": "󰋊 {percentage_used}%",
-      "path": "/"
-    },
     "custom/notification": {
       "tooltip": false,
       "format": "{icon}",
@@ -315,11 +260,6 @@
       "on-click": "swaync-client -t -sw",
       "on-click-right": "swaync-client -d -sw",
       "escape": true
-    },
-    "custom/power": {
-      "format": "⏻",
-      "on-click": "wlogout",
-      "tooltip": false
     }
   },
   {
