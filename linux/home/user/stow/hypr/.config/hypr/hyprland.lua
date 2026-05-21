@@ -51,7 +51,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 
   -- Core Desktops Daemons & Status bar
-  hl.exec_cmd("waybar") --
+  hl.exec_cmd("waybar")
   hl.exec_cmd("/usr/bin/pypr")
 
   -- Background Assets & Display Tweaks
@@ -370,8 +370,9 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 
 -- submap
 require("hyprland-submaps")
-
+-- trigger modal shortcuts
 hl.bind(myEnv.mainMod .. " + M", hl.dsp.submap("main"))
+hl.bind(myEnv.mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pkill -USR1 waybar"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
