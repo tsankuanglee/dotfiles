@@ -97,7 +97,7 @@
     },
     "clock": {
       "interval": 1,
-      "format": "<span color='#cde9f0'> {:%F %a %T}</span>",
+      "format": "<span color='#cde9f0'>{:%F %a %T}</span>",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
       "calendar": {
         "mode": "year",
@@ -136,11 +136,11 @@
       "tooltip": false
     },
     "pulseaudio": {
-      "format": "{icon} {volume}% {format_source}",
-      "format-muted": "󰝟 {format_source}",
-      "format-bluetooth": "{icon} {volume}% {format_source}",
-      "format-bluetooth-muted": "󰝟 {format_source}",
-      "format-source": " {volume}%",
+      "format": "{icon}{volume}% {format_source}",
+      "format-muted": "󰝟{format_source}",
+      "format-bluetooth": "{icon}{volume}% {format_source}",
+      "format-bluetooth-muted": "󰝟{format_source}",
+      "format-source": "{volume}%",
       "format-source-muted": "",
       "format-icons": {
         "headphones": "",
@@ -197,7 +197,7 @@
       "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d -0.02"
     },
     "mpris": {
-      "format": "{player_icon} {title} - {artist}",
+      "format": "{player_icon}{title} - {artist}",
       "format-paused": "{status_icon} <i>{title} - {artist}</i>",
       "ignored-players": [
         "firefox",

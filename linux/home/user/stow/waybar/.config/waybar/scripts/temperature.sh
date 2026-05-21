@@ -34,14 +34,14 @@ done
 # Format text for the bar
 bar_text=""
 if [ -n "$cpu_temp" ]; then
-    bar_text=" ${cpu_temp}°C"
+    bar_text="${cpu_temp}°C"
 fi
 
 if [ -n "$gpu_temp" ]; then
     if [ -n "$bar_text" ]; then
-        bar_text="$bar_text 󰢮 ${gpu_temp}°C"
+        bar_text="$bar_text 󰢮${gpu_temp}°C"
     else
-        bar_text="󰢮 ${gpu_temp}°C"
+        bar_text="󰢮${gpu_temp}°C"
     fi
 fi
 
