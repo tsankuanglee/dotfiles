@@ -26,6 +26,7 @@
       "idle_inhibitor",
       "clock",
       "custom/notification",
+      "network",
       "tray"
     ],
     // Modules configuration
@@ -134,6 +135,15 @@
     "memory": {
       "format": "{used:0.1f}G",
       "tooltip": false
+    },
+    "network": {
+      "format-wifi": "<span color='#589df6'></span> <span color='gray'>{signalStrength}%</span>",
+      "format-ethernet": "",
+      "format-linked": "(no addr) ",
+      "format-disconnected": " ",
+      "format-alt": "<span color='gray'>{essid}</span> <span color='green'>⬇</span>{bandwidthDownBits} <span color='green'>⬆</span>{bandwidthUpBits}",
+      "interval": 60,
+      "tooltip-format": "{ifname} {essid}  {ipaddr}/{cidr}"
     },
     "pulseaudio": {
       "format": "{icon}{volume}% {format_source}",
