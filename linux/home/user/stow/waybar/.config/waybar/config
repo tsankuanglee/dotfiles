@@ -8,9 +8,6 @@
     "modules-left": [
       "sway/workspaces",
       "hyprland/workspaces"
-      // "sway/window"
-      //"hyprland/window"
-      //"sway/scratchpad"
     ],
     "modules-center": [
       "mpris"
@@ -23,12 +20,11 @@
       "memory",
       "custom/temperature",
       "backlight",
-      "backlight/slider",
-      "wireplumber",
+      // "wireplumber",
       "pulseaudio",
       "battery",
       "idle_inhibitor",
-      "clock#1",
+      "clock",
       "custom/notification",
       "tray"
     ],
@@ -55,23 +51,6 @@
     },
     "sway/mode": {},
     "hyprland/submap": {},
-    "hyprland/window": {
-      "separate-outputs": true
-    },
-    "sway/window": {
-      "format": "{title}",
-      "max-length": 50
-    },
-    "sway/scratchpad": {
-      "format": "{icon} {count}",
-      "show-empty": false,
-      "format-icons": [
-        "",
-        ""
-      ],
-      "tooltip": true,
-      "tooltip-format": "{app}: {title}"
-    },
     "backlight": {
       "device": "acpi_video1",
       "format": "{icon} {percent}%",
@@ -79,11 +58,6 @@
         "🔅",
         "🔆"
       ]
-    },
-    "backlight/slider": {
-      "min": 0,
-      "max": 100,
-      "orientation": "horizontal"
     },
     "wireplumber": {
       "format": "{icon} {volume}%",
@@ -121,7 +95,7 @@
       "max-length": 18,
       "min-length": 9
     },
-    "clock#1": {
+    "clock": {
       "interval": 1,
       "format": "<span color='#cde9f0'> {:%F %a %T}</span>",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
@@ -239,7 +213,7 @@
       "status-icons": {
         "paused": "⏸"
       },
-      "max-length": 30
+      "max-length": 50
     },
     "custom/notification": {
       "tooltip": false,
