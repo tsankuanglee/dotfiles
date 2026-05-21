@@ -368,12 +368,11 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
--- submap / waybar
-require("hyprland-submaps")
--- trigger modal shortcuts
-hl.bind(myEnv.mainMod .. " + M", hl.dsp.submap("main"))
+-- waybars
 -- toggle visibility of waybar
 hl.bind(myEnv.mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pkill -USR1 waybar"))
+-- submap
+require("hyprland-submaps")
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----

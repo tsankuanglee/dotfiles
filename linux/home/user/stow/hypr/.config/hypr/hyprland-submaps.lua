@@ -1,16 +1,25 @@
 -- Initialize an empty table to export if needed later
 local submaps = {}
 
-hl.define_submap("main", function()
-  hl.bind("L", hl.dsp.submap("layout"))
-  hl.bind("W", hl.dsp.submap("window"))
-  hl.bind("S", hl.dsp.submap("system"))
+local MENU_MAIN = "MAIN: [L]ayout, [W]indow, [S]ystem, [Esc]ape"
+local MENU_LAYOUT = "LAYOUT: [M]aster, [D]windle, [S]croll, [O] Monocle, [Esc]ape"
+local MENU_WINDOW = "WINDOW: [R]esize, [Esc]ape"
+local MENU_RESIZE = "RESIZE: [Arrows] 10px, [Shift] 50px, [Ctrl] 1px, [Esc]ape"
+local MENU_SYSTEM = "SYSTEM: [Q]uit, [K]anata, [Shift+P|D|H|R|F] Power, [Esc]ape"
+
+-- trigger modal shortcuts
+hl.bind(myEnv.mainMod .. " + M", hl.dsp.submap(MENU_MAIN))
+
+hl.define_submap(MENU_MAIN, function()
+  hl.bind("L", hl.dsp.submap(MENU_LAYOUT))
+  hl.bind("W", hl.dsp.submap(MENU_WINDOW))
+  hl.bind("S", hl.dsp.submap(MENU_SYSTEM))
 
   hl.bind("escape", hl.dsp.submap("reset"))
   hl.bind("catchall", hl.dsp.submap("reset"))
 end)
 
-hl.define_submap("layout", "reset", function()
+hl.define_submap(MENU_LAYOUT, "reset", function()
   hl.bind("M", function() hl.config({ general = { layout = "master" } }) end)
   hl.bind("D", function() hl.config({ general = { layout = "dwindle" } }) end)
   hl.bind("S", function() hl.config({ general = { layout = "scrolling" } }) end)
@@ -19,10 +28,10 @@ hl.define_submap("layout", "reset", function()
   hl.bind("catchall", hl.dsp.submap("reset"))
 end)
 
-hl.define_submap("window", function()
-    hl.bind("R", hl.dsp.submap("window_resize"))
+hl.define_submap(MENU_WINDOW, function()
+    hl.bind("R", hl.dsp.submap(MENU_RESIZE))
 
-    hl.define_submap("window_resize", function()
+    hl.define_submap(MENU_RESIZE, function()
         -- Repeatable arrow movement binds
         hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true}), { repeating = true })
         hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true}), { repeating = true })
@@ -49,7 +58,7 @@ hl.define_submap("window", function()
     hl.bind("catchall", hl.dsp.submap("reset"))
 end)
 
-hl.define_submap("system", "reset", function()
+hl.define_submap(MENU_SYSTEM, "reset", function()
     -- quit hyrpland
     hl.bind("Q", hl.dsp.exit())
 
