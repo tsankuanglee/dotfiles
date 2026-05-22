@@ -352,6 +352,7 @@ hl.bind(myEnv.mainMod .. " + comma", hl.dsp.exec_cmd("pypr toggle keepassxc"))
 
 
 -- Laptop multimedia keys for volume and LCD brightness
+-- (keep these media keys here for now, until kanata fixes all those missing keys)
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
