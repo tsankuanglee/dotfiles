@@ -74,7 +74,6 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 
   ;; special function keys
   ;; OsCode::KEY_DASHBOARD,
-  🎛
   BrowserBack BrowserForward
   homepage media mail email calc
   player

@@ -1,0 +1,110 @@
+#|
+key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rsttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
+|#
+
+
+(deftemplate src-dp7780-fn ()
+  ;; fn layer
+  mute vold volu
+  ;; micmute (Kanata doesn't have it yet)
+  brup brdown
+  prnt home end menu pgup pgdn
+)
+
+(deftemplate src-dp7780 ()
+  ;; omitting keys, which are duplicated in keycodes
+  ;; CE = del, +/- = F9 ; kp_enter = ret
+  esc  f1   f2   f3   f4   f5   f6  f7 f8  f9  f10  f11 f12  ins   del  calc
+  grv  1    2    3    4    5    6    7    8    9    0    -   =     bspc nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [   ]     \    kp7  kp8  kp9  kp+
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret       kp4  kp5  kp6
+  lsft z    x    c    v    b    n    m    ,    .         /    rsft      kp1  kp2  kp3
+  lctl      lmet lalt      spc            ralt rctl            up       kp0       kp.
+                                                         left down rght
+)
+
+;; Only one defsrc is allowed.
+(defsrc
+  (t! src-dp7780)
+  (t! src-dp7780-fn)
+)
+
+;; aliases to be used in layers
+(defalias
+  lay0 (layer-switch default) ;; switch back to default layer
+  lay1 (layer-while-held lay1-fn)
+  lay2 (layer-while-held lay2-mouse)
+
+  ;;esctl (tap-next esc lctl)
+  esctl (tap-hold-press 200 200 esc lctl)
+
+  ;; sequence leader key
+  ;; first "menu" is alias, to be used with @menu
+  ;; last "menu" is the actual key symbol
+  ;; sldr is a kanata-defined action (sequence leader)
+  menu (tap-hold-release 200 200 sldr menu)
+
+  ;; right ctrl and menu
+  rcmu (tap-hold 200 200 sldr rctl)
+
+  ;; mouse speed
+  vsl (movemouse-speed 25)
+  slw (movemouse-speed 50)
+  fst (movemouse-speed 200)
+
+  ;; mousewheel
+  mwu (mwheel-up 50 120)
+  mwd (mwheel-down 50 120)
+  mwl (mwheel-left 50 120)
+  mwr (mwheel-right 50 120)
+
+  ;; mouse movement
+  ms↑ (movemouse-up 4 4)
+  ms← (movemouse-left 4 4)
+  ms↓ (movemouse-down 4 4)
+  ms→ (movemouse-right 4 4)
+
+)
+
+(deflayer default
+  esc   f1   f2   f3   f4   f5   f6  f7 f8  f9   f10  f11 f12  ins  del       @calc
+  grv   1    2    3    4    5    6    7    8     9    0    -    =   bspc      nlck  kp/  kp*  kp-
+  tab   q    w    e    r    t    y    u    i     o    p    [    ]   \         kp7   kp8  kp9  kp+
+ @esctl a    s    d    f    g    h    j    k     l    ;      '      ret       kp4   kp5  kp6
+  lsft  z    x    c    v    b    n    m    ,     .           /      rsft      kp1   kp2  kp3
+  @lay2      lmet lalt      spc            @lay1 @rcmu               up       kp0        kp.
+                                                              left down rght
+  (t! src-dp7780-fn)
+)
+
+(deflayer passthrough
+  (t! src-dp7780)
+  (t! src-dp7780-fn)
+)
+
+;; kanata is still missing quite a few language keys
+(deflayer lay1-fn
+  esc     f1    f2                f3       f4      f5      f6  f7 f8  f9  f10  f11 f12  f13   f14   f15
+  grv     1     2              katakana hiragana   5       _    _    _    _     0   -     =         bspc   nlck  _    _    kp-
+  tab     q   katakanahiragana     e     henkan  muhenkan ins  home  up   end  pgup    [    ]        \     f17   f18  f19  kp+
+  caps    a     _                  _       _       g      del  left down rght  pgdn       '         ret    f24   _    f16
+  lsft    z     _                  _     media     b       n    -         ,     .         /         rsft   f21   f22  f23
+  lctl    lmet  lalt                              spc      _    menu          @lay2           f20     kp.
+                                                                         ralt rmet rctl
+  (t! src-dp7780-fn)
+)
+
+;; mouse
+(deflayer lay2-mouse
+  esc  f1    f2   f3   f4    f5    f6   f7   f8   f9  f10 f11 f12 ins del  calc
+  grv  1    mmid  3    4     5     6    7    mmid 9    0     -  =    bspc nlck kp/  kp*  kp-
+  tab  mlft @ms↑ mrgt @fst  @mwu   @mwu mlft @ms↑ mrgt p    [   ]    \    kp7  kp8  kp9  kp+
+  lctl @ms← @ms↓ @ms→ @slw  @mwd   @mwd @ms← @ms↓ @ms→ _      '      ret  kp4  kp5  kp6
+  lsft @mwl @mwr @vsl @mwl  @mwr   @mwl @mwr @vsl @slw @fst         rsft  kp1  kp2  kp3
+  XX        lmet lalt         spc            ralt rctl         XX         kp0       kp.
+                                                         mlft mmid mrgt
+  (t! src-dp7780-fn)
+)
+
+
+;; vim: ft=lisp ts=2 sts=2 sw=2 :
