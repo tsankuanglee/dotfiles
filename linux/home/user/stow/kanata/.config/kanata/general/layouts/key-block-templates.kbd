@@ -1,6 +1,6 @@
 #|
 usage:
-(include ./layouts/key-block-templates.kbd)
+(include ./general/layouts/key-block-templates.kbd)
 
 (defsrc
   grv  (t! number-main) -    =    bspc
@@ -54,6 +54,9 @@ usage:
   f13 f14 f15 f16 f17 f18 f19 f20 f21 f22 f23 f24
 )
 
+(deftemplate keyblock-media ()
+  calc
+)
 
 
 

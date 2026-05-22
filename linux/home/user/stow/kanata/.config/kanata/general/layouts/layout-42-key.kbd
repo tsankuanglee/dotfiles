@@ -18,7 +18,7 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 
 (deflayer default
   (t! src-42)
-  @ledr
+  @menu
 )
 
 ;; passthrough; serve as kanata pause; should be same as src
@@ -30,7 +30,7 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 
 (deflayer l-42-base-chords
   (t! src-42)
-  @ledr
+  @menu
 )
 
 (deflayer l-42-2-mods
@@ -39,7 +39,7 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
   a   s    d    f    g       h    j    k    l    scln
   z   x    c    v   @b      @n    m    ,    .   /
                    spc      ret
-  @ledr
+  @menu
 )
 
 (deflayer l-42-more-mods
@@ -48,7 +48,7 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
   @a   s    d    f    g    h    j    k    l    @scln
   @z   x   @c   @v   @b   @n    m    ,    .    @/
                     spc   ret
-  @ledr
+  @menu
 )
 
 ;; @b
@@ -60,7 +60,7 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
   grv    [     ]     spc   esc       ret   -      =      \     '
   lsft   lctl  lmet  lalt   @b       @n    ralt   rmet   rctl  rsft
                            spc       ret
-  @ledr
+  @menu
 )
 ;; @n
 ;; mods, f-keys, navigation keys
@@ -71,7 +71,7 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
   f11    f12   f13   f14   f15      del    ←     ↓    →     pgdn
   lsft   lctl  lmet  lalt  spc      @n    ralt  rmet  rctl  rsft
                            spc      ret
-  @ledr
+  @menu
 )
 
 ;; left modifiers
@@ -89,11 +89,6 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 ;; layers
 (t! alphabet-as-layer-held-switch b mod-sym)
 (t! alphabet-as-layer-held-switch n mod-nav)
-
-
-
-;; sequence leader key
-(defalias ledr (tap-hold-release 200 200 sldr menu))
 
 ;; layer switch
 (t! seq (Backslash Digit0) to-default (layer-switch default))

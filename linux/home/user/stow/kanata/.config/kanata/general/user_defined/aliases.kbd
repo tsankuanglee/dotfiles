@@ -1,0 +1,18 @@
+
+#|
+sequence leader
+|#
+
+;; first "menu" is alias, to be used with @menu
+;; last "menu" is the actual key symbol
+;; sldr is a kanata-defined action (sequence leader)
+(defalias menu (tap-hold-release 200 200 sldr menu))
+
+#|
+direct hotkeys
+|#
+
+(defalias calc (cmd qalculate-gtk))
+
+
+;; vim: ft=lisp

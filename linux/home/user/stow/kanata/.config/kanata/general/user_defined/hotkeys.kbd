@@ -8,6 +8,7 @@ sequence leader as hotkeys
 ;; app
 (t! seq-app-launcher (a g) launch-gimp "gimp")
 (t! seq-script-launcher (a t) launch-kitty "kitty")
+(t! seq-script-launcher (a 1) launch-qalculate "qalculate-gtk")
 
 ;; clipboard
 (t! seq-script-launcher (c q) clipboard-remove-quotes "~/.local/bin/tool/de-quote.sh")

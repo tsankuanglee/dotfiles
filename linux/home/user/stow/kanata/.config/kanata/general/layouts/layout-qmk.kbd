@@ -91,15 +91,18 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 
 ;; Only one defsrc is allowed.
 (defsrc
-  (t! src-qmk)
+  menu
+  calc
 )
 
 (deflayer default
-  (t! src-qmk)
+  @menu
+  @calc
 )
 
 (deflayer passthrough
-  (t! src-qmk)
+  menu
+  calc
 )
 
 ;; vim:  ft=lisp

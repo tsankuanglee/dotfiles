@@ -6,9 +6,9 @@
     <string>com.kanata.daemon</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/$USER/.nix-profile/bin/kanata</string>
+        <string>/Users/${KANATA_USER}/.nix-profile/bin/kanata</string>
         <string>--cfg</string>
-        <string>/Users/$USER/.config/kanata/local/kanata.kbd</string>
+        <string>$KANATA_CONFIG_HOME/local/kanata.kbd</string>
     </array>
     <key>RunAtLoad</key>
     <true/>

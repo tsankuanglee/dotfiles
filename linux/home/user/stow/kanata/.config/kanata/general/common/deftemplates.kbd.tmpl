@@ -1,0 +1,67 @@
+;; declare commonly-used values
+(defvar
+  tap-repress-timeout   200
+  hold-timeout          400
+  )
+
+(deftemplate
+  alphabet-as-modifiers (alphabet modifier)
+  (defalias
+    $alphabet (tap-hold-release-timeout $tap-repress-timeout $hold-timeout $alphabet $modifier $alphabet)
+    )
+  )
+
+(deftemplate
+  alphabet-as-layer-held-switch (alphabet layer-name)
+  (defalias
+    $alphabet
+    (tap-hold-press-timeout $tap-repress-timeout $hold-timeout $alphabet (layer-while-held $layer-name) $alphabet)
+    )
+  )
+
+(deftemplate
+  seq (input-keys vk-name out-action)
+  (defvirtualkeys $vk-name $out-action)
+  (defseq $vk-name $input-keys)
+  )
+
+;; macos can only launch kanata as 
+(platform (macos)
+
+  (deftemplate
+    run-via-zsh (shell-script-command)
+    (cmd sudo -iu $KANATA_USER -- zsh -c $shell-script-command)
+    )
+  )
+(platform (macos)
+  (deftemplate
+    seq-app-launcher (keys vk-name app)
+    (defvirtualkeys $vk-name (cmd $KANATA_CONFIG_HOME/local/macos-app-launcher.sh $app))
+    (defseq $vk-name $keys)
+    )
+
+)
+
+;; linux can run it as regular user
+(platform (linux)
+  (deftemplate
+    run-via-zsh (shell-script-command)
+    (cmd zsh -c $shell-script-command)
+    )
+  )
+(platform (linux)
+  (deftemplate
+    seq-app-launcher (keys vk-name app)
+    (defvirtualkeys $vk-name (cmd $app))
+    (defseq $vk-name $keys)
+    )
+
+  )
+
+(deftemplate
+  seq-script-launcher (keys vk-name shell-script-command)
+  (defvirtualkeys $vk-name (t! run-via-zsh $shell-script-command))
+  (defseq $vk-name $keys)
+  )
+
+;; vim: ft=lisp ts=2 sts=2 sw=2 :
