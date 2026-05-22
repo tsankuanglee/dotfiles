@@ -368,6 +368,16 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
+
+-- laptop lid
+-- lid is closed
+hl.bind("switch:on:Lid Switch", function()
+  hl.dispatch(hl.dsp.dpms({ action = "disable", monitor = "eDP-1" }))
+  hl.dispatch(hl.dsp.exec_cmd("loginctl lock-session"))
+end, { locked = true })
+-- lid is opened
+hl.bind("switch:off:Lid Switch", hl.dsp.dpms({ action = "enable", monitor = "eDP-1" }), { locked = true })
+
 -- waybars
 -- toggle visibility of waybar
 hl.bind(myEnv.mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pkill -USR1 waybar"))
