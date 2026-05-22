@@ -1,3 +1,9 @@
+# overview
+
+[Kanata](https://github.com/jtroo/kanata) is a cross-platform keyboard remapper.
+
+I primarily use it across different machines. On some of which I already have QMK keyboards, so for those I use Kanata for hotkey sequence triggers. For laptops without a QMK keybaord, I do use Kanata's layer features. I tried to minimize the difference across machines, so some layout arrangements may look weird.
+
 # Setup
 
 ## configuration files
@@ -35,7 +41,20 @@ systemctl --user start kanata
 # wait a few seconds for kanata to load before typing, to avoid stucked keys
 ```
 
-## MacOS: setup plist file
+## MacOS
+MacOS's security model requires Kanata to run as root, which ironically raises the security concern because we really don't want such process to spawn superuser processes. Currently we use sudo to run sub-processes as a regular user.
+### sudo and put it in the background
+
+The easist way to do this is just do this under tmux, so we can tuck it away:
+```
+sudo `which kanata` --cfg CFG_FILEPATH --quiet
+# or
+#sudo `which kanata` --cfg CFG_FILEPATH --debug
+```
+
+### Daemon by plist file
+
+Running as a system service is an overwkill, and we still encounter various permission problems relating to, say, screenshot or file creation. Anyway, here's how to do it:
 
 After running `./configure.sh`, it'll produce `./local/com.kanata.daemon.plist`. As root, copy it to `/Library/LaunchDaemons/com.kanata.daemon.plist`
 ```
