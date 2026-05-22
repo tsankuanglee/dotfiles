@@ -2,7 +2,6 @@
 key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rsttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 |#
 
-
 (deftemplate src-legion5 ()
   esc  f1   f2   f3   f4   f5   f6  f7 f8  f9  f10  f11 f12 ins ssrq del      home end  pgup pgdn
   grv  1    2    3    4    5    6    7    8    9    0    -    =      bspc      nlck kp/  kp*  kp-
@@ -12,11 +11,31 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
   lctl      lmet lalt      spc            ralt rctl                   up       kp0       kp.
                                                                 left down rght
 )
+(deftemplate src-legion5-fn ()
+  ;; fn layer
+)
 
 ;; Only one defsrc is allowed.
 (defsrc
   (t! src-legion5)
 )
+
+;; aliases to be used in layers
+(defalias
+  lay0 (layer-switch default) ;; switch back to default layer
+  lay1 (layer-while-held lay1-fn)
+  lay2 (layer-while-held lay2-mouse)
+
+  ;;esctl (tap-next esc lctl)
+  esctl (tap-hold-press 200 200 esc lctl)
+
+  ;; sequence leader key
+  ;; first "menu" is alias, to be used with @menu
+  ;; last "menu" is the actual key symbol
+  ;; sldr is a kanata-defined action (sequence leader)
+  menu (tap-hold-release 200 200 sldr menu)
+)
+
 
 (deflayer default
   esc   f1   f2   f3   f4   f5   f6  f7 f8  f9  f10  f11 f12  ins  @ssrq del    home end  pgup pgdn
@@ -24,7 +43,7 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
   tab   q    w    e    r    t    y    u    i    o    p    [    ]       \        kp7  kp8  kp9  kp+
  @esctl a    s    d    f    g    h    j    k    l    ;      '         ret       kp4  kp5  kp6
   lsft  z    x    c    v    b    n    m    ,    .           /         rsft      kp1  kp2  kp3  kprt
-  @ext       lmet lalt      spc            @ext @ext2                  up       kp0       kp.
+  @lay1       lmet lalt      spc            @lay1 @lay2                up       kp0       kp.
                                                                  left down rght
 )
 
@@ -32,17 +51,7 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
   (t! src-legion5)
 )
 
-(defalias
-  ext (layer-toggle extended) ;; Bind num to a button that switches to a layer
-  ext2 (layer-toggle extended2) ;;
-  default (layer-switch default) ;; Set qwerty as the default layer
-  ;;kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
-  ;;esctl (tap-next esc lctl)
-  esctl (tap-hold-press 200 200 esc lctl)
-)
-
-
-(deflayer extended
+(deflayer lay1-fn
   esc  f1       f2       f3     f4   f5   f6  f7 f8  f9  f10  f11 f12  f13   f14   f15  homepage  ssrq    slck   pause
   grv calc      2       kana    _    5    _    _    _    _    0    -    =         bspc    nlck      _        _      kp-
   tab  _        _         _     r    t  ins  home  up   end  pgup    [    ]        \      f17     f18      f19    kp+
@@ -52,7 +61,7 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
                                                                      ralt rmet rctl
 )
 
-(deflayer extended2
+(deflayer lay2-mouse
   esc  f1         f2      f3     f4   f5   f6  f7 f8  f9  f10  f11 f12  f13   f14   f15  homepage ssrq     slck   pause
   grv  _      _      kana       _    5    _    _    _    _    0    -    =       bspc    nlck    _        _      kp-
   tab  _        _         _     r    t  ins  home  up   end  pgup    [    ]       \       f17     f18      f19    kp+
@@ -62,4 +71,4 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
                                                                      ralt rmet rctl
 )
 
-;; vim:  ft=lisp
+;; vim: ft=lisp ts=2 sts=2 sw=2 :
