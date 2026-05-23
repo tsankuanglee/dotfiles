@@ -2,15 +2,6 @@
 key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rsttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 |#
 
-
-(deftemplate src-dp7780-fn ()
-  ;; fn layer
-  mute vold volu
-  ;; micmute (Kanata doesn't have it yet)
-  brup brdown
-  prnt home end menu pgup pgdn
-)
-
 (deftemplate src-dp7780 ()
   ;; omitting keys, which are duplicated in keycodes
   ;; CE = del, +/- = F9 ; kp_enter = ret
@@ -22,6 +13,14 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
   lctl      lmet lalt      spc            ralt rctl            up       kp0       kp.
                                                          left down rght
 )
+(deftemplate src-dp7780-fn ()
+  ;; fn layer
+  mute vold volu
+  ;; micmute (Kanata doesn't have it yet)
+  brup brdown
+  prnt home end menu pgup pgdn
+)
+
 
 ;; Only one defsrc is allowed.
 (defsrc
@@ -46,23 +45,6 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
 
   ;; right ctrl and menu
   rcmu (tap-hold 200 200 sldr rctl)
-
-  ;; mouse speed
-  vsl (movemouse-speed 25)
-  slw (movemouse-speed 50)
-  fst (movemouse-speed 200)
-
-  ;; mousewheel
-  mwu (mwheel-up 50 120)
-  mwd (mwheel-down 50 120)
-  mwl (mwheel-left 50 120)
-  mwr (mwheel-right 50 120)
-
-  ;; mouse movement
-  ms↑ (movemouse-up 4 4)
-  ms← (movemouse-left 4 4)
-  ms↓ (movemouse-down 4 4)
-  ms→ (movemouse-right 4 4)
 
 )
 

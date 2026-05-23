@@ -1,12 +1,26 @@
-
 #|
-sequence leader
+mouse keys
 |#
 
-;; first "menu" is alias, to be used with @menu
-;; last "menu" is the actual key symbol
-;; sldr is a kanata-defined action (sequence leader)
-(defalias menu (tap-hold-release 200 200 sldr menu))
+(defalias
+  ;; mouse speed
+  vsl (movemouse-speed 25)
+  slw (movemouse-speed 50)
+  fst (movemouse-speed 200)
+
+  ;; mousewheel
+  mwu (mwheel-up 50 120)
+  mwd (mwheel-down 50 120)
+  mwl (mwheel-left 50 120)
+  mwr (mwheel-right 50 120)
+
+  ;; mouse movement
+  ms↑ (movemouse-up 4 4)
+  ms↓ (movemouse-down 4 4)
+  ms← (movemouse-left 4 4)
+  ms→ (movemouse-right 4 4)
+)
+
 
 #|
 direct hotkeys
@@ -15,4 +29,4 @@ direct hotkeys
 (defalias calc (cmd qalculate-gtk))
 
 
-;; vim: ft=lisp
+;; vim: ft=lisp ts=2 sts=2 sw=2 :
