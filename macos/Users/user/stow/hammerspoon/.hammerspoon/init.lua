@@ -221,7 +221,7 @@ end
 --
 
 local SCREEN_IDS_FILE = "/tmp/screen_ids.json"
-local IDENTIFY_MONITORS_SCRIPT = os.getenv("HOME") .. ".local/bin/identify_monitors.sh"
+local IDENTIFY_MONITORS_SCRIPT = os.getenv("HOME") .. "/.local/bin/identify_monitors.sh"
 
 screen_ids = {}
 
