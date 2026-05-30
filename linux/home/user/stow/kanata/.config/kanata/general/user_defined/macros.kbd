@@ -17,9 +17,11 @@ However, in addition to series of keystrokes, it's also possible to use chords
   macro-cd (m Slash)
   macro-color-always (m c a)
   macro-color-never (m c v)
-  macro-localhost (m l h)
   macro-grep (m g)
   macro-qpdf (m q p d f)
+  macro-fuse-option (m f o)
+
+  macro-localhost (m l h)
   macro-wikipedia (m w k)
   )
 (deffakekeys
@@ -30,12 +32,16 @@ However, in addition to series of keystrokes, it's also possible to use chords
 
   macro-qpdf (cmd wtype "qpdf --empty --pages example-a.pdf 1-z example-b.pdf 3,7,2,9-11 -- example_output.pdf")
 
+  macro-fuse-option (cmd wtype " -o allow_other,uid=$(id -u),gid=$(id -g)")
+
   ;; "cd ~/"
   macro-cd (macro c d Space S-grv Slash)
+
   ;; " --color=never "
   macro-color-never (macro Space - - c o l o r = n e v e r Space)
   ;; " --color=always "
   macro-color-always (macro Space - - c o l o r = a l w a y s Space)
+
   ;; http://localhost:
   macro-localhost (macro h t t p S-scln Slash Slash l o c a l h o s t S-scln)
 
@@ -45,4 +51,4 @@ However, in addition to series of keystrokes, it's also possible to use chords
   )
 
 
-;; vim: ft=lisp
+;; vim: ts=2 sts=2 sw=2 et :

@@ -1,6 +1,16 @@
-git c a	git commit --amend␣
-git c a m	git commit --amend -m 'FIX_THIS_COMMIT_MESSAGE'
-git c b	git checkout -b␣
-git c n	git commit --amend --no-edit
-git f p	git fetch -p
-git s	git␣status
+// git series
+ git c a	git commit --amend␣
+ git c a m	git commit --amend -m 'FIX_THIS_COMMIT_MESSAGE'
+ git c b	git checkout -b␣
+ git c n	git commit --amend --no-edit
+ git f p	git fetch -p
+ git s	git␣status
+
+// other commands
+ qpdf	qpdf --empty --pages a.pdf 1-z b.pdf 3,7,2,9-11 -- combined.pdf
+
+// vim modal line
+vim2	# vim: ts=2 sts=2 sw=2 et :
+vim4	# vim: ts=4 sts=4 sw=4 et :
+
+// vim: ts=2 sts=2 sw=2 et :
