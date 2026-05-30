@@ -9,6 +9,7 @@ sequence leader as hotkeys
 (t! seq-app-launcher (a g) launch-gimp "gimp")
 (t! seq-script-launcher (a t) launch-kitty "kitty")
 (t! seq-script-launcher (a 1) launch-qalculate "qalculate-gtk")
+(t! seq-script-launcher (a o) launch-obs "obs --startvirtualcam")
 
 ;; clipboard
 (t! seq-script-launcher (c q) clipboard-remove-quotes "~/.local/bin/tool/de-quote.sh")
@@ -31,5 +32,45 @@ sequence leader as hotkeys
 
 (t! seq-app-launcher (s o m) mute-speaker-toggle ("pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"))
 (t! seq-app-launcher (s i m) mute-mic-toggle ("pactl" "set-source-mute" "@DEFAULT_SOURCE@" "toggle"))
+
+;; screenshot
+;; These are triggered by the PrintScr (prnt) key, but shows up as nop0 here.
+;; ctrl: clipboard; shift: file only; default is both
+;; save to both clipboard and file
+(t! seq-script-launcher (nop0 y 0) screenshot-set-delay-0 ("~/.local/bin/kvjq.pl /tmp/screenshot.json screenshot_delay=0"))
+(t! seq-script-launcher (nop0 y 1) screenshot-set-delay-1 ("~/.local/bin/kvjq.pl /tmp/screenshot.json screenshot_delay=1"))
+(t! seq-script-launcher (nop0 y 3) screenshot-set-delay-3 ("~/.local/bin/kvjq.pl /tmp/screenshot.json screenshot_delay=3"))
+(t! seq-script-launcher (nop0 y 5) screenshot-set-delay-5 ("~/.local/bin/kvjq.pl /tmp/screenshot.json screenshot_delay=5"))
+
+(t! seq-script-launcher (nop0 prnt) screenshot-default ("~/.local/bin/screen_share/screenshot.py --target=both --source=all --delay=0"))
+
+(t! seq-script-launcher (nop0 a) screenshot-both-all ("~/.local/bin/screen_share/screenshot.py --target=both --source=all --delay=0"))
+(t! seq-script-launcher (nop0 d) screenshot-both-all-delay ("~/.local/bin/screen_share/screenshot.py --target=both --source=all --delay=`~/.local/bin/kvjq.pl /tmp/screenshot.json screenshot_delay`"))
+(t! seq-script-launcher (nop0 s) screenshot-both-select ("~/.local/bin/screen_share/screenshot.py --target=both --source=select"))
+(t! seq-script-launcher (nop0 1) screenshot-both-1 ("~/.local/bin/screen_share/screenshot.py --target=both --source=left"))
+(t! seq-script-launcher (nop0 2) screenshot-both-2 ("~/.local/bin/screen_share/screenshot.py --target=both --source=middle"))
+(t! seq-script-launcher (nop0 3) screenshot-both-3 ("~/.local/bin/screen_share/screenshot.py --target=both --source=right"))
+(t! seq-script-launcher (nop0 w) screenshot-both-active-window ("~/.local/bin/screen_share/screenshot.py --target=both --source=active_window"))
+(t! seq-script-launcher (nop0 m) screenshot-both-active-monitor ("~/.local/bin/screen_share/screenshot.py --target=both --source=active_monitor"))
+
+;; save to file
+(t! seq-script-launcher (nop0 S-a) screenshot-file-all ("~/.local/bin/screen_share/screenshot.py --target=file --source=all --delay=0"))
+(t! seq-script-launcher (nop0 S-d) screenshot-file-all-delay ("~/.local/bin/screen_share/screenshot.py --target=file --source=all --delay=3"))
+(t! seq-script-launcher (nop0 S-s) screenshot-file-select ("~/.local/bin/screen_share/screenshot.py --target=file --source=select"))
+(t! seq-script-launcher (nop0 S-1) screenshot-file-1 ("~/.local/bin/screen_share/screenshot.py --target=file --source=left"))
+(t! seq-script-launcher (nop0 S-2) screenshot-file-2 ("~/.local/bin/screen_share/screenshot.py --target=file --source=middle"))
+(t! seq-script-launcher (nop0 S-3) screenshot-file-3 ("~/.local/bin/screen_share/screenshot.py --target=file --source=right"))
+(t! seq-script-launcher (nop0 S-w) screenshot-file-active-window ("~/.local/bin/screen_share/screenshot.py --target=file --source=active_window"))
+(t! seq-script-launcher (nop0 S-m) screenshot-file-active-monitor ("~/.local/bin/screen_share/screenshot.py --target=file --source=active_monitor"))
+
+;; save to clipboard
+(t! seq-script-launcher (nop0 C-a) screenshot-clipboard-all ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=all --delay=0"))
+(t! seq-script-launcher (nop0 C-d) screenshot-clipboard-delay ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=all --delay=3"))
+(t! seq-script-launcher (nop0 C-s) screenshot-clipboard-select ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=select"))
+(t! seq-script-launcher (nop0 C-1) screenshot-clipboard-1 ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=left"))
+(t! seq-script-launcher (nop0 C-2) screenshot-clipboard-2 ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=middle"))
+(t! seq-script-launcher (nop0 C-3) screenshot-clipboard-3 ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=right"))
+(t! seq-script-launcher (nop0 C-w) screenshot-clipboard-active-window ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=active_window"))
+(t! seq-script-launcher (nop0 C-m) screenshot-clipboard-active-monitor ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=active_monitor"))
 
 ;; vim: ft=lisp
