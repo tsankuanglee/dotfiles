@@ -33,10 +33,14 @@ sequence leader as hotkeys
 (t! seq-app-launcher (s o m) mute-speaker-toggle ("pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"))
 (t! seq-app-launcher (s i m) mute-mic-toggle ("pactl" "set-source-mute" "@DEFAULT_SOURCE@" "toggle"))
 
-;; screenshot
+;; {{{ screenshot
 ;; These are triggered by the PrintScr (prnt) key, but shows up as nop0 here.
 ;; ctrl: clipboard; shift: file only; default is both
 ;; save to both clipboard and file
+
+;; open screenshot folder
+(t! seq-script-launcher (nop0 o) screenshot-open-folder ("kitty yazi ~/Pictures/Screenshots"))
+;; set delay
 (t! seq-script-launcher (nop0 y 0) screenshot-set-delay-0 ("~/.local/bin/kvjq.pl /tmp/screenshot.json screenshot_delay=0"))
 (t! seq-script-launcher (nop0 y 1) screenshot-set-delay-1 ("~/.local/bin/kvjq.pl /tmp/screenshot.json screenshot_delay=1"))
 (t! seq-script-launcher (nop0 y 3) screenshot-set-delay-3 ("~/.local/bin/kvjq.pl /tmp/screenshot.json screenshot_delay=3"))
@@ -73,4 +77,6 @@ sequence leader as hotkeys
 (t! seq-script-launcher (nop0 C-w) screenshot-clipboard-active-window ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=active_window"))
 (t! seq-script-launcher (nop0 C-m) screenshot-clipboard-active-monitor ("~/.local/bin/screen_share/screenshot.py --target=clipboard --source=active_monitor"))
 
-;; vim: ft=lisp
+;; }}} screenshot
+
+;; vim: ts=2 sts=2 sw=2 et :
