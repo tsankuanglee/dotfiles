@@ -19,7 +19,7 @@ key symbols reference: https://github.com/jtroo/kanata/blob/main/parser/src/keys
 ;; kanata core functions
 ;; reload/edit configs
 (t! seq (Backslash r) live-reload lrld)
-(t! seq-script-launcher (Backslash e) launch-kitty-nvim "kitty nvim ~/.config/kanata/")
+(t! seq-script-launcher (Backslash e) kitty-config-edit "kitty nvim ~/.config/kanata/")
 
 ;; sequences/hotkeys
 $INCLUDE_SEQUENCES
