@@ -11,8 +11,8 @@ vim.g.maplocalleader = " "
 local km = require("utils").km -- keymap shortcut function
 
 -- nvim config (init.vim or init.lua) edit and reload
--- km("n", "<LEADER>ce", "<CMD>e $MYVIMRC<CR>", "edit nvim main config")
-km("n", "<LEADER>ce", "<CMD>e ~/.config/nvim<CR>", "edit nvim main config")
+km("n", "<LEADER>ce", "<CMD>Oil ~/.config/nvim<CR>", "edit nvim main config (oil)")
+km("n", "<LEADER>cE", "<CMD>e ~/.config/nvim<CR>", "edit nvim main config (netrw)")
 km("n", "<LEADER>cr", "<CMD>source $MYVIMRC<CR>", "reload nvim main config")
 
 -- Save file
