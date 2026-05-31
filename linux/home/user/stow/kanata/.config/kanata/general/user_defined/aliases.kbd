@@ -2,6 +2,13 @@
 mouse keys
 |#
 
+(defvar
+  mw-initial-v 3
+  mw-maximum-v 1200
+  mw-accel 1.15
+  mw-decel 0.93
+  )
+
 (defalias
   ;; mouse speed
   vsl (movemouse-speed 25)
@@ -9,16 +16,26 @@ mouse keys
   fst (movemouse-speed 200)
 
   ;; mousewheel
-  mwu (mwheel-up 50 120)
-  mwd (mwheel-down 50 120)
-  mwl (mwheel-left 50 120)
-  mwr (mwheel-right 50 120)
+  mw↑ (mwheel-up 50 120)
+  mw↓ (mwheel-down 50 120)
+  mw← (mwheel-left 50 120)
+  mw→ (mwheel-right 50 120)
+  ;; accellerated
+  mwu (mwheel-accel-up    $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
+  mwd (mwheel-accel-down  $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
+  mwl (mwheel-accel-left  $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
+  mwr (mwheel-accel-right $mw-initial-v $mw-maximum-v $mw-accel $mw-decel)
 
   ;; mouse movement
-  ms↑ (movemouse-up 4 4)
-  ms↓ (movemouse-down 4 4)
-  ms← (movemouse-left 4 4)
-  ms→ (movemouse-right 4 4)
+  ms↑ (movemouse-up 1 1)
+  ms↓ (movemouse-down 1 1)
+  ms← (movemouse-left 1 1)
+  ms→ (movemouse-right 1 1)
+  ;; accellerated
+  ma↑ (movemouse-accel-up 1 1000 1 5)
+  ma↓ (movemouse-accel-down 1 1000 1 5)
+  ma← (movemouse-accel-left 1 1000 1 5)
+  ma→ (movemouse-accel-right 1 1000 1 5)
 )
 
 

@@ -78,13 +78,13 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
 
 ;; mouse
 (deflayer lay2-mouse
-  esc  f1    f2   f3   f4    f5    f6   f7   f8   f9  f10 f11 f12 ins del  calc
-  grv  1    mmid  3    4     5     6    7    mmid 9    0     -  =    bspc nlck kp/  kp*  kp-
-  tab  mlft @ms↑ mrgt @fst  @mwu   @mwu mlft @ms↑ mrgt p    [   ]    \    kp7  kp8  kp9  kp+
-  lctl @ms← @ms↓ @ms→ @slw  @mwd   @mwd @ms← @ms↓ @ms→ _      '      ret  kp4  kp5  kp6
-  lsft @mwl @mwr @vsl @mwl  @mwr   @mwl @mwr @vsl @slw @fst         rsft  kp1  kp2  kp3
-  XX        lmet lalt         spc            ralt rctl         XX         kp0       kp.
-                                                         mlft mmid mrgt
+  esc   f1    f2   f3   f4    f5    f6   f7   f8   f9  f10 f11 f12 ins del  calc
+  mfwd    1  mmid  3    4     5     6    7    mmid 9    0     -  =    bspc nlck kp/  kp*  kp-
+  mbck  mlft @ma↑ mrgt @fst  @mwu   @mwu mlft @ma↑ mrgt p    [   ]    \    kp7  kp8  kp9  kp+
+  lctl  @ma← @ma↓ @ma→ @slw  @mwd   @mwd @ma← @ma↓ @ma→ _      '      ret  kp4  kp5  kp6
+  lsft  @mwl @mwr @vsl @mwl  @mwr   @mwl @mwr @vsl @slw @fst         rsft  kp1  kp2  kp3
+  XX         lmet lalt         spc            ralt rctl         XX         kp0       kp.
+                                                          mlft mmid mrgt
   (t! src-dp7780-fn)
 )
 
