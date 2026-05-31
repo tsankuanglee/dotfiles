@@ -247,13 +247,14 @@ hl.config({
         kb_model   = "",
         kb_options = "",
         kb_rules   = "",
-
+        -- mouse
         follow_mouse = 1,
-
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        sensitivity = 1, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
             natural_scroll = true,
+            tap_to_click = true, -- 1, 2, 3 fingers tap = LMB, RMB, MMB
+            tap_and_drag = true,
         },
     },
 })
