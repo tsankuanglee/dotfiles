@@ -92,16 +92,19 @@ key symbols: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
 (defsrc
   menu
   calc
+  prnt
 )
 
 (deflayer default
   @menu
   @calc
+  @prnt
 )
 
 (deflayer passthrough
   menu
   calc
+  prnt
 )
 
-;; vim:  ft=lisp
+;; vim: ft=lisp ts=2 sts=2 sw=2 et :

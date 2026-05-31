@@ -11,17 +11,23 @@ chords
 |#
 
 (defzippy
-  ../default/zippy.txt
-  on-first-press-chord-deadline 500
+  ./user_defined/zippy.txt
+  on-first-press-chord-deadline 1000
   idle-reactivate-time          500
   smart-space-punctuation (? ! . , ; : )
   output-character-mappings (
     ;; This should work for US international.
     ! S-1
-    ? S-/
+    @ S-2
+    # S-3
+    $ S-4
     % S-5
+    ^ S-6
+    & S-7
+    * S-8
     "(" S-9
     ")" S-0
+    ? S-/
     : S-;
     < S-,
     > S-.

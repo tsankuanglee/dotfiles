@@ -15,17 +15,11 @@ key symbols reference: https://github.com/jtroo/kanata/blob/main/parser/src/keys
 
 ;; aliases (to be used in layers)
 (include ../local/user_defined/aliases.kbd)
-;; select one keyboard layout file (which contains src and layers)
-(include ../local/layouts/$LAYOUTS_FILENAME)
-
-;; Enter sequence mode and input .
-;; (defalias dot-sequence (macro (sequence 250) 10 .))
-;; (defalias dot-sequence-inputmode (macro (sequence 250 hidden-delay-type) 10 .))
 
 ;; kanata core functions
 ;; reload/edit configs
 (t! seq (Backslash r) live-reload lrld)
-(t! seq (Backslash e) edit-config (cmd zsh -c "kitty nvim ~/.config/kanata/"))
+(t! seq-script-launcher (Backslash e) kitty-config-edit "kitty nvim ~/.config/kanata/")
 
 ;; sequences/hotkeys
 $INCLUDE_SEQUENCES
@@ -35,5 +29,8 @@ $INCLUDE_MACROS
 
 ;; chords
 $INCLUDE_CHORDS
+
+;; select one keyboard layout file (which contains src and layers)
+(include ../local/layouts/$LAYOUTS_FILENAME)
 
 ;; vim:  ft=lisp ts=2 sts=2 sw=2 et :

@@ -37,7 +37,32 @@ mouse keys
   ma← (movemouse-accel-left 1 1000 1 5)
   ma→ (movemouse-accel-right 1 1000 1 5)
 )
+#|
+sequence leaders
+|#
+;; kanata's sequence leader
+(defalias
+  ;; first "menu" is alias, to be used with @menu
+  ;; last "menu" is the actual key symbol
+  ;; sldr is a kanata-defined action (sequence leader)
+  menu (tap-hold-release 200 200 sldr menu)
+  )
 
+;; a workaround to use additional sets of sequences
+(defvirtualkeys
+  ;; use virtual keys to expand 
+  prnt-was-pressed nop0
+)
+(defalias
+  prnt (multi (on-press press-vkey prnt-was-pressed) sldr)
+  )
+;; usage example:
+;; (t! seq-script-launcher (nop0 w) screenshot-both-active-window ("~/.local/bin/screen_share/screenshot.py --target=both --source=active_window"))
+
+;; Alternative sequence mode example
+;; Enter sequence mode and input .
+;; (defalias dot-sequence (macro (sequence 250) 10 .))
+;; (defalias dot-sequence-inputmode (macro (sequence 250 hidden-delay-type) 10 .))
 
 #|
 direct hotkeys
@@ -45,5 +70,4 @@ direct hotkeys
 
 (defalias calc (cmd qalculate-gtk))
 
-
-;; vim: ft=lisp ts=2 sts=2 sw=2 :
+;; vim: ft=lisp ts=2 sts=2 sw=2 et :
