@@ -98,7 +98,7 @@ local M = {
         neotree = true,
         semantic_tokens = true,
         telescope = true,
-        treesitter = true,
+        treesitter = false, -- this requires the deprecated nvim-treesitter
         which_key = true,
       },
     },

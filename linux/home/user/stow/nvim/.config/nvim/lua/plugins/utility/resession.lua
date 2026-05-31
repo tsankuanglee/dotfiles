@@ -1,4 +1,6 @@
+-- Save/restore nvim sessions
 -- A replacement for :mksession with a better API
+-- https://github.com/stevearc/resession.nvim
 return {
   "stevearc/resession.nvim",
   opts = {},
