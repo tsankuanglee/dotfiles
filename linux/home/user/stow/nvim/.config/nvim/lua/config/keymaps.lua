@@ -72,14 +72,6 @@ km("n", "<LEADER>:l", vim.g.lcd_to_starting_folder, "lcd to launching folder")
 
 -- misc
 
-km(
-  "n", "gX",
-  function()
-    vim.fn.jobstart("xdg-open \"" .. vim.fn.expand("%:p:h") .. "/" .. vim.fn.expand("<cfile>") .. "\"")
-  end,
-  "xdg-open file under cursor (non-blocking)"
-)
-
 -- overwriting default (usually redundant) keys
 
 -- split window and edit file under cursor 
