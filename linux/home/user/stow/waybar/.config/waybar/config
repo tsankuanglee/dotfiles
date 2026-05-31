@@ -1,9 +1,34 @@
 [
   {
-    "id": "bar-bottom",
+    "id": "bar-bottom-left",
     "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "ipc": true,
+    "output": "DVI-D-1",
+    //	Choose the order of the modules
+    "modules-left": [
+      "sway/workspaces",
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "backlight",
+      // "wireplumber",
+      "pulseaudio",
+      "battery",
+      "idle_inhibitor",
+      "clock",
+      "custom/notification",
+      "network",
+      "tray"
+    ],
+    "include": ["./modules.json"]
+  },
+  {
+    "id": "bar-bottom-mid",
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "ipc": true,
+    "output": "DP-1",
     //	Choose the order of the modules
     "modules-left": [
       "sway/workspaces",
@@ -29,222 +54,31 @@
       "network",
       "tray"
     ],
-    // Modules configuration
-    "sway/workspaces": {
-      "disable-scroll": false,
-      "all-outputs": false,
-      "format": "{name}",
-      "format-icons": {
-        "urgent": "<span color='#e85c5c'></span>",
-        "focused": "<span color='#8af0f0'></span>",
-        "default": "<span color='#b8b8b8'></span>"
-      }
-    },
-    "hyprland/workspaces": {
-      "disable-scroll": false,
-      "all-outputs": false,
-      "format": "{name}",
-      "format-icons": {
-        "urgent": "<span color='#e85c5c'></span>",
-        "focused": "<span color='#8af0f0'></span>",
-        "default": "<span color='#b8b8b8'></span>"
-      }
-    },
-    "sway/mode": {},
-    "hyprland/submap": {},
-    "backlight": {
-      "device": "acpi_video1",
-      "format": "{icon} {percent}%",
-      "format-icons": [
-        "🔅",
-        "🔆"
-      ]
-    },
-    "wireplumber": {
-      "format": "{icon} {volume}%",
-      "format-muted": "󰝟",
-      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-      "on-click-right": "pavucontrol",
-      "format-icons": [
-        "",
-        "",
-        ""
-      ]
-    },
-    "battery": {
-      "states": {
-        "good": 95,
-        "warning": 20,
-        "critical": 10
-      },
-      "format-alt": "{power}W",
-      "format-time": "{H}h{M}",
-      "format": "<span color='#e88939'>{icon}</span>{capacity}%<span color='#e99949'>{time}</span>@{power}W",
-      "format-charging": "<span color='#e88939'>{icon}C</span>{capacity}%{time}",
-      "format-plugged": "<span color='#e88939'>{icon}</span>{capacity}%{time}",
-      "format-good": "<span color='#e88939'>{icon}</span>{capacity}%<span color='#e99949'>{time}</span>@{power}W",
-      "format-discharging": "<span color='#e88939'>{icon}</span>{capacity}%<span color='#e99949'>{time}</span>@{power}W",
-      "format-icons": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ],
-      "on-click-right": "sudo /root/.local/bin/system/battery_conservation_mode.sh 1",
-      "on-click-middle": "sudo /root/.local/bin/system/battery_conservation_mode.sh 0",
-      "max-length": 18,
-      "min-length": 9
-    },
-    "clock": {
-      "interval": 1,
-      "format": "<span color='#cde9f0'>{:%F %a %T}</span>",
-      "tooltip-format": "<tt><small>{calendar}</small></tt>",
-      "calendar": {
-        "mode": "year",
-        "mode-mon-col": 3,
-        "weeks-pos": "right",
-        "on-submap-change": "noop",
-        "format": {
-          "months": "<span color='#ffead3'><b>{}</b></span>",
-          "days": "<span color='#ecc6d9'><b>{}</b></span>",
-          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-        }
-      },
-      "on-click-right": "date '+%F %H:%M:%S' | wl-copy -n"
-    },
-    "cpu": {
-      "interval": 5,
-      "format": "<span color='#eb8a60'>{usage}%({load})</span>", // Icon: microchip
-      "states": {
-        "warning": 70,
-        "critical": 90
-      }
-    },
-    "idle_inhibitor": {
-      "format": "<span color='#589df6'>{icon}</span>",
-      "format-icons": {
-        "activated": "",
-        "deactivated": ""
-      },
-      //"on-click-right": "swaylock -eFfki -c 000000"
-      "on-click-right": "swaylock -f -c 000000"
-    },
-    "memory": {
-      "format": "{used:0.1f}G",
-      "tooltip": false
-    },
-    "network": {
-      "format-wifi": "<span color='#589df6'></span> <span color='gray'>{signalStrength}%</span>",
-      "format-ethernet": "",
-      "format-linked": "(no addr) ",
-      "format-disconnected": " ",
-      "format-alt": "<span color='gray'>{essid}</span> <span color='green'>⬇</span>{bandwidthDownBits} <span color='green'>⬆</span>{bandwidthUpBits}",
-      "interval": 60,
-      "tooltip-format": "{ifname} {essid}  {ipaddr}/{cidr}"
-    },
-    "pulseaudio": {
-      "format": "{icon}{volume}% {format_source}",
-      "format-muted": "󰝟{format_source}",
-      "format-bluetooth": "{icon}{volume}% {format_source}",
-      "format-bluetooth-muted": "󰝟{format_source}",
-      "format-source": "{volume}%",
-      "format-source-muted": "",
-      "format-icons": {
-        "headphones": "",
-        "handsfree": "",
-        "headset": "",
-        "phone": "",
-        "portable": "",
-        "car": "",
-        "default": [
-          "",
-          "",
-          ""
-        ]
-      },
-      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-      "on-click-middle": "pavucontrol"
-      //"scroll-step": 1, // %, can be a float
-      //"on-scroll-down": "pactl set-sink-volume   @DEFAULT_SINK@  +1%",
-      //"on-scroll-up": "pactl set-sink-volume   @DEFAULT_SINK@  -10%"
-    },
-    "custom/temperature": {
-      "exec": "~/.config/waybar/scripts/temperature.sh",
-      "interval": 5,
-      "format": "{}",
-      "return-type": "json",
-      "tooltip": true
-    },
-    "tray": {
-      "icon-size": 18,
-      "spacing": 5
-    },
-    // see https://github.com/MaxVerevkin/wl-gammarelay-rs
-    "custom/wl-gammarelay-temperature": {
-      "format": "{}",
-      "exec": "wl-gammarelay-rs watch {t}",
-      "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100",
-      "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100",
-      "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500",
-      "on-click-right": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500"
-    },
-    "custom/wl-gammarelay-brightness": {
-      "format": "<span color='#eb8a60'>{}%</span>",
-      "exec": "wl-gammarelay-rs watch {bp}",
-      "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.05",
-      "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.05",
-      "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 0.6",
-      "on-click-right": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d 1.0"
-    },
-    "custom/wl-gammarelay-gamma": {
-      "format": "γ{}%",
-      "exec": "wl-gammarelay-rs watch {g}",
-      "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d +0.02",
-      "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d -0.02"
-    },
-    "mpris": {
-      "format": "{player_icon}{title} - {artist}",
-      "format-paused": "{status_icon} <i>{title} - {artist}</i>",
-      "ignored-players": [
-        "firefox",
-        "chromium",
-        "chrome",
-        "brave"
-      ],
-      "player-icons": {
-        "default": "▶",
-        "spotify": "",
-        "mpv": "🎵"
-      },
-      "status-icons": {
-        "paused": "⏸"
-      },
-      "max-length": 50
-    },
-    "custom/notification": {
-      "tooltip": false,
-      "format": "{icon}",
-      "format-icons": {
-        "notification": "<span foreground='red'><sup></sup></span>",
-        "none": "",
-        "dnd-notification": "<span foreground='red'><sup></sup></span>",
-        "dnd-none": "",
-        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-        "inhibited-none": "",
-        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-        "dnd-inhibited-none": ""
-      },
-      "return-type": "json",
-      "exec-if": "which swaync-client",
-      "exec": "swaync-client -swb",
-      "on-click": "swaync-client -t -sw",
-      "on-click-right": "swaync-client -d -sw",
-      "escape": true
-    }
+    "include": ["./modules.json"]
+  },
+  {
+    "id": "bar-bottom-right",
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "ipc": true,
+    "output": "HDMI-A-1",
+    //	Choose the order of the modules
+    "modules-left": [
+      "sway/workspaces",
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "backlight",
+      // "wireplumber",
+      "pulseaudio",
+      "battery",
+      "idle_inhibitor",
+      "clock",
+      "custom/notification",
+      "network",
+      "tray"
+    ],
+    "include": ["./modules.json"]
   },
   {
     "id": "bar-menu-mode",
@@ -262,7 +96,8 @@
     },
     "hyprland/submap": {
       "format": "<span font_weight=\"bold\">{}</span>"
-    }
+    },
+    "include": ["./modules.json"]
   }
 ]
 // vim: ft=javascript
