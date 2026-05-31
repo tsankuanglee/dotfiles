@@ -1,3 +1,7 @@
+-- mfussenegger/nvim-dap-python
+-- https://github.com/mfussenegger/nvim-dap-python
+-- Extension for nvim-dap providing default configurations for python
+--
 return {
   "mfussenegger/nvim-dap-python",
   ft = "python",

@@ -1,3 +1,7 @@
+-- MagicDuck/grug-far.nvim
+-- https://github.com/MagicDuck/grug-far.nvim
+-- Find and replace with ripgrep
+--
 -- Find And Replace (with rg) interface
 return {
   'MagicDuck/grug-far.nvim',

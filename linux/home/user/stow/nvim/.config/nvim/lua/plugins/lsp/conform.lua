@@ -1,3 +1,7 @@
+-- stevearc/conform.nvim
+-- https://github.com/stevearc/conform.nvim
+-- Lightweight yet powerful formatter plugin
+--
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },

@@ -1,3 +1,7 @@
+-- echasnovski/mini.splitjoin
+-- https://github.com/echasnovski/mini.splitjoin
+-- Split and join arguments/blocks
+--
 return {
   "echasnovski/mini.splitjoin",
   event = "VeryLazy",

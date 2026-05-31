@@ -1,3 +1,7 @@
+-- kevinhwang91/nvim-bqf
+-- https://github.com/kevinhwang91/nvim-bqf
+-- Better quickfix window
+--
 -- better quickfix window that supports opening files in new split window
 return {
   'kevinhwang91/nvim-bqf',

@@ -1,3 +1,5 @@
+-- sindrets/winshift.nvim
+-- https://github.com/sindrets/winshift.nvim
 -- Rearrange your windows with ease
 return {
   "sindrets/winshift.nvim",

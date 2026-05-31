@@ -1,6 +1,6 @@
--- Bundle of two dozen new text objects for Neovim
--- https://neovimcraft.com/plugin/chrisgrieser/nvim-various-textobjs
---
+-- chrisgrieser/nvim-various-textobjs
+-- https://github.com/chrisgrieser/nvim-various-textobjs
+-- Bundle of more than 30 new text objects
 return {
   "chrisgrieser/nvim-various-textobjs",
   lazy = false,

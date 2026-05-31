@@ -1,3 +1,7 @@
+-- GCBallesteros/NotebookNavigator.nvim
+-- https://github.com/GCBallesteros/NotebookNavigator.nvim
+-- Navigate Jupyter notebooks
+--
 -- send NotbookCell to code runner
 -- <LEADER>NH
 return {

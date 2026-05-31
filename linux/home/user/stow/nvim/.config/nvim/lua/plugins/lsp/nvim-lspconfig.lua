@@ -1,3 +1,7 @@
+-- neovim/nvim-lspconfig
+-- https://github.com/neovim/nvim-lspconfig
+-- Quickstart configs for Nvim LSP
+--
 -- configurations for NVIM LSP
 return {
   "neovim/nvim-lspconfig",

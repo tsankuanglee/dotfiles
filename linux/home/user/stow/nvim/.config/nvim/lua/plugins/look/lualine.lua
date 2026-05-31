@@ -1,3 +1,7 @@
+-- nvim-lualine/lualine.nvim
+-- https://github.com/nvim-lualine/lualine.nvim
+-- A blazing fast and easy to configure neovim statusline
+--
 return {
   "nvim-lualine/lualine.nvim",
   lazy = false,

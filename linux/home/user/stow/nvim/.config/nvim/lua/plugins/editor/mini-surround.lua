@@ -1,3 +1,6 @@
+-- echasnovski/mini.surround
+-- https://github.com/echasnovski/mini.surround
+-- Fast and feature-rich surround actions
 return {
   "echasnovski/mini.surround",
   event = "VeryLazy",

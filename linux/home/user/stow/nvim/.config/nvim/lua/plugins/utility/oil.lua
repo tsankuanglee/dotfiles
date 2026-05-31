@@ -1,4 +1,6 @@
--- oil file explorer as a buffer
+-- stevearc/oil.nvim
+-- https://github.com/stevearc/oil.nvim
+-- File explorer as a buffer
 -- insert line to create a new file; if the filename ends with /, it's a directory
 return {
   "stevearc/oil.nvim",

@@ -1,3 +1,5 @@
+-- vidocqh/data-viewer.nvim
+-- https://github.com/vidocqh/data-viewer.nvim
 -- csv/squite view as table
 return {
   "vidocqh/data-viewer.nvim",

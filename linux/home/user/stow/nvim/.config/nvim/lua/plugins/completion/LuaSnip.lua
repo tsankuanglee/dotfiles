@@ -1,4 +1,6 @@
--- Snippet Engine for Neovim written in Lua
+-- L3MON4D3/LuaSnip
+-- https://github.com/L3MON4D3/LuaSnip
+-- Snippet Engine
 return {
   "L3MON4D3/LuaSnip",
   version = "v2.*",                -- Replace <CurrentMajor> by the latest released major (first number of latest release)

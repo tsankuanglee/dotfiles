@@ -1,3 +1,5 @@
+-- nvimtools/hydra.nvim
+-- https://github.com/nvimtools/hydra.nvim
 -- Create custom submodes and menus
 return {
   "nvimtools/hydra.nvim",

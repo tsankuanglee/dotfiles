@@ -1,5 +1,9 @@
--- colortheme
--- remember to set lazy=false for at least one of them
+--[[ 
+colorschemes is a custom lua script to manage colorschemes
+
+remember to set lazy=false for at least one of them
+]]
+
 local km = require("utils").km -- keymap shortcut function
 
 km("n", "<LEADER>Ct", "<CMD>colorscheme tokyonight<CR>")

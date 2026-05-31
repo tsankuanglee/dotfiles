@@ -1,3 +1,6 @@
+-- A better Telescope picker for undo
+-- https://github.com/debugloop/telescope-undo.nvim
+-- Use <LEADER>u to open the undo tree
 return {
   "debugloop/telescope-undo.nvim",
   dependencies = {

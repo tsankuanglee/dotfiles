@@ -1,4 +1,6 @@
--- diffunitsyntax: Highlight word or character based diff units in diff format
+-- rickhowe/diffunitsyntax
+-- https://github.com/rickhowe/diffunitsyntax
+-- Highlight word or character based diff units in diff format
 return {
   'rickhowe/diffunitsyntax',
   event = "BufRead",

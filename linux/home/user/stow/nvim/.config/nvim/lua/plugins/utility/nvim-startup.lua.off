@@ -1,3 +1,8 @@
+--[[ 
+henriquehbr/nvim-startup.lua
+https://git.sr.ht/~henriquehbr/nvim-startup.lua
+Record and display startup time (in ms) for Neovim.
+--]]
 return {
   --"henriquehbr/nvim-startup.lua",
   "https://git.sr.ht/~henriquehbr/nvim-startup.lua",

@@ -1,3 +1,6 @@
+-- echasnovski/mini.ai
+-- https://github.com/echasnovski/mini.ai
+-- Extend and create a/i textobjects
 return {
   "echasnovski/mini.ai",
   event = "VeryLazy",

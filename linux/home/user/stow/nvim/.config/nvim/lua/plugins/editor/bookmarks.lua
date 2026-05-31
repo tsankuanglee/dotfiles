@@ -1,5 +1,6 @@
--- bookmarks
---
+-- LintaoAmons/bookmarks.nvim
+-- https://github.com/LintaoAmons/bookmarks.nvim
+-- Bookmark manager
 return {
   "LintaoAmons/bookmarks.nvim",
   -- pin the plugin at specific version for stability

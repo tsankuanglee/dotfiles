@@ -1,4 +1,6 @@
--- This plugin adds highlights for text filetypes, like markdown, orgmode, and neorg.
+-- lukas-reineke/headlines.nvim
+-- https://github.com/lukas-reineke/headlines.nvim
+-- Add highlights and background colors for headings of text filetypes, like markdown, orgmode, and neorg.
 return {
   'lukas-reineke/headlines.nvim',
   dependencies = "nvim-treesitter/nvim-treesitter",

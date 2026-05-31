@@ -1,5 +1,7 @@
--- A high performance filetype mode for Neovim which leverages conceal
--- and highlights your buffer with the correct color codes
+-- norcalli/nvim-terminal.lua
+-- https://github.com/norcalli/nvim-terminal.lua
+-- A high-performance neovim terminal filetype mode (for color)
+
 -- activate by `setl filetype=terminal`
 return {
   "norcalli/nvim-terminal.lua",

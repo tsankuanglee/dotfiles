@@ -1,3 +1,7 @@
+-- RaafatTurki/hex.nvim
+-- https://github.com/RaafatTurki/hex.nvim
+-- Hex editing mode
+--
 -- hex editor
 --   require 'hex'.dump()      -- switch to hex view
 --   require 'hex'.assemble()  -- go back to normal view

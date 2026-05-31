@@ -1,4 +1,6 @@
--- diffchar: Highlight the exact differences, based on characters and words
+-- rickhowe/diffchar.vim
+-- https://github.com/rickhowe/diffchar.vim
+-- Highlight exact character differences
 return {
   'rickhowe/diffchar.vim',
   -- Note (lazy loading):

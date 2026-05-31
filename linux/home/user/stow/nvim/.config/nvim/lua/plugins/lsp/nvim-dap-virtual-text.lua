@@ -1,3 +1,7 @@
+-- theHamsta/nvim-dap-virtual-text
+-- https://github.com/theHamsta/nvim-dap-virtual-text
+-- Virtual text support for nvim-dap
+--
 -- virtual text support to nvim-dap
 -- nvim-treesitter is used to find variable definitions.
 return {

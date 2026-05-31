@@ -1,3 +1,7 @@
+-- skywind3000/vim-quickui
+-- https://github.com/skywind3000/vim-quickui
+-- UI framework for vim/nvim
+--
 return {
   "skywind3000/vim-quickui",
   lazy = false,

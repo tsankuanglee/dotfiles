@@ -1,5 +1,6 @@
--- which-key prompts available keys in a sequence
-
+-- folke/which-key.nvim
+-- https://github.com/folke/which-key.nvim
+-- Prompts available keys in a sequence
 local opts = {
   ---@param mapping wk.Mapping
   filter = function(mapping)

@@ -1,3 +1,8 @@
+--[[ 
+LazyDev will add a lsp for lua files
+https://github.com/folke/lazydev.nvim
+Faster LuaLS setup for Neovim
+--]]
 return {
   {
     "folke/lazydev.nvim",

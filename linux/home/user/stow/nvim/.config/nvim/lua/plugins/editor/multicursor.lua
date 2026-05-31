@@ -1,5 +1,6 @@
+-- jake-stewart/multicursor.nvim
 -- https://github.com/jake-stewart/multicursor.nvim
---
+-- Multiple cursors for Neovim
 return {
   "jake-stewart/multicursor.nvim",
   branch = "1.0",

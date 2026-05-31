@@ -1,11 +1,15 @@
 --[[
+akinsho/toggleterm.nvim
+https://github.com/akinsho/toggleterm.nvim
+A neovim plugin to persist and toggle multiple terminals
+
 multi nvim-terminals management
 * Use <C-q> to open/toggle
 * Use 2<C-q> to open/toggle Terminal 2
 * Use 3<C-q> to open/toggle Terminal 3
 * Use <C-S-q> to leave Terminal mode
 * Use <C-S-q> for ui to select terminal
-]]
+--]]
 return {
   'akinsho/toggleterm.nvim',
   version = "*",

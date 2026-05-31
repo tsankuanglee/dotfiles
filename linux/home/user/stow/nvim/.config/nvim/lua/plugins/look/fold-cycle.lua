@@ -1,3 +1,7 @@
+-- jghauser/fold-cycle.nvim
+-- https://github.com/jghauser/fold-cycle.nvim
+-- Cycle through folds
+--
 -- use <tab> to toggle folds, one level at a time
 return {
   "jghauser/fold-cycle.nvim",

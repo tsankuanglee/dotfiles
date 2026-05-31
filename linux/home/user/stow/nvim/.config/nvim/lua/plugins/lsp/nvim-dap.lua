@@ -1,3 +1,7 @@
+-- mfussenegger/nvim-dap
+-- https://github.com/mfussenegger/nvim-dap
+-- Debug Adapter Protocol client implementation
+--
 return {
   "mfussenegger/nvim-dap",
   config = function()

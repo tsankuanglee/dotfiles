@@ -1,3 +1,7 @@
+-- stevearc/dressing.nvim
+-- https://github.com/stevearc/dressing.nvim
+-- Neovim UI enhancements
+--
 return {
   "stevearc/dressing.nvim",
   opts = {},

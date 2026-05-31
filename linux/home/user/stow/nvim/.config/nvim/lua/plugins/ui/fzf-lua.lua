@@ -1,3 +1,7 @@
+-- ibhagwan/fzf-lua
+-- https://github.com/ibhagwan/fzf-lua
+-- Improved fzf.vim written in lua
+--
 -- require fzf binary
 return {
   "ibhagwan/fzf-lua",

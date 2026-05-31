@@ -1,4 +1,6 @@
--- top bar line
+-- barbar.nvim
+-- https://github.com/romgrk/barbar.nvim
+-- Top bar line
 return {
   {
     "romgrk/barbar.nvim",

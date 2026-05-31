@@ -1,5 +1,5 @@
 -- A code outline window for skimming and quick navigation
---  -- Keymaps in aerial window.
+-- https://github.com/stevearc/aerial.nvim
 -- keymaps = {
 --   ["?"] = "actions.show_help",
 --   ["g?"] = "actions.show_help",
@@ -50,7 +50,7 @@ return {
   opts = {},
   -- Optional dependencies
   dependencies = {
-    "nvim-treesitter/nvim-treesitter",
+    -- "nvim-treesitter/nvim-treesitter",  -- deprecating
     "nvim-tree/nvim-web-devicons",
   },
 }

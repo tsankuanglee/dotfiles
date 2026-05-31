@@ -1,8 +1,9 @@
 --[[
+HiPhish/rainbow-delimiters.nvim
+https://github.com/HiPhish/rainbow-delimiters.nvim
 Rainbow delimiters (rainbow parenthesis) for Neovim with Tree-sitter
 
-This previous incarnation of this plugin used to be a tree-sitter module, but
-now it's a standalone plugin, that calls tree-sitter, but no longer needs to have a setting under tree-sitter.config.
+This previous incarnation of this plugin used to be a tree-sitter module, but now it's a standalone plugin, that calls tree-sitter, but no longer needs to have a setting under tree-sitter.config.
 
 ]]
 return {

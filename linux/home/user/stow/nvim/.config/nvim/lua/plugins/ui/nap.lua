@@ -1,3 +1,7 @@
+-- liangxianzhe/nap.nvim
+-- https://github.com/liangxianzhe/nap.nvim
+-- Jump between next/prev quickly
+--
 -- nap: next and previous; a cleaner version of vim unimpaired
 return {
   "liangxianzhe/nap.nvim",

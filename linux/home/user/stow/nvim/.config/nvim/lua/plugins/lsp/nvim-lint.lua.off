@@ -1,3 +1,7 @@
+-- mfussenegger/nvim-lint
+-- https://github.com/mfussenegger/nvim-lint
+-- Asynchronous linter plugin
+--
 -- turned off for now; too noisy
 return {
   "mfussenegger/nvim-lint",

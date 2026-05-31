@@ -1,3 +1,5 @@
+-- echasnovski/mini.nvim
+-- https://github.com/echasnovski/mini.nvim
 -- 30+ independent Lua modules improving overall Neovim experience with minimal effort
 return {
   "echasnovski/mini.nvim",

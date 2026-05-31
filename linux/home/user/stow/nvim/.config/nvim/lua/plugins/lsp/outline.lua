@@ -1,3 +1,7 @@
+-- hedyhli/outline.nvim
+-- https://github.com/hedyhli/outline.nvim
+-- Code outline window
+--
 return {
   "hedyhli/outline.nvim",
 

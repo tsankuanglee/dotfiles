@@ -1,3 +1,7 @@
+-- nvim-telescope/telescope.nvim
+-- https://github.com/nvim-telescope/telescope.nvim
+-- Find, Filter, Preview, Pick
+--
 -- extendable fuzzy finder over lists
 return {
   "nvim-telescope/telescope.nvim",

@@ -1,4 +1,7 @@
--- system dependencies: tree-sitter-cli
+-- nvim-treesitter/nvim-treesitter
+-- https://github.com/nvim-treesitter/nvim-treesitter
+-- Tree-sitter based syntax highlighting and parsing for Neovim
+-- system dependencies: tree-sitter library (required)
 return {
   { "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate"},
   lazy = false,

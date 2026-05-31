@@ -1,4 +1,6 @@
--- provides a status column on the left
+-- luukvbaal/statuscol.nvim
+-- https://github.com/luukvbaal/statuscol.nvim
+-- Status column plugin provides a status column on the left
 return {
   "luukvbaal/statuscol.nvim",
   lazy = false,

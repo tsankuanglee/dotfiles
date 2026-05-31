@@ -1,9 +1,14 @@
--- spotdiff.vim: range and area selectable diff
--- Available commands 
---   for line range selection: :[range]Diffthis, :Diffoff[!], :Diffupdate
---   for visual selection: :VDiffthis, :VDiffoff, and :VDiffupdate
--- keybinds:
---   * diffchar works with this
+--[[
+rickhowe/spotdiff.vim
+https://github.com/rickhowe/spotdiff.vim
+Range and area selectable diff
+
+Available commands 
+  * for line range selection: :[range]Diffthis, :Diffoff[!], :Diffupdate
+  * for visual selection: :VDiffthis, :VDiffoff, and :VDiffupdate
+keybinds:
+  * diffchar works with this
+--]]
 return {
   'rickhowe/spotdiff.vim',
   event = "BufRead",

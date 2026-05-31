@@ -1,3 +1,7 @@
+-- uga-rosa/ccc.nvim
+-- https://github.com/uga-rosa/ccc.nvim
+-- Color picker and highlighter
+--
 --[[
 # Create Color Code (color picker)
 

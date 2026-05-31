@@ -1,3 +1,7 @@
+-- lewis6991/gitsigns.nvim
+-- https://github.com/lewis6991/gitsigns.nvim
+-- Git integration for buffers
+--
 -- git decorations
 return {
   "lewis6991/gitsigns.nvim",

@@ -1,3 +1,7 @@
+-- folke/flash.nvim
+-- https://github.com/folke/flash.nvim
+-- Navigate your code with search labels
+--
 --[[
 add target label for jumping
 TODO how to use the remote mode?

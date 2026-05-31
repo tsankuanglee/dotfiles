@@ -1,6 +1,9 @@
+-- kevinhwang91/nvim-ufo
+-- https://github.com/kevinhwang91/nvim-ufo
+-- Ultra fold in Neovim
+--
 -- Better Folding
 -- use <TAB> to switch between main/preview window
-
 -- There are two options: we can use LSP or treesitter as the provider
 local provider = "LSP" -- or treesitter
 

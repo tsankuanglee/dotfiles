@@ -1,7 +1,8 @@
--- Tome Playbook
--- https://github.com/laktak/tome
--- Playback commands for nvim
--- Sends keystrokes to tmux for playback in a tmux session
+--[[
+Tome Playbook
+https://github.com/laktak/tome
+Playback commands for nvim, by sending keystrokes to tmux session
+--]]
 return {
   "laktak/tome",
   version = "*",

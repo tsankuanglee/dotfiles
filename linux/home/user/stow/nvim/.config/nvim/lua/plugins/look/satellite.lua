@@ -1,4 +1,6 @@
--- Decorate scrollbar for Neovim (needs Nvim 0.10+)
+-- lewis6991/satellite.nvim
+-- https://github.com/lewis6991/satellite.nvim
+-- Scrollbar with signs
 return {
   "lewis6991/satellite.nvim",
   lazy = true,
