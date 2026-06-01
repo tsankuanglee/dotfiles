@@ -1,8 +1,6 @@
 -- williamboman/mason.nvim
 -- https://github.com/williamboman/mason.nvim
--- Portable package manager for Neovim that runs everywhere Neovim runs
---
--- LSP manager
+-- LSP/DAP/Linter/Formatter package manager
 return {
   "williamboman/mason.nvim",
   -- setup see mason-lspconfig.lua

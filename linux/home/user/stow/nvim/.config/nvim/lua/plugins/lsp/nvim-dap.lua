@@ -17,7 +17,7 @@ return {
     { "<LOCALLEADER>do", function() require("dap").step_out() end, mode = "n", desc = "[DAP] step out <S-F11>" },
     { "<LOCALLEADER>dV", function() require("dap").step_back() end, mode = "n", desc = "[DAP] step back" },
     { "<LOCALLEADER>d<UP>", function() require("dap").up() end, mode = "n", desc = "[DAP] go up stacktrace" },
-    { "<LOCALLEADER>d<DOWN>", function() require("dap").down() end, mode = "n", desc = "[DAP] go doen stacktrace" },
+    { "<LOCALLEADER>d<DOWN>", function() require("dap").down() end, mode = "n", desc = "[DAP] go down stacktrace" },
     { "<LOCALLEADER>db", function() require("dap").set_breakpoint() end, mode = "n", desc = "[DAP] toggle breakpoint (also <F9>)" },
     { "<LOCALLEADER>dB", function() require("dap").set_breakpoint() end, mode = "n", desc = "[DAP] set breakpoint" },
     { "<LOCALLEADER>dt", function() require("dap").list_breakpoint() end, mode = "n", desc = "[DAP] list breakpoints" },

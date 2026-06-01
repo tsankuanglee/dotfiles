@@ -22,7 +22,7 @@ return {
     { "<LOCALLEADER>de", function () require("dapui").eval() end, mode = "n", desc = "[DAP-ui] eval cursor/visual" },
   },
   "rcarriga/nvim-dap-ui",
-  depenencies = {
+  dependencies = {
     "mfussenegger/nvim-dap",
     "nvim-neotest/nvim-nio",
     "mfussenegger/nvim-dap-virtual-text"

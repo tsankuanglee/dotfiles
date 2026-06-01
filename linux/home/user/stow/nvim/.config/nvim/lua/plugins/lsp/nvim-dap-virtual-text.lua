@@ -6,7 +6,7 @@
 -- nvim-treesitter is used to find variable definitions.
 return {
   "theHamsta/nvim-dap-virtual-text",
-  depenencies = {
+  dependencies = {
     "mfussenegger/nvim-dap",
     "nvim-treesitter/nvim-treesitter",
   },

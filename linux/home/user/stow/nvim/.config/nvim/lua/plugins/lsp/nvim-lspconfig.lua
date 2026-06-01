@@ -1,8 +1,6 @@
 -- neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig
--- Quickstart configs for Nvim LSP
---
--- configurations for NVIM LSP
+-- configs for Nvim LSP, which is managed by mason.nvim and mason-lspconfig
 return {
   keys = {
     { "<LEADER>lr", function() vim.lsp.buf.references() end, mode = "n", desc = "references" },
@@ -28,14 +26,26 @@ return {
     })
     require("stylua-nvim").setup({ config_file = "stylua.toml" })
 
-    -- config for each language
+    -- native LSP config for each language (Neovim 0.11+)
     --
-    -- deprecated syntax
-    -- local lspconfig = require("lspconfig")
-    -- require("plugins.lsp.nvim-lspconfig.pyright").setup()
-    -- require("plugins.lsp.nvim-lspconfig.lua_ls").setup()
-    -- lspconfig.ts_ls.setup {}
-    -- lspconfig.vale_ls.setup {}
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+    vim.lsp.config.pyright = {
+      capabilities = capabilities,
+    }
+
+    vim.lsp.config.lua_ls = {
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          format = { enable = false },
+          workspace = { checkThirdParty = false },
+        },
+      },
+    }
+
+    vim.lsp.config.ts_ls = { capabilities = capabilities }
+    vim.lsp.config.vale_ls = { capabilities = capabilities }
 
     vim.lsp.enable({ "pyright", "lua_ls", "ts_ls", "vale_ls" })
 
