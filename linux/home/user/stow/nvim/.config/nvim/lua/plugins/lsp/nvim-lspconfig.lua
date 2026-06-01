@@ -1,6 +1,6 @@
 -- neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig
--- configs for Nvim LSP, which is managed by mason.nvim and mason-lspconfig
+-- configs for Nvim LSP; also see mason.nvim and mason-lspconfig
 return {
   keys = {
     { "<LEADER>lr", function() vim.lsp.buf.references() end, mode = "n", desc = "references" },
