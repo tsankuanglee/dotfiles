@@ -3,6 +3,16 @@
 -- File explorer as a buffer
 -- insert line to create a new file; if the filename ends with /, it's a directory
 return {
+  keys = {
+    { "<leader><leader>", "<CMD>Oil .<CR>", mode = "n", desc = "Oil explorer: open current folder in the same window" },
+    { "<leader>ee", "<CMD>Oil .<CR>", mode = "n", desc = "Oil explorer: open current folder in the same window" },
+    { "<leader>er", "<CMD>vsplit | wincmd l | Oil .<CR>", mode = "n", desc = "Oil explorer: open current folder on the right)" },
+    { "<leader>ew", "<CMD>vsplit | wincmd r | Oil .<CR>", mode = "n", desc = "Oil explorer: open current folder on the left" },
+    { "<leader>e3", "<CMD>split | wincmd k | Oil .<CR>", mode = "n", desc = "Oil explorer: open current folder on the top" },
+    { "<leader>ed", "<CMD>split | wincmd j | Oil .<CR>", mode = "n", desc = "Oil explorer: open current folder on the bottom" },
+    { "<leader>ef", "<CMD>Oil --float .<CR>", mode = "n", desc = "Oil explorer: open current folder float" },
+    { "<leader>en", "<CMD>Explore .<CR>", mode = "n", desc = "netrw Explore ." },
+  },
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   lazy = false,
@@ -221,15 +231,6 @@ return {
         border = "rounded",
       },
     })
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<leader><leader>", "<CMD>Oil .<CR>", "Oil explorer: open current folder in the same window")
-    km("n", "<leader>ee", "<CMD>Oil .<CR>", "Oil explorer: open current folder in the same window")
-    km("n", "<leader>er", "<CMD>vsplit | wincmd l | Oil .<CR>", "Oil explorer: open current folder on the right)")
-    km("n", "<leader>ew", "<CMD>vsplit | wincmd r | Oil .<CR>", "Oil explorer: open current folder on the left")
-    km("n", "<leader>e3", "<CMD>split | wincmd k | Oil .<CR>", "Oil explorer: open current folder on the top")
-    km("n", "<leader>ed", "<CMD>split | wincmd j | Oil .<CR>", "Oil explorer: open current folder on the bottom")
-    km("n", "<leader>ef", "<CMD>Oil --float .<CR>", "Oil explorer: open current folder float")
-    km("n", "<leader>en", "<CMD>Explore .<CR>", "netrw Explore .")
   end,
 }
 -- vim: sw=2 ts=2 sts=2 et

@@ -2,6 +2,9 @@
 -- https://github.com/m00qek/baleia.nvim
 -- Colorize text with ANSI escape sequences
 return {
+  keys = {
+    { "<LOCALLEADER>C", "<CMD>BaleiaColorize<CR>", mode = "n", desc = "Colorize ANSI text" },
+  },
   "m00qek/baleia.nvim",
   -- version = "*",  -- stick with major release
   config = function()
@@ -16,7 +19,5 @@ return {
     vim.api.nvim_create_user_command("BaleiaLogs", vim.cmd.messages, { bang = true })
     
     -- Keyboard shortcuts
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LOCALLEADER>C", "<CMD>BaleiaColorize<CR>", "Colorize ANSI text")
   end,
 }

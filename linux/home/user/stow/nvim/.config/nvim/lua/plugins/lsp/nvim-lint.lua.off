@@ -4,6 +4,11 @@
 --
 -- turned off for now; too noisy
 return {
+  keys = {
+    { "<LEADER>ll", function()
+      lint.try_lint()
+    end, mode = "n", desc = "lint for current file" },
+  },
   "mfussenegger/nvim-lint",
   lazy = true,
   event = {
@@ -28,11 +33,7 @@ return {
         lint.try_lint()
       end,
     })
-    local km = require("utils").km -- keymap shortcut function
 
-    km("n", "<LEADER>ll", function()
-      lint.try_lint()
-    end, "lint for current file")
   end,
 }
 

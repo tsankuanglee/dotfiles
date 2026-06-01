@@ -65,6 +65,16 @@ local localleader_mappings = {
 }
 
 return {
+  keys = {
+    { "<s-F1>", "<CMD>WhichKey<CR>", mode = "n", desc = "which-key top menu" },
+    { "<s-F1>", "<CMD>WhichKey '' v<CR>", mode = "v", desc = "which-key top menu" },
+    { "<s-F1>", "<CMD>WhichKey '' i<CR>", mode = "i", desc = "which-key top menu" },
+    { "<s-F1>", "<CMD>WhichKey '' c<CR>", mode = "c", desc = "which-key top menu" },
+    { "<F13>", "<CMD>WhichKey<CR>", mode = "n", desc = "which-key top menu" },
+    { "<F13>", "<CMD>WhichKey '' v<CR>", mode = "v", desc = "which-key top menu" },
+    { "<F13>", "<CMD>WhichKey '' i<CR>", mode = "i", desc = "which-key top menu" },
+    { "<F13>", "<CMD>WhichKey '' c<CR>", mode = "c", desc = "which-key top menu" },
+  },
   "folke/which-key.nvim",
   lazy = true,
   event = "VeryLazy",
@@ -81,17 +91,8 @@ return {
     local localleader_opts = vim.tbl_deep_extend("force", opts, { prefix = "<LOCALLEADER>" })
     wk.add(localleader_mappings, localleader_opts)
 
-    local km = require("utils").km -- keymap shortcut function
     -- gui can receive S-Function keys
-    km("n", "<s-F1>", "<CMD>WhichKey<CR>", "which-key top menu")
-    km("v", "<s-F1>", "<CMD>WhichKey '' v<CR>", "which-key top menu")
-    km("i", "<s-F1>", "<CMD>WhichKey '' i<CR>", "which-key top menu")
-    km("c", "<s-F1>", "<CMD>WhichKey '' c<CR>", "which-key top menu")
 
     -- Terminal emulators interprets S-Function keys as F13, F14, etc.
-    km("n", "<F13>", "<CMD>WhichKey<CR>", "which-key top menu")
-    km("v", "<F13>", "<CMD>WhichKey '' v<CR>", "which-key top menu")
-    km("i", "<F13>", "<CMD>WhichKey '' i<CR>", "which-key top menu")
-    km("c", "<F13>", "<CMD>WhichKey '' c<CR>", "which-key top menu")
   end,
 }

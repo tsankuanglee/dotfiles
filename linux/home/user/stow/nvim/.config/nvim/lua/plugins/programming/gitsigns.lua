@@ -4,6 +4,32 @@
 --
 -- git decorations
 return {
+  keys = {
+    { "<LEADER>Gcn", function()
+          if vim.wo.diff then return "]c" end
+          vim.schedule(function() require("gitsigns").next_hunk() end)
+          return "<Ignore>"
+        end, mode = "n", desc = "Gitsigns jump to next change" },
+    { "<LEADER>Gcp", function()
+          if vim.wo.diff then return "[c" end
+          vim.schedule(function() require("gitsigns").prev_hunk() end)
+          return "<Ignore>"
+        end, mode = "n", desc = "Gitsigns jump to previous change" },
+    { "<LEADER>Gs", require("gitsigns").stage_hunk, mode = "n", desc = "Gitsigns stage_hunk" },
+    { "<LEADER>Gr", require("gitsigns").reset_hunk, mode = "n", desc = "Gitsigns reset_hunk" },
+    { "<LEADER>Gs", function() require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, mode = "v", desc = "Gitsigns stage_hunk" },
+    { "<LEADER>Gr", function() require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, mode = "v", desc = "Gitsigns reset_hunk" },
+    { "<LEADER>GS", require("gitsigns").stage_buffer, mode = "n", desc = "Gitsigns stage_buffer" },
+    { "<LEADER>Gu", require("gitsigns").undo_stage_hunk, mode = "n", desc = "Gitsigns undo stage_buffer" },
+    { "<LEADER>GR", require("gitsigns").reset_buffer, mode = "n", desc = "Gitsigns reset_" },
+    { "<LEADER>Gp", require("gitsigns").preview_hunk, mode = "n", desc = "Gitsigns preview_hunk" },
+    { "<LEADER>Gb", function() require("gitsigns").blame_line({ full = true }) end, mode = "n", desc = "Gitsigns blame_line" },
+    { "<LEADER>Gtb", require("gitsigns").toggle_current_line_blame, mode = "n", desc = "Gitsigns toggle_current_line_blame" },
+    { "<LEADER>Gd", require("gitsigns").diffthis, mode = "n", desc = "Gitsigns diffthis" },
+    { "<LEADER>GD", function() require("gitsigns").diffthis("~") end, mode = "n", desc = "Gitsigns diffthis(\"~\")" },
+    { "<LEADER>Gtd", require("gitsigns").toggle_deleted, mode = "n", desc = "Gitsigns toggle_deleted" },
+    { "ih", ":<C-U>Gitsigns select_hunk<CR>", mode = { "o", "x" }, desc = "Gitsigns select_hunk" },
+  },
   "lewis6991/gitsigns.nvim",
   lazy = true,
   event = "VeryLazy",
@@ -11,38 +37,13 @@ return {
     require("gitsigns").setup({
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
-        local km = require("utils").km -- keymap shortcut function
 
         -- Navigation
-        km("n", "<LEADER>Gcn", function()
-          if vim.wo.diff then return "]c" end
-          vim.schedule(function() gs.next_hunk() end)
-          return "<Ignore>"
-        end, "Gitsigns jump to next change", { expr = true })
 
-        km("n", "<LEADER>Gcp", function()
-          if vim.wo.diff then return "[c" end
-          vim.schedule(function() gs.prev_hunk() end)
-          return "<Ignore>"
-        end, "Gitsigns jump to previous change", { expr = true })
 
         -- Actions
-        km("n", "<LEADER>Gs", gs.stage_hunk, "Gitsigns stage_hunk")
-        km("n", "<LEADER>Gr", gs.reset_hunk, "Gitsigns reset_hunk")
-        km("v", "<LEADER>Gs", function() gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Gitsigns stage_hunk")
-        km("v", "<LEADER>Gr", function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Gitsigns reset_hunk")
-        km("n", "<LEADER>GS", gs.stage_buffer, "Gitsigns stage_buffer")
-        km("n", "<LEADER>Gu", gs.undo_stage_hunk, "Gitsigns undo stage_buffer")
-        km("n", "<LEADER>GR", gs.reset_buffer, "Gitsigns reset_")
-        km("n", "<LEADER>Gp", gs.preview_hunk, "Gitsigns preview_hunk")
-        km("n", "<LEADER>Gb", function() gs.blame_line({ full = true }) end, "Gitsigns blame_line")
-        km("n", "<LEADER>Gtb", gs.toggle_current_line_blame, "Gitsigns toggle_current_line_blame")
-        km("n", "<LEADER>Gd", gs.diffthis, "Gitsigns diffthis")
-        km("n", "<LEADER>GD", function() gs.diffthis("~") end, "Gitsigns diffthis(\"~\")")
-        km("n", "<LEADER>Gtd", gs.toggle_deleted, "Gitsigns toggle_deleted")
 
         -- Text object
-        km({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns select_hunk")
       end,
     })
   end,

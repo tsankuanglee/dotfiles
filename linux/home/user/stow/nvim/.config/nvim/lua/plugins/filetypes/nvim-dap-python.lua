@@ -3,6 +3,11 @@
 -- Extension for nvim-dap providing default configurations for python
 --
 return {
+  keys = {
+    { "<LOCALLEADER>dyr", function () require("dap-python").test_method() end, mode = "n", desc = "[DAP-python] test_method" },
+    { "<LOCALLEADER>dyf", function () require("dap-python").test_class() end, mode = "n", desc = "[DAP-python] test_class" },
+    { "<LOCALLEADER>dys", function () require("dap-python").debug_selection() end, mode = "v", desc = "[DAP-python] debug_selection test_class" },
+  },
   "mfussenegger/nvim-dap-python",
   ft = "python",
   depenencies = {
@@ -15,10 +20,6 @@ return {
     dp.test_runner = 'pytest'
     dp.setup(path)
 
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LOCALLEADER>dyr", function () dp.test_method() end, "[DAP-python] test_method")
-    km("n", "<LOCALLEADER>dyf", function () dp.test_class() end, "[DAP-python] test_class")
-    km("v", "<LOCALLEADER>dys", function () dp.debug_selection() end, "[DAP-python] debug_selection test_class")
 
   end,
 }

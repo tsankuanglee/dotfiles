@@ -2,6 +2,9 @@
 -- https://github.com/vidocqh/data-viewer.nvim
 -- csv/squite view as table
 return {
+  keys = {
+    { "<LEADER>D", "<CMD>DataViewer<CR>", mode = "n", desc = "Open CSV/sqlite viewer" },
+  },
   "vidocqh/data-viewer.nvim",
   opts = {},
   dependencies = {
@@ -20,7 +23,5 @@ return {
         prev_table = "<C-h>",
       },
     })
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LEADER>D", "<CMD>DataViewer<CR>", "Open CSV/sqlite viewer")
   end,
 }

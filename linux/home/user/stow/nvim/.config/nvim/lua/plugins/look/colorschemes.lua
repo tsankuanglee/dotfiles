@@ -4,14 +4,7 @@ colorschemes is a custom lua script to manage colorschemes
 remember to set lazy=false for at least one of them
 ]]
 
-local km = require("utils").km -- keymap shortcut function
 
-km("n", "<LEADER>Ct", "<CMD>colorscheme tokyonight<CR>")
-km("n", "<LEADER>Cs", "<CMD>colorscheme solarized<CR>")
-km("n", "<LEADER>Cg", "<CMD>colorscheme gruvbox<CR>")
-km("n", "<LEADER>Cc", "<CMD>colorscheme catppuccin<CR>")
-km("n", "<LEADER>Cj", "<CMD>colorscheme jellybeans<CR>")
-km("n", "<LEADER>Cm", "<CMD>colorscheme molokai<CR>")
 
 vim.opt.termguicolors = true -- true color support
 

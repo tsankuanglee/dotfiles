@@ -3,6 +3,11 @@
 -- UI framework for vim/nvim
 --
 return {
+  keys = {
+    { "<LEADER><SPACE>", "<CMD>call quickui#menu#open('system')<CR>", mode = "n", desc = "open system menu" },
+    { "<LEADER>M1", "<CMD>call quickui#menu#open('system')<CR>", mode = "n", desc = "open system menu" },
+    { "<LEADER>M2", "<CMD>call quickui#menu#open('development')<CR>", mode = "n", desc = "open development menu" },
+  },
   "skywind3000/vim-quickui",
   lazy = false,
   priority = 1001, -- need to load before colortheme
@@ -127,9 +132,5 @@ return {
       call QuickUiMenuSetup()
       ]])
 
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LEADER><SPACE>", "<CMD>call quickui#menu#open('system')<CR>", "open system menu")
-    km("n", "<LEADER>M1", "<CMD>call quickui#menu#open('system')<CR>", "open system menu")
-    km("n", "<LEADER>M2", "<CMD>call quickui#menu#open('development')<CR>", "open development menu")
   end,
 }

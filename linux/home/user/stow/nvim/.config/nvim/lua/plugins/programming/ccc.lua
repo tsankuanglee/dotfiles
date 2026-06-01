@@ -19,6 +19,9 @@
 * 1-9: 10-90%
 ]]
 return {
+  keys = {
+    { "<LEADER><c-k>", "<CMD>CccPick<CR>", mode = "n", desc = "CCC color picker" },
+  },
   "uga-rosa/ccc.nvim",
   lazy=false,
   config = function()
@@ -35,8 +38,6 @@ return {
       },
     })
 
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LEADER><c-k>", "<CMD>CccPick<CR>", "CCC color picker")
 
 
   end

@@ -12,6 +12,15 @@ default shortcuts:
 * toggle: t
 ]]
 return {
+  keys = {
+    { "<LOCALLEADER>duo", function () require("dapui").open() end, mode = "n", desc = "[DAP-ui] open UI" },
+    { "<LOCALLEADER>dur", function () require("dapui").open({ reset = true}) end, mode = "n", desc = "[DAP-ui] open reset UI" },
+    { "<LOCALLEADER>duc", function () require("dapui").close() end, mode = "n", desc = "[DAP-ui] close UI" },
+    { "<LOCALLEADER>dut", function () require("dapui").toggle() end, mode = "n", desc = "[DAP-ui] toggle UI" },
+    { "<F4>", function () require("dapui").float_element() end, mode = "n", desc = "[DAP-ui] select float" },
+    { "<LOCALLEADER>dF", function () require("dapui").float_element() end, mode = "n", desc = "[DAP-ui] select float" },
+    { "<LOCALLEADER>de", function () require("dapui").eval() end, mode = "n", desc = "[DAP-ui] eval cursor/visual" },
+  },
   "rcarriga/nvim-dap-ui",
   depenencies = {
     "mfussenegger/nvim-dap",
@@ -27,14 +36,6 @@ return {
     -- dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
     -- dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LOCALLEADER>duo", function () dapui.open() end, "[DAP-ui] open UI")
-    km("n", "<LOCALLEADER>dur", function () dapui.open({ reset = true}) end, "[DAP-ui] open reset UI")
-    km("n", "<LOCALLEADER>duc", function () dapui.close() end, "[DAP-ui] close UI")
-    km("n", "<LOCALLEADER>dut", function () dapui.toggle() end, "[DAP-ui] toggle UI")
-    km("n", "<F4>", function () dapui.float_element() end, "[DAP-ui] select float")
-    km("n", "<LOCALLEADER>dF", function () dapui.float_element() end, "[DAP-ui] select float")
-    km("n", "<LOCALLEADER>de", function () dapui.eval() end, "[DAP-ui] eval cursor/visual")
 
   end,
 }

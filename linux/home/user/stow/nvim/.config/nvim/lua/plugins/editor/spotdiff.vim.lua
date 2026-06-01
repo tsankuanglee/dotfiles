@@ -10,6 +10,13 @@ keybinds:
   * diffchar works with this
 --]]
 return {
+  keys = {
+    { "<localleader>ft", "<Plug>(VDiffthis)", mode = "n", desc = "[spotdiff] VDiffthis" },
+    { "<localleader>fT", "<Plug>(VDiffthis!)", mode = "n", desc = "[spotdiff] VDiffthis! (separated)" },
+    { "<localleader>fo", "<Plug>(VDiffoff)", mode = "n", desc = "[spotdiff] VDiffoff" },
+    { "<localleader>fO", "<Plug>(VDiffoff!)", mode = "n", desc = "[spotdiff] VDiffoff!" },
+    { "<localleader>fr", "<Plug>(VDiffupdate)", mode = "n", desc = "[spotdiff] refresh" },
+  },
   'rickhowe/spotdiff.vim',
   event = "BufRead",
   init = function()
@@ -17,25 +24,9 @@ return {
     vim.g.VDiffDoMapping = 0
   end,
   config = function()
-    local km = require("utils").km -- keymap shortcut function
 
     -- See diffchar's bindings, which also work here
 
-    km("n", "<localleader>ft", "<Plug>(VDiffthis)",
-      "[spotdiff] VDiffthis"
-    )
-    km("n", "<localleader>fT", "<Plug>(VDiffthis!)",
-      "[spotdiff] VDiffthis! (separated)"
-    )
-    km("n", "<localleader>fo", "<Plug>(VDiffoff)",
-      "[spotdiff] VDiffoff"
-    )
-    km("n", "<localleader>fO", "<Plug>(VDiffoff!)",
-      "[spotdiff] VDiffoff!"
-    )
-    km("n", "<localleader>fr", "<Plug>(VDiffupdate)",
-      "[spotdiff] refresh"
-    )
 
   end
 }

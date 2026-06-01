@@ -2,6 +2,60 @@
 -- https://github.com/jake-stewart/multicursor.nvim
 -- Multiple cursors for Neovim
 return {
+  keys = {
+    --     { "<LOCALLEADER>mc", --   function ()
+    --     if mc_mode == "off" then
+    --       mc_mode = "set"
+    --     elseif mc_mode == "set" then
+    --       mc_mode = "edit"
+    --       require("multicursor-nvim").enableCursors()
+    --     elseif mc_mode == "edit" then
+    --       mc_mode = "off"
+    --     end
+    --   end, mode = {"n", "x"}, desc = --   "[multicursor] toggle mode"
+    -- },
+    { "<LOCALLEADER>mm", function() require("multicursor-nvim").toggleCursor() end, mode = {"n", "x"}, desc = "[multicursor] toggle cursor" },
+    { "<s-up>", function()
+        if require("multicursor-nvim").cursorsEnabled() then
+          require("multicursor-nvim").lineAddCursor(-1)
+        end
+      end, mode = {"n", "x"}, desc = "[multicursor] add cursor and move up" },
+    { "<s-down>", function()
+      if require("multicursor-nvim").cursorsEnabled() then
+        require("multicursor-nvim").lineAddCursor(1)
+      end
+    end, mode = {"n", "x"}, desc = "[multicursor] add cursor and move down" },
+    { "<c-up>", function()
+      if require("multicursor-nvim").cursorsEnabled() then
+        require("multicursor-nvim").lineSkipCursor(-1)
+      end
+    end, mode = {"n", "x"}, desc = "[multicursor] skip cursor and move up" },
+    { "<c-down>", function()
+        if require("multicursor-nvim").cursorsEnabled() then
+          require("multicursor-nvim").lineSkipCursor(1)
+        end
+      end, mode = {"n", "x"}, desc = "[multicursor] skip cursor and move down" },
+    { "<localleader>mn", function()
+        if require("multicursor-nvim").cursorsEnabled() then
+          require("multicursor-nvim").matchAddCursor(1)
+        end
+      end, mode = {"n", "x"}, desc = "[multicursor] match add cursor" },
+    { "<localleader>ms", function()
+        if require("multicursor-nvim").cursorsEnabled() then
+          require("multicursor-nvim").matchSkipCursor(1)
+        end
+      end, mode = {"n", "x"}, desc = "[multicursor] match skipcursor" },
+    { "<localleader>mN", function()
+        if require("multicursor-nvim").cursorsEnabled() then
+          require("multicursor-nvim").matchAddCursor(-1)
+        end
+      end, mode = {"n", "x"}, desc = "[multicursor] match back add cursor" },
+    { "<localleader>mS", function()
+        if require("multicursor-nvim").cursorsEnabled() then
+          require("multicursor-nvim").matchSkipCursor(-1)
+        end
+      end, mode = {"n", "x"}, desc = "[multicursor] match back skip cursor" },
+  },
   "jake-stewart/multicursor.nvim",
   branch = "1.0",
   config = function()
@@ -9,83 +63,12 @@ return {
     mc.setup()
 
     local set = vim.keymap.set
-    local km = require("utils").km -- keymap shortcut function
 
     -- local mc_mode = "off" -- values: off, set, edit
-    -- km({"n", "x"}, "<LOCALLEADER>mc",
-    --   function ()
-    --     if mc_mode == "off" then
-    --       mc_mode = "set"
-    --     elseif mc_mode == "set" then
-    --       mc_mode = "edit"
-    --       mc.enableCursors()
-    --     elseif mc_mode == "edit" then
-    --       mc_mode = "off"
-    --     end
-    --   end,
-    --   "[multicursor] toggle mode"
-    -- )
 
-    km({"n", "x"}, "<LOCALLEADER>mm", mc.toggleCursor, "[multicursor] toggle cursor")
 
     -- Add or skip cursor above/below the main cursor.
-    km({"n", "x"}, "<s-up>", function()
-        if mc.cursorsEnabled() then
-          mc.lineAddCursor(-1)
-        end
-      end,
-      "[multicursor] add cursor and move up"
-    )
-    km({"n", "x"}, "<s-down>", function()
-      if mc.cursorsEnabled() then
-        mc.lineAddCursor(1)
-      end
-    end,
-      "[multicursor] add cursor and move down"
-    )
-    km({"n", "x"}, "<c-up>", function()
-      if mc.cursorsEnabled() then
-        mc.lineSkipCursor(-1)
-      end
-    end,
-      "[multicursor] skip cursor and move up"
-    )
-    km({"n", "x"}, "<c-down>", function()
-        if mc.cursorsEnabled() then
-          mc.lineSkipCursor(1)
-        end
-      end,
-      "[multicursor] skip cursor and move down"
-    )
     -- Add or skip adding a new cursor by matching word/selection
-    km({"n", "x"}, "<localleader>mn", function()
-        if mc.cursorsEnabled() then
-          mc.matchAddCursor(1)
-        end
-      end,
-      "[multicursor] match add cursor"
-    )
-    km({"n", "x"}, "<localleader>ms", function()
-        if mc.cursorsEnabled() then
-          mc.matchSkipCursor(1)
-        end
-      end,
-      "[multicursor] match skipcursor"
-    )
-    km({"n", "x"}, "<localleader>mN", function()
-        if mc.cursorsEnabled() then
-          mc.matchAddCursor(-1)
-        end
-      end,
-      "[multicursor] match back add cursor"
-    )
-    km({"n", "x"}, "<localleader>mS", function()
-        if mc.cursorsEnabled() then
-          mc.matchSkipCursor(-1)
-        end
-      end,
-      "[multicursor] match back skip cursor"
-    )
 
     -- Add and remove cursors with control + left click.
     set("n", "<c-leftmouse>", mc.handleMouse)

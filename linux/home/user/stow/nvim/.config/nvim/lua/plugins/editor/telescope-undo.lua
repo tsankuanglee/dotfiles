@@ -2,6 +2,9 @@
 -- https://github.com/debugloop/telescope-undo.nvim
 -- Use <LEADER>u to open the undo tree
 return {
+  keys = {
+    { "<LEADER>u", "<CMD>Telescope undo<CR>", mode = "n", desc = "Telescope Undo" },
+  },
   "debugloop/telescope-undo.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -39,8 +42,6 @@ return {
       },
     })
     require("telescope").load_extension("undo")
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LEADER>u", "<CMD>Telescope undo<CR>", "Telescope Undo")
   end,
 }
 

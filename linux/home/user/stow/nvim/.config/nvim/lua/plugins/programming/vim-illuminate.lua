@@ -8,6 +8,9 @@
 -- and <a-i> as a textobject for the reference illuminated under the cursor.
 --]]
 return {
+  keys = {
+    { "<LOCALLEADER>I", function() require("illuminate").toggle_visibility_buf() end, mode = "n", desc = "[vim-illuminate] toggle visibility" },
+  },
   "RRethy/vim-illuminate",
   lazy = true,
   event = { "VeryLazy" },
@@ -33,13 +36,6 @@ return {
           highlight illuminatedWord guibg=#204b17
           ]])
       end
-    )
-    local km = utils.km -- keymap shortcut function
-    km(
-      "n",
-      "<LOCALLEADER>I",
-      function() require("illuminate").toggle_visibility_buf() end,
-      "[vim-illuminate] toggle visibility"
     )
   end,
 }

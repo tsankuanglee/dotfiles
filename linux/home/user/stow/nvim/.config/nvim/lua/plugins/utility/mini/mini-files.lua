@@ -51,8 +51,6 @@ local custom_setup = function()
       width_preview = 40,
     },
   })
-  local km = require("utils").km -- keymap shortcut function
-  km("n", "<LEADER><LEADER>", function() MiniFiles.open() end, "mini.files")
 
   -- Create mapping to set current working directory ~
   local files_set_cwd = function(_)
@@ -68,5 +66,8 @@ local custom_setup = function()
 end
 
 return {
+  keys = {
+    { "<LEADER><LEADER>", function() MiniFiles.open() end, mode = "n", desc = "mini.files" },
+  },
   custom_setup = custom_setup
 }

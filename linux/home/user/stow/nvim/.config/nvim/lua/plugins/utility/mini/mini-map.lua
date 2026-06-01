@@ -16,15 +16,16 @@ local custom_setup = function()
       zindex = 10,
     }
   })
-  local km = require("utils").km -- keymap shortcut function
-  km('n', '<Leader>mt', MiniMap.toggle, "[mini.map] toggle")
-  km('n', '<Leader>mc', MiniMap.close, "[mini.map] close")
-  km('n', '<Leader>mo', MiniMap.open, "[mini.map] open")
-  km('n', '<Leader>mf', MiniMap.toggle_focus, "[mini.map] toggle_focus")
-  km('n', '<Leader>mr', MiniMap.refresh, "[mini.map] refresh")
-  km('n', '<Leader>ms', MiniMap.toggle_side, "[mini.map] toggle_side")
 end
 
 return {
+  keys = {
+    { '<Leader>mt', function() require('mini.map').toggle() end, mode = 'n', desc = "[mini.map] toggle" },
+    { '<Leader>mc', function() require('mini.map').close() end, mode = 'n', desc = "[mini.map] close" },
+    { '<Leader>mo', function() require('mini.map').open() end, mode = 'n', desc = "[mini.map] open" },
+    { '<Leader>mf', function() require('mini.map').toggle_focus() end, mode = 'n', desc = "[mini.map] toggle_focus" },
+    { '<Leader>mr', function() require('mini.map').refresh() end, mode = 'n', desc = "[mini.map] refresh" },
+    { '<Leader>ms', function() require('mini.map').toggle_side() end, mode = 'n', desc = "[mini.map] toggle_side" },
+  },
   custom_setup = custom_setup
 }

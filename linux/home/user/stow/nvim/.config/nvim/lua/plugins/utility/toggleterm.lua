@@ -11,6 +11,9 @@ multi nvim-terminals management
 * Use <C-S-q> for ui to select terminal
 --]]
 return {
+  keys = {
+    { "<c-S-q>", "<CMD>TermSelect<CR>", mode = "n" },
+  },
   'akinsho/toggleterm.nvim',
   version = "*",
   opts = {},
@@ -38,8 +41,6 @@ return {
       },
     })
 
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<c-S-q>", "<CMD>TermSelect<CR>")
 
     function _G.set_terminal_keymaps()
       local opts = {buffer = 0}

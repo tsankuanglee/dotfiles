@@ -3,21 +3,22 @@
 -- Save/restore nvim sessions
 -- A replacement for :mksession with a better API
 return {
+  keys = {
+    { "<leader>ss", function() require("resession").save() end, mode = "n", desc = "[reSession save]" },
+    { "<leader>sa", function()
+      require("resession").detach()
+      require("resession").save()
+    end, mode = "n", desc = "[reSession save as]" },
+    { "<leader>st", function() require("resession").save_tab() end, mode = "n", desc = "[reSession save_tab]" },
+    { "<leader>sl", function() require("resession").load() end, mode = "n", desc = "[reSession load]" },
+    { "<leader>sd", function() require("resession").delete() end, mode = "n", desc = "[reSession delete]" },
+    { "<leader>sD", function() require("resession").detach() end, mode = "n", desc = "[reSession Detach current]" },
+  },
   "stevearc/resession.nvim",
   opts = {},
   config = function()
     local resession = require("resession")
     resession.setup()
     -- Resession does NOTHING automagically, so we have to set up some keymaps
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<leader>ss", resession.save, "[reSession save]")
-    km("n", "<leader>sa", function()
-      resession.detach()
-      resession.save()
-    end, "[reSession save as]")
-    km("n", "<leader>st", resession.save_tab, "[reSession save_tab]")
-    km("n", "<leader>sl", resession.load, "[reSession load]")
-    km("n", "<leader>sd", resession.delete, "[reSession delete]")
-    km("n", "<leader>sD", resession.detach, "[reSession Detach current]")
   end,
 }

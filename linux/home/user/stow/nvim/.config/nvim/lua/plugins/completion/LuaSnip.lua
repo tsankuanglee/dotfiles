@@ -2,6 +2,11 @@
 -- https://github.com/L3MON4D3/LuaSnip
 -- Snippet Engine
 return {
+  keys = {
+    { "<C-K>", function() require("luasnip").expand() end, mode = { "i" }, desc = "expand snip" },
+    { "<C-L>", function() require("luasnip").jump(1) end, mode = { "i", "s" }, desc = "jump next" },
+    { "<C-J>", function() require("luasnip").jump(-1) end, mode = { "i", "s" }, desc = "jump previous" },
+  },
   "L3MON4D3/LuaSnip",
   version = "v2.*",                -- Replace <CurrentMajor> by the latest released major (first number of latest release)
   build = "make install_jsregexp", -- install jsregexp (optional!).
@@ -36,12 +41,5 @@ return {
     })
 
     -- intergrated with nvim-cmp
-    --[[ local km = require("utils").km -- keymap shortcut function
-    km({ "i" }, "<C-K>", function() ls.expand() end, "expand snip")
-    km({ "i", "s" }, "<C-L>", function() ls.jump(1) end, "jump next")
-    km({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, "jump previous")
-    km({ "i", "s" }, "<C-E>", function()
-      if ls.choice_active() then ls.change_choice(1) end
-    end, "luasnip: end choice") ]]
   end,
 }

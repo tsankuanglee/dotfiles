@@ -14,6 +14,11 @@
 --   nvim -b file
 --   nvim -b file1 file2
 return {
+  keys = {
+    { "<Space>xd", "<cmd>HexDump<cr>", mode = { "n", "v" }, desc = "[hex] dump" },
+    { "<Space>xa", "<cmd>HexAssemble<cr>", mode = { "n", "v" }, desc = "[hex] assemble" },
+    { "<Space>xx", "<cmd>HexToggle<cr>", mode = { "n", "v" }, desc = "[hex] toggle" },
+  },
   "RaafatTurki/hex.nvim",
   lazy = true,
   event = "VeryLazy",
@@ -38,10 +43,6 @@ return {
         -- must return a bool
       end,
     }
-    local km = require("utils").km -- keymap shortcut function
-    km({ "n", "v" }, "<Space>xd", "<cmd>HexDump<cr>", "[hex] dump")
-    km({ "n", "v" }, "<Space>xa", "<cmd>HexAssemble<cr>", "[hex] assemble")
-    km({ "n", "v" }, "<Space>xx", "<cmd>HexToggle<cr>", "[hex] toggle")
   end,
 }
 

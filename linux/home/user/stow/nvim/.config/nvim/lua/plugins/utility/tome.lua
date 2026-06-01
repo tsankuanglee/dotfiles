@@ -4,6 +4,11 @@ https://github.com/laktak/tome
 Playback commands for nvim, by sending keystrokes to tmux session
 --]]
 return {
+  keys = {
+    { "<leader>Tp", "<Plug>(TomePlayLine)", mode = "n", desc = "tome: play current line" },
+    { "<leader>TP", "<Plug>(TomePlayParagraph)", mode = "n", desc = "tome: play current paragraph" },
+    { "<leader>Tp", "<Plug>(TomePlaySelection)", mode = "x", desc = "tome: play selection" },
+  },
   "laktak/tome",
   version = "*",
   opts = {},
@@ -15,9 +20,5 @@ return {
     vim.g.tome_target = 'tmux'
   end,
   config = function ()
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<leader>Tp", "<Plug>(TomePlayLine)", "tome: play current line")
-    km("n", "<leader>TP", "<Plug>(TomePlayParagraph)", "tome: play current paragraph")
-    km("x", "<leader>Tp", "<Plug>(TomePlaySelection)", "tome: play selection")
   end
 }

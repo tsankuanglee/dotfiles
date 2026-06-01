@@ -34,6 +34,14 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 end
 
 return {
+  keys = {
+    { "zR", function() require("ufo").openAllFolds() end, mode = "n", desc = "ufo (fold): open all" },
+    { "zM", function() require("ufo").closeAllFolds() end, mode = "n", desc = "ufo (fold) close all" },
+    { "zP", function()
+      local winid = require("ufo").peekFoldedLinesUnderCursor()
+      if not winid and provider == "LSP" then vim.lsp.buf.hover() end
+    end, mode = "n", desc = "ufo (fold): preview" },
+  },
   "kevinhwang91/nvim-ufo",
   event = "VeryLazy",
   dependencies = {
@@ -91,12 +99,5 @@ return {
         hi MoreMsg       guibg=#3A3A3A guifg=#C0C0C0
       ]])
 
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "zR", ufo.openAllFolds, "ufo (fold): open all")
-    km("n", "zM", ufo.closeAllFolds, "ufo (fold) close all")
-    km("n", "zP", function()
-      local winid = ufo.peekFoldedLinesUnderCursor()
-      if not winid and provider == "LSP" then vim.lsp.buf.hover() end
-    end, "ufo (fold): preview")
   end,
 }

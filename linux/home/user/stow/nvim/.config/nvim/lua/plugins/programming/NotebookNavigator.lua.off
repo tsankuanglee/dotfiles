@@ -5,6 +5,9 @@
 -- send NotbookCell to code runner
 -- <LEADER>NH
 return {
+  keys = {
+    { "<LEADER>Nt", "<CMD>ToggleTerm direction=vertical name=runner<CR>", mode = "n", desc = "open Terminal runner" },
+  },
   "GCBallesteros/NotebookNavigator.nvim",
   keys = {
     -- { "<F9>", function() require("notebook-navigator").move_cell("u") end, desc = "jump to previous NB cell" },
@@ -60,8 +63,6 @@ return {
       -- (Optional) for use with `mini.hipatterns` to highlight cell markers
       cell_highlight_group = "Folded",
     })
-    local km = require("utils").km -- keymap shortcut function
-    km("n", "<LEADER>Nt", "<CMD>ToggleTerm direction=vertical name=runner<CR>", "open Terminal runner")
 
   end,
 }

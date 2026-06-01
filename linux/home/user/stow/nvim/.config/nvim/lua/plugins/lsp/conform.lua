@@ -3,6 +3,9 @@
 -- Lightweight yet powerful formatter plugin
 --
 return {
+  keys = {
+    { "<LEADER>lf", function() require("conform").format(format_op_option) end, mode = { "n", "v" }, desc = "format file or range" },
+  },
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
   init = function()
@@ -40,7 +43,5 @@ return {
       -- format_on_save = format_op_option,
     })
 
-    local km = require("utils").km -- keymap shortcut function
-    km({ "n", "v" }, "<LEADER>lf", function() conform.format(format_op_option) end, "format file or range")
   end,
 }
