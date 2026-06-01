@@ -48,6 +48,12 @@
 return {
   "stevearc/aerial.nvim",
   opts = {},
+  config = function(_, opts)
+    require("aerial").setup(opts)
+
+    local km = require("utils").km -- keymap shortcut function
+    km("n", "<LOCALLEADER>N", "<CMD>AerialToggle!<CR>", "toggle code Navigator")
+  end,
   -- Optional dependencies
   dependencies = {
     -- "nvim-treesitter/nvim-treesitter",  -- deprecating
