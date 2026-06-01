@@ -25,6 +25,6 @@ return {
       if #vim.fn.getbufinfo({ buflisted = true }) > 1 then buffer_hydra:activate() end
     end
 
-    vim.keymap.set("n", "gb", choose_buffer)
+    vim.keymap.set("n", "gb", choose_buffer, { desc = "Choose buffer" })
   end,
 }

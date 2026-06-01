@@ -78,14 +78,6 @@ The configs here will be transient until I figure out a smooth workflow, which c
 │  │  ├─ ui
 │  │  │  ├─ dressing.lua * Neovim UI enhancements
 │  │  │  ├─ fzf-lua.lua * Improved fzf.vim written in lua
-│  │  │  ├─ hydra
-│  │  │  │  ├─ action-apps.lua * actions and apps
-│  │  │  │  ├─ buffer.lua
-│  │  │  │  ├─ init.lua
-│  │  │  │  ├─ options-ext.lua * Helper function to check if a value is in a table
-│  │  │  │  ├─ options.lua
-│  │  │  │  ├─ sidescroll.lua * side scrools: zh zl zH zL
-│  │  │  │  └─ window.lua
 │  │  │  ├─ hydra.lua * Create custom submodes and menus
 │  │  │  ├─ nap.lua * Jump between next/prev quickly
 │  │  │  ├─ nvim-bqf.lua.off * Better quickfix window
@@ -107,6 +99,13 @@ The configs here will be transient until I figure out a smooth workflow, which c
 │  │     ├─ toggleterm.lua
 │  │     └─ tome.lua
 │  └─ utils * common config utilities
+│     ├─ hydra * Configuration sub-modules for hydra.nvim
+│     │  ├─ action-apps.lua * actions and apps
+│     │  ├─ buffer.lua
+│     │  ├─ options.lua
+│     │  ├─ sidescroll.lua * side scrools: zh zl zH zL
+│     │  └─ window.lua
+│     ├─ hydra_builder.lua * Scalable UI builder for Hydra menus
 │     └─ init.lua * credit:
 ├─ README.md
 └─ stylua.toml * lua formatting

@@ -2,6 +2,8 @@
 -- https://github.com/folke/which-key.nvim
 -- Prompts available keys in a sequence
 local opts = {
+  -- Sort alphabetically by key, ignoring whether it's a group or action
+  sort = { "local", "alphanum", "mod" },
   ---@param mapping wk.Mapping
   filter = function(mapping)
     -- example to exclude mappings without a description
@@ -86,10 +88,12 @@ return {
 
   config = function(_, opts)
     local wk = require("which-key")
-    local leader_opts = vim.tbl_deep_extend("force", opts, { prefix = "<LEADER>" })
-    wk.add(leader_mappings, leader_opts)
-    local localleader_opts = vim.tbl_deep_extend("force", opts, { prefix = "<LOCALLEADER>" })
-    wk.add(localleader_mappings, localleader_opts)
+    
+    -- Actually apply the plugin configuration (sort, plugins, filter, etc.)
+    wk.setup(opts)
+
+    wk.add(leader_mappings, { prefix = "<LEADER>" })
+    wk.add(localleader_mappings, { prefix = "<LOCALLEADER>" })
 
     -- gui can receive S-Function keys
 
