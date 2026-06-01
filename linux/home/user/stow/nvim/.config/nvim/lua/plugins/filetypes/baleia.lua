@@ -3,7 +3,7 @@
 -- Colorize text with ANSI escape sequences
 return {
   "m00qek/baleia.nvim",
-  version = "*",
+  -- version = "*",  -- stick with major release
   config = function()
     vim.g.baleia = require("baleia").setup({ })
 
