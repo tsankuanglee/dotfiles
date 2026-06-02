@@ -105,7 +105,8 @@ local function get_max_width(items)
 end
 
 -- Function to generate a scalable ASCII hint grid
-function M.generate_hint(title, columns)
+function M.generate_hint(title, columns, opts)
+  opts = opts or {}
   local lines = { "", "  " .. (title or "Hydra"), "" }
 
   local col_widths = {}
@@ -153,12 +154,17 @@ function M.generate_hint(title, columns)
   end
 
   table.insert(lines, "")
-  table.insert(lines, "  _<Esc>_ _<CR>_ close")
+  if opts.hide_back then
+    table.insert(lines, "  _<Esc>_ _<CR>_ close")
+  else
+    table.insert(lines, "  _<BS>_ back   _<Esc>_ _<CR>_ close")
+  end
   return table.concat(lines, "\n")
 end
 
 -- Function to convert builder items into Hydra heads
-function M.generate_heads(columns)
+function M.generate_heads(columns, opts)
+  opts = opts or {}
   local heads = {}
   local seen_keys = {}
   
@@ -180,7 +186,10 @@ function M.generate_heads(columns)
     end
   end
   
-  -- Add default close keys if not already defined manually
+  -- Add default close/back keys if not already defined manually
+  if not opts.hide_back and not seen_keys["<BS>"] then
+    table.insert(heads, { "<BS>", function() require("plugins.ui.hydra.hydra-main").activate() end, { exit = true, desc = false } })
+  end
   if not seen_keys["<Esc>"] then
     table.insert(heads, { "<Esc>", nil, { exit = true, desc = false } })
   end

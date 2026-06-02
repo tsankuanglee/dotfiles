@@ -1,7 +1,8 @@
-local setup = function()
+local M = {}
+M.setup = function()
   local Hydra = require("hydra")
   local cmd = require("hydra.keymap-util").cmd
-  local builder = require("utils.hydra_builder")
+  local builder = require("plugins.ui.hydra.hydra-builder")
 
   local move_col = {
     { key = "<LEFT>", action = cmd("WinShift left"), desc = "move step left", exit = true },
@@ -27,7 +28,7 @@ local setup = function()
   local heads = builder.generate_heads({ move_col, move_cont_col, resize_col })
   table.insert(heads, { "<SPACE>", nil, { exit = false, desc = "show menu"} })
 
-  Hydra({
+  M.hydra = Hydra({
     name = "Window Management",
     hint = builder.generate_hint("Window Management", { move_col, move_cont_col, resize_col }),
     config = {
@@ -45,6 +46,8 @@ local setup = function()
     heads = heads,
   })
 end
-return {
-  setup = setup,
-}
+M.activate = function()
+  if M.hydra then M.hydra:activate() end
+end
+
+return M

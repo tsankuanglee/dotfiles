@@ -7,9 +7,11 @@ local function isidiffwhite()
   return vim.tbl_contains(vim.opt.diffopt:get(), "iwhiteall")
 end
 
-local setup = function()
+local M = {}
+
+M.setup = function()
   local Hydra = require("hydra")
-  local builder = require("utils.hydra_builder")
+  local builder = require("plugins.ui.hydra.hydra-builder")
 
   local col1 = {
     { key = "w", desc = "wrap", toggle_func = "wrap", toggle_check = function() return vim.o.wrap end, exit = false, action = function()
@@ -67,7 +69,7 @@ local setup = function()
     { key = "M", desc = "modifiable", toggle_func = "ismod", toggle_check = function() return vim.bo.modifiable end, action = function() vim.bo.modifiable = not vim.bo.modifiable end },
   }
 
-  Hydra({
+  M.hydra = Hydra({
     name = "Options",
     hint = builder.generate_hint("Options", { col1, col2 }),
     config = {
@@ -85,6 +87,8 @@ local setup = function()
   })
 end
 
-return {
-  setup = setup,
-}
+M.activate = function()
+  if M.hydra then M.hydra:activate() end
+end
+
+return M

@@ -4,10 +4,11 @@
 return {
   "nvimtools/hydra.nvim",
   config = function ()
-    require("utils.hydra.sidescroll").setup()
-    require("utils.hydra.options").setup()
-    require("utils.hydra.action-apps").setup()
-    require("utils.hydra.window").setup()
-    require("utils.hydra.buffer").setup()
+    require("plugins.ui.hydra.sidescroll").setup()
+    require("plugins.ui.hydra.options").setup()
+    require("plugins.ui.hydra.action-apps").setup()
+    require("plugins.ui.hydra.window").setup()
+    require("plugins.ui.hydra.buffer").setup()
+    require("plugins.ui.hydra.hydra-main").setup()
   end,
 }

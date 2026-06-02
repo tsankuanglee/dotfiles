@@ -1,7 +1,8 @@
-local setup = function()
+local M = {}
+M.setup = function()
   local Hydra = require("hydra")
   local cmd = require("hydra.keymap-util").cmd
-  local builder = require("utils.hydra_builder")
+  local builder = require("plugins.ui.hydra.hydra-builder")
 
   local actions_col = {
     { key = ".", action = cmd("'<,'>s/\\./ /g"), desc = "replace . with space", exit = true },
@@ -19,7 +20,7 @@ local setup = function()
     { key = "M", action = cmd("Mason"), desc = ":Mason", exit = true },
   }
 
-  Hydra({
+  M.hydra = Hydra({
     name = "Actions",
     hint = builder.generate_hint("Actions & Apps", { actions_col, apps_col }),
     config = {
@@ -37,6 +38,8 @@ local setup = function()
   })
 end
 
-return {
-  setup = setup,
-}
+M.activate = function()
+  if M.hydra then M.hydra:activate() end
+end
+
+return M

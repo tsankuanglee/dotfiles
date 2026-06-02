@@ -48,7 +48,7 @@ local leader_mappings = {
   { "<LEADER>l", group = "LSP", nowait = true, remap = false },
   { "<LEADER>lg", desc = "diagnostics", nowait = true, remap = false },
   { "<LEADER>ls", desc = "symbols", nowait = true, remap = false },
-  { "<LEADER>M", group = "menu", nowait = true, remap = false },
+  { "<LEADER>h", group = "Main Menu (Hydra)", nowait = true, remap = false },
   { "<LEADER>m", group = "mini.map", nowait = true, remap = false },
   { "<LEADER>N", group = "NotebookNavigator", nowait = true, remap = false },
   { "<LEADER>s", group = "sessions; reg * (primary/select)", nowait = true, remap = false },

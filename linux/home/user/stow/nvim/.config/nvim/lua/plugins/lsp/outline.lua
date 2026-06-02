@@ -4,7 +4,7 @@
 --
 return {
   keys = {
-    { "<LEADER>i", "<cmd>Outline<CR>", mode = {"n"}, desc = "toggle outline" },
+    { "<LEADER>i", "<cmd>Outline<CR>", mode = {"n"}, desc = "toggle outlIne" },
   },
   "hedyhli/outline.nvim",
 

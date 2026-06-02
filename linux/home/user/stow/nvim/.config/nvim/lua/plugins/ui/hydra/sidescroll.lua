@@ -1,8 +1,8 @@
 -- side scrools: zh zl zH zL
-return {
-  setup = function()
+local M = {}
+M.setup = function()
     local Hydra = require("hydra")
-    local builder = require("utils.hydra_builder")
+    local builder = require("plugins.ui.hydra.hydra-builder")
 
     local scroll_col = {
       { key = "h", action = "3zh", desc = "←", exit = false },
@@ -11,7 +11,7 @@ return {
       { key = "L", action = "zL", desc = "half screen →", exit = false },
     }
 
-    Hydra({
+    M.hydra = Hydra({
       name = "Side scroll",
       mode = "n",
       body = "z",
@@ -21,5 +21,10 @@ return {
       },
       heads = builder.generate_heads({ scroll_col }),
     })
-  end,
-}
+  end
+
+M.activate = function()
+  if M.hydra then M.hydra:activate() end
+end
+
+return M
