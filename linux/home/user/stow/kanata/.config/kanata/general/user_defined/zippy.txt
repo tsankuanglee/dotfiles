@@ -1,14 +1,32 @@
 // git series
+ git c 	git commit -m "
  git c a	git commit --amend␣
- git c a m	git commit --amend -m 'FIX_THIS_COMMIT_MESSAGE'
+ git c a m	git commit --amend -m "
  git c b	git checkout -b␣
  git c n	git commit --amend --no-edit
  git f p	git fetch -p
  git s	git␣status
 
+// docker / compose
+ dock	docker 
+ dock p	docker ps
+ dock p a	docker ps -a
+ comp	docker compose 
+ comp e	docker compose exec -it 
+ comp p	docker compose ps
+ comp p a	docker compose ps -a
+
+// tmux
+ tmux	tmux a -d
+ tmux t	tmux a -d -t
+ tmux n	tmux new-session -t 
+ tmux l	tmux list-sessions
+
 // other commands
  qpdf	qpdf --empty --pages a.pdf 1-z b.pdf 3,7,2,9-11 -- combined.pdf
 
+// vim
+ vimd	nvim -d 
 // vim modal line
 vim2	# vim: ts=2 sts=2 sw=2 et :
 vim4	# vim: ts=4 sts=4 sw=4 et :
