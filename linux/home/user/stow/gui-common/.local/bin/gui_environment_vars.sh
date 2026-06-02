@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-#
+
 USER_ID=$(id -u "$USER")
 
 # 1. Get the ID of the first active graphical session for your user
