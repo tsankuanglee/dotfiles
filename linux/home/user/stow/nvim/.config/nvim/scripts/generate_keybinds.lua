@@ -17,6 +17,15 @@ for mode, mode_name in pairs(modes) do
   file:write("| Key | Action / Description |\n")
   file:write("|-----|----------------------|\n")
   local maps = vim.api.nvim_get_keymap(mode)
+  table.sort(maps, function(a, b)
+    local a_lower = (a.lhs or ""):lower()
+    local b_lower = (b.lhs or ""):lower()
+    if a_lower == b_lower then
+      return (a.lhs or "") < (b.lhs or "")
+    end
+    return a_lower < b_lower
+  end)
+  
   for _, map in ipairs(maps) do
     local lhs = map.lhs:gsub("|", "\\|")
     -- Format literal leading spaces as <Space> to fix Markdown rendering

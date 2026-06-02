@@ -44,7 +44,6 @@ local leader_mappings = {
   { "<LEADER>Ft", desc = "filetype", nowait = true, remap = false },
   { "<LEADER>f", group = "Telescope", nowait = true, remap = false },
   { "<LEADER>G", group = "Gitsigns", nowait = true, remap = false },
-  { "<LEADER>L", group = "line num/wrap", nowait = true, remap = false },
   { "<LEADER>l", group = "LSP", nowait = true, remap = false },
   { "<LEADER>lg", desc = "diagnostics", nowait = true, remap = false },
   { "<LEADER>ls", desc = "symbols", nowait = true, remap = false },

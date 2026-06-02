@@ -62,11 +62,6 @@ km("n", "<LEADER>Fp", "<CMD>let @+=expand('%:p')<CR>", "copy full filepath to cl
 km("n", "<LEADER>Ft0", "<CMD>set filetype=<CR>")
 km("n", "<LEADER>Ftc", "<CMD>set filetype=csv<CR>")
 
--- <LEADER>L line num/wrap
-km("n", "<LEADER>Lr", function() vim.wo.relativenumber = not vim.wo.relativenumber end, "line number: relative toggle")
-km("n", "<LEADER>Ln", function() vim.wo.number = not vim.wo.number end, "line number: toggle")
-km("n", "<LEADER>Lw", function() vim.wo.wrap = not vim.wo.wrap end, "line wrap: toggle")
-
 -- <LEADER>: custom commands
 km("n", "<LEADER>:l", vim.g.lcd_to_starting_folder, "lcd to launching folder")
 
