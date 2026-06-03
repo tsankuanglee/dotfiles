@@ -70,4 +70,12 @@ direct hotkeys
 
 (defalias calc (cmd qalculate-gtk))
 
+;; macos screenshots
+; (defalias sst7 (t! run-via-zsh "~/.local/bin/screenshot_monitor.sh left left"))
+; (defalias sst8 (t! run-via-zsh "~/.local/bin/screenshot_monitor.sh middle middle"))
+; (defalias sst9 (t! run-via-zsh "~/.local/bin/screenshot_monitor.sh right right"))
+; (defalias sst5 (t! run-via-zsh "~/.local/bin/screenshot_monitor.sh main main"))
+; (defalias sst0 (t! run-via-zsh "~/.local/bin/identify_monitors.sh"))
+
+
 ;; vim: ft=lisp ts=2 sts=2 sw=2 et :
