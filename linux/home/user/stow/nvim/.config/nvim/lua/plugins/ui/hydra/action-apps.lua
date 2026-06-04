@@ -13,9 +13,9 @@ M.setup = function()
 
   local apps_col = {
     { key = "t", action = cmd("terminal"), desc = ":terminal", exit = true },
+    { key = "c", action = cmd("CsvViewToggle"), desc = ":CsvViewToggle", exit = true },
     { key = "a", action = cmd("AerialToggle!"), desc = ":AerialToggle!", exit = true },
     { key = "A", action = cmd("AerialNavToggle"), desc = ":AerialNavToggle", exit = true },
-    { key = "d", action = cmd("DataViewer"), desc = ":DataViewer", exit = true },
     { key = "L", action = cmd("Lazy"), desc = ":Lazy", exit = true },
     { key = "M", action = cmd("Mason"), desc = ":Mason", exit = true },
   }
