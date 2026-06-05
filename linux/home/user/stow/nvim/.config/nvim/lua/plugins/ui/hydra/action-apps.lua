@@ -8,16 +8,19 @@ M.setup = function()
     { key = ".", action = cmd("'<,'>s/\\./ /g"), desc = "replace . with space", exit = true },
     { key = "$", action = cmd("%s/\\s\\+$//g"), desc = "trim file trailing \\\\s*", exit = true },
     {}, -- Blank separator row
-    {}, -- Another blank separator row
+    { title = "Package Managers"}, -- Blank separator row
+    { key = "L", action = cmd("Lazy"), desc = ":Lazy", exit = true },
+    { key = "M", action = cmd("Mason"), desc = ":Mason", exit = true },
   }
 
   local apps_col = {
     { key = "t", action = cmd("terminal"), desc = ":terminal", exit = true },
-    { key = "c", action = cmd("CsvViewToggle"), desc = ":CsvViewToggle", exit = true },
+    {}, -- Blank separator row
+    { key = "c", action = cmd("CsvViewToggle display_mode=highlight"), desc = ":CsvViewToggle (highlight)", exit = true },
+    { key = "C", action = cmd("CsvViewToggle display_mode=border"), desc = ":CsvViewToggle (border)", exit = true },
+    {}, -- Blank separator row
     { key = "a", action = cmd("AerialToggle!"), desc = ":AerialToggle!", exit = true },
     { key = "A", action = cmd("AerialNavToggle"), desc = ":AerialNavToggle", exit = true },
-    { key = "L", action = cmd("Lazy"), desc = ":Lazy", exit = true },
-    { key = "M", action = cmd("Mason"), desc = ":Mason", exit = true },
   }
 
   M.hydra = Hydra({

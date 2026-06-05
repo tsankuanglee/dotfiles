@@ -59,14 +59,15 @@ M.setup = function()
     { key = "x", desc = "ft=text", exit = true, action = function() vim.bo.filetype = "text" end },
     { key = "m", desc = "ft=terminal", exit = true, action = function() vim.bo.filetype = "terminal" end },
     {},
+    { key = "M", desc = "modifiable", toggle_func = "ismod", toggle_check = function() return vim.bo.modifiable end, action = function() vim.bo.modifiable = not vim.bo.modifiable end },
+    { title="Tab/space" },
     { key = "2", desc = "ts=sw=2", exit = true, action = function() set_ts_sw(2) end },
     { key = "3", desc = "ts=sw=3", exit = true, action = function() set_ts_sw(3) end },
     { key = "4", desc = "ts=sw=4", exit = true, action = function() set_ts_sw(4) end },
     { key = "8", desc = "ts=sw=8", exit = true, action = function() set_ts_sw(8) end },
     { key = "t", desc = "expandtab", toggle_func = "iset", toggle_check = function() return vim.bo.expandtab end, action = function() vim.bo.expandtab = not vim.bo.expandtab end },
-    { key = "p", desc = "paste", toggle_func = "isp", toggle_check = function() return vim.o.paste end, action = function() vim.o.paste = not vim.o.paste end },
     {},
-    { key = "M", desc = "modifiable", toggle_func = "ismod", toggle_check = function() return vim.bo.modifiable end, action = function() vim.bo.modifiable = not vim.bo.modifiable end },
+    { key = "p", desc = "paste", toggle_func = "isp", toggle_check = function() return vim.o.paste end, action = function() vim.o.paste = not vim.o.paste end },
   }
 
   M.hydra = Hydra({
