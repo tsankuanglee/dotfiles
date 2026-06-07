@@ -6,10 +6,10 @@
 return {
   keys = {
     { "<localleader>gf", function()
-        gf.open()
+        require('grug-far').open()
       end, mode = {"n", "x"}, desc = "[grug-far] find and replace" },
     { "<localleader>gv", function()
-        gf.with_visual_selection()
+        require('grug-far').with_visual_selection()
       end, mode = {"n", "x"}, desc = "[grug-far] find-and-replace within visual selection" },
   },
   'MagicDuck/grug-far.nvim',
@@ -22,9 +22,5 @@ return {
       -- options, see Configuration section below
       -- there are no required options atm
     });
-
-    local gf = require('grug-far')
-
-
   end
 }
