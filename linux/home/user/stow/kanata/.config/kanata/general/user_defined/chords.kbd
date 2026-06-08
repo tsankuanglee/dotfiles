@@ -12,7 +12,11 @@ chords
 
 (defzippy
   ./user_defined/zippy.txt
-  on-first-press-chord-deadline 1000
+
+  ;; Number of milliseconds. After the first press while zippy is enabled, if no chord activates within this configured time, zippy is temporarily disabled.
+  on-first-press-chord-deadline 500
+
+  ;; Number of milliseconds. After typing ends and this configured number of milliseconds elapses, zippy will be re-enabled from being temporarily disabled.
   idle-reactivate-time          500
   smart-space-punctuation (? ! . , ; : )
   output-character-mappings (
