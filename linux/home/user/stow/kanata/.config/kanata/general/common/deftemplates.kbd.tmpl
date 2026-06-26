@@ -55,7 +55,12 @@
     (defvirtualkeys $vk-name (cmd $app))
     (defseq $vk-name $keys)
     )
-
+  )
+(platform (linux)
+  (deftemplate
+    wtype (keystrokes)
+    (cmd "/home/$KANATA_USER/.local/bin/wtype.sh" $keystrokes)
+    )
   )
 
 (deftemplate

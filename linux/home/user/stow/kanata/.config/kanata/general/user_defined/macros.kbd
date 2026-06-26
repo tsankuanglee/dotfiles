@@ -23,16 +23,16 @@ However, in addition to series of keystrokes, it's also possible to use chords
 
   macro-localhost (m l h)
   macro-wikipedia (m w k)
+  macro-sqsh-compression (m s q s h)
   )
 (deffakekeys
   ;; " | grep
   macro-grep (macro Space S-Backslash Space g r e p)
   ;; "| awk '{print $1}'"
   macro-awk (macro Space S-Backslash a w k Space Quote S-[ p r i n t Space S-4 Digit1 S-] Quote left left)
-
-  macro-qpdf (cmd wtype "qpdf --empty --pages example-a.pdf 1-z example-b.pdf 3,7,2,9-11 -- example_output.pdf")
-
-  macro-fuse-option (cmd wtype " -o allow_other,uid=$(id -u),gid=$(id -g)")
+  macro-qpdf (t! wtype "qpdf --empty --pages example-a.pdf 1-z example-b.pdf 3,7,2,9-11 -- example_output.pdf")
+  macro-fuse-option (t! wtype " -o allow_other,uid=$(id -u),gid=$(id -g)")
+  macro-sqsh-compression (t! wtype "mksquashfs . ../target.sqsh -comp zstd -progress -processors 12 -Xcompression-level 22")
 
   ;; "cd ~/"
   macro-cd (macro c d Space S-grv Slash)
@@ -51,4 +51,4 @@ However, in addition to series of keystrokes, it's also possible to use chords
   )
 
 
-;; vim: ts=2 sts=2 sw=2 et :
+;; vim: ft=lisp ts=2 sts=2 sw=2 et :
