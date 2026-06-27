@@ -16,7 +16,6 @@ hl.define_submap(MENU_MAIN, function()
   hl.bind("S", hl.dsp.submap(MENU_SYSTEM))
 
   hl.bind("escape", hl.dsp.submap("reset"))
-  hl.bind("catchall", hl.dsp.submap("reset"))
 end)
 
 hl.define_submap(MENU_LAYOUT, "reset", function()
@@ -25,7 +24,6 @@ hl.define_submap(MENU_LAYOUT, "reset", function()
   hl.bind("S", function() hl.config({ general = { layout = "scrolling" } }) end)
   hl.bind("O", function() hl.config({ general = { layout = "monocle" } }) end)
   hl.bind("escape", hl.dsp.submap("reset"))
-  hl.bind("catchall", hl.dsp.submap("reset"))
 end)
 
 hl.define_submap(MENU_WINDOW, function()
@@ -55,7 +53,6 @@ hl.define_submap(MENU_WINDOW, function()
     end)
 
     hl.bind("escape", hl.dsp.submap("reset"))
-    hl.bind("catchall", hl.dsp.submap("reset"))
 end)
 
 hl.define_submap(MENU_SYSTEM, "reset", function()
