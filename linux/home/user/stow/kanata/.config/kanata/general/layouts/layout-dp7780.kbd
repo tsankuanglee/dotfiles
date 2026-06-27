@@ -38,10 +38,6 @@ key symbols: hhttps://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rstt
   esctl (tap-hold-press 200 200 esc lctl)
 
   ;; sequence leader key
-  ;; first "menu" is alias, to be used with @menu
-  ;; last "menu" is the actual key symbol
-  ;; sldr is a kanata-defined action (sequence leader)
-  menu (tap-hold-release 200 200 sldr menu)
 
   ;; right ctrl and menu
   rcmu (tap-hold 200 200 sldr rctl)
