@@ -146,4 +146,9 @@ source /usr/share/fzf/completion.bash
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 alias fzfp='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
+# OpenTofu cache
+export TF_PLUGIN_CACHE_DIR="$HOME/.cache/tofu-plugin-cache"
+mkdir -p "$TF_PLUGIN_CACHE_DIR"
+
+# rust
 PATH=$PATH:~/.local/bin:~/.cargo/bin
