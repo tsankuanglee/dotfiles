@@ -5,7 +5,7 @@ local MENU_MAIN = "󰍜 MAIN: [l]ayout, [w]indow, [s]ystem"
 local MENU_LAYOUT = "󰙀 LAYOUT: [m]aster, [d]windle, [s]croll, m[o]nocle"
 local MENU_WINDOW = " WINDOW: [r]esize"
 local MENU_RESIZE = " RESIZE: [Arrows] 10px, [Shift] 50px, [Ctrl] 1px"
-local MENU_SYSTEM = " SYSTEM: [q]uit, Kanata [k]:resume [K]:pause, Power: suspend-[T]hen-hibernate, suspen[D], [H]ibernate, [R]eboot, power-of[F]"
+local MENU_SYSTEM = " SYSTEM: [q]uit, Kanata [k]:resume [K]:pause, Power: suspend-[t]hen-hibernate, suspen[d], [h]ibernate, [r]eboot, power-of[f]"
 
 -- trigger modal shortcuts
 hl.bind(myEnv.mainMod .. " + M", hl.dsp.submap(MENU_MAIN))
@@ -64,11 +64,11 @@ hl.define_submap(MENU_SYSTEM, "reset", function()
     hl.bind("SHIFT + K", hl.dsp.exec_cmd("~/.config/kanata/local/kanata-toggle.sh pause"), { locked = false, repeating = false, release = true})
 
     -- system power management
-    hl.bind("SHIFT + T", hl.dsp.exec_cmd("/usr/bin/systemctl suspend-then-hibernate"), { release = true })
-    hl.bind("SHIFT + D", hl.dsp.exec_cmd("/usr/bin/systemctl suspend"), { release = true })
-    hl.bind("SHIFT + H", hl.dsp.exec_cmd("/usr/bin/systemctl hibernate"), { release = true })
-    hl.bind("SHIFT + R", hl.dsp.exec_cmd("/usr/bin/systemctl reboot"), { release = true })
-    hl.bind("SHIFT + F", hl.dsp.exec_cmd("/usr/bin/systemctl poweroff"), { release = true })
+    hl.bind("T", hl.dsp.exec_cmd("/usr/bin/systemctl suspend-then-hibernate"), { release = true })
+    hl.bind("D", hl.dsp.exec_cmd("/usr/bin/systemctl suspend"), { release = true })
+    hl.bind("H", hl.dsp.exec_cmd("/usr/bin/systemctl hibernate"), { release = true })
+    hl.bind("R", hl.dsp.exec_cmd("/usr/bin/systemctl reboot"), { release = true })
+    hl.bind("F", hl.dsp.exec_cmd("/usr/bin/systemctl poweroff"), { release = true })
 
     hl.bind("escape", hl.dsp.submap("reset"))
 end)
