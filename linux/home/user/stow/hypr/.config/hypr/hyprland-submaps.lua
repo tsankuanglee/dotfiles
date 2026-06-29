@@ -60,15 +60,15 @@ hl.define_submap(MENU_SYSTEM, "reset", function()
     hl.bind("Q", hl.dsp.exit())
 
     -- kanata pause/resume
-    hl.bind(        "K", hl.dsp.exec_cmd("~/.config/kanata/local/kanata-toggle.sh resume"), { locked = false, repeating = false})
-    hl.bind("SHIFT + K", hl.dsp.exec_cmd("~/.config/kanata/local/kanata-toggle.sh pause"), { locked = false, repeating = false})
+    hl.bind(        "K", hl.dsp.exec_cmd("~/.config/kanata/local/kanata-toggle.sh resume"), { locked = false, repeating = false, release = true})
+    hl.bind("SHIFT + K", hl.dsp.exec_cmd("~/.config/kanata/local/kanata-toggle.sh pause"), { locked = false, repeating = false, release = true})
 
     -- system power management
-    hl.bind("SHIFT + T", hl.dsp.exec_cmd("/usr/bin/systemctl suspend-then-hibernate"))
-    hl.bind("SHIFT + D", hl.dsp.exec_cmd("/usr/bin/systemctl suspend"))
-    hl.bind("SHIFT + H", hl.dsp.exec_cmd("/usr/bin/systemctl hibernate"))
-    hl.bind("SHIFT + R", hl.dsp.exec_cmd("/usr/bin/systemctl reboot"))
-    hl.bind("SHIFT + F", hl.dsp.exec_cmd("/usr/bin/systemctl poweroff"))
+    hl.bind("SHIFT + T", hl.dsp.exec_cmd("/usr/bin/systemctl suspend-then-hibernate"), { release = true })
+    hl.bind("SHIFT + D", hl.dsp.exec_cmd("/usr/bin/systemctl suspend"), { release = true })
+    hl.bind("SHIFT + H", hl.dsp.exec_cmd("/usr/bin/systemctl hibernate"), { release = true })
+    hl.bind("SHIFT + R", hl.dsp.exec_cmd("/usr/bin/systemctl reboot"), { release = true })
+    hl.bind("SHIFT + F", hl.dsp.exec_cmd("/usr/bin/systemctl poweroff"), { release = true })
 
     hl.bind("escape", hl.dsp.submap("reset"))
 end)
