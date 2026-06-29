@@ -78,3 +78,6 @@ export PATH=$PATH:~/.cargo/bin
 # workaround QT icon too big bug
 export QT_SCALE_FACTOR=1.01
 
+# OpenTofu cache
+export TF_PLUGIN_CACHE_DIR="$HOME/.cache/tofu-plugin-cache"
+mkdir -p "$TF_PLUGIN_CACHE_DIR"
