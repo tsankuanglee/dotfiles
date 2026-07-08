@@ -74,6 +74,9 @@ pdf = [
 image_archive = [
   { run = 'mcomix "$@"', block = true, desc = "Open with mcomix", for = "linux" },
 ]
+image_folder = [
+  { run = 'geeqie "$@"', block = true, desc = "Open with geeqie", for = "linux" },
+]
 image_to_clipboard = [
   { run = 'image_file_to_clipboard.sh "$@" png', block = false, desc = "copy image to clipboard", for = "unix" },
 ]
@@ -84,7 +87,7 @@ edit_image = [
 [open]
 rules = [
 	# Folder
-	{ url = "*/", use = [ "edit", "open", "reveal" ] },
+	{ url = "*/", use = [ "edit", "open", "reveal", "image_folder" ] },
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
@@ -92,7 +95,7 @@ rules = [
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Archive
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal", "image_archive" ] },
 	# JSON
 	{ mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
 	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
