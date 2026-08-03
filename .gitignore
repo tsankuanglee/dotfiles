@@ -1,8 +1,6 @@
-config.sh
-.config/nvim/.netrwhist
-linux/home/user/.config/kitty/current-theme.conf
-linux/home/user/.config/nvim/plugged/
-linux/home/user/.config/nvim.lazy/lazy-lock.json
+linux/home/user/stow/nvim/.config/nvim/.netrwhist
+linux/home/user/stow/kitty/.config/kitty/current-theme.conf
+linux/home/user/stow/fcitx5/.config/fcitx5/conf/cached_layouts
 
 *.swp
 .DS_Store
