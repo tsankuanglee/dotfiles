@@ -67,12 +67,16 @@ download = [
 
 epub = [
   { run = 'foliate "$@"', block = true, desc = "Open with Foliate", for = "linux" },
+  { run = 'readest "$@"', block = true, desc = "Open with Readest", for = "linux" },
 ]
 pdf = [
   { run = 'evince "$@"', block = true, desc = "Open with evince", for = "linux" },
 ]
 image_archive = [
   { run = 'mcomix "$@"', block = true, desc = "Open with mcomix", for = "linux" },
+]
+image_folder = [
+  { run = 'geeqie "$@"', block = true, desc = "Open with geeqie", for = "linux" },
 ]
 image_to_clipboard = [
   { run = 'image_file_to_clipboard.sh "$@" png', block = false, desc = "copy image to clipboard", for = "unix" },
@@ -84,21 +88,20 @@ edit_image = [
 [open]
 rules = [
 	# Folder
-	{ url = "*/", use = [ "edit", "open", "reveal" ] },
+	{ url = "*/", use = [ "edit", "open", "reveal", "image_folder" ] },
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "image/*", use = [ "image_folder", "edit_image", "image_to_clipboard" , "open", "reveal"  ] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Archive
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "image_archive", "epub", "extract", "reveal" ] },
 	# JSON
 	{ mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
 	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
   # epub
-  { mime = "application/epub+zip", use = [ "epub" ] },
-  { mime = "application/zip", use = [ "epub" ], name = "*.epub" },
+  { mime = "application/{epub,zip,epub+zip}", use = [ "epub" ], name = "*.epub" },
   # PDF
   { mime = "application/pdf", use = [ "pdf" ], name = "*.pdf" },
 	# Empty file
