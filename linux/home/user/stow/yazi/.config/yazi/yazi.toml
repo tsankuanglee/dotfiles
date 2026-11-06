@@ -35,14 +35,14 @@ edit = [
 	{ run = "code -w %s",       desc = "code (block)", for = "windows", block = true },
 ]
 play = [
+  { run = "mpv --force-window %s", orphan = true, for = "unix" },
+  { run = "mpv --force-window %*", orphan = true, for = "windows" },
 	{ run = "xdg-open %s1",                desc = "Play", for = "linux" },
 	{ run = "open %s",                     desc = "Play", for = "macos" },
 	{ run = 'start "" %s1', orphan = true, desc = "Play", for = "windows" },
 	{ run = "termux-open %s1",             desc = "Play", for = "android" },
 	{ run = "mediainfo %s1; echo 'Press enter to exit'; read _", block = true, desc = "Show media info", for = "unix" },
 	{ run = "mediainfo %s1 & pause", block = true, desc = "Show media info", for = "windows" },
-  { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-  { run = "mpv --force-window %*", orphan = true, for = "windows" },
 ]
 open = [
 	{ run = "xdg-open %s1",    desc = "Open", for = "linux" },
@@ -66,23 +66,26 @@ download = [
 ]
 
 epub = [
-  { run = 'foliate "$@"', block = true, desc = "Open with Foliate", for = "linux" },
-  { run = 'readest "$@"', block = true, desc = "Open with Readest", for = "linux" },
+  { run = 'foliate %s', block = true, desc = "Open with Foliate", for = "linux" },
+  { run = 'readest %s', block = true, desc = "Open with Readest", for = "linux" },
 ]
 pdf = [
-  { run = 'evince "$@"', block = true, desc = "Open with evince", for = "linux" },
+  { run = 'evince %s', block = true, desc = "Open with evince", for = "linux" },
 ]
 image_archive = [
-  { run = 'mcomix "$@"', block = true, desc = "Open with mcomix", for = "linux" },
+  { run = 'mcomix %s', block = true, desc = "Open with mcomix", for = "linux" },
+]
+image_file = [
+  { run = 'geeqie %d', block = true, desc = "Open image with geeqie", for = "linux" },
 ]
 image_folder = [
-  { run = 'geeqie "$@"', block = true, desc = "Open with geeqie", for = "linux" },
+  { run = 'geeqie %s', block = true, desc = "Open folder with geeqie", for = "linux" },
 ]
 image_to_clipboard = [
-  { run = 'image_file_to_clipboard.sh "$@" png', block = false, desc = "copy image to clipboard", for = "unix" },
+  { run = 'image_file_to_clipboard.sh "$s" png', block = false, desc = "copy image to clipboard", for = "unix" },
 ]
 edit_image = [
-  { run = 'gimp "$@"', block = false, desc = "edit with Gimp", for = "linux" },
+  { run = 'gimp %s', block = false, desc = "edit with Gimp", for = "linux" },
 ]
 
 [open]
@@ -92,7 +95,7 @@ rules = [
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
-	{ mime = "image/*", use = [ "image_folder", "edit_image", "image_to_clipboard" , "open", "reveal"  ] },
+	{ mime = "image/*", use = [ "image_file", "image_folder", "edit_image", "image_to_clipboard" , "open", "reveal"  ] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Archive
