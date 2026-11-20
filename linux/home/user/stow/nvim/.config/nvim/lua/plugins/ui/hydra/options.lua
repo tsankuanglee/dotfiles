@@ -41,7 +41,15 @@ M.setup = function()
     { key = "v", desc = "virtual edit", toggle_func = "ve", toggle_check = function() return vim.o.virtualedit == "all" end, action = function()
       if vim.o.virtualedit == "all" then vim.o.virtualedit = "block" else vim.o.virtualedit = "all" end
     end },
-    { key = "i", desc = "show invisible", toggle_func = "list", toggle_check = function() return vim.o.list end, action = function() vim.o.list = not vim.o.list end },
+    { key = "i", desc = "show invisible", toggle_func = "list", toggle_check = function() return vim.o.list end, action = function()
+      vim.o.list = not vim.o.list
+      if vim.o.list then
+        vim.cmd([[match ExtraWhitespace /\s\+$\|\t/]])
+      else
+        vim.cmd("match none")
+      end
+    end
+    },
     { title = "Search & Diff", hl = "Title" },
     { key = "d", desc = "diff white spaces", toggle_func = "isidw", toggle_check = isidiffwhite, action = function()
       if isidiffwhite() then vim.opt.diffopt:remove("iwhiteall") else vim.opt.diffopt:append("iwhiteall") end
