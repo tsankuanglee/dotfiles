@@ -46,7 +46,8 @@ bindkey '^X^E' edit-command-line
 # common keybinds
 # ctrl-U erases from cursor to line beginning (instead of the whole line)
 bindkey "^U" backward-kill-line
-bindkey "^R" history-incremental-pattern-search-backward
+# Use fzf's version instead
+#bindkey "^R" history-incremental-pattern-search-backward
 # ctrl-left, ctrl-right, home, end
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
